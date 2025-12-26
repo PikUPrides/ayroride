@@ -179,13 +179,13 @@ export default function Home() {
           <div className={styles.differentGrid}>
             <div className={styles.differentItem}>
               <img src="/images/no-surge-icon.svg" alt="No Surge" className={styles.differentIcon} />
-              <h4>We don’t do surge pricing</h4>
+              <h4>We don't do surge pricing</h4>
               <p>Save with predictable fares that are up to 50% lower than any national provider.</p>
             </div>
 
             <div className={styles.differentItem}>
               <img src="/images/safety-icon.svg" alt="Safety" className={styles.differentIcon} />
-              <h4>We’re serious about safety</h4>
+              <h4>We're serious about safety</h4>
               <p>Feel more secure with our rigorous safety protocols.</p>
             </div>
 

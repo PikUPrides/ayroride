@@ -84,8 +84,6 @@
   /* Based on 0px 18px 0px 0px */
 }
 
-
-
 .navItem a:hover {
   opacity: 0.9;
 }
@@ -205,8 +203,6 @@
   .slogan {
     font-size: 11px;
   }
-
-
 
   .mobileMenu .navLinks {
     flex-direction: column;
