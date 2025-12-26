@@ -106,7 +106,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   padding-top: 20px;
 }
 
@@ -181,7 +181,7 @@
 .footerDivider {
   height: 1px;
   background-color: rgba(255, 255, 255, 0.1);
-  margin: 0 0 20px;
+  margin: 0 0 30px;
 }
 
 .footerBottom {
@@ -200,6 +200,52 @@
 .legalLinks a {
   color: rgba(255, 255, 255, 0.6);
   text-decoration: none;
+}
+
+/* Top Divider Styles */
+.footerDividerTop {
+  height: 8px;
+  width: 100%;
+  display: flex;
+  background-color: #3F3FFF;
+  /* Fallback/Right side color */
+  position: relative;
+  margin-top: -40px;
+  /* Pull it up to sit between CTA and Footer */
+  margin-bottom: 0;
+  z-index: 5;
+}
+
+/* 35/65 split background bleed */
+.footerDividerTop::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: calc(50% - 558px);
+  background-color: #00D1C1;
+  z-index: 1;
+}
+
+.dividerContainer {
+  max-width: 1240px;
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  height: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.dividerTeal {
+  flex: 5;
+  background-color: #00D1C1;
+}
+
+.dividerBlue {
+  flex: 95;
+  background-color: #3F3FFF;
 }
 
 @media (max-width: 768px) {
@@ -223,8 +269,10 @@
   }
 
   .ctaBtn {
-    width: 100%;
-    max-width: 280px;
+    width: auto;
+    max-width: none;
+    white-space: nowrap;
+    padding: 12px 36px;
   }
 
   .footerTop {
@@ -233,6 +281,8 @@
     /* Center everything on mobile */
     gap: 40px;
     text-align: center;
+    margin-bottom: 20px;
+    /* Override desktop margin */
   }
 
   .footerBrand {
@@ -275,60 +325,30 @@
     width: 20px;
     height: 20px;
   }
-}
 
-@media (max-width: 768px) {
   .footerDividerTop {
-    height: 2px;
-    /* Sleeker line */
+    height: 4px;
     margin-top: -20px;
-    /* Adjust overlap */
   }
-}
 
-/* Top Divider Styles */
-.footerDividerTop {
-  height: 2px;
-  width: 100%;
-  display: flex;
-  background-color: #3F3FFF;
-  /* Fallback/Right side color */
-  position: relative;
-  margin-top: -40px;
-  /* Pull it up to sit between CTA and Footer */
-  margin-bottom: 0;
-  z-index: 5;
-}
+  .footerDividerTop::before {
+    display: none;
+  }
 
-/* 35/65 split background bleed */
-.footerDividerTop::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: calc(50% - 186px);
-  /* Matches page.module.css calculation */
-  background-color: #00D1C1;
-  z-index: 1;
-}
+  .dividerContainer {
+    width: 100%;
+    max-width: 100%;
+  }
 
-.dividerContainer {
-  max-width: 1240px;
-  width: 90%;
-  margin: 0 auto;
-  display: flex;
-  height: 100%;
-  position: relative;
-  z-index: 2;
-}
+  .footerDivider {
+    margin: 0 0 20px;
+  }
 
-.dividerTeal {
-  flex: 35;
-  background-color: #00D1C1;
-}
+  .dividerTeal {
+    flex: 5;
+  }
 
-.dividerBlue {
-  flex: 65;
-  background-color: #3F3FFF;
+  .dividerBlue {
+    flex: 95;
+  }
 }

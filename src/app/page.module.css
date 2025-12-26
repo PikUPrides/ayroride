@@ -98,6 +98,7 @@
   box-sizing: border-box;
   box-shadow: none;
   transition: all 0.3s ease;
+  white-space: nowrap;
 }
 
 .waitlistBtn:hover {
@@ -254,7 +255,8 @@
     margin-top: 20px;
     background-color: #423DF9;
     color: white;
-    width: 250px;
+    width: auto;
+    padding: 0 30px;
   }
 
   .fixingImageSide {

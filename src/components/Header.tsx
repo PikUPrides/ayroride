@@ -46,7 +46,7 @@ export default function Header() {
               <Link href="/contact-us" className={pathname === '/contact-us' ? styles.active : ''}>Contact Us</Link>
             </li>
           </ul>
-          <Link href="/join-our-waitlist" className={styles.waitlistBtn}>Join our waitlist</Link>
+          <Link href="/join-our-waitlist" className={styles.waitlistBtn}>Join Our Waitlist</Link>
         </nav>
 
         {/* Mobile Toggle */}
@@ -66,7 +66,7 @@ export default function Header() {
           <li className={styles.navItem}><Link href="/blog" onClick={toggleMenu}>Blog</Link></li>
           <li className={styles.navItem}><Link href="/contact-us" onClick={toggleMenu}>Contact Us</Link></li>
         </ul>
-        <Link href="/join-our-waitlist" className={styles.waitlistBtn} onClick={toggleMenu}>Join our waitlist</Link>
+        <Link href="/join-our-waitlist" className={styles.waitlistBtn} onClick={toggleMenu}>Join Our Waitlist</Link>
       </div>
     </header>
   );

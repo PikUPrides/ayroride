@@ -111,7 +111,8 @@
   background-color: transparent;
   border: 1px solid #ffffff;
   color: #ffffff;
-  width: 200px;
+  padding: 0 24px;
+  min-width: 180px;
   height: 48px;
   border-radius: 8px;
   font-family: "Open Sans", sans-serif;
@@ -240,8 +241,9 @@
     background-color: #423DF9;
     color: white;
     border: none;
-    width: 80%;
-    /* Make it wide but not full edge-to-edge */
+    width: auto;
+    white-space: nowrap;
+    padding: 0 40px;
   }
 
   .mobileMenu .waitlistBtn:hover {
