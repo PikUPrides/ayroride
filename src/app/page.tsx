@@ -57,12 +57,12 @@ export default function Home() {
       <section className={styles.promoSection}>
         <div className={styles.promoContainer}>
           <div className={styles.promoText}>
-            <h2>
+            <h1>
               <span className={styles.mainHead}>PikUP ride</span> <span className={styles.sharingText}>sharing means</span>
               <span className={styles.blueText}>
                 {displayText}
               </span>
-            </h2>
+            </h1>
             <p>
               Join our waitlist. Refer your friends. Win valuable prizes.
             </p>

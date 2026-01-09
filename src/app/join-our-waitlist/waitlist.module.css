@@ -197,6 +197,46 @@
     margin: 10px 0 0;
 }
 
+.radioGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 24px;
+    width: 100%;
+}
+
+.radioLabel {
+    font-family: var(--font-open-sans), sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1D0652;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.radioOptionsContainer {
+    display: flex;
+    flex-direction: column; /* Vertical stack as requested implicity by numbering, or maybe horizontal? "1. Rider 2. Driver..." often implies a list. Let's do horizontal if space permits, or vertical for clarity on mobile. Let's stick to flex-wrap or column. Given the width, column might be safer or row with wrap. */
+    gap: 15px;
+}
+
+.radioOption {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-family: var(--font-open-sans), sans-serif;
+    font-size: 16px;
+    color: #333333;
+}
+
+.radioInput {
+    accent-color: #3F3FFF;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
 /* Responsive Styles */
 @media (max-width: 768px) {
     .headerTitle {

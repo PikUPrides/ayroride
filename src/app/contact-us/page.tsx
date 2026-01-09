@@ -1,5 +1,28 @@
 import styles from "./contact-us.module.css";
 
+export const metadata = {
+  title: "Contact Us - pikup.us",
+  description: "We would love to hear from you. Whether you have questions, need assistance, or want to discuss your business needs, our team is here to help.",
+  openGraph: {
+    title: "Contact Us - pikup.us",
+    description: "We would love to hear from you. Whether you have questions, need assistance, or want to discuss your business needs, our team is here to help.",
+    url: "https://pikup.us/contact-us/",
+    images: [
+      {
+        url: "/assets/OG.png",
+        width: 1200,
+        height: 630,
+        alt: "Contact PikUP",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contact Us - pikup.us",
+    description: "Questions? Need assistance? Our team is here to help.",
+  },
+};
+
 export default function Contact() {
   return (
     <main>

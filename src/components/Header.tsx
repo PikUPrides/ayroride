@@ -19,12 +19,10 @@ export default function Header() {
         {/* Brand */}
         <Link href="/" className={styles.brand}>
           <img
-            src="https://pikup.us/wp-content/uploads/2025/11/purple_svg.svg"
+            src="/Ayro_Secondary_1.png"
             alt="PikUP"
             className={styles.logo}
           />
-          <div className={styles.brandDivider}></div>
-          <span className={styles.slogan}>Save Max. Earn Max.</span>
         </Link>
 
         {/* Desktop Nav */}

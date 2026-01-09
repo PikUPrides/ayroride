@@ -3,6 +3,30 @@ import BlogList from "@/app/blog/components/BlogList";
 import { fetchMorePosts } from "../blog/actions";
 import styles from "./page.module.css";
 
+export const metadata = {
+  title: "Insights and Updates from PikUP",
+  description: "Stay informed with the latest news, trends, and expert advice from our team. Our blog covers a wide range of topics to help your business thrive.",
+  openGraph: {
+    title: "Insights and Updates from PikUP",
+    description: "Stay informed with the latest news, trends, and expert advice from our team. Our blog covers a wide range of topics to help your business thrive.",
+    url: "https://pikup.us/blog/",
+    images: [
+      {
+        url: "/assets/OG.png",
+        width: 1200,
+        height: 630,
+        alt: "PikUP Blog",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Insights and Updates from PikUP",
+    description: "Latest news, trends, and expert advice from our team.",
+  },
+};
+
+
 export default async function BlogPage({
   searchParams,
 }: {

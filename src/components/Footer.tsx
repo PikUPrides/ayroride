@@ -42,12 +42,10 @@ export default function Footer() {
           <div className={styles.footerTop}>
             <Link href="/" className={styles.footerBrand}>
               <img
-                src="https://pikup.us/wp-content/uploads/2025/11/purple_svg.svg"
+                src="/Ayro_Secondary_1.png"
                 alt="PikUP"
                 className={styles.footerLogo}
               />
-              <div className={styles.brandDivider}></div>
-              <p className={styles.brandSlogan}>Save Max. Earn Max.</p>
             </Link>
 
             <div className={styles.footerNav}>

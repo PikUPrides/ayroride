@@ -30,6 +30,8 @@ export async function generateMetadata({
   };
 }
 
+import styles from "../../page.module.css";
+
 export default async function AuthorPage({
   params,
 }: {
@@ -41,26 +43,29 @@ export default async function AuthorPage({
     posts.length > 0 ? posts[0].author : author.replace(/-/g, " ");
 
   return (
-    <div className="pt-20 md:pt-40 pb-10 md:pb-25 px-4 md:px-0">
-      <h1
-        className="text-center font-semibold mb-8 md:mb-16"
-        style={{
-          fontFamily: '"Inter", Sans-serif',
-          fontSize: "clamp(30px, 6vw, 50px)",
-          fontWeight: 600,
-          color: "#000000",
-        }}
-      >
-        Posts by {authorName}
-      </h1>
+    <>
+      <section className={styles.blogHero}>
+        <h1 className={styles.heroTitle}>
+          Posts by <span>{authorName}</span>
+        </h1>
+      </section>
 
-      {posts.length > 0 ? (
-        <BlogList initialPosts={posts} initialTotalPages={1} />
-      ) : (
-        <p className="text-center text-gray-500">
-          No posts found for this author.
-        </p>
-      )}
-    </div>
+      <div className={styles.sectionDivider}>
+        <div className={styles.dividerContainer}>
+          <div className={styles.dividerTeal}></div>
+          <div className={styles.dividerBlue}></div>
+        </div>
+      </div>
+
+      <div className={styles.blogContent}>
+        {posts.length > 0 ? (
+          <BlogList initialPosts={posts} initialTotalPages={1} />
+        ) : (
+          <p className="text-center text-gray-500 w-full py-10">
+            No posts found for this author.
+          </p>
+        )}
+      </div>
+    </>
   );
 }

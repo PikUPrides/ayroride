@@ -1,6 +1,29 @@
 import styles from "./page.module.css";
 import RiderVoicesSlider from "@/components/RiderVoicesSlider";
 
+export const metadata = {
+  title: "About PikUP – Our Mission & Vision",
+  description: "PikUP offers safe, quick, and affordable rides. Discover who we are, how we started, and our mission to simplify transportation for customers.",
+  openGraph: {
+    title: "About PikUP – Our Mission & Vision",
+    description: "PikUP offers safe, quick, and affordable rides. Discover who we are, how we started, and our mission to simplify transportation for customers.",
+    url: "https://pikup.us/about-us/",
+    images: [
+      {
+        url: "/assets/OG.png",
+        width: 1200,
+        height: 630,
+        alt: "About PikUP",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About PikUP – Our Mission & Vision",
+    description: "Safe, quick, and affordable rides. Discover our mission to simplify transportation.",
+  },
+};
+
 export default function About() {
   return (
     <main>

@@ -108,3 +108,120 @@ body {
 .blog-content .rt-reading-time {
   display: none !important;
 }
+
+/* Table Styles */
+.blog-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  background-color: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.blog-content thead {
+  background: linear-gradient(135deg, #1D0652 0%, #346BFF 100%);
+}
+
+.blog-content th {
+  padding: 1rem 1.5rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: white;
+  border-bottom: 2px solid #346BFF;
+}
+
+.blog-content tbody tr {
+  border-bottom: 1px solid #e5e7eb;
+  transition: background-color 0.2s ease;
+}
+
+.blog-content tbody tr:last-child {
+  border-bottom: none;
+}
+
+.blog-content tbody tr:hover {
+  background-color: #f9fafb;
+}
+
+.blog-content td {
+  padding: 1rem 1.5rem;
+  font-size: 16px;
+  line-height: 24px;
+  color: #374151;
+}
+
+.blog-content tbody tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+.blog-content tbody tr:nth-child(even):hover {
+  background-color: #f3f4f6;
+}
+
+/* Mobile Responsiveness for Tables */
+@media (max-width: 768px) {
+  .blog-content table {
+    font-size: 14px;
+    border-radius: 8px;
+  }
+
+  .blog-content th,
+  .blog-content td {
+    padding: 0.75rem 1rem;
+  }
+
+  .blog-content th {
+    font-size: 12px;
+  }
+
+  /* Optional: Stack table on very small screens */
+  @media (max-width: 480px) {
+
+    .blog-content table,
+    .blog-content thead,
+    .blog-content tbody,
+    .blog-content th,
+    .blog-content td,
+    .blog-content tr {
+      display: block;
+    }
+
+    .blog-content thead tr {
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+    }
+
+    .blog-content tr {
+      margin-bottom: 1rem;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .blog-content td {
+      border: none;
+      position: relative;
+      padding-left: 50%;
+      text-align: right;
+    }
+
+    .blog-content td:before {
+      position: absolute;
+      left: 1rem;
+      width: 45%;
+      padding-right: 10px;
+      white-space: nowrap;
+      text-align: left;
+      font-weight: 600;
+      color: #1D0652;
+      content: attr(data-label);
+    }
+  }
+}

@@ -9,7 +9,8 @@ export default function JoinOurWaitlist() {
         name: "",
         email: "",
         countryCode: "+1",
-        phone: ""
+        phone: "",
+        role: ""
     });
 
     const handleSubmit = (e: React.FormEvent) => {
@@ -85,6 +86,48 @@ export default function JoinOurWaitlist() {
                                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                                     className={styles.phoneInput}
                                 />
+                            </div>
+
+                            <div className={styles.radioGroup}>
+                                <label className={styles.radioLabel}>Are you interested in signing up as?</label>
+                                <div className={styles.radioOptionsContainer}>
+                                    <label className={styles.radioOption}>
+                                        <input
+                                            type="radio"
+                                            name="role"
+                                            value="Rider"
+                                            checked={formData.role === "Rider"}
+                                            onChange={(e) => setFormData({ ...formData, role: e.target.value })}
+                                            className={styles.radioInput}
+                                            required
+                                        />
+                                        Rider
+                                    </label>
+                                    <label className={styles.radioOption}>
+                                        <input
+                                            type="radio"
+                                            name="role"
+                                            value="Driver"
+                                            checked={formData.role === "Driver"}
+                                            onChange={(e) => setFormData({ ...formData, role: e.target.value })}
+                                            className={styles.radioInput}
+                                            required
+                                        />
+                                        Driver
+                                    </label>
+                                    <label className={styles.radioOption}>
+                                        <input
+                                            type="radio"
+                                            name="role"
+                                            value="Rider & Driver"
+                                            checked={formData.role === "Rider & Driver"}
+                                            onChange={(e) => setFormData({ ...formData, role: e.target.value })}
+                                            className={styles.radioInput}
+                                            required
+                                        />
+                                        Rider & Driver
+                                    </label>
+                                </div>
                             </div>
 
                             <button type="submit" className={styles.submitBtn} style={{ marginBottom: '16px' }}>
