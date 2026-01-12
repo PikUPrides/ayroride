@@ -1,0 +1,254 @@
+"use client";
+
+import { useState } from "react";
+import styles from "./contact-us.module.css";
+
+const ContactForm = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    company: "",
+    phone: "",
+    email: "",
+    subject: "",
+    message: ""
+  });
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus('loading');
+    setErrorMessage("");
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Something went wrong');
+      }
+
+      setStatus('success');
+      setFormData({
+        name: "",
+        company: "",
+        phone: "",
+        email: "",
+        subject: "",
+        message: ""
+      });
+    } catch (error: any) {
+      setStatus('error');
+      setErrorMessage(error.message);
+    }
+  };
+
+  return (
+    <form className={styles.contactForm} onSubmit={handleSubmit}>
+      <div className={styles.formGrid}>
+        <div className={styles.formGroup}>
+          <label>Full Name</label>
+          <input
+            type="text"
+            placeholder="Full Name"
+            className={styles.inputField}
+            value={formData.name}
+            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+            required
+          />
+        </div>
+        <div className={styles.formGroup}>
+          <label>Company Name</label>
+          <input
+            type="text"
+            placeholder="Company Name"
+            className={styles.inputField}
+            value={formData.company}
+            onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+          />
+        </div>
+        <div className={styles.formGroup}>
+          <label>Phone Number</label>
+          <input
+            type="tel"
+            placeholder="Phone Number"
+            className={styles.inputField}
+            value={formData.phone}
+            onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+          />
+        </div>
+        <div className={styles.formGroup}>
+          <label>Email Address</label>
+          <input
+            type="email"
+            placeholder="Email Address"
+            className={styles.inputField}
+            value={formData.email}
+            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+            required
+          />
+        </div>
+      </div>
+
+      <div className={styles.formGroup}>
+        <label>Subject</label>
+        <input
+          type="text"
+          placeholder="Subject"
+          className={styles.inputField}
+          value={formData.subject}
+          onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+        />
+      </div>
+
+      <div className={styles.formGroup}>
+        <label>Message</label>
+        <textarea
+          placeholder="Enter your message..."
+          className={styles.textareaField}
+          value={formData.message}
+          onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+          required
+        ></textarea>
+      </div>
+
+      {status === 'error' && <p className={styles.errorMsg} style={{ color: 'red', marginBottom: '10px' }}>{errorMessage}</p>}
+      {status === 'success' && <p className={styles.successMsg} style={{ color: 'green', marginBottom: '10px' }}>Message sent successfully!</p>}
+
+      <button type="submit" className={styles.submitButton} disabled={status === 'loading'}>
+        {status === 'loading' ? 'Sending...' : 'Send Message'}
+      </button>
+    </form>
+  );
+};
+
+export const metadata = {
+  title: "Contact Us - pikup.us",
+  description: "We would love to hear from you. Whether you have questions, need assistance, or want to discuss your business needs, our team is here to help.",
+  openGraph: {
+    title: "Contact Us - pikup.us",
+    description: "We would love to hear from you. Whether you have questions, need assistance, or want to discuss your business needs, our team is here to help.",
+    url: "https://pikup.us/contact-us/",
+    images: [
+      {
+        url: "/assets/OG.png",
+        width: 1200,
+        height: 630,
+        alt: "Contact PikUP",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contact Us - pikup.us",
+    description: "Questions? Need assistance? Our team is here to help.",
+  },
+};
+
+export default function Contact() {
+  return (
+    <main>
+      <section className={styles.headerSection}>
+        <h1 className={styles.headerTitle}>
+          Contact <span className={styles.blueText}>Us</span>
+        </h1>
+      </section>
+      <div className={styles.sectionDivider}>
+        <div className={styles.dividerContainer}>
+          <div className={styles.dividerTeal}></div>
+          <div className={styles.dividerBlue}></div>
+        </div>
+      </div>
+
+      <section className={styles.formSection}>
+        <div className={styles.formContainer}>
+          <div className={styles.formHeader}>
+            <h2 className={styles.formTitle}>Get in Touch with <span>PikUP</span></h2>
+            <p className={styles.formSubtitle}>
+              We would love to hear from you. Whether you have questions, need assistance, or
+              want to discuss your business needs, our team is here to help.
+            </p>
+          </div>
+
+          <ContactForm />
+        </div>
+      </section>
+      <section className={styles.infoSection}>
+        <div className={styles.infoContainer}>
+          <div className={styles.infoTextSide}>
+            <h3 className={styles.infoTitle}>Contact <span className={styles.tealText}>Information</span></h3>
+            <p className={styles.infoDesc}>
+              PikUP is building a fair and transparent ride share system that protects both riders and drivers.
+              No surge pricing, no surprises. Our referral program rewards Early Adopters for helping us grow
+              a community where riders pay less and drivers earn what they deserve.
+            </p>
+
+            <div className={styles.infoList}>
+              <div className={styles.infoItem}>
+                <div className={styles.infoItemHeader}>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M15.0157 29.512C15.0157 29.512 5.33301 21.3573 5.33301 13.3333C5.33301 10.5043 6.45681 7.79121 8.4572 5.79082C10.4576 3.79043 13.1707 2.66663 15.9997 2.66663C18.8287 2.66663 21.5418 3.79043 23.5421 5.79082C25.5425 7.79121 26.6663 10.5043 26.6663 13.3333C26.6663 21.3573 16.9837 29.512 16.9837 29.512C16.445 30.008 15.5583 30.0026 15.0157 29.512ZM15.9997 18C16.6125 18 17.2193 17.8793 17.7855 17.6447C18.3517 17.4102 18.8662 17.0665 19.2995 16.6331C19.7328 16.1998 20.0766 15.6853 20.3111 15.1191C20.5456 14.553 20.6663 13.9461 20.6663 13.3333C20.6663 12.7205 20.5456 12.1136 20.3111 11.5474C20.0766 10.9813 19.7328 10.4668 19.2995 10.0335C18.8662 9.60012 18.3517 9.25638 17.7855 9.02186C17.2193 8.78733 16.6125 8.66663 15.9997 8.66663C14.762 8.66663 13.575 9.15829 12.6998 10.0335C11.8247 10.9086 11.333 12.0956 11.333 13.3333C11.333 14.571 11.8247 15.758 12.6998 16.6331C13.575 17.5083 14.762 18 15.9997 18Z" fill="#08D9C4"></path></svg>
+                  <span>Location</span>
+                </div>
+                <p className={`${styles.infoText} ${styles.locationText}`}>8911 North Captial of Texas Highway, Suite 4200. #1007, Austin - TX -78759.</p>
+              </div>
+
+              <div className={styles.infoItem}>
+                <div className={styles.infoItemHeader}>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M26.667 5.33337H5.33366C3.86699 5.33337 2.68033 6.53337 2.68033 8.00004L2.66699 24C2.66699 25.4667 3.86699 26.6667 5.33366 26.6667H26.667C28.1337 26.6667 29.3337 25.4667 29.3337 24V8.00004C29.3337 6.53337 28.1337 5.33337 26.667 5.33337ZM26.1337 11L16.707 16.8934C16.2803 17.16 15.7203 17.16 15.2937 16.8934L5.86699 11C5.7333 10.925 5.61622 10.8236 5.52284 10.702C5.42947 10.5804 5.36174 10.4411 5.32376 10.2925C5.28578 10.144 5.27833 9.98929 5.30187 9.83778C5.32541 9.68628 5.37944 9.54113 5.4607 9.41111C5.54196 9.28109 5.64876 9.16892 5.77463 9.08137C5.9005 8.99382 6.04282 8.93272 6.19299 8.90177C6.34315 8.87082 6.49804 8.87066 6.64826 8.9013C6.79849 8.93195 6.94094 8.99275 7.06699 9.08004L16.0003 14.6667L24.9337 9.08004C25.0597 8.99275 25.2022 8.93195 25.3524 8.9013C25.5026 8.87066 25.6575 8.87082 25.8077 8.90177C25.9578 8.93272 26.1002 8.99382 26.226 9.08137C26.3519 9.16892 26.4587 9.28109 26.5399 9.41111C26.6212 9.54113 26.6752 9.68628 26.6988 9.83778C26.7223 9.98929 26.7149 10.144 26.6769 10.2925C26.6389 10.4411 26.5712 10.5804 26.4778 10.702C26.3844 10.8236 26.2674 10.925 26.1337 11Z" fill="#08D9C4"></path></svg>
+                  <span>Email</span>
+                </div>
+                <p className={styles.infoText}><a href="mailto:hello@pikup.us">hello@pikup.us</a></p>
+              </div>
+
+              <div className={styles.infoItem}>
+                <div className={styles.infoItemHeader}>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M22.0745 17.2081L21.4678 17.8121C21.4678 17.8121 20.0238 19.2467 16.0838 15.3294C12.1438 11.4121 13.5878 9.97739 13.5878 9.97739L13.9692 9.59605C14.9118 8.66005 15.0012 7.15605 14.1785 6.05739L12.4985 3.81339C11.4798 2.45339 9.51317 2.27339 8.34651 3.43339L6.25317 5.51339C5.67584 6.08939 5.28917 6.83339 5.33584 7.66005C5.45584 9.77605 6.41317 14.3267 11.7518 19.6361C17.4145 25.2654 22.7278 25.4894 24.8998 25.2867C25.5878 25.2227 26.1852 24.8734 26.6665 24.3934L28.5598 22.5107C29.8398 21.2401 29.4798 19.0601 27.8425 18.1707L25.2958 16.7854C24.2212 16.2027 22.9145 16.3734 22.0745 17.2081Z" fill="#08D9C4"></path></svg>
+                  <span>Phone</span>
+                </div>
+                <p className={styles.infoText}><a href="tel:+15129176515">+1 (512) 917-6515</a></p>
+              </div>
+            </div>
+
+            <div className={styles.socialSection}>
+              <h4>Social Contact</h4>
+
+              <div className={styles.socialIcons}>
+                <a href="https://www.facebook.com/profile.php?id=61583870717780" target="_blank" className={styles.socialIcon}>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M27.867 2.66675H4.13366C3.74467 2.66675 3.37162 2.82127 3.09657 3.09632C2.82152 3.37138 2.66699 3.74443 2.66699 4.13341V27.8667C2.66699 28.2557 2.82152 28.6288 3.09657 28.9038C3.37162 29.1789 3.74467 29.3334 4.13366 29.3334H16.907V19.0001H13.4403V15.0001H16.907V12.0001C16.8352 11.2958 16.9183 10.5842 17.1506 9.91546C17.3829 9.24668 17.7587 8.63681 18.2516 8.12863C18.7445 7.62045 19.3427 7.22627 20.0041 6.97373C20.6655 6.72119 21.3741 6.61642 22.0803 6.66675C23.1181 6.65958 24.1554 6.71301 25.187 6.82675V10.4267H23.067C21.387 10.4267 21.067 11.2267 21.067 12.3867V14.9601H25.067L24.547 18.9601H21.067V29.3334H27.867C28.0596 29.3334 28.2503 29.2955 28.4283 29.2218C28.6062 29.1481 28.7679 29.04 28.9041 28.9038C29.0403 28.7676 29.1483 28.606 29.222 28.428C29.2957 28.2501 29.3337 28.0594 29.3337 27.8667V4.13341C29.3337 3.94081 29.2957 3.75009 29.222 3.57215C29.1483 3.3942 29.0403 3.23252 28.9041 3.09632C28.7679 2.96013 28.6062 2.8521 28.4283 2.77839C28.2503 2.70468 28.0596 2.66675 27.867 2.66675Z" fill="#08D9C4"></path></svg>
+                </a>
+                <a href="https://www.instagram.com/pikupinc/" target="_blank" className={styles.socialIcon}>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none"><path d="M19.5419 3C21.2294 3.0045 22.0859 3.0135 22.8254 3.0345L23.1164 3.045C23.4524 3.057 23.7839 3.072 24.1844 3.09C25.7804 3.165 26.8694 3.417 27.8249 3.7875C28.8149 4.1685 29.6489 4.6845 30.4829 5.517C31.2459 6.2666 31.8362 7.17371 32.2124 8.175C32.5829 9.1305 32.8349 10.2195 32.9099 11.817C32.9279 12.216 32.9429 12.5475 32.9549 12.885L32.9639 13.176C32.9864 13.914 32.9954 14.7705 32.9984 16.458L32.9999 17.577V19.542C33.0035 20.6361 32.992 21.7302 32.9654 22.824L32.9564 23.115C32.9444 23.4525 32.9294 23.784 32.9114 24.183C32.8364 25.7805 32.5814 26.868 32.2124 27.825C31.8362 28.8263 31.2459 29.7334 30.4829 30.483C29.7333 31.246 28.8262 31.8363 27.8249 32.2125C26.8694 32.583 25.7804 32.835 24.1844 32.91L23.1164 32.955L22.8254 32.964C22.0859 32.985 21.2294 32.9955 19.5419 32.9985L18.4229 33H16.4594C15.3648 33.0039 14.2702 32.9924 13.1759 32.9655L12.8849 32.9565C12.5288 32.943 12.1728 32.9275 11.8169 32.91C10.2209 32.835 9.13188 32.583 8.17488 32.2125C7.17412 31.8361 6.26754 31.2459 5.51838 30.483C4.75479 29.7336 4.16404 28.8264 3.78738 27.825C3.41688 26.8695 3.16488 25.7805 3.08988 24.183L3.04488 23.115L3.03738 22.824C3.00973 21.7302 2.99722 20.6361 2.99988 19.542V16.458C2.99572 15.3639 3.00673 14.2698 3.03288 13.176L3.04338 12.885C3.05538 12.5475 3.07038 12.216 3.08838 11.817C3.16338 10.2195 3.41538 9.132 3.78588 8.175C4.16342 7.1733 4.75521 6.26615 5.51988 5.517C6.26861 4.75432 7.17466 4.16411 8.17488 3.7875C9.13188 3.417 10.2194 3.165 11.8169 3.09C12.2159 3.072 12.5489 3.057 12.8849 3.045L13.1759 3.036C14.2697 3.00935 15.3638 2.99785 16.4579 3.0015L19.5419 3ZM17.9999 10.5C16.0108 10.5 14.1031 11.2902 12.6966 12.6967C11.2901 14.1032 10.4999 16.0109 10.4999 18C10.4999 19.9891 11.2901 21.8968 12.6966 23.3033C14.1031 24.7098 16.0108 25.5 17.9999 25.5C19.989 25.5 21.8967 24.7098 23.3032 23.3033C24.7097 21.8968 25.4999 19.9891 25.4999 18C25.4999 16.0109 24.7097 14.1032 23.3032 12.6967C21.8967 11.2902 19.989 10.5 17.9999 10.5ZM17.9999 13.5C18.5908 13.4999 19.176 13.6162 19.722 13.8423C20.268 14.0683 20.7641 14.3997 21.1821 14.8175C21.6 15.2353 21.9316 15.7313 22.1578 16.2772C22.384 16.8232 22.5005 17.4083 22.5006 17.9993C22.5007 18.5902 22.3844 19.1754 22.1584 19.7214C21.9323 20.2674 21.6009 20.7635 21.1831 21.1814C20.7653 21.5994 20.2693 21.9309 19.7234 22.1572C19.1775 22.3834 18.5923 22.4999 18.0014 22.5C16.8079 22.5 15.6633 22.0259 14.8194 21.182C13.9755 20.3381 13.5014 19.1935 13.5014 18C13.5014 16.8065 13.9755 15.6619 14.8194 14.818C15.6633 13.9741 16.8079 13.5 18.0014 13.5M25.8764 8.25C25.3791 8.25 24.9022 8.44754 24.5506 8.79917C24.1989 9.15081 24.0014 9.62772 24.0014 10.125C24.0014 10.6223 24.1989 11.0992 24.5506 11.4508C24.9022 11.8025 25.3791 12 25.8764 12C26.3737 12 26.8506 11.8025 27.2022 11.4508C27.5538 11.0992 27.7514 10.6223 27.7514 10.125C27.7514 9.62772 27.5538 9.15081 27.2022 8.79917C26.8506 8.44754 26.3737 8.25 25.8764 8.25Z" fill="#08D9C4"></path></svg>
+                </a>
+                <a href="https://x.com/pikup26698" target="_blank" className={styles.socialIcon}>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M6.66634 1.33325C5.25185 1.33325 3.8953 1.89516 2.89511 2.89535C1.89491 3.89554 1.33301 5.2521 1.33301 6.66659V25.3333C1.33301 26.7477 1.89491 28.1043 2.89511 29.1045C3.8953 30.1047 5.25185 30.6666 6.66634 30.6666H25.333C26.7475 30.6666 28.104 30.1047 29.1042 29.1045C30.1044 28.1043 30.6663 26.7477 30.6663 25.3333V6.66659C30.6663 5.2521 30.1044 3.89554 29.1042 2.89535C28.104 1.89516 26.7475 1.33325 25.333 1.33325H6.66634ZM6.22101 5.99992C6.07505 6.05416 5.94378 6.14174 5.83764 6.25568C5.73151 6.36961 5.65345 6.50676 5.60968 6.6562C5.56591 6.80563 5.55764 6.96322 5.58554 7.11641C5.61343 7.26961 5.67671 7.41417 5.77034 7.53859L13.2557 17.4719L5.36901 25.9319L5.31034 25.9999H8.03967L14.4797 19.0946L19.429 25.6653C19.5438 25.8173 19.6997 25.9335 19.8783 25.9999H25.7743C25.9201 25.9454 26.0511 25.8576 26.1569 25.7435C26.2628 25.6295 26.3405 25.4923 26.384 25.3429C26.4275 25.1935 26.4356 25.036 26.4075 24.8829C26.3794 24.7299 26.316 24.5855 26.2223 24.4613L18.737 14.5279L26.689 5.99992H23.9557L17.5157 12.9066L12.5637 6.33592C12.449 6.18333 12.2931 6.06675 12.1143 5.99992H6.22101ZM20.7277 24.0639L8.57434 7.93592H11.2663L23.4183 24.0626L20.7277 24.0639Z" fill="#08D9C4"></path></svg>
+                </a>
+                <a href="https://www.youtube.com/@PikUPInc-2025" target="_blank" className={styles.socialIcon}>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="27" height="22" viewBox="0 0 27 22" fill="none"><path d="M13.6587 0C14.3707 0.004 16.152 0.0213333 18.0453 0.0973333L18.7173 0.126666C20.6227 0.216 22.5267 0.370667 23.472 0.633333C24.732 0.988 25.7213 2.02 26.056 3.32933C26.5893 5.40933 26.656 9.46533 26.664 10.448L26.6653 10.6507V10.8827C26.656 11.8653 26.5893 15.9227 26.056 18.0013C25.7173 19.3147 24.7267 20.348 23.472 20.6973C22.5267 20.96 20.6227 21.1147 18.7173 21.204L18.0453 21.2347C16.152 21.3093 14.3707 21.328 13.6587 21.3307L13.3453 21.332H13.0053C11.4987 21.3227 5.19733 21.2547 3.192 20.6973C1.93333 20.3427 0.942667 19.3107 0.608 18.0013C0.0746668 15.9213 0.008 11.8653 0 10.8827V10.448C0.008 9.46533 0.0746668 5.408 0.608 3.32933C0.946667 2.016 1.93733 0.982666 3.19333 0.634666C5.19733 0.0759998 11.5 0.008 13.0067 0H13.6587ZM10.6653 6V15.3333L18.6653 10.6667L10.6653 6Z" fill="#08D9C4"></path></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div className={styles.infoMapSide}>
+            <div className={styles.mapWrapper}>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3441.707439793437!2d-97.763435!3d30.3876644!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8644cb61b23fffff%3A0xf4e27075bee75f2e!2s8911%20N%20Capital%20of%20Texas%20Hwy%20Ste%204200%201007%2C%20Austin%2C%20TX%2078759%2C%20USA!5e0!3m2!1sen!2sin!4v1765634012502!5m2!1sen!2sin"
+                style={{ border: 0 }}
+                allowFullScreen={true}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+}
