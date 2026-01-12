@@ -1,133 +1,4 @@
-"use client";
-
-import { useState } from "react";
 import styles from "./contact-us.module.css";
-
-const ContactForm = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    company: "",
-    phone: "",
-    email: "",
-    subject: "",
-    message: ""
-  });
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-  const [errorMessage, setErrorMessage] = useState("");
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setStatus('loading');
-    setErrorMessage("");
-
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.error || 'Something went wrong');
-      }
-
-      setStatus('success');
-      setFormData({
-        name: "",
-        company: "",
-        phone: "",
-        email: "",
-        subject: "",
-        message: ""
-      });
-    } catch (error: any) {
-      setStatus('error');
-      setErrorMessage(error.message);
-    }
-  };
-
-  return (
-    <form className={styles.contactForm} onSubmit={handleSubmit}>
-      <div className={styles.formGrid}>
-        <div className={styles.formGroup}>
-          <label>Full Name</label>
-          <input
-            type="text"
-            placeholder="Full Name"
-            className={styles.inputField}
-            value={formData.name}
-            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-            required
-          />
-        </div>
-        <div className={styles.formGroup}>
-          <label>Company Name</label>
-          <input
-            type="text"
-            placeholder="Company Name"
-            className={styles.inputField}
-            value={formData.company}
-            onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-          />
-        </div>
-        <div className={styles.formGroup}>
-          <label>Phone Number</label>
-          <input
-            type="tel"
-            placeholder="Phone Number"
-            className={styles.inputField}
-            value={formData.phone}
-            onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-          />
-        </div>
-        <div className={styles.formGroup}>
-          <label>Email Address</label>
-          <input
-            type="email"
-            placeholder="Email Address"
-            className={styles.inputField}
-            value={formData.email}
-            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-            required
-          />
-        </div>
-      </div>
-
-      <div className={styles.formGroup}>
-        <label>Subject</label>
-        <input
-          type="text"
-          placeholder="Subject"
-          className={styles.inputField}
-          value={formData.subject}
-          onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-        />
-      </div>
-
-      <div className={styles.formGroup}>
-        <label>Message</label>
-        <textarea
-          placeholder="Enter your message..."
-          className={styles.textareaField}
-          value={formData.message}
-          onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-          required
-        ></textarea>
-      </div>
-
-      {status === 'error' && <p className={styles.errorMsg} style={{ color: 'red', marginBottom: '10px' }}>{errorMessage}</p>}
-      {status === 'success' && <p className={styles.successMsg} style={{ color: 'green', marginBottom: '10px' }}>Message sent successfully!</p>}
-
-      <button type="submit" className={styles.submitButton} disabled={status === 'loading'}>
-        {status === 'loading' ? 'Sending...' : 'Send Message'}
-      </button>
-    </form>
-  );
-};
 
 export const metadata = {
   title: "Contact Us - pikup.us",
@@ -177,7 +48,38 @@ export default function Contact() {
             </p>
           </div>
 
-          <ContactForm />
+          <form className={styles.contactForm}>
+            <div className={styles.formGrid}>
+              <div className={styles.formGroup}>
+                <label>Full Name</label>
+                <input type="text" placeholder="Full Name" className={styles.inputField} />
+              </div>
+              <div className={styles.formGroup}>
+                <label>Company Name</label>
+                <input type="text" placeholder="Company Name" className={styles.inputField} />
+              </div>
+              <div className={styles.formGroup}>
+                <label>Phone Number</label>
+                <input type="tel" placeholder="Phone Number" className={styles.inputField} />
+              </div>
+              <div className={styles.formGroup}>
+                <label>Email Address</label>
+                <input type="email" placeholder="Email Address" className={styles.inputField} />
+              </div>
+            </div>
+
+            <div className={styles.formGroup}>
+              <label>Subject</label>
+              <input type="text" placeholder="Subject" className={styles.inputField} />
+            </div>
+
+            <div className={styles.formGroup}>
+              <label>Message</label>
+              <textarea placeholder="Enter your message..." className={styles.textareaField}></textarea>
+            </div>
+
+            <button type="submit" className={styles.submitButton}>Send Message</button>
+          </form>
         </div>
       </section>
       <section className={styles.infoSection}>
@@ -218,7 +120,6 @@ export default function Contact() {
 
             <div className={styles.socialSection}>
               <h4>Social Contact</h4>
-
               <div className={styles.socialIcons}>
                 <a href="https://www.facebook.com/profile.php?id=61583870717780" target="_blank" className={styles.socialIcon}>
                   <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M27.867 2.66675H4.13366C3.74467 2.66675 3.37162 2.82127 3.09657 3.09632C2.82152 3.37138 2.66699 3.74443 2.66699 4.13341V27.8667C2.66699 28.2557 2.82152 28.6288 3.09657 28.9038C3.37162 29.1789 3.74467 29.3334 4.13366 29.3334H16.907V19.0001H13.4403V15.0001H16.907V12.0001C16.8352 11.2958 16.9183 10.5842 17.1506 9.91546C17.3829 9.24668 17.7587 8.63681 18.2516 8.12863C18.7445 7.62045 19.3427 7.22627 20.0041 6.97373C20.6655 6.72119 21.3741 6.61642 22.0803 6.66675C23.1181 6.65958 24.1554 6.71301 25.187 6.82675V10.4267H23.067C21.387 10.4267 21.067 11.2267 21.067 12.3867V14.9601H25.067L24.547 18.9601H21.067V29.3334H27.867C28.0596 29.3334 28.2503 29.2955 28.4283 29.2218C28.6062 29.1481 28.7679 29.04 28.9041 28.9038C29.0403 28.7676 29.1483 28.606 29.222 28.428C29.2957 28.2501 29.3337 28.0594 29.3337 27.8667V4.13341C29.3337 3.94081 29.2957 3.75009 29.222 3.57215C29.1483 3.3942 29.0403 3.23252 28.9041 3.09632C28.7679 2.96013 28.6062 2.8521 28.4283 2.77839C28.2503 2.70468 28.0596 2.66675 27.867 2.66675Z" fill="#08D9C4"></path></svg>
