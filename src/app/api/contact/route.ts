@@ -26,7 +26,7 @@ export async function POST(request: Request) {
     } catch (error: any) {
         console.error('Database Error:', error);
         return NextResponse.json(
-            { error: 'Failed to send message. Please try again later.' },
+            { error: 'Failed to send message.', details: error.message },
             { status: 500 }
         );
     }
