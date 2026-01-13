@@ -23,10 +23,11 @@ export async function POST(request: Request) {
             { message: 'Message sent successfully', id: (result as any).insertId },
             { status: 201 }
         );
+        
     } catch (error: any) {
         console.error('Database Error:', error);
         return NextResponse.json(
-            { error: 'Failed to send message. Please try again later.' },
+            { error: 'Failed to send message.', details: error.message },
             { status: 500 }
         );
     }

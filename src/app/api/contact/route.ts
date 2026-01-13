@@ -23,10 +23,18 @@ export async function POST(request: Request) {
             { message: 'Message sent successfully', id: (result as any).insertId },
             { status: 201 }
         );
+
     } catch (error: any) {
         console.error('Database Error:', error);
         return NextResponse.json(
-            { error: 'Failed to send message.', details: error.message },
+            {
+                error: 'Failed to send message.',
+                details: error.message,
+                code: error.code,
+                errno: error.errno,
+                sqlState: error.sqlState,
+                sqlMessage: error.sqlMessage
+            },
             { status: 500 }
         );
     }
