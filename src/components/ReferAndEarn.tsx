@@ -59,21 +59,69 @@ export default function ReferAndEarn() {
                         <div style={{ padding: '40px', textAlign: 'center', color: '#423DF9', background: 'white', borderRadius: '37px' }}>
                             <h3 style={{ fontSize: '24px', marginBottom: '10px' }}>You're on the list! 🚀</h3>
                             <p>Thanks for joining. We'll be in touch soon.</p>
-                            <button 
+                            <button
                                 onClick={() => setStatus('idle')}
                                 style={{ marginTop: '20px', padding: '10px 20px', background: '#423DF9', color: 'white', border: 'none', borderRadius: '50px', cursor: 'pointer' }}
                             >
                                 Refer Another Friend
                             </button>
                         </div>
-                        <span className={styles.statLabel}>Referral Rewards</span>
-                    </div>
-                <div className={styles.statItem}>
-                    <span className={styles.statNumber}>10k+</span>
-                    <span className={styles.statLabel}>Potential Savings</span>
+                    ) : (
+                        <form className={styles.referForm} onSubmit={handleSubmit}>
+                            <input
+                                type="text"
+                                name="name"
+                                placeholder="Full Name"
+                                className={styles.referInput}
+                                value={formData.name}
+                                onChange={handleChange}
+                                required
+                            />
+                            <input
+                                type="email"
+                                name="email"
+                                placeholder="Email Address"
+                                className={styles.referInput}
+                                value={formData.email}
+                                onChange={handleChange}
+                                required
+                            />
+                            <div className={styles.phoneRow}>
+                                <select
+                                    name="countryCode"
+                                    className={styles.countrySelect}
+                                    value={formData.countryCode}
+                                    onChange={handleChange}
+                                >
+                                    <option value="+1">+1 (US)</option>
+                                    <option value="+44">+44 (UK)</option>
+                                    <option value="+91">+91 (IN)</option>
+                                    <option value="+86">+86 (CN)</option>
+                                    <option value="+63">+63 (PH)</option>
+                                    <option value="+84">+84 (VN)</option>
+                                    {/* Add more codes as needed */}
+                                </select>
+                                <input
+                                    type="tel"
+                                    name="phone"
+                                    placeholder="Phone Number"
+                                    className={styles.phoneInput}
+                                    value={formData.phone}
+                                    onChange={handleChange}
+                                    required
+                                />
+                            </div>
+                            <button type="submit" className={styles.referSubmitBtn} disabled={status === 'loading'}>
+                                {status === 'loading' ? 'Joining...' : 'Join Waitlist'}
+                            </button>
+                            {status === 'error' && <p style={{ color: 'red', marginTop: '10px', textAlign: 'center' }}>Something went wrong. Please try again.</p>}
+                            <p className={styles.referDisclaimer}>
+                                By clicking, you agree to our <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a>.
+                            </p>
+                        </form>
+                    )}
                 </div>
             </div>
-        </div>
-        </section >
+        </section>
     );
 }
