@@ -8,12 +8,13 @@ import TestimonialsSlider from "@/components/TestimonialsSlider";
 import ReferAndEarn from "@/components/ReferAndEarn";
 import FAQAccordion from "@/components/FAQAccordion";
 
+const phrases = [
+  "better pay for drivers",
+  "lower fares for riders",
+  "greater safety for everyone."
+];
+
 export default function Home() {
-  const phrases = [
-    "better pay for drivers",
-    "lower fares for riders",
-    "greater safety for everyone."
-  ];
 
   const [displayText, setDisplayText] = useState("");
   const [index, setIndex] = useState(0);
