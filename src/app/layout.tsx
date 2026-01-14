@@ -2,6 +2,7 @@ import { Open_Sans } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Script from "next/script";
 
 const openSans = Open_Sans({
   subsets: ["latin"],
@@ -63,6 +64,22 @@ export default function RootLayout({
         <Header />
         {children}
         <Footer />
+        <Script id="zohodeskasap" strategy="afterInteractive" dangerouslySetInnerHTML={{
+          __html: `
+            var d=document;
+            s=d.createElement("script");
+            s.type="text/javascript";
+            s.id="zohodeskasapscript";
+            s.defer=true;
+            s.src="https://desk.zoho.com/portal/api/web/asapApp/1197915000000522199?orgId=902597656";
+            t=d.getElementsByTagName("script")[0];
+            t.parentNode.insertBefore(s,t);
+            window.ZohoDeskAsapReady=function(s){
+                var e=window.ZohoDeskAsap__asyncalls=window.ZohoDeskAsap__asyncalls||[];
+                window.ZohoDeskAsapReadyStatus?(s&&e.push(s),e.forEach(s=>s&&s()),window.ZohoDeskAsap__asyncalls=null):s&&e.push(s)
+            };
+          `
+        }} />
       </body>
     </html>
   );

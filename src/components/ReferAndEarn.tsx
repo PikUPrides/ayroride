@@ -11,95 +11,69 @@ export default function ReferAndEarn() {
         phone: ""
     });
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        console.log("Form submitted:", formData);
-        // Handle form submission
+        setStatus('loading');
+
+        try {
+            const res = await fetch('/api/waitlist', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    email: formData.email,
+                    phone: `${formData.countryCode}${formData.phone}`,
+                    name: formData.name
+                })
+            });
+
+            const data = await res.json();
+
+            if (res.ok) {
+                setStatus('success');
+                setFormData({ name: "", email: "", phone: "", countryCode: "+1" });
+            } else {
+                console.error("Submission failed:", data);
+                setStatus('error');
+            }
+        } catch (error) {
+            console.error("Error submitting form:", error);
+            setStatus('error');
+        }
     };
 
     return (
         <section className={styles.referSection}>
-            <div className={styles.referContainer}>
-                <h3 className={styles.referTitle}>
-                    Refer and <span>Earn</span>
-                </h3>
-                <p className={styles.referSubtitle}>
-                    Join the waitlist now and get your unique referral link
-                </p>
-
-                <div className={styles.referFormWrapper}>
-                    <form onSubmit={handleSubmit} className={styles.referForm}>
-                        <input
-                            type="text"
-                            placeholder="Full Name*"
-                            required
-                            value={formData.name}
-                            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                            className={styles.referInput}
-                        />
-
-                        <input
-                            type="email"
-                            placeholder="Email Address*"
-                            required
-                            value={formData.email}
-                            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                            className={styles.referInput}
-                        />
-
-                        <div className={styles.phoneRow}>
-                            <select
-                                value={formData.countryCode}
-                                onChange={(e) => setFormData({ ...formData, countryCode: e.target.value })}
-                                className={styles.countrySelect}
-                            >
-                                <option value="+1">+1</option>
-                                <option value="+44">+44</option>
-                                <option value="+91">+91</option>
-                                <option value="+61">+61</option>
-                                <option value="+86">+86</option>
-                                <option value="+81">+81</option>
-                                <option value="+49">+49</option>
-                                <option value="+33">+33</option>
-                                <option value="+55">+55</option>
-                                <option value="+52">+52</option>
-                            </select>
-
-                            <input
-                                type="tel"
-                                placeholder="Your Phone Number*"
-                                value={formData.phone}
-                                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                                className={styles.phoneInput}
-                            />
-                        </div>
-
-                        <button type="submit" className={styles.referSubmitBtn}>
-                            Join The Waitlist
-                        </button>
-
-                        <p className={styles.referDisclaimer}>
-                            By joining, you agree to receive updates about the referral program
-                        </p>
-                    </form>
+            <div className={styles.referContent}>
+                <div className={styles.referText}>
+                    <h2>Refer and Earn</h2>
+                    <p>Refer your friends to become a driver and earn $500. $20 for every rider you refer.</p>
                 </div>
-
-                {/* Stats Section */}
-                <div className={styles.referStats}>
-                    <div className={styles.statItem}>
-                        <span className={styles.statNumber}>1,000+</span>
-                        <span className={styles.statLabel}>Early Adopters</span>
-                    </div>
-                    <div className={styles.statItem}>
-                        <span className={styles.statNumber}>10+</span>
+                <div className={styles.referFormWrapper}>
+                    {status === 'success' ? (
+                        <div style={{ padding: '40px', textAlign: 'center', color: '#423DF9', background: 'white', borderRadius: '37px' }}>
+                            <h3 style={{ fontSize: '24px', marginBottom: '10px' }}>You're on the list! 🚀</h3>
+                            <p>Thanks for joining. We'll be in touch soon.</p>
+                            <button 
+                                onClick={() => setStatus('idle')}
+                                style={{ marginTop: '20px', padding: '10px 20px', background: '#423DF9', color: 'white', border: 'none', borderRadius: '50px', cursor: 'pointer' }}
+                            >
+                                Refer Another Friend
+                            </button>
+                        </div>
                         <span className={styles.statLabel}>Referral Rewards</span>
                     </div>
-                    <div className={styles.statItem}>
-                        <span className={styles.statNumber}>10k+</span>
-                        <span className={styles.statLabel}>Potential Savings</span>
-                    </div>
+                <div className={styles.statItem}>
+                    <span className={styles.statNumber}>10k+</span>
+                    <span className={styles.statLabel}>Potential Savings</span>
                 </div>
             </div>
-        </section>
+        </div>
+        </section >
     );
 }
