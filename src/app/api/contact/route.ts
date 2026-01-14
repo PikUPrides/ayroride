@@ -35,12 +35,18 @@ export async function POST(request: Request) {
                 sqlState: error.sqlState,
                 sqlMessage: error.sqlMessage,
                 debug: {
-                    hasHost: !!process.env.DB_HOST,
-                    hasUser: !!process.env.DB_USER,
-                    hasPass: !!process.env.DB_PASSWORD,
-                    hasDb: !!process.env.DB_NAME,
-                    // Show first 2 chars of user if exists, to verify it's loaded
-                    userPrefix: process.env.DB_USER ? process.env.DB_USER.substring(0, 2) : 'MISSING'
+                    activeEnvCheck: {
+                        DB_HOST: process.env.DB_HOST || '(undefined)',
+                        DB_USER: process.env.DB_USER || '(undefined)',
+                        DB_NAME: process.env.DB_NAME || '(undefined)',
+                        // Don't show full password, just 'SET' or 'NOT SET'
+                        DB_PASSWORD_STATUS: process.env.DB_PASSWORD ? 'SET (Length: ' + process.env.DB_PASSWORD.length + ')' : 'NOT SET',
+                    },
+                    connectionConfig: {
+                        host: process.env.DB_HOST,
+                        user: process.env.DB_USER,
+                        database: process.env.DB_NAME,
+                    }
                 }
             },
             { status: 500 }
