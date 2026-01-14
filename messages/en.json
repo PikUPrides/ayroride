@@ -1,0 +1,13 @@
+{
+    "HomePage": {
+        "title": "PikUP ridesharing means",
+        "subtitle": "Join our waitlist. Refer your friends. Win valuable prizes.",
+        "waitlistButton": "Join Our Waitlist"
+    },
+    "Navigation": {
+        "home": "Home",
+        "about": "About",
+        "waitlist": "Waitlist",
+        "contact": "Contact"
+    }
+}

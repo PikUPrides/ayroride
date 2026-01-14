@@ -1,5 +1,7 @@
+import { NextIntlClientProvider } from 'next-intl';
+import { getMessages } from 'next-intl/server';
 import { Open_Sans } from "next/font/google";
-import "./globals.css";
+import "../../globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
@@ -52,17 +54,44 @@ export const metadata = {
   },
 };
 
-export default function RootLayout({
+import Script from "next/script";
+
+export default async function RootLayout({
   children,
+  params: { locale }
 }: {
   children: React.ReactNode;
+  params: { locale: string };
 }) {
+  // Providing all messages to the client
+  // side is the easiest way to get started
+  const messages = await getMessages();
+
   return (
-    <html lang="en">
+    <html lang={locale}>
       <body className={`${openSans.variable} ${openSans.className}`} suppressHydrationWarning>
-        <Header />
-        {children}
-        <Footer />
+        <NextIntlClientProvider messages={messages}>
+          <Header />
+          {children}
+          <Footer />
+
+          <Script id="zohodeskasap" strategy="afterInteractive" dangerouslySetInnerHTML={{
+            __html: `
+            var d=document;
+            s=d.createElement("script");
+            s.type="text/javascript";
+            s.id="zohodeskasapscript";
+            s.defer=true;
+            s.src="https://desk.zoho.com/portal/api/web/asapApp/1197915000000522199?orgId=902597656";
+            t=d.getElementsByTagName("script")[0];
+            t.parentNode.insertBefore(s,t);
+            window.ZohoDeskAsapReady=function(s){
+                var e=window.ZohoDeskAsap__asyncalls=window.ZohoDeskAsap__asyncalls||[];
+                window.ZohoDeskAsapReadyStatus?(s&&e.push(s),e.forEach(s=>s&&s()),window.ZohoDeskAsap__asyncalls=null):s&&e.push(s)
+            };
+            `
+          }} />
+        </NextIntlClientProvider>
       </body>
     </html>
   );

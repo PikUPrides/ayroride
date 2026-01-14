@@ -1,3 +1,7 @@
+import createNextIntlPlugin from 'next-intl/plugin';
+ 
+const withNextIntl = createNextIntlPlugin();
+ 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   /* config options here */
@@ -6,5 +10,5 @@ const nextConfig = {
     unoptimized: true, // Disable image optimization to bypass proxy issues
   },
 };
-
-export default nextConfig;
+ 
+export default withNextIntl(nextConfig);

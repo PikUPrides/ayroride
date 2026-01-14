@@ -11,10 +11,39 @@ export default function ReferAndEarn() {
         phone: ""
     });
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+    const [errorMessage, setErrorMessage] = useState("");
+
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        console.log("Form submitted:", formData);
-        // Handle form submission
+        setStatus('loading');
+        setErrorMessage("");
+
+        try {
+            const response = await fetch('/api/waitlist', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name: formData.name,
+                    email: formData.email,
+                    phone: `${formData.countryCode}${formData.phone}`
+                }),
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.error || 'Failed to join waitlist');
+            }
+
+            setStatus('success');
+            setFormData({ name: "", email: "", countryCode: "+1", phone: "" });
+        } catch (error: any) {
+            setStatus('error');
+            setErrorMessage(error.message);
+        }
     };
 
     return (
@@ -71,11 +100,25 @@ export default function ReferAndEarn() {
                                 value={formData.phone}
                                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                                 className={styles.phoneInput}
+                                required
                             />
                         </div>
 
-                        <button type="submit" className={styles.referSubmitBtn}>
-                            Join The Waitlist
+                        {status === 'error' && (
+                            <p style={{ color: 'red', textAlign: 'center', fontSize: '14px' }}>{errorMessage}</p>
+                        )}
+                        {status === 'success' && (
+                            <p style={{ color: 'green', textAlign: 'center', fontWeight: 'bold', fontSize: '14px' }}>
+                                You have successfully joined the waitlist!
+                            </p>
+                        )}
+
+                        <button
+                            type="submit"
+                            className={styles.referSubmitBtn}
+                            disabled={status === 'loading'}
+                        >
+                            {status === 'loading' ? 'Joining...' : 'Join The Waitlist'}
                         </button>
 
                         <p className={styles.referDisclaimer}>

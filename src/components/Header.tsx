@@ -5,6 +5,8 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import styles from './Header.module.css';
 
+import LanguageSwitcher from './LanguageSwitcher';
+
 export default function Header() {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const pathname = usePathname();
@@ -29,22 +31,25 @@ export default function Header() {
         <nav className={styles.nav}>
           <ul className={styles.navLinks}>
             <li className={styles.navItem}>
-              <Link href="/" className={pathname === '/' ? styles.active : ''}>Home</Link>
+              <Link href="/" className={pathname === '/' || pathname === '/en' ? styles.active : ''}>Home</Link>
             </li>
             <li className={styles.navItem}>
-              <Link href="/about-us" className={pathname === '/about-us' ? styles.active : ''}>About Us</Link>
+              <Link href="/about-us" className={pathname?.includes('/about-us') ? styles.active : ''}>About Us</Link>
             </li>
             <li className={styles.navItem}>
-              <Link href="/services" className={pathname === '/services' ? styles.active : ''}>Services</Link>
+              <Link href="/services" className={pathname?.includes('/services') ? styles.active : ''}>Services</Link>
             </li>
             <li className={styles.navItem}>
-              <Link href="/blog" className={pathname === '/blog' ? styles.active : ''}>Blog</Link>
+              <Link href="/blog" className={pathname?.includes('/blog') ? styles.active : ''}>Blog</Link>
             </li>
             <li className={styles.navItem}>
-              <Link href="/contact-us" className={pathname === '/contact-us' ? styles.active : ''}>Contact Us</Link>
+              <Link href="/contact-us" className={pathname?.includes('/contact-us') ? styles.active : ''}>Contact Us</Link>
             </li>
           </ul>
-          <Link href="/join-our-waitlist" className={styles.waitlistBtn}>Join Our Waitlist</Link>
+          <div style={{ display: 'flex', alignItems: 'center' }}>
+            <Link href="/join-our-waitlist" className={styles.waitlistBtn}>Join Our Waitlist</Link>
+            <LanguageSwitcher />
+          </div>
         </nav>
 
         {/* Mobile Toggle */}
@@ -63,6 +68,9 @@ export default function Header() {
           <li className={styles.navItem}><Link href="/services" onClick={toggleMenu}>Services</Link></li>
           <li className={styles.navItem}><Link href="/blog" onClick={toggleMenu}>Blog</Link></li>
           <li className={styles.navItem}><Link href="/contact-us" onClick={toggleMenu}>Contact Us</Link></li>
+          <li className={styles.navItem} style={{ justifyContent: 'center', marginTop: '10px' }}>
+            <LanguageSwitcher />
+          </li>
         </ul>
         <Link href="/join-our-waitlist" className={styles.waitlistBtn} onClick={toggleMenu}>Join Our Waitlist</Link>
       </div>
