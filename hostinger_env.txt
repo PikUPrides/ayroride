@@ -3,10 +3,10 @@ Go to your Node.js Application settings -> Environment Variables section, and ad
 
 KEY             VALUE
 -----------------------------------------
-DB_HOST         82.197.82.67
-DB_NAME         u943086856_pikup_contact
-DB_USER         u943086856_pikup_admin
-DB_PASSWORD     Red_123ssh
+DB_HOST         localhost
+DB_NAME         u943086856_contact
+DB_USER         u943086856_admin
+DB_PASSWORD     cONtact12
 
 -----------------------------------------
 Note: If "82.197.82.67" doesn't work, try "localhost" or "srv1625.hstgr.io".

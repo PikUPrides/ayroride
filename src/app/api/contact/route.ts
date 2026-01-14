@@ -33,7 +33,15 @@ export async function POST(request: Request) {
                 code: error.code,
                 errno: error.errno,
                 sqlState: error.sqlState,
-                sqlMessage: error.sqlMessage
+                sqlMessage: error.sqlMessage,
+                debug: {
+                    hasHost: !!process.env.DB_HOST,
+                    hasUser: !!process.env.DB_USER,
+                    hasPass: !!process.env.DB_PASSWORD,
+                    hasDb: !!process.env.DB_NAME,
+                    // Show first 2 chars of user if exists, to verify it's loaded
+                    userPrefix: process.env.DB_USER ? process.env.DB_USER.substring(0, 2) : 'MISSING'
+                }
             },
             { status: 500 }
         );
