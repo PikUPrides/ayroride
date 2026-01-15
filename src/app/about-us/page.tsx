@@ -7,7 +7,7 @@ export const metadata = {
   openGraph: {
     title: "About PikUP – Our Mission & Vision",
     description: "PikUP offers safe, quick, and affordable rides. Discover who we are, how we started, and our mission to simplify transportation for customers.",
-    url: "https://pikup.us/about-us/",
+    url: "https://ayrorides.com/about-us/",
     images: [
       {
         url: "/assets/OG.png",

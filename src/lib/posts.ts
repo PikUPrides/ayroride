@@ -32,6 +32,14 @@ function cleanExcerpt(htmlContent: string): string {
 }
 
 // ------------------------------------------
+// Helper: Replace Domain
+// ------------------------------------------
+function replaceDomain(text: string): string {
+  if (!text) return text;
+  return text.replace(/https?:\/\/pikup\.us/g, "https://ayrorides.com");
+}
+
+// ------------------------------------------
 // Get all posts (DEPRECATED/REMOVED)
 // ------------------------------------------
 export function getAllPosts(): PostMeta[] {
@@ -44,7 +52,7 @@ export function getAllPosts(): PostMeta[] {
 export async function getApiPostBySlug(slug: string): Promise<Post> {
   try {
     const res = await fetch(
-      `https://pikup.us/wp-json/wp/v2/posts?slug=${slug}&_embed`
+      `https://ayrorides.com/wp-json/wp/v2/posts?slug=${slug}&_embed`
     );
     const posts = await res.json();
 
@@ -60,13 +68,13 @@ export async function getApiPostBySlug(slug: string): Promise<Post> {
         }),
         description: cleanExcerpt(post.excerpt.rendered),
         featuredImage:
-          post._embedded?.["wp:featuredmedia"]?.[0]?.source_url || null,
+          replaceDomain(post._embedded?.["wp:featuredmedia"]?.[0]?.source_url) || null,
         tags: [], // Tags handling could be added if needed
         author: post._embedded?.["author"]?.[0]?.name || "Ayro Team",
         categories:
           post._embedded?.["wp:term"]?.[0]?.map((term: any) => term.name) || [],
         readTime: calculateReadTime(post.content.rendered),
-        content: post.content.rendered,
+        content: replaceDomain(post.content.rendered),
       };
     }
   } catch (error) {
@@ -104,7 +112,7 @@ export async function getPostBySlug(slug: string): Promise<Post> {
   // 2. Fallback to WordPress API
   try {
     const res = await fetch(
-      `https://pikup.us/wp-json/wp/v2/posts?slug=${slug}&_embed`
+      `https://ayrorides.com/wp-json/wp/v2/posts?slug=${slug}&_embed`
     );
     const posts = await res.json();
 
@@ -120,13 +128,13 @@ export async function getPostBySlug(slug: string): Promise<Post> {
         }),
         description: cleanExcerpt(post.excerpt.rendered),
         featuredImage:
-          post._embedded?.["wp:featuredmedia"]?.[0]?.source_url || null,
+          replaceDomain(post._embedded?.["wp:featuredmedia"]?.[0]?.source_url) || null,
         tags: [], // Tags handling could be added if needed
         author: post._embedded?.["author"]?.[0]?.name || "Ayro Team",
         categories:
           post._embedded?.["wp:term"]?.[0]?.map((term: any) => term.name) || [],
         readTime: calculateReadTime(post.content.rendered),
-        content: post.content.rendered,
+        content: replaceDomain(post.content.rendered),
       };
     }
   } catch (error) {
@@ -167,7 +175,7 @@ export async function getPaginatedPosts(
 ): Promise<{ posts: PostMeta[]; totalPages: number; totalPosts: number }> {
   try {
     const res = await fetch(
-      `https://pikup.us/wp-json/wp/v2/posts?_embed&per_page=${limit}&page=${page}`
+      `https://ayrorides.com/wp-json/wp/v2/posts?_embed&per_page=${limit}&page=${page}`
     );
     const totalPages = Number(res.headers.get("X-WP-TotalPages")) || 1;
     const totalPosts = Number(res.headers.get("X-WP-Total")) || 0;
@@ -183,7 +191,7 @@ export async function getPaginatedPosts(
       }),
       description: cleanExcerpt(post.excerpt.rendered),
       featuredImage:
-        post._embedded?.["wp:featuredmedia"]?.[0]?.source_url || null,
+        replaceDomain(post._embedded?.["wp:featuredmedia"]?.[0]?.source_url) || null,
       tags: [], // Tags handling could be added if needed
       author: post._embedded?.["author"]?.[0]?.name || "Ayro Team",
       categories:

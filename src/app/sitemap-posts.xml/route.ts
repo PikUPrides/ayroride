@@ -1,10 +1,10 @@
 import { NextResponse } from "next/server";
 import { getPaginatedPosts } from "@/lib/posts";
 
-export const revalidate = 3600; // Cache for 1 hour
+export const revalidate = 0; // Disable cache for now
 
 export async function GET(request: Request) {
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://pikup.us';
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ayrorides.com';
     let allPosts: any[] = [];
     let page = 1;
     let hasMore = true;

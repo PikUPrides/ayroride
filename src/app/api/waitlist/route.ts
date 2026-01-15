@@ -27,7 +27,7 @@ export async function POST(request: Request) {
             email,
             name,
             phone_number: phone,
-            domain: 'https://pikup.us',
+            domain: 'https://ayrorides.com',
             extra_field: userType || 'Rider',
             tags: userType || 'Rider' // Also add as a tag to ensure visibility
         };

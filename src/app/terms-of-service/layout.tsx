@@ -6,7 +6,7 @@ export const metadata: Metadata = {
     openGraph: {
         title: "Terms of Service – User Agreement & Site Policies",
         description: "Our Terms of Service explain website usage, responsibilities, disclaimers, and policies designed to ensure a safe and transparent user experience.",
-        url: "https://pikup.us/terms-of-service/",
+        url: "https://ayrorides.com/terms-of-service/",
         images: [
             {
                 url: "/assets/OG.png",

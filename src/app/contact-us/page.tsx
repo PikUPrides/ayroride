@@ -7,7 +7,7 @@ export const metadata = {
   openGraph: {
     title: "Contact Us - Ayro",
     description: "We would love to hear from you. Whether you have questions, need assistance, or want to discuss your business needs, our team is here to help.",
-    url: "https://pikup.us/contact-us/",
+    url: "https://ayrorides.com/contact-us/",
     images: [
       {
         url: "/assets/OG.png",
@@ -76,7 +76,7 @@ export default function Contact() {
                   <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M26.667 5.33337H5.33366C3.86699 5.33337 2.68033 6.53337 2.68033 8.00004L2.66699 24C2.66699 25.4667 3.86699 26.6667 5.33366 26.6667H26.667C28.1337 26.6667 29.3337 25.4667 29.3337 24V8.00004C29.3337 6.53337 28.1337 5.33337 26.667 5.33337ZM26.1337 11L16.707 16.8934C16.2803 17.16 15.7203 17.16 15.2937 16.8934L5.86699 11C5.7333 10.925 5.61622 10.8236 5.52284 10.702C5.42947 10.5804 5.36174 10.4411 5.32376 10.2925C5.28578 10.144 5.27833 9.98929 5.30187 9.83778C5.32541 9.68628 5.37944 9.54113 5.4607 9.41111C5.54196 9.28109 5.64876 9.16892 5.77463 9.08137C5.9005 8.99382 6.04282 8.93272 6.19299 8.90177C6.34315 8.87082 6.49804 8.87066 6.64826 8.9013C6.79849 8.93195 6.94094 8.99275 7.06699 9.08004L16.0003 14.6667L24.9337 9.08004C25.0597 8.99275 25.2022 8.93195 25.3524 8.9013C25.5026 8.87066 25.6575 8.87082 25.8077 8.90177C25.9578 8.93272 26.1002 8.99382 26.226 9.08137C26.3519 9.16892 26.4587 9.28109 26.5399 9.41111C26.6212 9.54113 26.6752 9.68628 26.6988 9.83778C26.7223 9.98929 26.7149 10.144 26.6769 10.2925C26.6389 10.4411 26.5712 10.5804 26.4778 10.702C26.3844 10.8236 26.2674 10.925 26.1337 11Z" fill="#08D9C4"></path></svg>
                   <span>Email</span>
                 </div>
-                <p className={styles.infoText}><a href="mailto:hello@pikup.us">hello@pikup.us</a></p>
+                <p className={styles.infoText}><a href="mailto:hello@ayrorides.com">hello@ayrorides.com</a></p>
               </div>
 
               <div className={styles.infoItem}>

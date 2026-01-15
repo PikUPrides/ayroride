@@ -12,10 +12,10 @@ const staticPages = [
     "/terms-of-service",
 ];
 
-export const revalidate = 3600; // Cache for 1 hour
+export const revalidate = 0; // Disable cache for now
 
 export async function GET() {
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://pikup.us";
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://ayrorides.com";
     const dynamicRoutes: string[] = staticPages;
 
     // Define main pages (higher priority)

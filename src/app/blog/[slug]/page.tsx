@@ -19,11 +19,11 @@ export async function generateMetadata({ params }: Params) {
     openGraph: {
       title: post.title,
       description: post.description || "Default description",
-      url: `https://pikup.us/blog/${slug}`,
+      url: `https://ayrorides.com/blog/${slug}`,
       siteName: "Ayro",
       images: [
         {
-          url: post.featuredImage || "https://pikup.us/assets/OG.png",
+          url: post.featuredImage || "https://ayrorides.com/assets/OG.png",
           width: 1200,
           height: 630,
           alt: post.title,

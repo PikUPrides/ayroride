@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
             allow: "/",
             disallow: "",
         },
-        sitemap: "https://pikup.us/sitemap.xml",
+        sitemap: "https://ayrorides.com/sitemap.xml",
     };
 }

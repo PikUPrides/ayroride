@@ -12,11 +12,11 @@ const openSans = Open_Sans({
 export const metadata = {
   title: "Ayro – Earn Rewards for Referrals",
   description: "Join the Ayro affiliate waitlist, refer friends & earn exciting rewards. Download app and get a chance to win exclusive prizes!",
-  metadataBase: new URL("https://pikup.us"),
+  metadataBase: new URL("https://ayrorides.com"),
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://pikup.us",
+    url: "https://ayrorides.com",
     siteName: "Ayro",
     title: "Ayro",
     description: "Ridesharing means better pay and safety.",

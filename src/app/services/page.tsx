@@ -7,7 +7,7 @@ export const metadata = {
     openGraph: {
         title: "Services – Ayro – Referral Program",
         description: "Join the rebellion against surge pricing and unfair practices while earning significant rewards through our gamified referral system.",
-        url: "https://pikup.us/services",
+        url: "https://ayrorides.com/services",
         images: [
             {
                 url: "/assets/OG.png",

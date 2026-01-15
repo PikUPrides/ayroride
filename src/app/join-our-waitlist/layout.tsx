@@ -6,7 +6,7 @@ export const metadata: Metadata = {
     openGraph: {
         title: "Join Our Waitlist | Be the First to Get Access",
         description: "Join our waitlist to get early access, exclusive updates, and first notifications when we launch. Secure your spot today.",
-        url: "https://pikup.us/join-our-waitlist/",
+        url: "https://ayrorides.com/join-our-waitlist/",
         images: [
             {
                 url: "/assets/OG.png",

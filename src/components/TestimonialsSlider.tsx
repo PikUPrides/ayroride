@@ -71,7 +71,7 @@ export default function TestimonialsSlider() {
                         {testimonials.map((testimonial, idx) => (
                             <div key={idx} className={styles.testimonialCard}>
                                 <img
-                                    src="https://pikup.us/wp-content/uploads/2025/11/Group-8-3.svg"
+                                    src="https://ayrorides.com/wp-content/uploads/2025/11/Group-8-3.svg"
                                     alt="5 stars"
                                     className={styles.starsImage}
                                 />
@@ -81,7 +81,7 @@ export default function TestimonialsSlider() {
                                 <div className={styles.testimonialFooter}>
                                     <span className={styles.authorName}>— {testimonial.author}</span>
                                     <img
-                                        src="https://pikup.us/wp-content/uploads/2025/11/Vector-50.svg"
+                                        src="https://ayrorides.com/wp-content/uploads/2025/11/Vector-50.svg"
                                         alt=""
                                         className={styles.quoteIcon}
                                     />

@@ -9,19 +9,19 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { author } = await params;
   return {
-    title: `Posts by ${author} - pikup.us`,
-    description: `Read all posts by ${author} on pikup.us`,
+    title: `Posts by ${author} - ayrorides.com`,
+    description: `Read all posts by ${author} on ayrorides.com`,
     openGraph: {
-      title: `Posts by ${author} - pikup.us`,
-      description: `Read all posts by ${author} on pikup.us`,
-      url: `https://pikup.us/blog/author/${author}`,
-      siteName: "pikup.us",
+      title: `Posts by ${author} - ayrorides.com`,
+      description: `Read all posts by ${author} on ayrorides.com`,
+      url: `https://ayrorides.com/blog/author/${author}`,
+      siteName: "ayrorides.com",
       images: [
         {
-          url: "https://pikup.us/assets/OG.png",
+          url: "https://ayrorides.com/assets/OG.png",
           width: 1200,
           height: 630,
-          alt: "pikup.us",
+          alt: "ayrorides.com",
         },
       ],
       locale: "en_US",

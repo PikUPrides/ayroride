@@ -6,7 +6,7 @@ export const metadata: Metadata = {
     openGraph: {
         title: "Privacy Policy | Data Protection & User Privacy",
         description: "Ayro is committed to protecting your privacy. Learn how we collect, use, disclose, and safeguard your personal information.",
-        url: "https://pikup.us/privacy-policy/",
+        url: "https://ayrorides.com/privacy-policy/",
         images: [
             {
                 url: "/assets/OG.png",

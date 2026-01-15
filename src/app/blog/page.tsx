@@ -9,7 +9,7 @@ export const metadata = {
   openGraph: {
     title: "Insights and Updates from Ayro",
     description: "Stay informed with the latest news, trends, and expert advice from our team. Our blog covers a wide range of topics to help your business thrive.",
-    url: "https://pikup.us/blog/",
+    url: "https://ayrorides.com/blog/",
     images: [
       {
         url: "/assets/OG.png",
