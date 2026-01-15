@@ -68,13 +68,13 @@ export async function getApiPostBySlug(slug: string): Promise<Post> {
         }),
         description: cleanExcerpt(post.excerpt.rendered),
         featuredImage:
-          replaceDomain(post._embedded?.["wp:featuredmedia"]?.[0]?.source_url) || null,
+          post._embedded?.["wp:featuredmedia"]?.[0]?.source_url || null,
         tags: [], // Tags handling could be added if needed
         author: post._embedded?.["author"]?.[0]?.name || "Ayro Team",
         categories:
           post._embedded?.["wp:term"]?.[0]?.map((term: any) => term.name) || [],
         readTime: calculateReadTime(post.content.rendered),
-        content: replaceDomain(post.content.rendered),
+        content: post.content.rendered,
       };
     }
   } catch (error) {
@@ -128,13 +128,13 @@ export async function getPostBySlug(slug: string): Promise<Post> {
         }),
         description: cleanExcerpt(post.excerpt.rendered),
         featuredImage:
-          replaceDomain(post._embedded?.["wp:featuredmedia"]?.[0]?.source_url) || null,
+          post._embedded?.["wp:featuredmedia"]?.[0]?.source_url || null,
         tags: [], // Tags handling could be added if needed
         author: post._embedded?.["author"]?.[0]?.name || "Ayro Team",
         categories:
           post._embedded?.["wp:term"]?.[0]?.map((term: any) => term.name) || [],
         readTime: calculateReadTime(post.content.rendered),
-        content: replaceDomain(post.content.rendered),
+        content: post.content.rendered,
       };
     }
   } catch (error) {
@@ -191,7 +191,7 @@ export async function getPaginatedPosts(
       }),
       description: cleanExcerpt(post.excerpt.rendered),
       featuredImage:
-        replaceDomain(post._embedded?.["wp:featuredmedia"]?.[0]?.source_url) || null,
+        post._embedded?.["wp:featuredmedia"]?.[0]?.source_url || null,
       tags: [], // Tags handling could be added if needed
       author: post._embedded?.["author"]?.[0]?.name || "Ayro Team",
       categories:
