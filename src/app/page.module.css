@@ -7,7 +7,7 @@
 }
 
 .promoSection {
-  background: linear-gradient(135deg, #1D0652 0%, #0D002C 100%);
+  background: linear-gradient(135deg, #1d0652 0%, #0d002c 100%);
   height: 510px;
   display: flex;
   align-items: flex-start;
@@ -56,7 +56,7 @@
 }
 
 .blueText {
-  color: #3F3FFF;
+  color: #3f3fff;
   display: block;
   font-size: 42px;
   font-weight: 700;
@@ -72,7 +72,7 @@
 }
 
 .highlight {
-  color: #4B4BFF;
+  color: #4b4bff;
   /* Approximate purple-blue color from "PikUP" in image */
 }
 
@@ -85,9 +85,9 @@
 
 .waitlistBtn {
   display: inline-block;
-  background-color: #423DF9;
+  background-color: #423df9;
   color: #ffffff;
-  border: 1px solid #423DF9;
+  border: 1px solid #423df9;
   padding: 12px 36px 13px 36px;
   height: 47px;
   font-size: 16px;
@@ -104,7 +104,7 @@
 
 .waitlistBtn:hover {
   background-color: #ffffff;
-  color: #423DF9;
+  color: #423df9;
   box-shadow: none;
 }
 
@@ -118,7 +118,7 @@
   width: 492px;
   height: 310px;
   border-radius: 50px;
-  border: 2px solid #423DF9;
+  border: 2px solid #423df9;
   box-shadow: 1px 1px 80px 40px rgba(66, 61, 249, 0.17);
   object-fit: cover;
 }
@@ -127,7 +127,7 @@
   height: 8px;
   width: 100%;
   display: flex;
-  background-color: #3F3FFF;
+  background-color: #3f3fff;
   /* Fallback/Right side color */
   position: relative;
 }
@@ -140,7 +140,7 @@
   top: 0;
   bottom: 0;
   width: calc(50% - 558px);
-  background-color: #00D1C1;
+  background-color: #00d1c1;
   z-index: 1;
 }
 
@@ -156,19 +156,19 @@
 
 .dividerTeal {
   flex: 5;
-  background-color: #00D1C1;
+  background-color: #00d1c1;
 }
 
 .dividerBlue {
   flex: 95;
-  background-color: #3F3FFF;
+  background-color: #3f3fff;
 }
 
 /* Fixing Section Styles */
 .fixingSection {
   background-color: white;
   padding: 100px 0 50px 0;
-  color: #1D0652;
+  color: #1d0652;
 }
 
 .fixingContainer {
@@ -200,11 +200,11 @@
   font-weight: 800;
   line-height: 1.1;
   margin-bottom: 2rem;
-  color: #1D0652;
+  color: #1d0652;
 }
 
 .fixingTextSide h2 span {
-  color: #3F3FFF;
+  color: #3f3fff;
   display: block;
   font-size: 38px;
   margin-top: 0.2rem;
@@ -219,7 +219,7 @@
 .highlightText {
   font-size: 1.25rem;
   font-weight: 700;
-  color: #3F3FFF;
+  color: #3f3fff;
   margin-bottom: 1.5rem;
 }
 
@@ -233,7 +233,7 @@
 .boldDescription {
   font-size: 16px;
   font-weight: 800;
-  color: #111111BF;
+  color: #111111bf;
   margin-bottom: 1.5rem;
 }
 
@@ -254,7 +254,7 @@
 
   .fixingTextSide .waitlistBtn {
     margin-top: 20px;
-    background-color: #423DF9;
+    background-color: #423df9;
     color: white;
     width: auto;
     padding: 0 30px;
@@ -268,7 +268,7 @@
     width: 390px;
     height: 246.25px;
     border-radius: 45px;
-    border: 2px solid #423DF9;
+    border: 2px solid #423df9;
     object-fit: cover;
     margin: 0 auto;
     display: block;
@@ -301,8 +301,6 @@
   }
 }
 
-
-
 /* Features Section Styles */
 .featuresSection {
   background-color: white;
@@ -321,14 +319,16 @@
 .featureCard {
   width: 397px;
   height: 265px;
-  background: #FFFFFF;
-  border: 1px solid #423DF9;
+  background: #ffffff;
+  border: 1px solid #423df9;
   border-radius: 12px;
   padding: 30px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
   box-sizing: border-box;
 }
 
@@ -348,7 +348,7 @@
 .featureCard h4 {
   font-size: 20px;
   font-weight: 700;
-  color: #1D0652;
+  color: #1d0652;
   margin-bottom: 20px;
   line-height: 20px;
 }
@@ -372,7 +372,7 @@
 .featureCircle {
   width: 6px;
   height: 6px;
-  background-color: #423DF9;
+  background-color: #423df9;
   border-radius: 50%;
   flex-shrink: 0;
 }
@@ -392,11 +392,9 @@
   }
 }
 
-
-
 /* Different Section Styles */
 .differentSection {
-  background: url('/images/different-bg.png') no-repeat center center;
+  background: url("/images/different-bg.png") no-repeat center center;
   background-size: cover;
   height: 566px;
   display: flex;
@@ -423,7 +421,7 @@
 }
 
 .differentTitle span {
-  color: #08D9C4;
+  color: #08d9c4;
 }
 
 .differentGrid {
@@ -458,7 +456,7 @@
   font-size: 16px;
   font-weight: 400;
   line-height: 25px;
-  color: #FFFFFF;
+  color: #ffffff;
   max-width: 330px;
 }
 
@@ -466,13 +464,13 @@
   margin-top: 20px;
   background-color: transparent;
   color: white;
-  border: 1.5px solid #FFFFFF;
+  border: 1.5px solid #ffffff;
 }
 
 .differentBtn:hover {
-  background-color: #FFFFFF;
-  color: #423DF9;
-  border: 1.5px solid #FFFFFF;
+  background-color: #ffffff;
+  color: #423df9;
+  border: 1.5px solid #ffffff;
 }
 
 @media (max-width: 768px) {
@@ -515,15 +513,11 @@
   }
 }
 
-
-
-
-
 /* Reward Section Styles */
 .rewardSection {
   background-color: white;
   padding: 100px 0;
-  color: #1D0652;
+  color: #1d0652;
 }
 
 .rewardContainer {
@@ -544,7 +538,7 @@
   font-weight: 800;
   line-height: 1.2;
   margin-bottom: 2.2rem;
-  color: #1D0652;
+  color: #1d0652;
 }
 
 .topLine {
@@ -554,7 +548,7 @@
 
 .blueSpan {
   display: block;
-  color: #3F3FFF;
+  color: #3f3fff;
   font-size: 42px;
   margin-top: 0;
 }
@@ -568,7 +562,7 @@
 }
 
 .rewardHighlight {
-  color: #3F3FFF;
+  color: #3f3fff;
   font-weight: 800;
   font-size: 16px;
   margin-top: -0.2rem;
@@ -638,7 +632,7 @@
   }
 
   .rewardDescription {
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Open Sans", sans-serif;
     font-size: 16px;
     font-weight: 400;
     color: rgba(17, 17, 17, 0.75);
@@ -655,15 +649,13 @@
     margin-bottom: 30px;
     font-size: 16px;
     font-weight: 700;
-    color: #423DF9;
+    color: #423df9;
   }
 }
 
-
-
 /* Future Section Styles */
 .futureSection {
-  background: url('/images/different-bg.png') no-repeat center center;
+  background: url("/images/different-bg.png") no-repeat center center;
   background-size: cover;
   padding: 100px 0;
   color: white;
@@ -684,7 +676,7 @@
 }
 
 .futureTitle span {
-  color: #08D9C4 !important;
+  color: #08d9c4 !important;
 }
 
 .futureSubTitle {
@@ -760,18 +752,16 @@
   .futureSubTitle {
     font-size: 18px;
     font-weight: 400;
-    color: #FFFFFF;
+    color: #ffffff;
     opacity: 1;
     margin-bottom: 40px;
     padding: 0 10px;
   }
 }
 
-
-
 /* Testimonials Section Styles */
 .testimonialsSection {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   padding: 80px 20px;
 }
 
@@ -785,12 +775,12 @@
 .testimonialsTitle {
   font-size: 40px;
   font-weight: 800;
-  color: #1D0652;
+  color: #1d0652;
   margin-bottom: 15px;
 }
 
 .testimonialsTitle span {
-  color: #08D9C4;
+  color: #08d9c4;
 }
 
 .testimonialsSubtitle {
@@ -816,8 +806,8 @@
 }
 
 .testimonialCard {
-  background: #FFFFFF;
-  border: 1px solid #08D9C4;
+  background: #ffffff;
+  border: 1px solid #08d9c4;
   border-radius: 10px;
   padding: 36px;
   width: 505px;
@@ -837,7 +827,7 @@
 }
 
 .testimonialQuote {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 18px;
   font-weight: 600;
   line-height: 28px;
@@ -854,11 +844,11 @@
 }
 
 .authorName {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 18px;
   font-weight: 700;
   line-height: 28px;
-  color: #08D9C4;
+  color: #08d9c4;
 }
 
 .quoteIcon {
@@ -899,7 +889,7 @@
     height: auto;
     min-height: 320px;
     padding: 25px;
-    border: 1px solid #08D9C4;
+    border: 1px solid #08d9c4;
     border-radius: 10px;
     gap: 18px;
     flex-shrink: 0;
@@ -919,7 +909,7 @@
     line-height: 35px;
     color: #1d0652;
     text-align: center;
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Open Sans", sans-serif;
   }
 
   .testimonialsSubtitle {
@@ -928,16 +918,14 @@
     line-height: 22px;
     color: rgba(17, 17, 17, 0.75);
     text-align: center;
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Open Sans", sans-serif;
     margin-bottom: 30px;
   }
 }
 
-
-
 /* Refer and Earn Section Styles */
 .referSection {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   padding: 80px 20px;
 }
 
@@ -959,12 +947,12 @@
   font-size: 40px;
   font-weight: 800;
   line-height: 1.2;
-  color: #1D0652;
+  color: #1d0652;
   margin-bottom: 15px;
 }
 
 .referText p {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 18px;
   line-height: 28px;
   color: rgba(17, 17, 17, 0.75);
@@ -982,16 +970,16 @@
 .referTitle {
   font-size: 40px;
   font-weight: 800;
-  color: #1D0652;
+  color: #1d0652;
   margin-bottom: 15px;
 }
 
 .referTitle span {
-  color: #423DF9;
+  color: #423df9;
 }
 
 .referSubtitle {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 18px;
   line-height: 28px;
   color: rgba(17, 17, 17, 0.75);
@@ -1008,10 +996,10 @@
 .referForm {
   width: 100%;
   max-width: 691px;
-  border: 2px solid #423DF9;
+  border: 2px solid #423df9;
   border-radius: 37px;
   padding: 31px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -1021,19 +1009,19 @@
   width: 100%;
   height: 48px;
   padding: 7px 12px;
-  background-color: #F4F4F9;
+  background-color: #f4f4f9;
   border: none;
   border-radius: 12px;
   font-family: inherit;
   font-size: 14px;
   line-height: 21px;
-  color: #5C5C5C;
+  color: #5c5c5c;
   box-sizing: border-box;
   margin-bottom: 0;
 }
 
 .referInput::placeholder {
-  color: #5C5C5C;
+  color: #5c5c5c;
 }
 
 .phoneRow {
@@ -1045,12 +1033,12 @@
   width: 30%;
   height: 48px;
   padding: 0 12px;
-  background-color: #F4F4F9;
+  background-color: #f4f4f9;
   border: none;
   border-radius: 12px;
   font-family: inherit;
   font-size: 14px;
-  color: #5C5C5C;
+  color: #5c5c5c;
   cursor: pointer;
 }
 
@@ -1058,24 +1046,24 @@
   width: 70%;
   height: 48px;
   padding: 0 16px;
-  background-color: #F4F4F9;
+  background-color: #f4f4f9;
   border: none;
   border-radius: 12px;
   font-family: inherit;
   font-size: 14px;
-  color: #5C5C5C;
+  color: #5c5c5c;
   box-sizing: border-box;
 }
 
 .phoneInput::placeholder {
-  color: #5C5C5C;
+  color: #5c5c5c;
 }
 
 .referSubmitBtn {
   width: 100%;
   height: 45px;
-  background-color: #423DF9;
-  color: #FFFFFF;
+  background-color: #423df9;
+  color: #ffffff;
   border: none;
   border-radius: 5px;
   font-size: 16px;
@@ -1132,14 +1120,14 @@
   width: 20px;
   height: 20px;
   cursor: pointer;
-  accent-color: #423DF9;
+  accent-color: #423df9;
   -webkit-appearance: radio;
   appearance: radio;
   margin: 0;
 }
 
 .radioInput:checked {
-  accent-color: #423DF9;
+  accent-color: #423df9;
 }
 
 .radioLabel span {
@@ -1170,13 +1158,13 @@
 }
 
 .statItem:not(:first-child) {
-  border-left: 1px solid #E0E0E0;
+  border-left: 1px solid #e0e0e0;
 }
 
 .statNumber {
   font-size: 44px;
   font-weight: 700;
-  color: #423DF9;
+  color: #423df9;
   line-height: 44px;
   text-align: center;
   width: 100%;
@@ -1243,8 +1231,6 @@
     padding-top: 30px;
   }
 
-
-
   .statNumber {
     font-size: 36px;
   }
@@ -1252,8 +1238,8 @@
 
 /* FAQ Section Styles */
 .faqSection {
-  background: linear-gradient(135deg, #423DF9 0%, #1D0652 100%);
-  background-image: url('/assets/faq-bg.png');
+  background: linear-gradient(135deg, #423df9 0%, #1d0652 100%);
+  background-image: url("/assets/faq-bg.png");
   background-size: cover;
   background-position: 50% 50%;
   background-repeat: no-repeat;
@@ -1288,16 +1274,16 @@
 }
 
 .faqLeft::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 43px;
   left: 53px;
-  width: 366px;
-  height: 366px;
-  background-image: url('/assets/faq-decoration.png');
+  width: 400px;
+  height: 400px;
+  background-image: url("/assets/A.png");
   background-size: contain;
   background-repeat: no-repeat;
-  opacity: 1;
+  opacity: 0.2;
   z-index: 0;
   pointer-events: none;
 }
@@ -1305,7 +1291,7 @@
 .faqTitle {
   font-size: 36px;
   font-weight: 800;
-  color: #FFFFFF;
+  color: #ffffff;
   margin-bottom: 20px;
   position: relative;
   z-index: 1;
@@ -1313,7 +1299,7 @@
 }
 
 .faqTitle span {
-  color: #08D9C4;
+  color: #08d9c4;
 }
 
 .faqSubtitle {
@@ -1370,14 +1356,16 @@
 .faqQuestionText {
   font-size: 18px;
   font-weight: 600;
-  color: #FFFFFF;
+  color: #ffffff;
   line-height: 27px;
 }
 
 .faqAnswer {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.4s ease, padding 0.4s ease;
+  transition:
+    max-height 0.4s ease,
+    padding 0.4s ease;
   padding: 0 0 0 43px;
 }
 
@@ -1435,7 +1423,7 @@
   .blueText {
     font-size: 23px;
     font-weight: 700;
-    color: #3F3FFF;
+    color: #3f3fff;
     display: block;
     margin-top: 0.75rem;
     margin-bottom: 2rem;
@@ -1472,7 +1460,7 @@
     width: 390px;
     height: 246.25px;
     border-radius: 45px;
-    border: 2px solid #423DF9;
+    border: 2px solid #423df9;
     margin: 0 auto;
     object-fit: cover;
     box-shadow: none;

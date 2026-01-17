@@ -2,25 +2,28 @@ import styles from "./page.module.css";
 import RiderVoicesSlider from "@/components/RiderVoicesSlider";
 
 export const metadata = {
-  title: "About PikUP – Our Mission & Vision",
-  description: "PikUP offers safe, quick, and affordable rides. Discover who we are, how we started, and our mission to simplify transportation for customers.",
+  title: "About AYRO – Our Mission & Vision",
+  description:
+    "AYRO offers safe, quick, and affordable rides. Discover who we are, how we started, and our mission to simplify transportation for customers.",
   openGraph: {
-    title: "About PikUP – Our Mission & Vision",
-    description: "PikUP offers safe, quick, and affordable rides. Discover who we are, how we started, and our mission to simplify transportation for customers.",
+    title: "About AYRO – Our Mission & Vision",
+    description:
+      "AYRO offers safe, quick, and affordable rides. Discover who we are, how we started, and our mission to simplify transportation for customers.",
     url: "https://ayrorides.com/about-us/",
     images: [
       {
         url: "/assets/OG.png",
         width: 1200,
         height: 630,
-        alt: "About PikUP",
+        alt: "About AYRO",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "About PikUP – Our Mission & Vision",
-    description: "Safe, quick, and affordable rides. Discover our mission to simplify transportation.",
+    title: "About AYRO – Our Mission & Vision",
+    description:
+      "Safe, quick, and affordable rides. Discover our mission to simplify transportation.",
   },
 };
 
@@ -48,28 +51,37 @@ export default function About() {
           <div className={styles.whoWeAreImageSide}>
             <img
               src="/images/who-we-are.png"
-              alt="PikUP app in car"
+              alt="AYRO app in car"
               className={styles.whoWeAreImage}
             />
           </div>
           <div className={styles.whoWeAreTextSide}>
             <span className={styles.sectionBadge}>WHO WE ARE</span>
             <h2 className={styles.whoWeAreTitle}>
-              PikUP Began with a Simple Question: <span>What is PikUP?</span>
+              AYRO Began with a Simple Question: <span>What is AYRO?</span>
             </h2>
             <div className={styles.whoWeAreContent}>
               <p>
-                While driving for a well-known rideshare company (more than <strong>30,000 rides!</strong>), our founder saw:
+                While driving for a well-known rideshare company (more than{" "}
+                <strong>30,000 rides!</strong>), our founder saw:
               </p>
               <ul>
-                <li>Riders pay unpredictable fares (like the night his wife paid $25 to go out, and $195 to get home!)</li>
-                <li>Hard-working drivers (like himself) earn unfair, unlivable wages</li>
+                <li>
+                  Riders pay unpredictable fares (like the night his wife paid
+                  $25 to go out, and $195 to get home!)
+                </li>
+                <li>
+                  Hard-working drivers (like himself) earn unfair, unlivable
+                  wages
+                </li>
               </ul>
               <p>
-                That's when he decided to create a different kind of rideshare company. One that would…
+                That's when he decided to create a different kind of rideshare
+                company. One that would…
               </p>
               <p className={styles.highlightText}>
-                Offer riders predictable, affordable pricing, and give drivers fair, reliable pay.
+                Offer riders predictable, affordable pricing, and give drivers
+                fair, reliable pay.
               </p>
             </div>
           </div>
@@ -82,7 +94,10 @@ export default function About() {
           <div className={styles.missionContent}>
             <span className={styles.missionBadge}>OUR MISSION</span>
             <h2 className={styles.missionTitle}>
-              PikUP Is What <span className={styles.missionTitleSpan}>Ride-Sharing Ought to Be</span>
+              AYRO Is What{" "}
+              <span className={styles.missionTitleSpan}>
+                Ride-Sharing Ought to Be
+              </span>
             </h2>
             <p className={styles.missionIntro}>
               Here's how we're different than the big-name companies…
@@ -108,28 +123,61 @@ export default function About() {
             </div>
 
             <h3 className={styles.revolutionTitle}>
-              <span className={styles.mobileLine}>More Than an App <span className={styles.revolutionTitleSpan}>Ride — PiKUP is</span></span> <span className={styles.mobileLine}><span className={styles.revolutionTitleSpan}>a revolution.</span></span>
+              <span className={styles.mobileLine}>
+                More Than an App{" "}
+                <span className={styles.revolutionTitleSpan}>
+                  Ride — AYRO is
+                </span>
+              </span>{" "}
+              <span className={styles.mobileLine}>
+                <span className={styles.revolutionTitleSpan}>
+                  a revolution.
+                </span>
+              </span>
             </h3>
 
             <div className={styles.revolutionContent}>
               <p>
-                <span className={styles.mobileLine}>By riding with PikUP, you save money, and you <strong>join</strong></span> <span className={styles.mobileLine}><strong>a movement of fairness.</strong></span>
+                <span className={styles.mobileLine}>
+                  By riding with AYRO, you save money, and you{" "}
+                  <strong>join</strong>
+                </span>{" "}
+                <span className={styles.mobileLine}>
+                  <strong>a movement of fairness.</strong>
+                </span>
               </p>
               <p>
-                <span className={styles.mobileLine}>By encouraging others to join, you make life better</span> <span className={styles.mobileLine}>for them – and earn rewards in the process.</span>
+                <span className={styles.mobileLine}>
+                  By encouraging others to join, you make life better
+                </span>{" "}
+                <span className={styles.mobileLine}>
+                  for them – and earn rewards in the process.
+                </span>
               </p>
               <p>
-                <span className={styles.mobileLine}><strong>At PikUP, we believe ridesharing should be safe</strong></span> <span className={styles.mobileLine}><strong>and affordable, honest and human.</strong></span>
+                <span className={styles.mobileLine}>
+                  <strong>
+                    At AYRO, we believe ridesharing should be safe
+                  </strong>
+                </span>{" "}
+                <span className={styles.mobileLine}>
+                  <strong>and affordable, honest and human.</strong>
+                </span>
               </p>
               <p>
-                <span className={styles.mobileLine}>With your help, that's the kind of movement we're</span> <span className={styles.mobileLine}>building – one ride at a time.</span>
+                <span className={styles.mobileLine}>
+                  With your help, that's the kind of movement we're
+                </span>{" "}
+                <span className={styles.mobileLine}>
+                  building – one ride at a time.
+                </span>
               </p>
             </div>
           </div>
           <div className={styles.missionImageSide}>
             <img
               src="/images/mission-image.png"
-              alt="PikUP driver with rider"
+              alt="AYRO driver with rider"
               className={styles.missionImage}
             />
           </div>
@@ -141,10 +189,13 @@ export default function About() {
         <div className={styles.valuesContainer}>
           <span className={styles.valuesBadge}>Our Values</span>
           <h3 className={styles.valuesTitle}>
-            What Drives Us <span className={styles.valuesTitleSpan}>While We Drive You?</span>
+            What Drives Us{" "}
+            <span className={styles.valuesTitleSpan}>While We Drive You?</span>
           </h3>
           <p className={styles.valuesIntro}>
-            PikUP wasn't created in a boardroom. It sprang from real life – thousands of rides and countless conversations with riders and drivers. Out of those experiences, our company values were formed.
+            AYRO wasn't created in a boardroom. It sprang from real life –
+            thousands of rides and countless conversations with riders and
+            drivers. Out of those experiences, our company values were formed.
           </p>
 
           <div className={styles.valuesGrid}>
@@ -156,7 +207,8 @@ export default function About() {
               />
               <h4 className={styles.valueCardTitle}>Community</h4>
               <p className={styles.valueCardText}>
-                We're a growing movement of people who believe ride-sharing should be safe, fair, and affordable.
+                We're a growing movement of people who believe ride-sharing
+                should be safe, fair, and affordable.
               </p>
             </div>
 
@@ -168,7 +220,8 @@ export default function About() {
               />
               <h4 className={styles.valueCardTitle}>Fairness</h4>
               <p className={styles.valueCardText}>
-                Unpredictable surge pricing punishes riders. Low pay crushes drivers. We stand against these unfair practices.
+                Unpredictable surge pricing punishes riders. Low pay crushes
+                drivers. We stand against these unfair practices.
               </p>
             </div>
 
@@ -180,7 +233,8 @@ export default function About() {
               />
               <h4 className={styles.valueCardTitle}>Transparency</h4>
               <p className={styles.valueCardText}>
-                We keep things simple and honest – predictable pricing and clear pay guarantees. No surprises. Ever.
+                We keep things simple and honest – predictable pricing and clear
+                pay guarantees. No surprises. Ever.
               </p>
             </div>
 
@@ -192,7 +246,8 @@ export default function About() {
               />
               <h4 className={styles.valueCardTitle}>Empowerment</h4>
               <p className={styles.valueCardText}>
-                Drivers deserve dignity. Riders deserve peace of mind. We use technology to help everyone feel safe and respected.
+                Drivers deserve dignity. Riders deserve peace of mind. We use
+                technology to help everyone feel safe and respected.
               </p>
             </div>
           </div>
@@ -221,6 +276,6 @@ export default function About() {
 
       {/* Rider Voices Slider */}
       <RiderVoicesSlider />
-    </main >
+    </main>
   );
 }

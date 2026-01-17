@@ -5,10 +5,12 @@ import styles from "./page.module.css";
 
 export const metadata = {
   title: "Insights and Updates from Ayro",
-  description: "Stay informed with the latest news, trends, and expert advice from our team. Our blog covers a wide range of topics to help your business thrive.",
+  description:
+    "Stay informed with the latest news, trends, and expert advice from our team. Our blog covers a wide range of topics to help your business thrive.",
   openGraph: {
     title: "Insights and Updates from Ayro",
-    description: "Stay informed with the latest news, trends, and expert advice from our team. Our blog covers a wide range of topics to help your business thrive.",
+    description:
+      "Stay informed with the latest news, trends, and expert advice from our team. Our blog covers a wide range of topics to help your business thrive.",
     url: "https://ayrorides.com/blog/",
     images: [
       {
@@ -21,11 +23,10 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Insights and Updates from PikUP",
+    title: "Insights and Updates from AYRO",
     description: "Latest news, trends, and expert advice from our team.",
   },
 };
-
 
 export default async function BlogPage({
   searchParams,
@@ -59,10 +60,12 @@ export default async function BlogPage({
         <div className={styles.blogIntroContainer}>
           <div className={styles.blogBadge}>OUR BLOGS</div>
           <h2 className={styles.blogIntroTitle}>
-            Insights and Updates from <span>PikUP</span>
+            Insights and Updates from <span>AYRO</span>
           </h2>
           <p className={styles.blogIntroSubtitle}>
-            Stay informed with the latest news, trends, and expert advice from our team. Our blog covers a wide range of topics to help your business thrive.
+            Stay informed with the latest news, trends, and expert advice from
+            our team. Our blog covers a wide range of topics to help your
+            business thrive.
           </p>
         </div>
       </section>
