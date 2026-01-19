@@ -26,7 +26,7 @@ export default function PrivacyPolicy() {
                 <div className={styles.contentContainer}>
                     <h2 className={styles.contentMainTitle}>Privacy Policy</h2>
                     <p>
-                        The Ayro website, and its related services, products, software, and content (the "Services") are owned and operated by Ayro Inc., a Delaware corporation. ("Ayro", "our", "us", "we"). Ayro has adopted this Privacy Policy ("Privacy Policy") to inform you that it collects Personal Information when you use the Services and to explain how this information is used. This Privacy Policy applies to all online interactions with Ayro owned or managed websites and does not cover our offline data practices. Your personal information is not shared with unrelated third-party businesses except as set forth in this Privacy Policy. You should contact Ayro directly with any questions or concerns at &lt;Contact Email&gt;.
+                        The AYRO website, and its related services, products, software, and content (the "Services") are owned and operated by AYRO Inc., a Delaware corporation. ("AYRO", "our", "us", "we"). AYRO has adopted this Privacy Policy ("Privacy Policy") to inform you that it collects Personal Information when you use the Services and to explain how this information is used. This Privacy Policy applies to all online interactions with AYRO owned or managed websites and does not cover our offline data practices. Your personal information is not shared with unrelated third-party businesses except as set forth in this Privacy Policy. You should contact AYRO directly with any questions or concerns at &lt;Contact Email&gt;.
                     </p>
 
                     <p className={styles.warningText}>
@@ -62,7 +62,7 @@ export default function PrivacyPolicy() {
                     </ul>
 
                     <h3>Types of Personal Information We Collect.</h3>
-                    <p>Ayro collects the following Personal Information from all Users who contact Ayro seeking more information and use the Services:</p>
+                    <p>AYRO collects the following Personal Information from all Users who contact AYRO seeking more information and use the Services:</p>
                     <ul className={styles.iconList}>
                         <li className={styles.iconListItem}>
                             <span className={styles.iconWrapper}><svg viewBox="0 0 512 512"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"></path></svg></span>
@@ -86,7 +86,7 @@ export default function PrivacyPolicy() {
                         </li>
                     </ul>
 
-                    <p>In addition, Ayro may collect the following Personal Information from Users:</p>
+                    <p>In addition, AYRO may collect the following Personal Information from Users:</p>
                     <ul className={styles.iconList}>
                         <li className={styles.iconListItem}>
                             <span className={styles.iconWrapper}><svg viewBox="0 0 512 512"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"></path></svg></span>
@@ -122,20 +122,20 @@ export default function PrivacyPolicy() {
                         </li>
                     </ul>
 
-                    <p>In addition, Ayro collects information that you submit while using our Services, including prompts, queries, uploaded files, and any generated outputs associated with your account. These inputs and outputs may be stored, reviewed, and used to improve the Services, monitor misuse, and provide technical support. You should not provide inputs containing sensitive categories of data (such as health information, financial account numbers, or government identifiers) unless strictly necessary for your use of the Services.</p>
+                    <p>In addition, AYRO collects information that you submit while using our Services, including prompts, queries, uploaded files, and any generated outputs associated with your account. These inputs and outputs may be stored, reviewed, and used to improve the Services, monitor misuse, and provide technical support. You should not provide inputs containing sensitive categories of data (such as health information, financial account numbers, or government identifiers) unless strictly necessary for your use of the Services.</p>
 
                     <h3>Sources of Personal Information Collection.</h3>
-                    <p>Ayro may collect this Personal Information from you through various channels, including, but not limited to, through your voluntary submission of information to the Services, through requests initiated by you through the Services, through the collection and analysis of information concerning your computer and browsing activities, through the use of cookies, web beacons, pixel tags, and through other sources permitted by law.</p>
+                    <p>AYRO may collect this Personal Information from you through various channels, including, but not limited to, through your voluntary submission of information to the Services, through requests initiated by you through the Services, through the collection and analysis of information concerning your computer and browsing activities, through the use of cookies, web beacons, pixel tags, and through other sources permitted by law.</p>
 
                     <h3>Cookies & Similar Technologies.</h3>
                     <p>The Services also utilizes Cookies. Cookies are small text files placed on your device to store data that can be recalled by a web server in the domain that placed the Cookie. We use Cookies and similar technologies to enable our systems to recognize your browser and to provide certain features. We also use "web beacons" to help deliver Cookies and gather usage and performance data. The Services may also include Cookies, web beacons, and other similar technologies from third-party service providers.</p>
-                    <p>You have a variety of tools available to control the data collected by Cookies, web beacons, and similar technologies. For example, you can use controls in your Internet browser to limit how the websites you visit are able to use Cookies and to withdraw your consent by clearing or blocking Cookies. You can also stop Ayro from placing Cookies (other than those required for the Services to function) on your device by referencing the instructions below or opting out using the Cookie notification opt-out on your initial visit to the Services.</p>
+                    <p>You have a variety of tools available to control the data collected by Cookies, web beacons, and similar technologies. For example, you can use controls in your Internet browser to limit how the websites you visit are able to use Cookies and to withdraw your consent by clearing or blocking Cookies. You can also stop AYRO from placing Cookies (other than those required for the Services to function) on your device by referencing the instructions below or opting out using the Cookie notification opt-out on your initial visit to the Services.</p>
 
                     <h3>Lawful Basis for Processing Your Personal Information</h3>
                     <p>The lawful basis for us processing your Personal Information for the uses described in this Policy will typically be because you have provided your consent; it is necessary for our contractual relationship; the processing is required for us to comply with legal obligations; and/or the processing is in our legitimate interest of providing the Services, improving the Services and other related services, and provide targeted offerings.</p>
 
-                    <h3>How Ayro Uses Your Personal Information.</h3>
-                    <p>We use your Personal Information based upon the legal basis of Users' consent to provide you with the Services, including waitlist confirmation and marketing communications, process any requests made by you, communicate with you, identify and fix problems with the Services, and update you regarding changes to the Services and the Ayro and third-party services offered through the Services.</p>
+                    <h3>How AYRO Uses Your Personal Information.</h3>
+                    <p>We use your Personal Information based upon the legal basis of Users' consent to provide you with the Services, including waitlist confirmation and marketing communications, process any requests made by you, communicate with you, identify and fix problems with the Services, and update you regarding changes to the Services and the AYRO and third-party services offered through the Services.</p>
                     <p>By using the Services, you further authorize the following specific uses of your Personal Information:</p>
                     <ul className={styles.iconList}>
                         {[
@@ -145,17 +145,17 @@ export default function PrivacyPolicy() {
                             "Contact and communicate with you, whether through email, telephone, text message, and/or messages within the Services;",
                             "Customize and/or tailor the Services and your user experience, which may include targeted selection and display of third-party advertisements within the Services;",
                             "Aggregate and de-identify certain information that does not include your personal information and disclose it for analysis, demographic profiling and/or targeted advertising;",
-                            "Advertise software, products, and services of Ayro;",
+                            "Advertise software, products, and services of AYRO;",
                             "Transmit and process your information and actions within the Services;",
                             "Provide statistical information, and include you in the same, where applicable;",
                             "Provide you with technical service and support, including updates;",
-                            "Provide you with information concerning Ayro's benefits or services;",
+                            "Provide you with information concerning AYRO's benefits or services;",
                             "Store, archive, retrieve, and make copies of your user generated content;",
                             "Understand your needs and requests;",
                             "Communicate promotions or other offers;",
                             "Process payments;",
                             "Prevent and detect illegal activities or violations of your Terms of Use;",
-                            "Combine your personal and personally identifiable information with information from other Ayro applications and/or services;",
+                            "Combine your personal and personally identifiable information with information from other AYRO applications and/or services;",
                             "Facilitate your use of the Services and upgrades/replacements to the Services;",
                             "Operate, maintain, and improve our Services;",
                             "Deliver generated outputs in response to your inputs and requests; and",
@@ -169,19 +169,19 @@ export default function PrivacyPolicy() {
                     </ul>
 
                     <h3>Sharing of Your Personal Information.</h3>
-                    <p>Ayro shares Your Personal Information with third parties in the following circumstances:</p>
+                    <p>AYRO shares Your Personal Information with third parties in the following circumstances:</p>
                     <ul className={styles.iconList}>
                         {[
-                            "Where Ayro has obtained your consent;",
-                            "Where you opt into a service provided by a third party directly from the Ayro platform, such as a proofreading or notarization service.",
+                            "Where AYRO has obtained your consent;",
+                            "Where you opt into a service provided by a third party directly from the AYRO platform, such as a proofreading or notarization service.",
                             "Where sharing or disclosure of your Personal Information is necessary to provide you with the Services, and/or associated services (We may share your personal or personally identifiable information with trusted third-parties who assist us in operating the Services, providing the associated services, and conducting our business);",
-                            "Where sharing or disclosure of your Personal Information is necessary to share personal or personally identifiable information with Ayro's parents, subsidiaries, successors, assigns, licensees, affiliates, or business partners;",
-                            "Where Ayro has been purchased by a third party;",
+                            "Where sharing or disclosure of your Personal Information is necessary to share personal or personally identifiable information with AYRO's parents, subsidiaries, successors, assigns, licensees, affiliates, or business partners;",
+                            "Where AYRO has been purchased by a third party;",
                             "Where sharing or disclosure of your Personal Information is necessary to respond to requests by government authorities;",
                             "Where your Personal Information is demanded by a court order or subpoena;",
-                            "Where sharing or disclosure of your Personal Information is needed to protect the employees, independent contractors, officers, directors, members, users, or owners/shareholders of Ayro;",
+                            "Where sharing or disclosure of your Personal Information is needed to protect the employees, independent contractors, officers, directors, members, users, or owners/shareholders of AYRO;",
                             "Where sharing or disclosure of your Personal Information is needed to help prevent against fraud or the violation of any applicable law, statute, regulation, ordinance, or treaty; and",
-                            "Where Ayro is otherwise legally obligated to share your personal or personally identifiable information to comply with applicable law, governmental requests, judicial proceedings, court orders, subpoenas, or lawful requests from public authorities, including to meet national security or law enforcement requirements."
+                            "Where AYRO is otherwise legally obligated to share your personal or personally identifiable information to comply with applicable law, governmental requests, judicial proceedings, court orders, subpoenas, or lawful requests from public authorities, including to meet national security or law enforcement requirements."
                         ].map((item, index) => (
                             <li key={index} className={styles.iconListItem}>
                                 <span className={styles.iconWrapper}><svg viewBox="0 0 512 512"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"></path></svg></span>
@@ -190,7 +190,7 @@ export default function PrivacyPolicy() {
                         ))}
                     </ul>
 
-                    <h3>Ayro Shares Your Personal Information With the Following Third-Parties:</h3>
+                    <h3>AYRO Shares Your Personal Information With the Following Third-Parties:</h3>
                     <ul className={styles.iconList}>
                         <li className={styles.iconListItem}>
                             <span className={styles.iconWrapper}><svg viewBox="0 0 512 512"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"></path></svg></span>
@@ -199,30 +199,30 @@ export default function PrivacyPolicy() {
                             </span>
                         </li>
                     </ul>
-                    <p>This list may not be exhaustive as to all the third-parties Ayro may share your Personal Information with. Ayro is committed to keeping track of which third-parties receive your Personal Information internally.</p>
+                    <p>This list may not be exhaustive as to all the third-parties AYRO may share your Personal Information with. AYRO is committed to keeping track of which third-parties receive your Personal Information internally.</p>
 
                     <h3>No Liability Third-Party Services and Third-Party Links.</h3>
-                    <p>The third-party service providers affiliated with Ayro have their own independent privacy policies governing the use of your Personal Information pursuant to the GDPR and CCPA and we encourage you to read those privacy policies carefully. You understand that even if Ayro deletes your Personal Information it may still be available in a third-party service provider's database. Ayro has no responsibility or liability for the Personal Information collection, use, or storage activities of the third-party services providers used by Ayro to provide you with the services associated with the Services.</p>
-                    <p>Ayro may outsource or subcontract some of our technical support, tracking and reporting functions, database management functions, and other services to third parties. We may share information from or about you with them so that they can perform their services as long as they comply with this Privacy Policy, the GDPR, and the CCPA as applicable. You understand and agree that Ayro will not be held responsible for any third-party communications sent by entities that Ayro does not own or control. You are encouraged to review any third-party privacy policies before utilizing any such third-party service.</p>
+                    <p>The third-party service providers affiliated with AYRO have their own independent privacy policies governing the use of your Personal Information pursuant to the GDPR and CCPA and we encourage you to read those privacy policies carefully. You understand that even if AYRO deletes your Personal Information it may still be available in a third-party service provider's database. AYRO has no responsibility or liability for the Personal Information collection, use, or storage activities of the third-party services providers used by AYRO to provide you with the services associated with the Services.</p>
+                    <p>AYRO may outsource or subcontract some of our technical support, tracking and reporting functions, database management functions, and other services to third parties. We may share information from or about you with them so that they can perform their services as long as they comply with this Privacy Policy, the GDPR, and the CCPA as applicable. You understand and agree that AYRO will not be held responsible for any third-party communications sent by entities that AYRO does not own or control. You are encouraged to review any third-party privacy policies before utilizing any such third-party service.</p>
 
                     <h3>Personal Information Transfer and Storage.</h3>
                     <p>Your Personal Information is stored and processed on computers and servers in the United States. This list may expand and include other countries not listed here. Your information may be processed on servers located outside of the country where you live. Data protection laws vary among countries, with some providing more protection than others. Regardless of where your information is stored and processed, we apply the same protections described in this policy. Through your use of the Services, you consent to the processing and storage of your Personal Information and personally identifiable information. You understand that your Personal Information may be transferred to – and maintained on – computers located outside of your state, province, country, or other governmental jurisdiction. If you are located outside the countries listed and choose to provide Personal Information to us, please note that we transfer your Personal Information to the countries listed and process it there, and that we may store portions of your Personal Information in said countries.</p>
 
                     <h3>Personal Information Security.</h3>
-                    <p>Ayro uses organizational and technical security measures designed to protect the security of your Personal Information. Though we undertake commercially reasonable efforts to protect your information, no website, software, or online service is completely safe. Accordingly, you provide such information at your own risk.</p>
+                    <p>AYRO uses organizational and technical security measures designed to protect the security of your Personal Information. Though we undertake commercially reasonable efforts to protect your information, no website, software, or online service is completely safe. Accordingly, you provide such information at your own risk.</p>
 
                     <h3>EU Users' Rights Under the GDPR.</h3>
-                    <p>The GDPR provides Users located in the EU under its protection certain rights with respect to their Personal Data collected by us on the Services. Accordingly, Ayro recognizes and will comply with the GDPR and those rights, except as limited by applicable law.</p>
+                    <p>The GDPR provides Users located in the EU under its protection certain rights with respect to their Personal Data collected by us on the Services. Accordingly, AYRO recognizes and will comply with the GDPR and those rights, except as limited by applicable law.</p>
 
                     <h3>California Users' Rights.</h3>
                     <p>Under the CCPA, California Users have the following rights:</p>
                     <ul className={styles.iconList}>
                         {[
-                            ["Right to Know About Personal Information Collected, Disclosed, or Sold: ", "You have the right to request that Ayro disclose what Personal Information of yours it collects, uses, discloses, and sells over the past 12 months."],
-                            ["Right to Have Personal Information Deleted:", " You have the right to request that Ayro delete any of your Personal Information that we collected from you."],
-                            ["Right to Opt-Out of the Sale of Personal Information: ", "Ayro does not sell Personal Information. "],
-                            ["Right to Non-Discrimination:", " Ayro shall not discriminate against California Users for exercising their rights under the CCPA. "],
-                            ["Right to Correction: ", "You have the right to request that Ayro make any updates or amendments to any incorrect data records. "],
+                            ["Right to Know About Personal Information Collected, Disclosed, or Sold: ", "You have the right to request that AYRO disclose what Personal Information of yours it collects, uses, discloses, and sells over the past 12 months."],
+                            ["Right to Have Personal Information Deleted:", " You have the right to request that AYRO delete any of your Personal Information that we collected from you."],
+                            ["Right to Opt-Out of the Sale of Personal Information: ", "AYRO does not sell Personal Information. "],
+                            ["Right to Non-Discrimination:", " AYRO shall not discriminate against California Users for exercising their rights under the CCPA. "],
+                            ["Right to Correction: ", "You have the right to request that AYRO make any updates or amendments to any incorrect data records. "],
                             ["Right to Access Information About Automated Decision Making:", " You have the right to request information about automated decision-making processes based on your Personal Information. "],
                             ["Right to Opt-Out of Automated Decision-Making Technology:", " You have the right to request to opt-out of the use of automated decision-making technology. "]
                         ].map(([title, desc], index) => (
@@ -254,19 +254,19 @@ export default function PrivacyPolicy() {
                     <p>Under Nevada law, certain Nevada consumers may opt out of the sale of Personal Information for monetary consideration. We do not engage in such activity; however, if you are a Nevada resident who has purchased or leased goods or services from us, you may submit a request to opt out of any potential future sales under Nevada law. We will verify this request by ensuring that such request is from an email address associated with a User's account or with a user to a reasonably high degree of certainty.</p>
 
                     <h3>Purchase or Sale of the Services or Other Assets.</h3>
-                    <p>Ayro may purchase other businesses or sell components of its business, including, but not limited to, the Services. In the event Ayro purchases another business or sells any component of its business, your Personal Information will continue to be used consistent with the terms of this Privacy Policy.</p>
+                    <p>AYRO may purchase other businesses or sell components of its business, including, but not limited to, the Services. In the event AYRO purchases another business or sells any component of its business, your Personal Information will continue to be used consistent with the terms of this Privacy Policy.</p>
 
-                    <h3>How To Stop Ayro from collecting your Personal Information.</h3>
-                    <p>You can stop Ayro from collecting your Personal Information by contacting Ayro at &lt;Contact Email&gt; and requesting that Ayro stop collecting your Personal Information.</p>
+                    <h3>How To Stop AYRO from collecting your Personal Information.</h3>
+                    <p>You can stop AYRO from collecting your Personal Information by contacting AYRO at &lt;Contact Email&gt; and requesting that AYRO stop collecting your Personal Information.</p>
 
                     <h3>Your Obligations.</h3>
-                    <p>When using the Services, you are obligated to inform Ayro of any changes to your Personal Information.</p>
+                    <p>When using the Services, you are obligated to inform AYRO of any changes to your Personal Information.</p>
 
                     <h3>Children's Online Privacy Protection Policy.</h3>
-                    <p>The Services are not intended for or directed to users under the age of 18, and Ayro does not knowingly or intentionally collect Personal Information from children under the age of 13 or other minors. Where appropriate, Ayro takes reasonable measures to determine that users are adults of legal age and to inform minors not to submit such information to the Services or in response to advertisements. If we discover we have collected personal information from a minor under 18, we will deactivate the account and take reasonable measures to promptly delete such data from our records.</p>
+                    <p>The Services are not intended for or directed to users under the age of 18, and AYRO does not knowingly or intentionally collect Personal Information from children under the age of 13 or other minors. Where appropriate, AYRO takes reasonable measures to determine that users are adults of legal age and to inform minors not to submit such information to the Services or in response to advertisements. If we discover we have collected personal information from a minor under 18, we will deactivate the account and take reasonable measures to promptly delete such data from our records.</p>
 
                     <h3>Contact and Notices.</h3>
-                    <p>All questions and concerns regarding this Privacy Policy may be submitted to Ayro at:</p>
+                    <p>All questions and concerns regarding this Privacy Policy may be submitted to AYRO at:</p>
                     <p>&lt;Contact Email&gt;</p>
                     <p>&lt;Name of Person or Department of Contact&gt;</p>
                     <p>&lt;Mailing Address&gt;</p>

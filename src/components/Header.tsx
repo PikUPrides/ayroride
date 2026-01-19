@@ -22,8 +22,8 @@ export default function Header() {
         <Link href="/" className={styles.brand}>
           <img
             src="/Ayro_Secondary_1.png"
-            alt="Ayro"
             className={styles.logo}
+            alt="AYRO"
           />
         </Link>
 
@@ -68,6 +68,9 @@ export default function Header() {
                 <ul className={styles.dropdownMenu}>
                   <li>
                     <Link href="/about-us">About Us</Link>
+                  </li>
+                  <li>
+                    <Link href="/services">Services</Link>
                   </li>
                   <li>
                     <Link href="/contact-us">Contact</Link>
@@ -146,6 +149,11 @@ export default function Header() {
                 <li>
                   <Link href="/about-us" onClick={toggleMenu}>
                     About Us
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services" onClick={toggleMenu}>
+                    Services
                   </Link>
                 </li>
                 <li>

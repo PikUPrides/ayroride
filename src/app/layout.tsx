@@ -10,28 +10,28 @@ const openSans = Open_Sans({
 });
 
 export const metadata = {
-  title: "Ayro – Earn Rewards for Referrals",
-  description: "Join the Ayro affiliate waitlist, refer friends & earn exciting rewards. Download app and get a chance to win exclusive prizes!",
+  title: "AYRO – Earn Rewards for Referrals",
+  description: "Join the AYRO affiliate waitlist, refer friends & earn exciting rewards. Download app and get a chance to win exclusive prizes!",
   metadataBase: new URL("https://ayrorides.com"),
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://ayrorides.com",
-    siteName: "Ayro",
-    title: "Ayro",
+    siteName: "AYRO",
+    title: "AYRO",
     description: "Ridesharing means better pay and safety.",
     images: [
       {
         url: "/assets/OG.png",
         width: 1200,
         height: 630,
-        alt: "Ayro - Ridesharing Reinvented",
+        alt: "AYRO - Ridesharing Reinvented",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ayro",
+    title: "AYRO",
     description: "Ridesharing means better pay and safety.",
     images: ["/assets/OG.png"],
     creator: "@pikup26698",

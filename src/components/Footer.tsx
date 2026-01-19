@@ -45,7 +45,7 @@ export default function Footer() {
             <Link href="/" className={styles.footerBrand}>
               <img
                 src="/Ayro_Secondary_1.png"
-                alt="Ayro"
+                alt="AYRO"
                 className={styles.footerLogo}
               />
             </Link>
@@ -217,7 +217,7 @@ export default function Footer() {
 
           <div className={styles.footerBottom}>
             <p className={styles.copyrightText}>
-              Copyright Ayro 2025. All Rights Reserved.
+              Copyright AYRO 2025. All Rights Reserved.
             </p>
             <div className={styles.legalLinks}>
               <Link href="/terms-of-service">Terms of Service</Link>

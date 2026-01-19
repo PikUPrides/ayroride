@@ -6,7 +6,7 @@ import styles from "../page.module.css";
 const originalTestimonials = [
     {
         rating: "/assets/Group-8-3.svg",
-        text: "“Ayro’s referral program made me feel like I’m actually making a difference while earning great rewards. The dashboard makes tracking so easy!”",
+        text: "“AYRO’s referral program made me feel like I’m actually making a difference while earning great rewards. The dashboard makes tracking so easy!”",
         author: "— Jamie Rodriguez",
         quoteIcon: "/assets/Vector-50.svg"
     },

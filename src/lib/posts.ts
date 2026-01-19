@@ -70,7 +70,7 @@ export async function getApiPostBySlug(slug: string): Promise<Post> {
         featuredImage:
           post._embedded?.["wp:featuredmedia"]?.[0]?.source_url || null,
         tags: [], // Tags handling could be added if needed
-        author: post._embedded?.["author"]?.[0]?.name || "Ayro Team",
+        author: post._embedded?.["author"]?.[0]?.name || "AYRO Team",
         categories:
           post._embedded?.["wp:term"]?.[0]?.map((term: any) => term.name) || [],
         readTime: calculateReadTime(post.content.rendered),
@@ -102,7 +102,7 @@ export async function getPostBySlug(slug: string): Promise<Post> {
       description: data.description,
       featuredImage: data.featuredImage || null,
       tags: data.tags || [],
-      author: data.author || "Ayro Team",
+      author: data.author || "AYRO Team",
       categories: data.categories || [],
       readTime: calculateReadTime(content),
       content: htmlContent,
@@ -130,7 +130,7 @@ export async function getPostBySlug(slug: string): Promise<Post> {
         featuredImage:
           post._embedded?.["wp:featuredmedia"]?.[0]?.source_url || null,
         tags: [], // Tags handling could be added if needed
-        author: post._embedded?.["author"]?.[0]?.name || "Ayro Team",
+        author: post._embedded?.["author"]?.[0]?.name || "AYRO Team",
         categories:
           post._embedded?.["wp:term"]?.[0]?.map((term: any) => term.name) || [],
         readTime: calculateReadTime(post.content.rendered),
@@ -193,7 +193,7 @@ export async function getPaginatedPosts(
       featuredImage:
         post._embedded?.["wp:featuredmedia"]?.[0]?.source_url || null,
       tags: [], // Tags handling could be added if needed
-      author: post._embedded?.["author"]?.[0]?.name || "Ayro Team",
+      author: post._embedded?.["author"]?.[0]?.name || "AYRO Team",
       categories:
         post._embedded?.["wp:term"]?.[0]?.map((term: any) => term.name) || [],
       readTime: calculateReadTime(post.content.rendered),
@@ -351,7 +351,7 @@ export async function getApiPostsByAuthor(
   const { posts: apiPosts } = await getPaginatedPosts(1, 100);
 
   return apiPosts.filter((post) => {
-    const slugifiedAuthor = (post.author || "Ayro Team")
+    const slugifiedAuthor = (post.author || "AYRO Team")
       .toLowerCase()
       .replace(/[^a-z0-9]+/g, "-")
       .replace(/(^-|-$)+/g, "");

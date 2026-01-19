@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: Params) {
       title: post.title,
       description: post.description || "Default description",
       url: `https://ayrorides.com/blog/${slug}`,
-      siteName: "Ayro",
+      siteName: "AYRO",
       images: [
         {
           url: post.featuredImage || "https://ayrorides.com/assets/OG.png",
@@ -114,12 +114,12 @@ export default async function BlogPost({
                 <div className="flex items-center gap-1">
                   <span>By</span>
                   <a
-                    href={`/blog/author/${(post.author || "pickUP Team")
+                    href={`/blog/author/${(post.author || "AYRO Team")
                       .toLowerCase()
                       .replace(/[^a-z0-9]+/g, "-")}`}
                     className="text-gray-600 hover:text-[#346BFF]"
                   >
-                    {post.author || "draftss"}
+                    {post.author || "AYRO Team"}
                   </a>
                 </div>
                 <time dateTime={post.date} className="text-gray-600">

@@ -2,10 +2,10 @@ import styles from "./page.module.css";
 import TestimonialCarousel from "./components/TestimonialCarousel";
 
 export const metadata = {
-    title: "Services – Ayro – Referral Program",
+    title: "Services – AYRO – Referral Program",
     description: "Join the rebellion against surge pricing and unfair practices while earning significant rewards through our gamified referral system.",
     openGraph: {
-        title: "Services – Ayro – Referral Program",
+        title: "Services – AYRO – Referral Program",
         description: "Join the rebellion against surge pricing and unfair practices while earning significant rewards through our gamified referral system.",
         url: "https://ayrorides.com/services",
         images: [
@@ -13,13 +13,13 @@ export const metadata = {
                 url: "/assets/OG.png",
                 width: 1200,
                 height: 630,
-                alt: "Ayro Services",
+                alt: "AYRO Services",
             },
         ],
     },
     twitter: {
         card: "summary_large_image",
-        title: "Services – Ayro – Referral Program",
+        title: "Services – AYRO – Referral Program",
         description: "Join the rebellion against surge pricing. Earn rewards through our gamified referral system.",
     },
 };

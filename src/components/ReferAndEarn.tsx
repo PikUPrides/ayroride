@@ -151,7 +151,7 @@ export default function ReferAndEarn() {
                     onChange={handleChange}
                     className={styles.radioInput}
                   />
-                  <span>Both</span>
+                  <span>Rider & Driver</span>
                 </label>
               </div>
             </div>

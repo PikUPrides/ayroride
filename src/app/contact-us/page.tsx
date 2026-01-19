@@ -2,10 +2,10 @@ import ContactForm from "./ContactFormClient";
 import styles from "./contact-us.module.css";
 
 export const metadata = {
-  title: "Contact Us - Ayro",
+  title: "Contact Us - AYRO",
   description: "We would love to hear from you. Whether you have questions, need assistance, or want to discuss your business needs, our team is here to help.",
   openGraph: {
-    title: "Contact Us - Ayro",
+    title: "Contact Us - AYRO",
     description: "We would love to hear from you. Whether you have questions, need assistance, or want to discuss your business needs, our team is here to help.",
     url: "https://ayrorides.com/contact-us/",
     images: [
@@ -13,7 +13,7 @@ export const metadata = {
         url: "/assets/OG.png",
         width: 1200,
         height: 630,
-        alt: "Contact Ayro",
+        alt: "Contact AYRO",
       },
     ],
   },
@@ -42,7 +42,7 @@ export default function Contact() {
       <section className={styles.formSection}>
         <div className={styles.formContainer}>
           <div className={styles.formHeader}>
-            <h2 className={styles.formTitle}>Get in Touch with <span>Ayro</span></h2>
+            <h2 className={styles.formTitle}>Get in Touch with <span>AYRO</span></h2>
             <p className={styles.formSubtitle}>
               We would love to hear from you. Whether you have questions, need assistance, or
               want to discuss your business needs, our team is here to help.
@@ -57,7 +57,7 @@ export default function Contact() {
           <div className={styles.infoTextSide}>
             <h3 className={styles.infoTitle}>Contact <span className={styles.tealText}>Information</span></h3>
             <p className={styles.infoDesc}>
-              Ayro is building a fair and transparent ride share system that protects both riders and drivers.
+              AYRO is building a fair and transparent ride share system that protects both riders and drivers.
               No surge pricing, no surprises. Our referral program rewards Early Adopters for helping us grow
               a community where riders pay less and drivers earn what they deserve.
             </p>

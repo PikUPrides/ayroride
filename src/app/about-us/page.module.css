@@ -939,6 +939,6 @@
     }
 
     .mobileLine {
-        display: block;
+        display: inline;
     }
 }

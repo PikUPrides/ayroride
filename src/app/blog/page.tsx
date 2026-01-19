@@ -4,11 +4,11 @@ import { fetchMorePosts } from "../blog/actions";
 import styles from "./page.module.css";
 
 export const metadata = {
-  title: "Insights and Updates from Ayro",
+  title: "Insights and Updates from AYRO",
   description:
     "Stay informed with the latest news, trends, and expert advice from our team. Our blog covers a wide range of topics to help your business thrive.",
   openGraph: {
-    title: "Insights and Updates from Ayro",
+    title: "Insights and Updates from AYRO",
     description:
       "Stay informed with the latest news, trends, and expert advice from our team. Our blog covers a wide range of topics to help your business thrive.",
     url: "https://ayrorides.com/blog/",
@@ -17,7 +17,7 @@ export const metadata = {
         url: "/assets/OG.png",
         width: 1200,
         height: 630,
-        alt: "Ayro Blog",
+        alt: "AYRO Blog",
       },
     ],
   },

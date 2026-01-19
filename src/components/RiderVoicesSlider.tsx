@@ -5,11 +5,11 @@ import styles from "../app/about-us/page.module.css";
 
 const testimonials = [
     {
-        quote: "I was tired of unpredictable surge pricing eating into my budget. With Ayro, I know what I'm paying, drivers know what they're earning, and I've already reached the second tier of rewards. This is how ride-sharing should work!",
+        quote: "I was tired of unpredictable surge pricing eating into my budget. With AYRO, I know what I'm paying, drivers know what they're earning, and I've already reached the second tier of rewards. This is how ride-sharing should work!",
         author: "Marcus Johnson"
     },
     {
-        quote: "Ayro's referral program isn't just about rewards – it's about being part of something bigger. I've already earned ride credits and helped friends save money while supporting drivers. It's a win-win revolution!",
+        quote: "AYRO's referral program isn't just about rewards – it's about being part of something bigger. I've already earned ride credits and helped friends save money while supporting drivers. It's a win-win revolution!",
         author: "Sarah Mendez"
     }
 ];
