@@ -7,7 +7,6 @@ export default function ReferAndEarn() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    countryCode: "+1",
     phone: "",
     userType: "Rider",
   });
@@ -32,7 +31,7 @@ export default function ReferAndEarn() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           email: formData.email,
-          phone: `${formData.countryCode}${formData.phone}`,
+          phone: formData.phone,
           name: formData.name,
           userType: formData.userType,
         }),
@@ -46,7 +45,6 @@ export default function ReferAndEarn() {
           name: "",
           email: "",
           phone: "",
-          countryCode: "+1",
           userType: "Rider",
         });
       } else {
@@ -88,24 +86,30 @@ export default function ReferAndEarn() {
               onChange={handleChange}
               required
             />
-            <div className={styles.phoneRow}>
-              <select
-                name="countryCode"
-                className={styles.countrySelect}
-                value={formData.countryCode}
-                onChange={handleChange}
-              >
-                <option value="+1">+1 (US)</option>
-
-                {/* Add more codes as needed */}
-              </select>
+            <div className={styles.phoneWrapper}>
+              <span className={styles.phonePrefix}>+1</span>
               <input
                 type="tel"
                 name="phone"
-                placeholder="Phone Number"
-                className={styles.phoneInput}
+                placeholder="Your Phone Number"
+                className={styles.phoneInputWithPrefix}
                 value={formData.phone}
-                onChange={handleChange}
+                onChange={(e) => {
+                  const input = e.target.value;
+                  const numbers = input.replace(/\D/g, '');
+                  let formatted = numbers;
+                  if (numbers.length > 0) {
+                    if (numbers.length <= 3) {
+                      formatted = numbers;
+                    } else if (numbers.length <= 6) {
+                      formatted = `(${numbers.slice(0, 3)}) ${numbers.slice(3)}`;
+                    } else {
+                      formatted = `(${numbers.slice(0, 3)}) ${numbers.slice(3, 6)}-${numbers.slice(6, 10)}`;
+                    }
+                  }
+                  setFormData({ ...formData, phone: formatted });
+                }}
+                maxLength={14}
                 required
               />
             </div>

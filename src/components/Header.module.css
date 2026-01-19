@@ -1,13 +1,15 @@
 .header {
-  background-color: #1d0652;
+  background-color: #1D0652;
   color: #ffffff;
   padding: 0 20px;
   height: 132px;
   display: flex;
   align-items: center;
+  /* Ensure vertical centering */
   position: relative;
   z-index: 20;
-  border-bottom: 1px solid #423df940;
+  /* Keep some z-index just in case, but lower than before or standard */
+  border-bottom: 1px solid #423DF940;
 }
 
 .headerContent {
@@ -36,7 +38,7 @@
 .brandDivider {
   width: 100%;
   height: 2px;
-  background-color: #08d9c4;
+  background-color: #08D9C4;
   margin: 4px 0;
 }
 
@@ -44,7 +46,7 @@
   font-family: "Roboto", sans-serif;
   font-size: 13.5px;
   font-weight: 600;
-  color: #ffffff;
+  color: #FFFFFF;
   line-height: 1.2;
 }
 
@@ -78,6 +80,8 @@
   position: relative;
   transition: opacity 0.3s ease;
   padding: 5px 0;
+  margin-right: 0;
+  /* Based on 0px 18px 0px 0px */
 }
 
 .navItem a:hover {
@@ -85,79 +89,24 @@
 }
 
 .navItem a.active {
+  color: #ffffff;
   font-weight: 700;
 }
 
 /* Underline for Active AND Hover */
 .navItem a:hover::after,
 .navItem a.active::after {
-  content: "";
+  content: '';
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
   height: 1px;
   border-radius: 1px;
-  background-color: #08d9c4;
+  /* Adding rounded corners for sleekness */
+  background-color: #08D9C4;
 }
 
-/* Company Dropdown (Desktop) */
-.dropdown {
-  position: relative;
-}
-
-.dropdownToggle {
-  cursor: pointer;
-  color: #ffffff;
-  font-family: "Open Sans", sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  display: flex;
-  align-items: center;
-  position: relative;
-  padding: 5px 0;
-}
-
-.dropdownToggle:hover::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background-color: #08d9c4;
-}
-
-.dropdownMenu {
-  position: absolute;
-  top: calc(100% + 0px);
-  left: 0;
-  background-color: #1d0652;
-  border: 1px solid #423df940;
-  border-radius: 10px;
-  min-width: 200px;
-  padding: 10px 0;
-  z-index: 50;
-}
-
-.dropdownMenu li {
-  list-style: none;
-}
-
-.dropdownMenu li a {
-  padding: 10px 18px;
-  display: block;
-  color: #ffffff;
-  font-size: 15px;
-  text-decoration: none;
-}
-
-.dropdownMenu li a:hover {
-  background-color: #423df9;
-  font-weight: 600;
-}
-
-/* Waitlist Button */
 .waitlistBtn {
   background-color: transparent;
   border: 1px solid #ffffff;
@@ -171,7 +120,9 @@
   font-weight: 700;
   display: flex;
   justify-content: center;
+  /* Center horizontally */
   align-items: center;
+  /* Center vertically */
   text-decoration: none;
   transition: all 0.3s ease;
   white-space: nowrap;
@@ -213,13 +164,14 @@
   transform: translateY(-8px) rotate(-45deg);
 }
 
-/* Mobile Menu */
+/* Mobile Menu Overlay */
 .mobileMenu {
   position: absolute;
   top: 100%;
+  /* Below header */
   left: 0;
   width: 100%;
-  background-color: #1d0652;
+  background-color: #1D0652;
   flex-direction: column;
   align-items: center;
   gap: 20px;
@@ -232,35 +184,6 @@
   display: flex;
 }
 
-/* Mobile Company Dropdown */
-.mobileDropdownToggle {
-  width: 100%;
-  background: none;
-  border: none;
-  color: #ffffff;
-  font-family: "Open Sans", sans-serif;
-  font-size: 16px;
-  padding: 15px 0;
-  cursor: pointer;
-}
-
-.mobileSubMenu {
-  width: 100%;
-  background-color: #14033c;
-}
-
-.mobileSubMenu li a {
-  padding: 14px 0;
-  display: block;
-  color: #ffffff;
-}
-
-.mobileSubMenu li a:hover {
-  background-color: #423df9;
-  font-weight: 700;
-}
-
-/* Responsive */
 @media (max-width: 900px) {
   .header {
     padding: 15px 20px;
@@ -291,20 +214,23 @@
 
   .mobileMenu .navItem {
     width: 100%;
+    margin-right: 0;
   }
 
   .mobileMenu .navItem a {
     width: 100%;
     justify-content: center;
     padding: 15px 0;
+    margin: 0;
   }
 
   .mobileMenu .navItem a:hover,
   .mobileMenu .navItem a.active {
-    background-color: #423df9;
+    background-color: #423DF9;
     font-weight: 700;
   }
 
+  /* Remove underline from mobile since we use background fill */
   .mobileMenu .navItem a:hover::after,
   .mobileMenu .navItem a.active::after {
     display: none;
@@ -312,13 +238,117 @@
 
   .mobileMenu .waitlistBtn {
     margin-top: 20px;
-    background-color: #423df9;
+    background-color: #423DF9;
     color: white;
     border: none;
+    width: auto;
+    white-space: nowrap;
     padding: 0 40px;
   }
 
   .mobileMenu .waitlistBtn:hover {
     background-color: #352ec7;
   }
+}
+
+/* Dropdown Styles */
+.dropdown {
+  position: relative;
+}
+
+.dropdownToggle {
+  text-decoration: none;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  text-transform: capitalize;
+  display: flex;
+  align-items: center;
+  transition: opacity 0.3s ease;
+  padding: 5px 0;
+  cursor: pointer;
+}
+
+.dropdownToggle:hover {
+  opacity: 0.9;
+}
+
+.dropdownToggle:hover::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #08D9C4;
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #1D0652;
+  min-width: 180px;
+  padding: 10px 0;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  list-style: none;
+  margin-top: 0px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dropdownMenu li {
+  width: 100%;
+}
+
+.dropdownMenu li a {
+  padding: 10px 20px;
+  display: block;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.dropdownMenu li a:hover {
+  background-color: #423DF9;
+  opacity: 1;
+}
+
+/* Mobile Dropdown */
+.mobileDropdownToggle {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 400;
+  width: 100%;
+  text-align: center;
+  padding: 15px 0;
+  cursor: pointer;
+}
+
+.mobileSubMenu {
+  background-color: rgba(66, 61, 249, 0.2);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  list-style: none;
+}
+
+.mobileSubMenu li {
+  width: 100%;
+}
+
+.mobileSubMenu li a {
+  width: 100%;
+  justify-content: center;
+  padding: 12px 0;
+  font-size: 15px;
 }

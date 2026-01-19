@@ -1,18 +1,18 @@
 "use client";
 
-import React, { useState } from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import styles from "./Header.module.css";
+import React, { useState } from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import styles from './Header.module.css';
 
 export default function Header() {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [isCompanyOpen, setIsCompanyOpen] = useState(false);
+  const [isResourcesOpen, setIsResourcesOpen] = useState(false);
   const pathname = usePathname();
 
   const toggleMenu = () => {
     setIsMobileOpen(!isMobileOpen);
-    setIsCompanyOpen(false);
   };
 
   return (
@@ -20,43 +20,40 @@ export default function Header() {
       <div className={styles.headerContent}>
         {/* Brand */}
         <Link href="/" className={styles.brand}>
-          <img src="/Ayro_Secondary_1.png" alt="Ayro" className={styles.logo} />
+          <img
+            src="/Ayro_Secondary_1.png"
+            alt="Ayro"
+            className={styles.logo}
+          />
         </Link>
 
-        {/* Desktop Navigation */}
+        {/* Desktop Nav */}
         <nav className={styles.nav}>
           <ul className={styles.navLinks}>
             <li className={styles.navItem}>
-              <Link href="/" className={pathname === "/" ? styles.active : ""}>
-                Home
-              </Link>
+              <Link href="/" className={pathname === '/' ? styles.active : ''}>Home</Link>
+            </li>
+            <li className={styles.navItem}>
+              <Link href="/about-us" className={pathname === '/about-us' ? styles.active : ''}>About Us</Link>
+            </li>
+            <li className={styles.navItem}>
+              <Link href="/services" className={pathname === '/services' ? styles.active : ''}>Services</Link>
             </li>
 
-            <li className={styles.navItem}>
-              <Link
-                href="/about-us"
-                className={pathname === "/about-us" ? styles.active : ""}
-              >
-                Rider
-              </Link>
-            </li>
-
-            <li className={styles.navItem}>
-              <Link
-                href="/services"
-                className={pathname === "/services" ? styles.active : ""}
-              >
-                Driver
-              </Link>
-            </li>
-
-            <li className={styles.navItem}>
-              <Link
-                href="/blog"
-                className={pathname === "/blog" ? styles.active : ""}
-              >
-                Blog
-              </Link>
+            {/* Resources Dropdown */}
+            <li
+              className={`${styles.navItem} ${styles.dropdown}`}
+              onMouseEnter={() => setIsResourcesOpen(true)}
+              onMouseLeave={() => setIsResourcesOpen(false)}
+            >
+              <span className={styles.dropdownToggle}>Resources</span>
+              {isResourcesOpen && (
+                <ul className={styles.dropdownMenu}>
+                  <li>
+                    <Link href="/blog">Blog</Link>
+                  </li>
+                </ul>
+              )}
             </li>
 
             {/* Company Dropdown */}
@@ -73,26 +70,19 @@ export default function Header() {
                     <Link href="/about-us">About Us</Link>
                   </li>
                   <li>
-                    <Link href="/careers">Careers</Link>
-                  </li>
-                  <li>
                     <Link href="/contact-us">Contact</Link>
                   </li>
                 </ul>
               )}
             </li>
           </ul>
-
-          <Link href="/join-our-waitlist" className={styles.waitlistBtn}>
-            Join Our Waitlist
-          </Link>
+          <Link href="/join-our-waitlist" className={styles.waitlistBtn}>Join Our Waitlist</Link>
         </nav>
 
         {/* Mobile Toggle */}
         <button
-          className={`${styles.mobileToggle} ${
-            isMobileOpen ? styles.open : ""
-          }`}
+          className={`${styles.mobileToggle} ${isMobileOpen ? styles.open : ""
+            }`}
           onClick={toggleMenu}
           aria-label="Toggle menu"
         >
@@ -102,10 +92,8 @@ export default function Header() {
         </button>
       </div>
 
-      {/* Mobile Menu */}
-      <div
-        className={`${styles.mobileMenu} ${isMobileOpen ? styles.open : ""}`}
-      >
+      {/* Mobile Menu Overlay */}
+      <div className={`${styles.mobileMenu} ${isMobileOpen ? styles.open : ''}`}>
         <ul className={styles.navLinks}>
           <li className={styles.navItem}>
             <Link href="/" onClick={toggleMenu}>
@@ -125,10 +113,23 @@ export default function Header() {
             </Link>
           </li>
 
+          {/* Mobile Resources Dropdown */}
           <li className={styles.navItem}>
-            <Link href="/blog" onClick={toggleMenu}>
-              Blog
-            </Link>
+            <button
+              className={styles.mobileDropdownToggle}
+              onClick={() => setIsResourcesOpen(!isResourcesOpen)}
+            >
+              Resources
+            </button>
+            {isResourcesOpen && (
+              <ul className={styles.mobileSubMenu}>
+                <li>
+                  <Link href="/blog" onClick={toggleMenu}>
+                    Blog
+                  </Link>
+                </li>
+              </ul>
+            )}
           </li>
 
           {/* Mobile Company Dropdown */}
@@ -148,11 +149,6 @@ export default function Header() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/careers" onClick={toggleMenu}>
-                    Careers
-                  </Link>
-                </li>
-                <li>
                   <Link href="/contact-us" onClick={toggleMenu}>
                     Contact
                   </Link>
@@ -161,14 +157,7 @@ export default function Header() {
             )}
           </li>
         </ul>
-
-        <Link
-          href="/join-our-waitlist"
-          className={styles.waitlistBtn}
-          onClick={toggleMenu}
-        >
-          Join Our Waitlist
-        </Link>
+        <Link href="/join-our-waitlist" className={styles.waitlistBtn} onClick={toggleMenu}>Join Our Waitlist</Link>
       </div>
     </header>
   );

@@ -37,11 +37,13 @@ export const metadata = {
     creator: "@pikup26698",
   },
   robots: {
-    index: true,
-    follow: true,
+    index: false,
+    follow: false,
+    noindex: true,
+    nofollow: true,
     googleBot: {
-      index: true,
-      follow: true,
+      index: false,
+      follow: false,
       'max-video-preview': -1,
       'max-image-preview': 'large',
       'max-snippet': -1,

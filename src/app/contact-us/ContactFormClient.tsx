@@ -86,7 +86,22 @@ const ContactForm = () => {
                         placeholder="Phone Number"
                         className={styles.inputField}
                         value={formData.phone}
-                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                        onChange={(e) => {
+                            const input = e.target.value;
+                            const numbers = input.replace(/\D/g, '');
+                            let formatted = numbers;
+                            if (numbers.length > 0) {
+                                if (numbers.length <= 3) {
+                                    formatted = numbers;
+                                } else if (numbers.length <= 6) {
+                                    formatted = `(${numbers.slice(0, 3)}) ${numbers.slice(3)}`;
+                                } else {
+                                    formatted = `(${numbers.slice(0, 3)}) ${numbers.slice(3, 6)}-${numbers.slice(6, 10)}`;
+                                }
+                            }
+                            setFormData({ ...formData, phone: formatted });
+                        }}
+                        maxLength={14}
                     />
                 </div>
                 <div className={styles.formGroup}>

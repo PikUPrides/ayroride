@@ -8,7 +8,6 @@ export default function JoinOurWaitlist() {
         name: "",
         email: "",
         phone: "",
-        countryCode: "+1",
         userType: "Rider"
     });
     const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
@@ -28,7 +27,7 @@ export default function JoinOurWaitlist() {
                 body: JSON.stringify({
                     name: formData.name,
                     email: formData.email,
-                    phone: `${formData.countryCode}${formData.phone}`,
+                    phone: formData.phone,
                     userType: formData.userType
                 }),
             });
@@ -40,7 +39,7 @@ export default function JoinOurWaitlist() {
             }
 
             setStatus('success');
-            setFormData({ name: "", email: "", phone: "", countryCode: "+1", userType: "Rider" });
+            setFormData({ name: "", email: "", phone: "", userType: "Rider" });
         } catch (error: any) {
             setStatus('error');
             setErrorMessage(error.message);
@@ -97,29 +96,29 @@ export default function JoinOurWaitlist() {
                                     required
                                 />
                             </div>
-                            <div className={styles.phoneRow}>
-                                <select
-                                    className={styles.countrySelect}
-                                    value={formData.countryCode}
-                                    onChange={(e) => setFormData({ ...formData, countryCode: e.target.value })}
-                                >
-                                    <option value="+1">+1</option>
-                                    <option value="+44">+44</option>
-                                    <option value="+91">+91</option>
-                                    <option value="+61">+61</option>
-                                    <option value="+86">+86</option>
-                                    <option value="+81">+81</option>
-                                    <option value="+49">+49</option>
-                                    <option value="+33">+33</option>
-                                    <option value="+55">+55</option>
-                                    <option value="+52">+52</option>
-                                </select>
+                            <div className={styles.phoneWrapper}>
+                                <span className={styles.phonePrefix}>+1</span>
                                 <input
                                     type="tel"
                                     placeholder="Your Phone Number*"
-                                    className={styles.phoneInput}
+                                    className={styles.phoneInputWithPrefix}
                                     value={formData.phone}
-                                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                                    onChange={(e) => {
+                                        const input = e.target.value;
+                                        const numbers = input.replace(/\D/g, '');
+                                        let formatted = numbers;
+                                        if (numbers.length > 0) {
+                                            if (numbers.length <= 3) {
+                                                formatted = numbers;
+                                            } else if (numbers.length <= 6) {
+                                                formatted = `(${numbers.slice(0, 3)}) ${numbers.slice(3)}`;
+                                            } else {
+                                                formatted = `(${numbers.slice(0, 3)}) ${numbers.slice(3, 6)}-${numbers.slice(6, 10)}`;
+                                            }
+                                        }
+                                        setFormData({ ...formData, phone: formatted });
+                                    }}
+                                    maxLength={14}
                                     required
                                 />
                             </div>
