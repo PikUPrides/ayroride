@@ -270,6 +270,98 @@ export default function PrivacyPolicy() {
                     <p>&lt;Contact Email&gt;</p>
                     <p>&lt;Name of Person or Department of Contact&gt;</p>
                     <p>&lt;Mailing Address&gt;</p>
+                    <br />
+                    <div className={styles.sectionDivider}>
+                        <div className={styles.dividerContainer}>
+                            <div className={styles.dividerTeal}></div>
+                            <div className={styles.dividerBlue}></div>
+                        </div>
+                    </div>
+                    <br />
+
+                    <p>
+                        This Privacy Policy explains how AYRO (“we”, “our”, or “us”) collects, uses, and
+                        protects your information when you use our website and services.
+                    </p>
+
+                    <h3>Information We Collect</h3>
+                    <p>
+                        We may collect the following information:
+                    </p>
+                    <ul className={styles.iconList}>
+                        <li className={styles.iconListItem}>
+                            <span className={styles.iconWrapper}><svg viewBox="0 0 512 512"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"></path></svg></span>
+                            <span className={styles.listText}>Mobile number for account verification</span>
+                        </li>
+                        <li className={styles.iconListItem}>
+                            <span className={styles.iconWrapper}><svg viewBox="0 0 512 512"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"></path></svg></span>
+                            <span className={styles.listText}>Basic account details provided by users</span>
+                        </li>
+                        <li className={styles.iconListItem}>
+                            <span className={styles.iconWrapper}><svg viewBox="0 0 512 512"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"></path></svg></span>
+                            <span className={styles.listText}>Usage data for improving our services</span>
+                        </li>
+                    </ul>
+
+                    <h3>SMS & OTP Communication</h3>
+                    <p>
+                        AYRO uses SMS-based One-Time Passwords (OTPs) for user authentication and account
+                        verification purposes.
+                    </p>
+                    <p>
+                        By entering your mobile number and requesting an OTP on our platform, you explicitly
+                        consent to receive a one-time transactional SMS from AYRO.
+                    </p>
+                    <p>
+                        These OTP messages are sent strictly for security and verification purposes and are
+                        not used for marketing or promotional communication.
+                    </p>
+
+                    <h3>How We Use Your Information</h3>
+                    <ul className={styles.iconList}>
+                        <li className={styles.iconListItem}>
+                            <span className={styles.iconWrapper}><svg viewBox="0 0 512 512"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"></path></svg></span>
+                            <span className={styles.listText}>To verify user identity using OTP-based authentication</span>
+                        </li>
+                        <li className={styles.iconListItem}>
+                            <span className={styles.iconWrapper}><svg viewBox="0 0 512 512"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"></path></svg></span>
+                            <span className={styles.listText}>To provide and maintain our services</span>
+                        </li>
+                        <li className={styles.iconListItem}>
+                            <span className={styles.iconWrapper}><svg viewBox="0 0 512 512"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"></path></svg></span>
+                            <span className={styles.listText}>To improve security and prevent fraud</span>
+                        </li>
+                    </ul>
+
+                    <h3>Data Protection</h3>
+                    <p>
+                        We implement appropriate technical and organizational measures to protect your
+                        personal data against unauthorized access, alteration, or disclosure.
+                    </p>
+
+                    <h3>Third-Party Services</h3>
+                    <p>
+                        We may use trusted third-party service providers (such as SMS providers) solely
+                        to deliver OTP messages required for account verification.
+                    </p>
+
+                    <h3>Your Consent</h3>
+                    <p>
+                        By using our website and services, you consent to this Privacy Policy and agree
+                        to receive transactional SMS messages for verification purposes.
+                    </p>
+
+                    <h3>Changes to This Policy</h3>
+                    <p>
+                        We may update this Privacy Policy from time to time. Any changes will be posted
+                        on this page.
+                    </p>
+
+                    <h3>Contact Us</h3>
+                    <p>
+                        If you have any questions about this Privacy Policy, please contact us at
+                        <strong> support@ayro.com</strong>.
+                    </p>
                 </div>
             </section>
         </main>
