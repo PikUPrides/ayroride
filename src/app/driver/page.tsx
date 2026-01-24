@@ -42,7 +42,7 @@ export default function Rider() {
                         </h1>
                         <p className={styles.heroSubtitle}>
                             Guaranteed $30+ per active hour. Tips are extra. <br />
-                            <span style={{ fontSize: '0.9em', opacity: 0.9, display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: '10px', marginTop: '10px' }}>
+                            <span style={{ fontSize: '0.9em', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: '10px', marginTop: '10px', color: 'black' }}>
                                 <span>Apply easily</span>
                                 <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#08D9C4', display: 'inline-block' }}></span>
                                 <span>Get treated fairly</span>
