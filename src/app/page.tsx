@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import TestimonialsSlider from "@/components/TestimonialsSlider";
-import ReferAndEarn from "@/components/ReferAndEarn";
+import ReferAndEarn from "@/components/referral-modal/ReferAndEarn";
 import FAQAccordion from "@/components/FAQAccordion";
 
 const phrases = [
