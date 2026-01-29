@@ -1,4 +1,4 @@
-import ReferralHeroWidget from '@/components/ReferralHeroWidget';
+import ReferralHeroWidget from '@/components/referral-modal/ReferralHeroWidget';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
