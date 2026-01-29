@@ -1,4 +1,4 @@
-import ReferralHeroWidget from "@/components/ReferralHeroWidget";
+import ReferralHeroWidget from "@/components/referral-modal/ReferralHeroWidget";
 import styles from "./waitlist.module.css";
 
 export const metadata = {

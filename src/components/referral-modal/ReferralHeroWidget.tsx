@@ -49,7 +49,7 @@ const ReferralHeroWidget: React.FC<ReferralHeroWidgetProps> = ({ widgetId }) => 
     return (
         <div
             id={`referralhero-dashboard-${widgetId}`}
-            style={{ minHeight: '500px', width: '100%' }}
+            style={{ minHeight: '520px', width: '100%' }}
         />
     );
 };

@@ -1,0 +1,61 @@
+/* Custom Scrollbar */
+.customScrollbar::-webkit-scrollbar {
+    width: 4px;
+}
+
+.customScrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.customScrollbar::-webkit-scrollbar-thumb {
+    background: #E5E7EB;
+    border-radius: 10px;
+}
+
+.customScrollbar::-webkit-scrollbar-thumb:hover {
+    background: #D1D5DB;
+}
+
+/* 
+   Global Overrides for External ReferralHero Widget 
+   Basic visibility and reset only. 
+   Detailed styling is handled by the widget itself.
+*/
+
+:global(#mtr-optin-form) {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+:global(#mtr-form) {
+    /* Basic reset to ensure it fits our container */
+    max-width: 100% !important;
+    width: 100% !important;
+}
+
+/* Hide Unwanted Elements */
+:global(.mtr-text-field),
+:global(#mtr-optin-verification-container),
+:global(.show-hide-class) {
+    display: none !important;
+}
+
+/* Status Message - Keep it centered if it appears */
+/* Status Message - Keep it centered if it appears */
+:global(#mtr-form-status-container) {
+    text-align: center !important;
+    font-size: 14px !important;
+}
+
+/* Mobile: Remove widget card styling (border/padding) to prevent 'sticking' and double-card effect */
+@media (max-width: 768px) {
+    :global(#mtr-form) {
+        border: none !important;
+        padding: 0 !important;
+        background-color: transparent !important;
+        box-shadow: none !important;
+    }
+}

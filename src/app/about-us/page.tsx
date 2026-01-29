@@ -58,7 +58,7 @@ export default function About() {
           <div className={styles.whoWeAreTextSide}>
             <span className={styles.sectionBadge}>WHO WE ARE</span>
             <h2 className={styles.whoWeAreTitle}>
-              AYRO Began with a Simple Question: <span>What is AYRO?</span>
+              AYRO: From a parking lot to the <span>road ahead.</span>
             </h2>
             <div className={styles.whoWeAreContent}>
               <p>

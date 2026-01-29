@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "./driver.module.css";
 import TestimonialsSlider from "@/components/TestimonialsSlider";
-import ReferAndEarn from "@/components/ReferAndEarn";
+import ReferAndEarn from "@/components/referral-modal/ReferAndEarn";
 import FAQAccordion from "@/components/FAQAccordion";
 
 export const metadata = {

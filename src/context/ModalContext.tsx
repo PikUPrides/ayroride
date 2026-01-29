@@ -1,6 +1,7 @@
 "use client";
 
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 
 interface ModalContextType {
     isModalOpen: boolean;
@@ -11,8 +12,18 @@ interface ModalContextType {
 const ModalContext = createContext<ModalContextType | undefined>(undefined);
 
 export function ModalProvider({ children }: { children: ReactNode }) {
-    // defaulting to true so it pops up on load as you currently have it
-    const [isModalOpen, setIsModalOpen] = useState(true);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const pathname = usePathname();
+
+    useEffect(() => {
+        // Prevent auto-popup on the dedicated waitlist page
+        if (pathname === '/join-our-waitlist') return;
+
+        const timer = setTimeout(() => {
+            setIsModalOpen(true);
+        }, 5000);
+        return () => clearTimeout(timer);
+    }, [pathname]);
 
     const openModal = () => setIsModalOpen(true);
     const closeModal = () => setIsModalOpen(false);

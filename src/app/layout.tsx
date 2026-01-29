@@ -3,7 +3,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Script from "next/script";
-import ReferralModal from "@/components/ReferralModal";
+import ReferralModal from "@/components/referral-modal/ReferralModal";
 import { ModalProvider } from "@/context/ModalContext";
 
 const openSans = Open_Sans({

@@ -352,7 +352,7 @@ export default function Home() {
       <TestimonialsSlider />
 
       {/* Refer and Earn Section */}
-      <ReferAndEarn />
+      {/* <ReferAndEarn /> */}
 
       {/* FAQ Section */}
       <FAQAccordion />

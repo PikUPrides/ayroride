@@ -323,7 +323,6 @@
 }
 
 .socialIcon {
-    transition: transform 0.3s ease;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -332,10 +331,6 @@
 .socialIcon svg {
     width: 34px;
     height: 34px;
-}
-
-.socialIcon:hover {
-    transform: translateY(-3px);
 }
 
 .mapWrapper {
