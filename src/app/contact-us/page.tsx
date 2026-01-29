@@ -93,15 +93,11 @@ export default function Contact() {
               <h4>Social Contact</h4>
 
               <div className={styles.socialIcons}>
-                <a href="https://www.facebook.com/profile.php?id=61583870717780" target="_blank" className={styles.socialIcon}>
-                  <IoLogoFacebook size={32} color="#08D9C4" />
-                </a>
+
                 <a href="https://www.instagram.com/ayro.rideshare/" target="_blank" className={styles.socialIcon}>
                   <IoLogoInstagram size={32} color="#08D9C4" />
                 </a>
-                <a href="https://x.com/pikup26698" target="_blank" className={styles.socialIcon}>
-                  <IoLogoTwitter size={32} color="#08D9C4" />
-                </a>
+
                 <a href="https://www.youtube.com/@AYRO_Inc" target="_blank" className={styles.socialIcon}>
                   <IoLogoYoutube size={32} color="#08D9C4" />
                 </a>

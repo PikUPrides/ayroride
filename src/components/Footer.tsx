@@ -70,17 +70,13 @@ export default function Footer() {
                 </li>
               </ul>
               <div className={styles.socialIcons}>
-                <a href="https://www.facebook.com/profile.php?id=61583870717780" target="_blank" rel="noopener noreferrer">
-                  <IoLogoFacebook size={32} color="#08D9C4" />
-                </a>
+
 
                 <a href="https://www.instagram.com/ayro.rideshare/" target="_blank" rel="noopener noreferrer">
                   <IoLogoInstagram size={32} color="#08D9C4" />
                 </a>
 
-                <a href="https://x.com/pikup26698" target="_blank" rel="noopener noreferrer">
-                  <IoLogoTwitter size={32} color="#08D9C4" />
-                </a>
+
 
                 <a href="https://www.youtube.com/@AYRO_Inc" target="_blank" rel="noopener noreferrer">
                   <IoLogoYoutube size={32} color="#08D9C4" />
