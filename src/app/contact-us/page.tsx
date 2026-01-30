@@ -100,7 +100,7 @@ export default function Contact() {
                 </a>
 
                 <a href="https://x.com/ayro_inc" target="_blank" className={styles.socialIcon}>
-                  <Image src="/assets/x-icon.jpg" alt="X" width={32} height={32} style={{ borderRadius: '4px' }} />
+                  <Image src="/images/x.png" alt="X" width={38} height={38} />
                 </a>
 
                 <a href="https://www.instagram.com/ayro.rideshare/" target="_blank" className={styles.socialIcon}>

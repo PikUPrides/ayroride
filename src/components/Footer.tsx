@@ -78,7 +78,7 @@ export default function Footer() {
                   <Image src="/assets/facebook-icon.png" alt="Facebook" width={32} height={32} />
                 </a>
                 <a href="https://x.com/ayro_inc" target="_blank" rel="noopener noreferrer">
-                  <Image src="/assets/x-icon.jpg" alt="X" width={32} height={32} style={{ borderRadius: '4px' }} />
+                  <Image src="/images/x.png" alt="X" width={32} height={32} />
                 </a>
                 <a href="https://www.instagram.com/ayro.rideshare/" target="_blank" rel="noopener noreferrer">
                   <Image src="/assets/instagram-icon.png" alt="Instagram" width={32} height={32} />

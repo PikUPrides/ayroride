@@ -51,8 +51,6 @@ const ReferralHeroWidget: React.FC<ReferralHeroWidgetProps> = ({ widgetId }) => 
             script.async = true;
             script.id = scriptId;
 
-            // script.onerror: Silently fail to avoid console noise per user request
-            // If it fails, the spinner will eventually just keep spinning or we can kill it
             script.onerror = () => {
                 setStatus('loaded'); // Just hide the spinner
             };
