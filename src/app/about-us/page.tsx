@@ -58,11 +58,11 @@ export default function About() {
           <div className={styles.whoWeAreTextSide}>
             <span className={styles.sectionBadge}>WHO WE ARE</span>
             <h2 className={styles.whoWeAreTitle}>
-              AYRO: From a parking lot to the <span>road ahead.</span>
+              AYRO built in a <span>parking lot.</span>
             </h2>
             <div className={styles.whoWeAreContent}>
               <p>
-                While driving for a well-known rideshare company (more than{" "}
+                While driving for a well-known ride-share company (more than{" "}
                 <strong>30,000 rides!</strong>), our founder saw:
               </p>
               <ul>
@@ -76,7 +76,7 @@ export default function About() {
                 </li>
               </ul>
               <p>
-                That's when he decided to create a different kind of rideshare
+                That's when he decided to create a different kind of ride-share
                 company. One that would…
               </p>
               <p className={styles.highlightText}>
@@ -96,7 +96,7 @@ export default function About() {
             <h2 className={styles.missionTitle}>
               AYRO Is What{" "}
               <span className={styles.missionTitleSpan}>
-                Ride-Sharing Ought to Be?
+                Ride-Sharing Ought to Be
               </span>
             </h2>
             <p className={styles.missionIntro}>
@@ -124,9 +124,9 @@ export default function About() {
 
             <h3 className={styles.revolutionTitle}>
               <span className={styles.mobileLine}>
-                More Than an App{" "}
+                More Than a New Ride{" "}
                 <span className={styles.revolutionTitleSpan}>
-                  Ride — AYRO is a Revolution.
+                  — AYRO is a Revolution.
                 </span>
               </span>
             </h3>

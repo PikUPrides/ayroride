@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "./rider.module.css";
 import TestimonialsSlider from "@/components/TestimonialsSlider";
-import ReferAndEarn from "@/components/referral-modal/ReferAndEarn";
 import FAQAccordion from "@/components/FAQAccordion";
 
 export const metadata = {
@@ -37,7 +36,7 @@ export default function Rider() {
                     <div className={styles.heroContent}>
                         <span className={styles.topTag}>RIDE WITH AYRO</span>
                         <h1 className={styles.heroTitle}>
-                            <span className={styles.highlightText}>Rideshare</span> without surge <br />
+                            <span className={styles.highlightText}>Ride-share</span> without surge <br />
                             pricing or security worries.
                         </h1>
                         <p className={styles.heroSubtitle}>
@@ -71,7 +70,7 @@ export default function Rider() {
                             Choosing AYRO
                         </h2>
                         <p className={styles.whySubtitle}>
-                            Ride-sharing shouldn't feel stressful <br />
+                            Ride-sharing shouldn't feel stressful.<br /><br />
                             <b>AYRO keeps it simple, safe, and affordable.</b>
                         </p>
 
@@ -180,8 +179,8 @@ export default function Rider() {
                                 Invite riders and drivers to join AYRO and earn real rewards.
                             </p>
                             <ul className={styles.rewardsList}>
-                                <li className={styles.rewardsItem}>Cash rewards</li>
                                 <li className={styles.rewardsItem}>Ride credits</li>
+                                <li className={styles.rewardsItem}>Cash rewards</li>
                                 <li className={styles.rewardsItem}>Early adopter status</li>
                                 <li className={styles.rewardsItem}>Referral dashboard to track earnings</li>
                             </ul>
@@ -207,7 +206,7 @@ export default function Rider() {
                     <h2 className={styles.lifeBetterTitle}>
                         Built to make <span className={styles.lifeBetterHighlight}>your life better</span>
                     </h2>
-                    <p className={styles.lifeBetterSubtitle}>Zero Surge Price ever, Lower Fare for Riders</p>
+                    <p className={styles.lifeBetterSubtitle}>No Surge Pricing. Lower Fare for Riders</p>
                 </div>
 
                 <div className={styles.featuresGrid}>

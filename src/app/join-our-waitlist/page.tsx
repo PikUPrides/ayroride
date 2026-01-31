@@ -1,4 +1,4 @@
-import ReferralHeroWidget from "@/components/referral-modal/ReferralHeroWidget";
+import WaitlistForm from "../../components/WaitlistForm";
 import styles from "./waitlist.module.css";
 
 export const metadata = {
@@ -24,7 +24,7 @@ export default function JoinOurWaitlist() {
                 </div>
             </div>
 
-            {/* ReferralHero Widget Section */}
+            {/* Waitlist Form Section */}
             <section className={styles.formSection}>
                 <div className={styles.formContainer}>
                     <h2 className={styles.formTitle}>
@@ -36,7 +36,7 @@ export default function JoinOurWaitlist() {
                     </p>
 
                     <div className={styles.formWrapper}>
-                        <ReferralHeroWidget widgetId="MF2f0c6063df" />
+                        <WaitlistForm />
                     </div>
                 </div>
             </section>

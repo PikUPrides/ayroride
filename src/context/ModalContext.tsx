@@ -20,7 +20,8 @@ export function ModalProvider({ children }: { children: ReactNode }) {
         if (pathname === '/join-our-waitlist') return;
 
         const timer = setTimeout(() => {
-            setIsModalOpen(true);
+            // Disable auto-popup for now as per request
+            // setIsModalOpen(true);
         }, 5000);
         return () => clearTimeout(timer);
     }, [pathname]);

@@ -58,7 +58,7 @@ export default async function BlogPage({
       {/* Blog Intro Section */}
       <section className={styles.blogIntro}>
         <div className={styles.blogIntroContainer}>
-          <div className={styles.blogBadge}>OUR BLOGS</div>
+          <div className={styles.blogBadge}>Our Blog Posts</div>
           <h2 className={styles.blogIntroTitle}>
             Insights and Updates from <span>AYRO</span>
           </h2>

@@ -5,35 +5,22 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import styles from "./Footer.module.css";
 import { IoLogoFacebook, IoLogoInstagram, IoLogoTwitter, IoLogoYoutube } from "react-icons/io5";
+import ReferAndEarn from "./referral-modal/ReferAndEarn";
 
 export default function Footer() {
   const pathname = usePathname();
-  const isWaitlistPage = pathname === "/join-our-waitlist";
+  // Hide form on waitlist page, privacy policy, terms of service, and all blog pages
+  const showReferralForm =
+    pathname !== "/join-our-waitlist" &&
+    pathname !== "/privacy-policy" &&
+    pathname !== "/terms-of-service" &&
+    pathname !== "/contact-us" &&
+    !pathname.startsWith("/blog");
 
   return (
     <div className={styles.footerWrapper}>
-      {/* CTA Section */}
-      {!isWaitlistPage && (
-        <section className={styles.ctaContainer}>
-          <div className={styles.ctaSection}>
-            <div className={styles.ctaContent}>
-              <h2
-                className={styles.ctaTitle}
-                style={{ whiteSpace: "nowrap", textTransform: "none" }}
-              >
-                Ready to Disrupt the Ride-Sharing Status Quo?
-              </h2>
-              <p className={styles.ctaSubtitle}>
-                Be an early adopter and earn rewards while helping to make
-                ride-sharing fairer for everyone.
-              </p>
-              <Link href="/join-our-waitlist">
-                <button className={styles.ctaBtn}>Join Our Waitlist</button>
-              </Link>
-            </div>
-          </div>
-        </section>
-      )}
+      {/* Referral/Form Section */}
+      {showReferralForm && <ReferAndEarn />}
 
       {/* Two Color Divider */}
       <div className={styles.footerDividerTop}>

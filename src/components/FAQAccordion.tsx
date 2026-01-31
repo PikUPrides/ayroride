@@ -44,7 +44,7 @@ export default function FAQAccordion() {
         {/* Left Side - Title and Description */}
         <div className={styles.faqLeft}>
           <h3 className={styles.faqTitle}>
-            Frequently Asked Questions <span>About AYRO</span>
+            Frequently Asked Questions <span>About AYRO Referral Program</span>
           </h3>
           <p className={styles.faqSubtitle}>
             Find answers to frequently asked questions about our referral

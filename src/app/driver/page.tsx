@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "./driver.module.css";
 import TestimonialsSlider from "@/components/TestimonialsSlider";
-import ReferAndEarn from "@/components/referral-modal/ReferAndEarn";
 import FAQAccordion from "@/components/FAQAccordion";
 
 export const metadata = {
@@ -78,7 +77,7 @@ export default function Rider() {
                             Choosing AYRO?
                         </h2>
                         <p className={styles.whySubtitle}>
-                            Ride-sharing is broken for drivers. <br />
+                            Ride-sharing is broken for drivers. <br /><br />
                             <b>AYRO is fixing it.</b>
                         </p>
 
@@ -92,15 +91,15 @@ export default function Rider() {
                                 </p>
                             </li>
                             <li className={styles.featureItem}>
-                                <span className={styles.featureHeading}>Fair for Everyone</span>
-                                <p className={styles.featureDesc}>
-                                    Drivers earn fairly, which leads to better service and better rides for you.
-                                </p>
-                            </li>
-                            <li className={styles.featureItem}>
                                 <span className={styles.featureHeading}>Driver-First Platform</span>
                                 <p className={styles.featureDesc}>
                                     Built with driver feedback, not investor pressure.
+                                </p>
+                            </li>
+                            <li className={styles.featureItem}>
+                                <span className={styles.featureHeading}>Better Security for Drivers</span>
+                                <p className={styles.featureDesc}>
+                                    Drivers earn fairly, which leads to better service and better rides for you.
                                 </p>
                             </li>
                             <li className={styles.featureItem}>
@@ -184,9 +183,11 @@ export default function Rider() {
                                 <li className={styles.rewardsItem}>Early adopter status</li>
                                 <li className={styles.rewardsItem}>Referral dashboard to track earnings</li>
                             </ul>
-                            <button className={styles.rewardsButton}>
-                                Help grow AYRO. Share in the rewards.
-                            </button>
+                            <Link href="/join-our-waitlist">
+                                <button className={styles.rewardsButton}>
+                                    Join Our Waitlist
+                                </button>
+                            </Link>
                         </div>
                     </div>
                     <div className={styles.rewardsImageSide}>

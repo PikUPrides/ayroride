@@ -5,7 +5,6 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import TestimonialsSlider from "@/components/TestimonialsSlider";
-import ReferAndEarn from "@/components/referral-modal/ReferAndEarn";
 import FAQAccordion from "@/components/FAQAccordion";
 
 const phrases = [
@@ -49,7 +48,7 @@ export default function Home() {
 
     const timer = setTimeout(handleTyping, speed);
     return () => clearTimeout(timer);
-  }, [displayText, isDeleting, index, speed, phrases]);
+  }, [displayText, isDeleting, index, speed]);
 
   return (
     <main className={styles.main}>
@@ -59,7 +58,7 @@ export default function Home() {
           <div className={styles.promoText}>
             <h1>
               <span className={styles.mainHead}>AYRO </span>
-              <span className={styles.sharingText}>RideShare MEANS</span>
+              <span className={styles.sharingText}>Ride-share MEANS</span>
               <span className={styles.blueText}>{displayText}</span>
             </h1>
             <p>Join our waitlist. Refer your friends. Win valuable prizes.</p>
@@ -70,7 +69,7 @@ export default function Home() {
           <div className={styles.promoImageContainer}>
             <img
               src="/images/promo-bg.png"
-              alt="AYRO RideShare"
+              alt="AYRO Ride-share"
               className={styles.promoImage}
             />
           </div>
@@ -98,7 +97,7 @@ export default function Home() {
               AYRO IS FIXING <br className={styles.mobileBreak} />
               EVERYTHING{" "}
               <span>
-                You hate <br className={styles.mobileBreak} /> about
+                you hate <br className={styles.mobileBreak} /> about
                 ride-sharing.
               </span>
             </h2>
@@ -252,21 +251,21 @@ export default function Home() {
             <h2>
               <span className={styles.topLine}>Get rewarded for joining</span>
               <span className={styles.blueSpan}>
-                <span style={{ color: "#1D0652" }}>the</span> RideShare{" "}
+                <span style={{ color: "#1D0652" }}>the</span> Ride-share{" "}
                 <br className={styles.mobileBreak} /> Revolution
               </span>
             </h2>
             <p className={styles.rewardDescription}>
-              Join the AYRO waitlist now, and you'll unlock your unique referral
+              Join the AYRO waitlist now, and you'll unlock a unique referral
               link and receive updates about our launch in early 2026.
             </p>
             <p
               className={`${styles.rewardDescription} ${styles.rewardShareLine}`}
             >
-              Then, share that link with friends to win prizes:
+              Then, share your link with friends to win prizes:
             </p>
             <span className={styles.rewardHighlight}>
-              $1,000 Cash, Ride Credits, or a MacBook Pro.
+              Ride Credits, $1,000 Cash, or the MacBook Pro.
             </span>
             <Link href="/join-our-waitlist">
               <button className={styles.waitlistBtn}>Join Our Waitlist</button>
@@ -288,11 +287,9 @@ export default function Home() {
             Be Part of <span>Transportation's Future</span>
           </h3>
           <p className={styles.futureSubTitle}>
-            Join our movement to disrupt the ride-
-            <br className={styles.mobileBreak} />
-            share industry and create fair, affordable{" "}
-            <br className={styles.mobileBreak} />
-            transportation for all.
+            Join our movement to disrupt the ride-share industry.
+            <br />
+            Create fair, affordable transportation for all.
           </p>
 
           <div className={styles.futureGrid}>
@@ -350,9 +347,6 @@ export default function Home() {
 
       {/* Testimonials Slider Section */}
       <TestimonialsSlider />
-
-      {/* Refer and Earn Section */}
-      {/* <ReferAndEarn /> */}
 
       {/* FAQ Section */}
       <FAQAccordion />
