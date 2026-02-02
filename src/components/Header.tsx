@@ -85,6 +85,9 @@ export default function Header() {
                   <li>
                     <Link href="/contact-us">Contact</Link>
                   </li>
+                  <li>
+                    <Link href="/careers">Careers</Link>
+                  </li>
                 </ul>
               )}
             </li>
@@ -189,6 +192,11 @@ export default function Header() {
                 <li>
                   <Link href="/contact-us" onClick={toggleMenu}>
                     Contact
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/careers" onClick={toggleMenu}>
+                    Careers
                   </Link>
                 </li>
               </ul>
