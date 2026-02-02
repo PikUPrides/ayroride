@@ -15,6 +15,7 @@ export default function Footer() {
     pathname !== "/privacy-policy" &&
     pathname !== "/terms-of-service" &&
     pathname !== "/contact-us" &&
+    pathname !== "/careers" &&
     !pathname.startsWith("/blog");
 
   return (

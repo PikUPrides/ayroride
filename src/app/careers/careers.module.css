@@ -36,6 +36,20 @@
     margin: 0;
 }
 
+@media (max-width: 768px) {
+    .heroTitle {
+        font-size: 40px;
+        line-height: 48px;
+    }
+
+    .heroSubtitle {
+        font-size: 40px;
+        line-height: 48px;
+        color: #ffffff;
+        /* Make white on mobile for contrast */
+    }
+}
+
 /* Two Color Divider */
 .sectionDivider {
     height: 8px;
@@ -193,11 +207,12 @@
 /* Job Cards Grid */
 .jobGrid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 390px);
     gap: 30px;
     width: 100%;
     max-width: 1240px;
     margin: 0 auto;
+    justify-content: center;
 }
 
 .jobCard {
@@ -208,25 +223,29 @@
     flex-direction: column;
     text-align: left;
     background: #fff;
-    /* Removed hover transform/shadow transition */
-    height: 100%;
+    width: 390px;
+    min-width: 390px;
+    max-width: 390px;
+    box-sizing: border-box;
 }
 
 /* Removed .jobCard:hover styles */
 
 .jobTitle {
     font-family: "Open Sans", Sans-serif;
-    font-size: 22px;
+    font-size: 28px;
     font-weight: 700;
+    line-height: 38px;
     color: #1D0652;
     margin: 0 0 16px 0;
 }
 
 .jobDesc {
     font-family: "Open Sans", Sans-serif;
-    font-size: 15px;
-    line-height: 1.6;
-    color: #666;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 26px;
+    color: #111111;
     margin: 0 0 24px 0;
     flex: 1;
 }
@@ -238,13 +257,28 @@
     margin-bottom: 24px;
 }
 
+.metaRow {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
 .metaItem {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 8px;
     font-family: "Open Sans", Sans-serif;
-    font-size: 14px;
-    color: #555;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #1B1B1D;
+    vertical-align: middle;
+}
+
+.metaSeparator {
+    width: 1px;
+    height: 16px;
+    background-color: #D1D5DB;
 }
 
 .metaIcon {
@@ -268,9 +302,11 @@
     align-items: center;
     gap: 8px;
     font-family: "Open Sans", Sans-serif;
-    font-size: 14px;
-    font-weight: 700;
-    color: #333;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #1B1B1D;
+    vertical-align: middle;
 }
 
 .salaryIcon {
@@ -285,20 +321,37 @@
     border-radius: 6px;
     padding: 10px 20px;
     font-family: "Open Sans", Sans-serif;
-    font-size: 14px;
-    font-weight: 600;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20px;
     cursor: pointer;
     transition: background-color 0.2s;
     white-space: nowrap;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .applyBtn:hover {
     background-color: #3632cf;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1280px) {
     .jobGrid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 390px);
+    }
+}
+
+@media (max-width: 860px) {
+    .jobGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .jobCard {
+        width: 100%;
+        min-width: unset;
+        max-width: 390px;
     }
 }
 
@@ -326,5 +379,173 @@
     .heroSection {
         min-height: 350px;
         padding: 100px 20px 80px;
+    }
+}
+
+/* Pagination Styles */
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 48px;
+    padding-bottom: 20px;
+}
+
+.pageNumbers {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.pageNumber {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #423DF9;
+    background-color: #F0F0FF;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.pageNumber:hover {
+    background-color: #E0E0FF;
+}
+
+.pageNumberActive {
+    background-color: #423DF9;
+    color: #ffffff;
+}
+
+.pageNumberActive:hover {
+    background-color: #3632cf;
+}
+
+.pageArrow {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #9CA3AF;
+    background: transparent;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.pageArrow:hover:not(:disabled) {
+    color: #423DF9;
+    background-color: #F0F0FF;
+}
+
+.pageArrow:disabled {
+    color: #D1D5DB;
+    cursor: not-allowed;
+}
+
+@media (max-width: 480px) {
+    .pagination {
+        gap: 6px;
+    }
+
+    .pageNumbers {
+        gap: 4px;
+    }
+
+    .pageNumber,
+    .pageArrow {
+        width: 36px;
+        height: 36px;
+        font-size: 14px;
+        border-radius: 8px;
+    }
+}
+
+/* CTA Section */
+/* CTA Section */
+.ctaSection {
+    margin: 80px auto;
+    max-width: 1240px;
+    width: 90%;
+    /* Matching the dark blue background from the screenshot and reference usage */
+    background-color: #1D0652;
+    background-image: url("/images/footer-cta-bg.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    border-radius: 24px;
+    padding: 80px 20px;
+    text-align: center;
+    color: white;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.ctaTitle {
+    font-family: "Open Sans", sans-serif;
+    font-size: 40px;
+    font-weight: 800;
+    margin-bottom: 24px;
+    color: #ffffff;
+    line-height: 1.2;
+}
+
+.ctaSubtitle {
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+    line-height: 26px;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 600px;
+    margin: 0 auto 32px;
+}
+
+.ctaBtn {
+    display: inline-block;
+    background: transparent;
+    border: 1.5px solid #ffffff;
+    color: #ffffff;
+    /* Matching waitlistBtn padding */
+    padding: 12px 36px 13px 36px;
+    border-radius: 6px;
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.ctaBtn:hover {
+    background: #ffffff;
+    color: #423DF9;
+    border-color: #ffffff;
+}
+
+@media (max-width: 768px) {
+    .ctaSection {
+        padding: 60px 20px;
+        margin: 60px auto;
+    }
+
+    .ctaTitle {
+        font-size: 28px;
+    }
+
+    .ctaSubtitle {
+        font-size: 16px;
+        margin-bottom: 30px;
     }
 }
