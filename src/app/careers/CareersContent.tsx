@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import styles from "./careers.module.css";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { IoSearchOutline, IoChevronDownOutline, IoChevronBackOutline, IoChevronForwardOutline } from "react-icons/io5";
 import { jobs } from "../../data/jobs";
 
@@ -12,6 +13,7 @@ const JOBS_PER_PAGE = 6;
 export default function CareersContent() {
     const [currentPage, setCurrentPage] = useState(1);
     const [searchQuery, setSearchQuery] = useState("");
+    const router = useRouter();
 
     const filteredJobs = jobs.filter(job =>
         job.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -62,7 +64,7 @@ export default function CareersContent() {
                         Drive With AYRO
                     </h1>
                     <h2 className={styles.heroSubtitle}>
-                        Earn $30+/Hour
+                        Earn $30+/ Active Hour
                     </h2>
                 </div>
             </section>
@@ -108,7 +110,12 @@ export default function CareersContent() {
                 {/* Job Cards */}
                 <div className={styles.jobGrid}>
                     {currentJobs.map((job) => (
-                        <div key={job.id} className={styles.jobCard}>
+                        <div
+                            key={job.id}
+                            className={styles.jobCard}
+                            onClick={() => router.push(`/careers/${job.slug}`)}
+                            style={{ cursor: 'pointer' }}
+                        >
                             <h3 className={styles.jobTitle}>{job.title}</h3>
                             <p className={styles.jobDesc}>{job.description}</p>
                             <div className={styles.jobMeta}>
@@ -135,7 +142,11 @@ export default function CareersContent() {
                                     <Image src="/CurrencyCircleDollar.svg" alt="Salary" width={16} height={16} />
                                     <span>{job.salary}</span>
                                 </div>
-                                <Link href="/join-our-waitlist" className={styles.applyBtn}>
+                                <Link
+                                    href={job.applyLink || "/join-our-waitlist"}
+                                    className={styles.applyBtn}
+                                    onClick={(e) => e.stopPropagation()}
+                                >
                                     Apply Now
                                 </Link>
                             </div>
@@ -170,18 +181,8 @@ export default function CareersContent() {
                     </div>
                 )}
 
-                {/* Disrupt CTA Section */}
-                <section className={styles.ctaSection}>
-                    <h2 className={styles.ctaTitle}>
-                        Ready To Disrupt Ride-Sharing Status Quo?
-                    </h2>
-                    <p className={styles.ctaSubtitle}>
-                        Be an early adopter and earn rewards while helping to make ride-sharing more fairer for everyone.
-                    </p>
-                    <Link href="/join-our-waitlist" className={styles.ctaBtn}>
-                        Join Our Waitlist
-                    </Link>
-                </section>
+
+
             </div>
         </main>
     );

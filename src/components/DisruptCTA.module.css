@@ -1,0 +1,74 @@
+.disruptSection {
+    margin: 80px auto;
+    max-width: 1240px;
+    width: 90%;
+    background-color: #1D0652;
+    background-image: url("/images/footer-cta-bg.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    border-radius: 24px;
+    padding: 80px 20px;
+    text-align: center;
+    color: white;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.disruptTitle {
+    font-family: "Open Sans", sans-serif;
+    font-size: 40px;
+    font-weight: 800;
+    margin-bottom: 24px;
+    color: #ffffff;
+    line-height: 1.2;
+}
+
+.disruptSubtitle {
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+    line-height: 26px;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 600px;
+    margin: 0 auto 32px;
+}
+
+.disruptBtn {
+    display: inline-block;
+    background: transparent;
+    border: 1.5px solid #ffffff;
+    color: #ffffff;
+    padding: 12px 36px 13px 36px;
+    border-radius: 6px;
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.disruptBtn:hover {
+    background: #ffffff;
+    color: #423DF9;
+    border-color: #ffffff;
+}
+
+@media (max-width: 768px) {
+    .disruptSection {
+        padding: 60px 20px;
+        margin: 60px auto;
+    }
+
+    .disruptTitle {
+        font-size: 28px;
+    }
+
+    .disruptSubtitle {
+        font-size: 16px;
+        margin-bottom: 30px;
+    }
+}

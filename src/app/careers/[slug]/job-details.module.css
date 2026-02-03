@@ -1,0 +1,390 @@
+.heroSection {
+    background: linear-gradient(180deg, #1D0652 0%, #0a0320 100%);
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 120px 20px 80px;
+    flex-direction: column;
+    color: white;
+    font-family: "Open Sans", Sans-serif;
+}
+
+.heroContent {
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.heroTitle {
+    font-size: 56px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0;
+    color: #ffffff;
+}
+
+.heroTitleHighlight {
+    color: #423DF9;
+}
+
+.heroSubtitle {
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: 400;
+    max-width: 800px;
+    color: #e0e0e0;
+    margin: 0;
+}
+
+.heroApplyBtn {
+    background-color: #423DF9;
+    color: white;
+    padding: 14px 32px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    margin-top: 20px;
+    transition: background-color 0.2s;
+    display: inline-block;
+}
+
+.heroApplyBtn:hover {
+    background-color: #3632cf;
+}
+
+/* Update Container to reduce top padding as it now follows Hero */
+.container {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 60px 20px 80px;
+    /* Reduced top padding */
+    display: flex;
+    gap: 60px;
+    position: relative;
+    font-family: "Open Sans", Sans-serif;
+    color: #111;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 320px;
+    min-width: 320px;
+    position: sticky;
+    top: 40px;
+    height: fit-content;
+}
+
+.detailsCard {
+    background: #ffffff;
+    border: 1px solid #E5E7EB;
+    border-radius: 16px;
+    padding: 32px 24px;
+    box-shadow: none;
+}
+
+.detailsTitle {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1D0652;
+    margin: 0 0 24px 0;
+}
+
+.detailItem {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.detailIconWrapper {
+    width: 24px;
+    min-width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+}
+
+.detailText {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #111111;
+}
+
+.detailLabel {
+    font-weight: 700;
+    color: #1D0652;
+    margin-right: 4px;
+}
+
+.detailValue {
+    font-weight: 400;
+    color: #1F2937;
+}
+
+.sidebarApplyBtn {
+    display: block;
+    width: 100%;
+    /* Keeps it responsive within the padded card */
+    background-color: #423DF9;
+    color: white;
+    text-align: center;
+    padding: 12px 24px 13px;
+    /* Matches Top 12px, Bottom 13px, Horizontal 24px */
+    border-radius: 8px;
+    font-size: 16px;
+    /* Adjusted to fit the 47px height better if needed, usually ~16px for buttons */
+    font-weight: 700;
+    text-decoration: none;
+    margin-top: 24px;
+    transition: background-color 0.2s;
+    border: 1px solid #423DF9;
+    /* Match border property */
+    box-shadow: none;
+}
+
+.sidebarApplyBtn:hover {
+    background-color: #3632cf;
+}
+
+.separator {
+    height: 1px;
+    background-color: #E5E7EB;
+    margin: 24px 0;
+    width: 100%;
+}
+
+.mainContent {
+    flex: 1;
+    max-width: 800px;
+    font-family: "Open Sans", Sans-serif;
+}
+
+.section {
+    margin-bottom: 40px;
+}
+
+.sectionTitle {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1D0652;
+    margin: 0 0 24px 0;
+    line-height: 38px;
+}
+
+.sectionText {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 28px;
+    color: rgba(17, 17, 17, 0.75);
+    margin-bottom: 24px;
+    white-space: pre-line;
+}
+
+.sectionText strong {
+    color: #1D0652;
+    font-weight: 700;
+}
+
+.list {
+    list-style-type: none;
+    /* Custom bullets */
+    padding: 0;
+    margin: 0;
+}
+
+.listItem {
+    position: relative;
+    padding-left: 24px;
+    /* Increased slightly for better bullet spacing */
+    margin-bottom: 12px;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 28px;
+    color: rgba(17, 17, 17, 0.75);
+}
+
+.listItem::before {
+    content: "•";
+    color: #423DF9;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.earningsHighlight {
+    font-weight: 700;
+    color: #1D0652;
+}
+
+.subtitle {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1D0652;
+    margin-top: 24px;
+    margin-bottom: 12px;
+}
+
+@media (max-width: 900px) {
+    .heroTitle {
+        font-size: 36px;
+    }
+
+    .container {
+        flex-direction: column;
+        /* Let's put details on top for mobile */
+        padding: 40px 20px;
+        gap: 40px;
+    }
+
+    .sidebar {
+        width: 100%;
+        min-width: unset;
+        position: static;
+        margin-bottom: 0;
+    }
+}
+
+/* CTA Section (Ready to Get Started) */
+.ctaSection {
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/images/driver/driver-hero-new.png');
+    background-size: cover;
+    background-position: center;
+    padding: 100px 20px;
+    text-align: center;
+    color: white;
+    margin-top: 60px;
+    border-radius: 16px;
+}
+
+.ctaContainer {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ctaTitle {
+    font-size: 42px;
+    font-weight: 800;
+    margin-bottom: 16px;
+    color: white;
+}
+
+.ctaSubtitle {
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 32px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.ctaButton {
+    background: transparent;
+    border: 1px solid white;
+    color: white;
+    padding: 14px 32px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.ctaButton:hover {
+    background: white;
+    color: #1D0652;
+}
+
+/* Disrupt CTA Section (Footer) */
+.disruptSection {
+    margin: 80px auto;
+    /* Centered with margin */
+    max-width: 1240px;
+    width: 90%;
+    /* Matching the dark blue background from the careers page */
+    background-color: #1D0652;
+    background-image: url("/images/footer-cta-bg.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    border-radius: 24px;
+    padding: 80px 20px;
+    text-align: center;
+    color: white;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.disruptTitle {
+    font-family: "Open Sans", sans-serif;
+    font-size: 40px;
+    font-weight: 800;
+    margin-bottom: 24px;
+    color: #ffffff;
+    line-height: 1.2;
+}
+
+.disruptSubtitle {
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+    line-height: 26px;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 600px;
+    margin: 0 auto 32px;
+}
+
+.disruptBtn {
+    display: inline-block;
+    background: transparent;
+    border: 1.5px solid #ffffff;
+    color: #ffffff;
+    padding: 12px 36px 13px 36px;
+    border-radius: 6px;
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.disruptBtn:hover {
+    background: #ffffff;
+    color: #423DF9;
+    border-color: #ffffff;
+}
+
+@media (max-width: 768px) {
+
+    .ctaSection,
+    .disruptSection {
+        padding: 60px 20px;
+        margin-top: 60px;
+    }
+
+    .ctaTitle,
+    .disruptTitle {
+        font-size: 28px;
+    }
+
+    .ctaSubtitle,
+    .disruptSubtitle {
+        font-size: 16px;
+        margin-bottom: 30px;
+    }
+}

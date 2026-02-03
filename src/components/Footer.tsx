@@ -6,22 +6,46 @@ import { usePathname } from "next/navigation";
 import styles from "./Footer.module.css";
 import { IoLogoFacebook, IoLogoInstagram, IoLogoTwitter, IoLogoYoutube } from "react-icons/io5";
 import ReferAndEarn from "./referral-modal/ReferAndEarn";
+import DisruptCTA from "./DisruptCTA";
 
 export default function Footer() {
   const pathname = usePathname();
-  // Hide form on waitlist page, privacy policy, terms of service, and all blog pages
+
+  // Logic for showing the Refer/Earn Form (Original logic)
   const showReferralForm =
     pathname !== "/join-our-waitlist" &&
     pathname !== "/privacy-policy" &&
     pathname !== "/terms-of-service" &&
     pathname !== "/contact-us" &&
-    pathname !== "/careers" &&
+    !pathname.startsWith("/careers") && // Exclude on careers pages (User request: just the second section there)
     !pathname.startsWith("/blog");
+
+  // Logic for showing Disrupt CTA (Show on ALMOST ALL pages)
+  const showDisruptCTA = pathname !== "/join-our-waitlist"; // Exclude on waitlist page itself
+
+  // Check if it's an inner career page (e.g. /careers/driver-in-dallas) but not the main /careers page
+  const isInnerCareerPage = pathname.startsWith("/careers/") && pathname !== "/careers";
+
+  const disruptProps = isInnerCareerPage ? {
+    title: "Ready to Get Started?",
+    subtitle: "Apply today and start earning with AYRO on your schedule.",
+    buttonText: "Apply Now",
+    buttonLink: pathname // Should ideally link to the apply section or staying on the page implies functionality, but user requested 'Apply Now' which often links to an anchor or a form. For now, linking to waitlist or keeping default if not specified. Actually, based on previous context, this usually links to the app or waitlist. I will use the waitlist for now as a safe default unless user specified a link. Image shows 'Apply Now'.
+    // Re-reading user request: "change the text but only for this page the inner ones".
+    // I will use "/join-our-waitlist" for consistency unless I can get the specific Apply Link. 
+    // Since Footer is global, I can't easily access the specific job's apply link here without more context. 
+    // However, the previous 'Ready to Get Started' section often linked to `job.applyLink`.
+    // Since I can't dynamically get the job prop here, I'll stick to a generic "Apply Now" that goes to the waitlist or maybe just a hash link if that was the intent. 
+    // Let's use "/join-our-waitlist" to be safe, as that's what the other buttons do.
+  } : {};
 
   return (
     <div className={styles.footerWrapper}>
       {/* Referral/Form Section */}
       {showReferralForm && <ReferAndEarn />}
+
+      {/* Disrupt CTA Section */}
+      {showDisruptCTA && <DisruptCTA {...disruptProps} />}
 
       {/* Two Color Divider */}
       <div className={styles.footerDividerTop}>

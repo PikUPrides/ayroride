@@ -40,7 +40,7 @@ export default function Rider() {
                             Like Partners
                         </h1>
                         <p className={styles.heroSubtitle}>
-                            Guaranteed $30+ per active hour. Tips are extra. <br />
+                            Guaranteed $30+ per Active Hour. Tips are extra. <br />
                             <span style={{ fontSize: '0.9em', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: '10px', marginTop: '10px', color: 'black' }}>
                                 <span>Apply easily</span>
                                 <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#08D9C4', display: 'inline-block' }}></span>
@@ -85,7 +85,7 @@ export default function Rider() {
 
                         <ul className={styles.featureList}>
                             <li className={styles.featureItem}>
-                                <span className={styles.featureHeading}>$30+/Hour Guaranteed Earnings</span>
+                                <span className={styles.featureHeading}>$30+/ Active Hour Guaranteed Earnings</span>
                                 <p className={styles.featureDesc}>
                                     Know what you'll earn before the ride starts. Every time.
                                 </p>
