@@ -4,16 +4,14 @@ import React, { useState } from 'react';
 import styles from "./careers.module.css";
 import Link from "next/link";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 import { IoSearchOutline, IoChevronDownOutline, IoChevronBackOutline, IoChevronForwardOutline } from "react-icons/io5";
 import { jobs } from "../../data/jobs";
 
-const JOBS_PER_PAGE = 6;
+const JOBS_PER_PAGE = 9;
 
 export default function CareersContent() {
     const [currentPage, setCurrentPage] = useState(1);
     const [searchQuery, setSearchQuery] = useState("");
-    const router = useRouter();
 
     const filteredJobs = jobs.filter(job =>
         job.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -84,7 +82,7 @@ export default function CareersContent() {
                         <span style={{ color: "#000000" }}>Current</span> Openings
                     </h2>
                     <h3 className={styles.openingDescription}>
-                        At AYRO Rides, we're redefining urban mobility with sustainable solutions. Our <br /> team seeks talented professionals who share our vision. Join us for growth <br /> opportunities.
+                        At AYRO Rides, we're redefining urban mobility with sustainable solutions. Our team seeks talented professionals who share our vision. Join us for growth opportunities.
                     </h3>
                 </div>
 
@@ -113,10 +111,10 @@ export default function CareersContent() {
                         <div
                             key={job.id}
                             className={styles.jobCard}
-                            onClick={() => router.push(`/careers/${job.slug}`)}
-                            style={{ cursor: 'pointer' }}
                         >
-                            <h3 className={styles.jobTitle}>{job.title}</h3>
+                            <Link href={`/careers/${job.slug}`} className={styles.jobTitleLink}>
+                                <h3 className={styles.jobTitle}>{job.title}</h3>
+                            </Link>
                             <p className={styles.jobDesc}>{job.description}</p>
                             <div className={styles.jobMeta}>
                                 <div className={styles.metaRow}>
@@ -143,9 +141,8 @@ export default function CareersContent() {
                                     <span>{job.salary}</span>
                                 </div>
                                 <Link
-                                    href={job.applyLink || "/join-our-waitlist"}
+                                    href="/join-our-waitlist"
                                     className={styles.applyBtn}
-                                    onClick={(e) => e.stopPropagation()}
                                 >
                                     Apply Now
                                 </Link>

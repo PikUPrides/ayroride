@@ -22,7 +22,13 @@ export default async function JobDetailsPage(props: { params: Promise<{ slug: st
         return (
             <ul className={styles.list}>
                 {items.map((item, index) => (
-                    <li key={index} className={styles.listItem}>{item}</li>
+                    <li
+                        key={index}
+                        className={styles.listItem}
+                        dangerouslySetInnerHTML={{
+                            __html: item.replace(/(\$30\+\s*per\s*Active\s*Hour)/gi, '<span class="' + styles.earningsHighlight + '">$1</span>')
+                        }}
+                    />
                 ))}
             </ul>
         );
@@ -45,7 +51,7 @@ export default async function JobDetailsPage(props: { params: Promise<{ slug: st
                     <p className={styles.heroSubtitle}>
                         {job.description}
                     </p>
-                    <Link href={job.applyLink || "/join-our-waitlist"} className={styles.heroApplyBtn}>
+                    <Link href="/join-our-waitlist" className={styles.heroApplyBtn}>
                         Apply Today
                     </Link>
                 </div>
@@ -109,7 +115,7 @@ export default async function JobDetailsPage(props: { params: Promise<{ slug: st
 
                         <div className={styles.separator}></div>
 
-                        <Link href={job.applyLink || "/join-our-waitlist"} className={styles.sidebarApplyBtn}>
+                        <Link href="/join-our-waitlist" className={styles.sidebarApplyBtn}>
                             Apply Now
                         </Link>
                     </div>
@@ -155,7 +161,14 @@ export default async function JobDetailsPage(props: { params: Promise<{ slug: st
 
                     <div className={styles.section}>
                         <h2 className={styles.sectionTitle}>How to Apply</h2>
-                        {renderList(job.howToApply)}
+                        {/* Render all items except the last as a list */}
+                        {job.howToApply && job.howToApply.length > 1 && renderList(job.howToApply.slice(0, -1))}
+                        {/* Render the last item as a paragraph */}
+                        {job.howToApply && job.howToApply.length > 0 && (
+                            <p className={styles.sectionText} style={{ marginTop: '16px' }}>
+                                {job.howToApply[job.howToApply.length - 1]}
+                            </p>
+                        )}
                     </div>
 
 

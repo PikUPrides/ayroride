@@ -240,6 +240,16 @@
     margin: 0 0 16px 0;
 }
 
+.jobTitleLink {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.2s;
+}
+
+.jobTitleLink:hover {
+    color: #423DF9;
+}
+
 .jobDesc {
     font-family: "Open Sans", Sans-serif;
     font-size: 16px;
@@ -547,5 +557,113 @@
     .ctaSubtitle {
         font-size: 16px;
         margin-bottom: 30px;
+    }
+
+    .openingTitle {
+        font-size: 32px;
+        line-height: 40px;
+    }
+
+    .openingDescription {
+        font-size: 16px;
+        line-height: 26px;
+    }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+    .heroSection {
+        min-height: 280px;
+        padding: 80px 16px 60px;
+    }
+
+    .heroTitle {
+        font-size: 32px;
+        line-height: 40px;
+    }
+
+    .heroSubtitle {
+        font-size: 32px;
+        line-height: 40px;
+    }
+
+    .openingSection {
+        padding: 50px 16px 80px;
+        gap: 30px;
+    }
+
+    .openingTitle {
+        font-size: 28px;
+        line-height: 36px;
+        margin-bottom: 16px;
+    }
+
+    .openingDescription {
+        font-size: 15px;
+        line-height: 24px;
+    }
+
+    .searchBar {
+        height: 48px;
+        padding: 0 14px;
+    }
+
+    .searchInput {
+        font-size: 15px;
+    }
+
+    .sortByBtn {
+        height: 48px;
+        padding: 0 16px;
+        font-size: 14px;
+    }
+
+    .jobCard {
+        padding: 24px 20px;
+    }
+
+    .jobTitle {
+        font-size: 22px;
+        line-height: 30px;
+        margin-bottom: 12px;
+    }
+
+    .jobDesc {
+        font-size: 14px;
+        line-height: 22px;
+        margin-bottom: 20px;
+    }
+
+    .metaItem {
+        font-size: 14px;
+    }
+
+    .jobSalary {
+        font-size: 14px;
+    }
+
+    .applyBtn {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+
+    .ctaSection {
+        padding: 50px 16px;
+        margin: 50px auto;
+        width: 94%;
+    }
+
+    .ctaTitle {
+        font-size: 24px;
+    }
+
+    .ctaSubtitle {
+        font-size: 14px;
+        line-height: 22px;
+    }
+
+    .ctaBtn {
+        padding: 10px 28px;
+        font-size: 15px;
     }
 }
