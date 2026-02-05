@@ -68,6 +68,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${openSans.variable} ${openSans.className}`} suppressHydrationWarning>
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5FKKXTJ8"
+          height="0" width="0" style={{ display: 'none', visibility: 'hidden' }}></iframe></noscript>
+        <Script id="google-tag-manager" strategy="afterInteractive" dangerouslySetInnerHTML={{
+          __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+          })(window,document,'script','dataLayer','GTM-5FKKXTJ8');`
+        }} />
         <ModalProvider>
           <Header />
           {children}
@@ -75,7 +84,7 @@ export default function RootLayout({
           <ReferralModal />
         </ModalProvider>
         <Script id="referralhero-global" strategy="afterInteractive" dangerouslySetInnerHTML={{
-          __html: `!function(m,a,i,t,r,e){if(m.RH)return;r=m.RH={},r.uuid=t,r.loaded=0,r.base_url=i,r.queue=[],m.rht=function(){r.queue.push(arguments)};e=a.getElementsByTagName('script')[0],c=a.createElement('script');c.async=!0,c.src='https://referralhero-global-code.s3.amazonaws.com/production/'+t+'.js',e.parentNode.insertBefore(c,e)}(window,document,'https://app.referralhero.com','RH0d3a5b93dd');`
+          __html: `!function(m,a,i,t,r,e){if(m.RH)return;r=m.RH={},r.uuid=t,r.loaded=0,r.base_url=i,r.queue=[],m.rht=function(){r.queue.push(arguments)};e=a.getElementsByTagName('script')[0],c=a.createElement('script');c.async=!0,c.src='https://d7zve4d3u0dfm.cloudfront.net/'+'production'+'/'+t+'.js',e.parentNode.insertBefore(c,e)}(window,document,'https://app.referralhero.com','RH0d3a5b93dd');`
         }} />
         <Script id="zoho-pagesense" strategy="afterInteractive" dangerouslySetInnerHTML={{
           __html: `(function(w,s){var e=document.createElement("script");e.type="text/javascript";e.async=true;e.src="https://cdn.pagesense.io/js/pikupinc/8d7816e424414c6aa3dc73e841dac36b.js";var x=document.getElementsByTagName("script")[0];x.parentNode.insertBefore(e,x);})(window,"script");`
