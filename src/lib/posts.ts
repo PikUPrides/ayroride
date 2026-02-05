@@ -52,7 +52,7 @@ export function getAllPosts(): PostMeta[] {
 export async function getApiPostBySlug(slug: string): Promise<Post> {
   try {
     const res = await fetch(
-      `https://pikup.us/wp-json/wp/v2/posts?slug=${slug}&_embed`
+      `https://blog.ayrorides.com/wp-json/wp/v2/posts?slug=${slug}&_embed`
     );
     const posts = await res.json();
 
@@ -112,7 +112,7 @@ export async function getPostBySlug(slug: string): Promise<Post> {
   // 2. Fallback to WordPress API
   try {
     const res = await fetch(
-      `https://pikup.us/wp-json/wp/v2/posts?slug=${slug}&_embed`
+      `https://blog.ayrorides.com/wp-json/wp/v2/posts?slug=${slug}&_embed`
     );
     const posts = await res.json();
 
@@ -175,7 +175,7 @@ export async function getPaginatedPosts(
 ): Promise<{ posts: PostMeta[]; totalPages: number; totalPosts: number }> {
   try {
     const res = await fetch(
-      `https://pikup.us/wp-json/wp/v2/posts?_embed&per_page=${limit}&page=${page}`
+      `https://blog.ayrorides.com/wp-json/wp/v2/posts?_embed&per_page=${limit}&page=${page}`
     );
     const totalPages = Number(res.headers.get("X-WP-TotalPages")) || 1;
     const totalPosts = Number(res.headers.get("X-WP-Total")) || 0;

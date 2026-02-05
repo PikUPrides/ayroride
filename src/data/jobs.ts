@@ -30,15 +30,15 @@ const commonJobDetails = {
         "That's it. Just honest work, fair expectations, and a platform that treats you like a professional – because you are."
     ],
     benefits: [
-        "No Surge Pricing Games. Know what you'll earn before each ride starts.",
-        "Fair, Predictable Pay. No sudden rate drops. No unexplained deductions. Guaranteed $30+ per Active Hour, plus tips.",
+        "Guaranteed $30+/hour, plus tips. Know what you'll earn before each ride starts.",
+        "Fair, Predictable Pay. No sudden rate drops. No unexplained deductions.",
         "Driver-First Platform. Built with driver feedback, not investor pressure.",
         "Fair Treatment rooted in respect and long-term trust",
         "Radical Transparency – see exactly what you'll earn before accepting a ride",
         "Real Human Support when you need it",
         "Quick signup process with step-by-step support",
         "High demand in major Texas cities",
-        "Earn what you deserve. Build the life you want. Drive for AYRO. This role is ideal for part-time, gig-based, seasonal, or flexible work."
+        "Earn what you deserve. Build the life you want. Drive for AYRO. This role is ideal for full-time, part time, gig based, seasonal, or flexible work."
     ],
     requirements: [
         "Meet the minimum age requirement to drive in your city",
@@ -47,16 +47,17 @@ const commonJobDetails = {
         "Have access to an eligible, insured vehicle",
         "Maintain a clean driving record",
         "Are comfortable using a smartphone (iOS or Android)",
-        "Consent to a background check. Additional documentation may be required depending on local or state regulations."
+        "Consent to a background check.",
+        "Additional documentation may be required depending on local or state regulations."
     ],
-    earningsInfo: "Guaranteed **$30+ per Active Hour** (nearly double what other platforms pay drivers)",
-    environment: "AYRO is committed to fostering a respectful, inclusive, and supportive environment. We value diversity and believe different perspectives make our platform stronger. AYRO provides equal opportunity to all applicants and does not discriminate based on any protected characteristic.",
+    earningsInfo: "Guaranteed **$30+ per hour of active driving** (nearly double what other platforms pay drivers)",
+    environment: "AYRO is committed to fostering a respectful, inclusive, and supportive environment. We value diversity and believe different perspectives make our platform stronger. AYRO provides equal opportunity to all applicants and does not discriminate based on any protected characteristics.",
     howToApply: [
         "Submit your ZipRecruiter application",
         "Complete required documentation",
         "Finish background screening",
         "Get approved and start driving",
-        "Please do not email resumes or call. Applications are processed directly through ZipRecruiter for faster review."
+        "**Ready to Get Started?**<br/>Apply today and join the waitlist. Start earning with AYRO on your schedule."
     ],
     applyLink: "/join-our-waitlist" // Placeholder link
 };

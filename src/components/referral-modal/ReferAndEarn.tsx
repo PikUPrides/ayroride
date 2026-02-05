@@ -1,7 +1,7 @@
 "use client";
 
 import styles from "../../app/page.module.css";
-import WaitlistForm from "../WaitlistForm";
+import ReferralHeroWidget from "./ReferralHeroWidget";
 
 export default function ReferAndEarn() {
   return (
@@ -14,7 +14,7 @@ export default function ReferAndEarn() {
           <p>Join the waitlist now and get your unique referral link</p>
         </div>
         <div className={styles.referFormWrapper}>
-          <WaitlistForm />
+          <ReferralHeroWidget widgetId="MF2f0c6063df" />
         </div>
       </div>
     </section>

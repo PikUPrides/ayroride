@@ -140,7 +140,12 @@ export default async function JobDetailsPage(props: { params: Promise<{ slug: st
 
                     <div className={styles.section}>
                         <h2 className={styles.sectionTitle}>Job Benefits</h2>
-                        {renderList(job.benefits)}
+                        {job.benefits && job.benefits.length > 1 && renderList(job.benefits.slice(0, -1))}
+                        {job.benefits && job.benefits.length > 0 && (
+                            <p className={styles.sectionText} style={{ marginTop: '16px' }}>
+                                {job.benefits[job.benefits.length - 1]}
+                            </p>
+                        )}
                     </div>
 
                     <div className={styles.section}>
@@ -160,15 +165,8 @@ export default async function JobDetailsPage(props: { params: Promise<{ slug: st
 
 
                     <div className={styles.section}>
-                        <h2 className={styles.sectionTitle}>How to Apply</h2>
-                        {/* Render all items except the last as a list */}
-                        {job.howToApply && job.howToApply.length > 1 && renderList(job.howToApply.slice(0, -1))}
-                        {/* Render the last item as a paragraph */}
-                        {job.howToApply && job.howToApply.length > 0 && (
-                            <p className={styles.sectionText} style={{ marginTop: '16px' }}>
-                                {job.howToApply[job.howToApply.length - 1]}
-                            </p>
-                        )}
+                        <h2 className={styles.sectionTitle}>Ready to Get Started?</h2>
+                        <p className={styles.sectionText}>Apply today and join the waitlist. Start earning with AYRO on your schedule.</p>
                     </div>
 
 
