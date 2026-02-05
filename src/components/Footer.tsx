@@ -17,6 +17,8 @@ export default function Footer() {
     pathname !== "/privacy-policy" &&
     pathname !== "/terms-of-service" &&
     pathname !== "/contact-us" &&
+    pathname !== "/advocate" &&
+    pathname !== "/referral" &&
     !pathname.startsWith("/careers") && // Exclude on careers pages (User request: just the second section there)
     !pathname.startsWith("/blog");
 
