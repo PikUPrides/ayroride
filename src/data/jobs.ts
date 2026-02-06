@@ -30,7 +30,7 @@ const commonJobDetails = {
         "That's it. Just honest work, fair expectations, and a platform that treats you like a professional – because you are."
     ],
     benefits: [
-        "Guaranteed $30+/hour, plus tips. Know what you'll earn before each ride starts.",
+        "Guaranteed $30+ per Active Hour, plus tips. Know what you'll earn before each ride starts.",
         "Fair, Predictable Pay. No sudden rate drops. No unexplained deductions.",
         "Driver-First Platform. Built with driver feedback, not investor pressure.",
         "Fair Treatment rooted in respect and long-term trust",
@@ -64,7 +64,7 @@ const commonJobDetails = {
 
 const getJobDetails = (city: string) => ({
     ...commonJobDetails,
-    benefits: commonJobDetails.benefits.map(b => b.includes("major Texas cities") ? `High demand in ${city}` : b)
+    benefits: commonJobDetails.benefits.map(b => b.includes("major Texas cities") ? `High demand in major ${city} cities` : b)
 });
 
 export const jobs: JobPosting[] = [
