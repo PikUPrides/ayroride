@@ -62,6 +62,11 @@ const commonJobDetails = {
     applyLink: "/join-our-waitlist" // Placeholder link
 };
 
+const getJobDetails = (city: string) => ({
+    ...commonJobDetails,
+    benefits: commonJobDetails.benefits.map(b => b.includes("major Texas cities") ? `High demand in ${city}` : b)
+});
+
 export const jobs: JobPosting[] = [
     {
         id: 1,
@@ -73,7 +78,7 @@ export const jobs: JobPosting[] = [
         salary: "$30+/ Active Hour (guaranteed)",
         slug: "drivers-in-dallas-tx",
         longDescription: "As an AYRO driver in **Dallas**, your job is simple: get people where they need to go safely, reliably, and with respect. You pick up riders through the AYRO app, drive them to their destination, and create a calm, professional experience along the way.",
-        ...commonJobDetails
+        ...getJobDetails("Dallas")
     },
     {
         id: 2,
@@ -85,7 +90,7 @@ export const jobs: JobPosting[] = [
         salary: "$30+/ Active Hour (guaranteed)",
         slug: "drivers-in-fort-worth-tx",
         longDescription: "As an AYRO driver in **Fort Worth**, your job is simple: get people where they need to go safely, reliably, and with respect. You pick up riders through the AYRO app, drive them to their destination, and create a calm, professional experience along the way.",
-        ...commonJobDetails
+        ...getJobDetails("Fort Worth")
     },
     {
         id: 3,
@@ -97,7 +102,7 @@ export const jobs: JobPosting[] = [
         salary: "$30+/ Active Hour (guaranteed)",
         slug: "drivers-in-arlington-tx",
         longDescription: "As an AYRO driver in **Arlington**, your job is simple: get people where they need to go safely, reliably, and with respect. You pick up riders through the AYRO app, drive them to their destination, and create a calm, professional experience along the way.",
-        ...commonJobDetails
+        ...getJobDetails("Arlington")
     },
     {
         id: 4,
@@ -109,7 +114,7 @@ export const jobs: JobPosting[] = [
         salary: "$30+/ Active Hour (guaranteed)",
         slug: "drivers-in-plano-tx",
         longDescription: "As an AYRO driver in **Plano**, your job is simple: get people where they need to go safely, reliably, and with respect. You pick up riders through the AYRO app, drive them to their destination, and create a calm, professional experience along the way.",
-        ...commonJobDetails
+        ...getJobDetails("Plano")
     },
     {
         id: 5,
@@ -121,7 +126,7 @@ export const jobs: JobPosting[] = [
         salary: "$30+/ Active Hour (guaranteed)",
         slug: "drivers-in-irving-tx",
         longDescription: "As an AYRO driver in **Irving**, your job is simple: get people where they need to go safely, reliably, and with respect. You pick up riders through the AYRO app, drive them to their destination, and create a calm, professional experience along the way.",
-        ...commonJobDetails
+        ...getJobDetails("Irving")
     },
     {
         id: 6,
@@ -133,7 +138,7 @@ export const jobs: JobPosting[] = [
         salary: "$30+/ Active Hour (guaranteed)",
         slug: "drivers-in-garland-tx",
         longDescription: "As an AYRO driver in **Garland**, your job is simple: get people where they need to go safely, reliably, and with respect. You pick up riders through the AYRO app, drive them to their destination, and create a calm, professional experience along the way.",
-        ...commonJobDetails
+        ...getJobDetails("Garland")
     },
     {
         id: 7,
@@ -145,7 +150,7 @@ export const jobs: JobPosting[] = [
         salary: "$30+/ Active Hour (guaranteed)",
         slug: "drivers-in-frisco-tx",
         longDescription: "As an AYRO driver in **Frisco**, your job is simple: get people where they need to go safely, reliably, and with respect. You pick up riders through the AYRO app, drive them to their destination, and create a calm, professional experience along the way.",
-        ...commonJobDetails
+        ...getJobDetails("Frisco")
     },
     {
         id: 8,
@@ -157,7 +162,7 @@ export const jobs: JobPosting[] = [
         salary: "$30+/ Active Hour (guaranteed)",
         slug: "drivers-in-mckinney-tx",
         longDescription: "As an AYRO driver in **McKinney**, your job is simple: get people where they need to go safely, reliably, and with respect. You pick up riders through the AYRO app, drive them to their destination, and create a calm, professional experience along the way.",
-        ...commonJobDetails
+        ...getJobDetails("McKinney")
     },
     {
         id: 9,
@@ -169,6 +174,6 @@ export const jobs: JobPosting[] = [
         salary: "$30+/ Active Hour (guaranteed)",
         slug: "drivers-in-grand-prairie-tx",
         longDescription: "As an AYRO driver in **Grand Prairie**, your job is simple: get people where they need to go safely, reliably, and with respect. You pick up riders through the AYRO app, drive them to their destination, and create a calm, professional experience along the way.",
-        ...commonJobDetails
+        ...getJobDetails("Grand Prairie")
     }
 ];
