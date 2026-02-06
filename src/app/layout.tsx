@@ -5,6 +5,8 @@ import Footer from "@/components/Footer";
 import Script from "next/script";
 import ReferralModal from "@/components/referral-modal/ReferralModal";
 import { ModalProvider } from "@/context/ModalContext";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
+import PromoPopup from "@/components/PromoPopup";
 
 const openSans = Open_Sans({
   subsets: ["latin"],
@@ -42,13 +44,11 @@ export const metadata = {
     creator: "@pikup26698",
   },
   robots: {
-    index: false,
-    follow: false,
-    noindex: true,
-    nofollow: true,
+    index: true,
+    follow: true,
     googleBot: {
-      index: false,
-      follow: false,
+      index: true,
+      follow: true,
       'max-video-preview': -1,
       'max-image-preview': 'large',
       'max-snippet': -1,
@@ -117,18 +117,8 @@ export default function RootLayout({
         }} />
 
         {/* Google Analytics (GA4) */}
-        <Script
-          strategy="afterInteractive"
-          src="https://www.googletagmanager.com/gtag/js?id=G-D85JG8ZSQ1"
-        />
-        <Script id="google-analytics" strategy="afterInteractive" dangerouslySetInnerHTML={{
-          __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-D85JG8ZSQ1');
-          `
-        }} />
+        <GoogleAnalytics />
+        <PromoPopup />
       </body>
     </html>
   );

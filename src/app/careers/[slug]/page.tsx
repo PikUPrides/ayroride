@@ -135,7 +135,12 @@ export default async function JobDetailsPage(props: { params: Promise<{ slug: st
 
                     <div className={styles.section}>
                         <h2 className={styles.sectionTitle}>What that looks like day to day:</h2>
-                        {renderList(job.dayToDay)}
+                        {job.dayToDay && job.dayToDay.length > 1 && renderList(job.dayToDay.slice(0, -1))}
+                        {job.dayToDay && job.dayToDay.length > 0 && (
+                            <p className={styles.sectionText} style={{ marginTop: '16px' }}>
+                                {job.dayToDay[job.dayToDay.length - 1]}
+                            </p>
+                        )}
                     </div>
 
                     <div className={styles.section}>

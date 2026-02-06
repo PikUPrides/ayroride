@@ -59,7 +59,7 @@ export default function Contact() {
           <div className={styles.infoTextSide}>
             <h3 className={styles.infoTitle}>Contact <span className={styles.tealText}>Information</span></h3>
             <p className={styles.infoDesc}>
-              AYRO is building a fair and transparent ride-share system that protects both riders and drivers.
+              AYRO is building a fair and transparent rideshare system that protects both riders and drivers.
               No surge pricing, no surprises. Our referral program rewards Early Adopters for building
               a community where riders pay less and drivers earn what they deserve.
             </p>

@@ -58,7 +58,7 @@ export default function Home() {
           <div className={styles.promoText}>
             <h1>
               <span className={styles.mainHead}>AYRO </span>
-              <span className={styles.sharingText}>Ride-share MEANS</span>
+              <span className={styles.sharingText}>Rideshare MEANS</span>
               <span className={styles.blueText}>{displayText}</span>
             </h1>
             <p>Join our waitlist. Refer your friends. Win valuable prizes.</p>
@@ -69,7 +69,7 @@ export default function Home() {
           <div className={styles.promoImageContainer}>
             <img
               src="/images/promo-bg.png"
-              alt="AYRO Ride-share"
+              alt="AYRO Rideshare"
               className={styles.promoImage}
             />
           </div>
@@ -98,7 +98,7 @@ export default function Home() {
               EVERYTHING{" "}
               <span>
                 you hate <br className={styles.mobileBreak} /> about
-                ride-sharing.
+                ridesharing.
               </span>
             </h2>
             <p className={styles.subHeading}>
@@ -109,7 +109,7 @@ export default function Home() {
               Imagine predictable, affordable fares and increased security.
             </p>
             <p className={styles.boldDescription}>
-              It’s ride-sharing reinvented.
+              It’s ridesharing reinvented.
             </p>
             <Link href="/join-our-waitlist">
               <button className={styles.waitlistBtn}>Join Our Waitlist</button>
@@ -179,7 +179,7 @@ export default function Home() {
             <ul className={styles.featureList}>
               <li className={styles.featureListItem}>
                 <span className={styles.featureCircle}></span>
-                Safety-first ride-sharing
+                Safety-first ridesharing
               </li>
               <li className={styles.featureListItem}>
                 <span className={styles.featureCircle}></span>
@@ -251,7 +251,7 @@ export default function Home() {
             <h2>
               <span className={styles.topLine}>Get rewarded for joining</span>
               <span className={styles.blueSpan}>
-                <span style={{ color: "#1D0652" }}>the</span> Ride-share{" "}
+                <span style={{ color: "#1D0652" }}>the</span> Rideshare{" "}
                 <br className={styles.mobileBreak} /> Revolution
               </span>
             </h2>
@@ -287,7 +287,7 @@ export default function Home() {
             Be Part of <span>Transportation's Future</span>
           </h3>
           <p className={styles.futureSubTitle}>
-            Join our movement to disrupt the ride-share industry.
+            Join our movement to disrupt the rideshare industry.
             <br />
             Create fair, affordable transportation for all.
           </p>
@@ -302,7 +302,7 @@ export default function Home() {
               <h4>Become an early adopter</h4>
               <p>
                 Become an early adopter and help shape <br /> the future of
-                ride-sharing.
+                ridesharing.
               </p>
             </div>
 

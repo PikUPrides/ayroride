@@ -5,7 +5,7 @@ import styles from "../app/about-us/page.module.css";
 
 const testimonials = [
     {
-        quote: "I was tired of unpredictable surge pricing eating into my budget. With AYRO, I know what I'm paying, drivers know what they're earning, and I've already reached the second tier of rewards. This is how ride-sharing should work!",
+        quote: "I was tired of unpredictable surge pricing eating into my budget. With AYRO, I know what I'm paying, drivers know what they're earning, and I've already reached the second tier of rewards. This is how ridesharing should work!",
         author: "Marcus Johnson"
     },
     {

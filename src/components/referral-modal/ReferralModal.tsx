@@ -110,7 +110,7 @@ export default function ReferralModal() {
 
                             {/* Form Container */}
                             <div className="relative w-full max-w-[440px]">
-                                <ReferralHeroWidget widgetId="MF2f0c6063df" />
+                                {isModalOpen && <ReferralHeroWidget widgetId="MF2f0c6063df" />}
                             </div>
 
 

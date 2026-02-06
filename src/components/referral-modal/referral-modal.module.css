@@ -60,6 +60,26 @@
     }
 }
 
+/* Global fixes for widget height and styling */
+:global(#mtr-optin-form) {
+    height: auto !important;
+    min-height: auto !important;
+}
+
+:global(#mtr-form) {
+    padding: 0 !important;
+    margin: 0 auto !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+    max-width: 600px !important;
+    width: 100% !important;
+}
+
+:global(#mtr-form .mtr-row) {
+    margin-bottom: 0 !important;
+}
+
 /* 
    Aggressive Compact Mode for Laptops (Default 1366x768 / 1280x800)
    Overrides the inline styles from the referral widget

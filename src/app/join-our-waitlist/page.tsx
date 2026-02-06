@@ -1,4 +1,5 @@
-import WaitlistForm from "../../components/WaitlistForm";
+// import WaitlistForm from "../../components/WaitlistForm";
+import ReferralHeroWidget from '@/components/referral-modal/ReferralHeroWidget';
 import styles from "./waitlist.module.css";
 
 export const metadata = {
@@ -31,12 +32,13 @@ export default function JoinOurWaitlist() {
                         Get Early <span>Access</span>
                     </h2>
                     <p className={styles.formSubtitle}>
-                        Be the first to experience the future of ride-sharing.
+                        Be the first to experience the future of ridesharing.
                         Sign up now to get exclusive updates and priority access.
                     </p>
 
                     <div className={styles.formWrapper}>
-                        <WaitlistForm />
+                        {/* <WaitlistForm /> */}
+                        <ReferralHeroWidget widgetId="MF2f0c6063df" />
                     </div>
                 </div>
             </section>

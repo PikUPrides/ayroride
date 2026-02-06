@@ -13,7 +13,7 @@ export default function ReferralPage() {
             <div className="max-w-4xl mx-auto px-4 py-20">
 
 
-                <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-6 md:p-10">
+                <div className="bg-white rounded-2xl p-6 md:p-10">
                     <ReferralHeroWidget widgetId="MF2f0c6063df" />
                 </div>
             </div>

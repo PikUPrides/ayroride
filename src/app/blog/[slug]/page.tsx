@@ -9,30 +9,15 @@ type Params = {
   }>;
 };
 
+import { generatePostMetadata } from "@/lib/metadata";
+
+// ... previous imports
+
 export async function generateMetadata({ params }: Params) {
   const { slug } = await params;
   const post = await getApiPostBySlug(slug);
 
-  return {
-    title: post.title,
-    description: post.description || "Default description",
-    openGraph: {
-      title: post.title,
-      description: post.description || "Default description",
-      url: `https://ayrorides.com/blog/${slug}`,
-      siteName: "AYRO",
-      images: [
-        {
-          url: post.featuredImage || "https://ayrorides.com/assets/OG.png",
-          width: 1200,
-          height: 630,
-          alt: post.title,
-        },
-      ],
-      locale: "en_US",
-      type: "article",
-    },
-  };
+  return generatePostMetadata(post);
 }
 
 export default async function BlogPost({

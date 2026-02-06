@@ -21,7 +21,7 @@ export interface JobPosting {
 
 const commonJobDetails = {
     postedOn: "14 Jan 2026",
-    about: "Ride-sharing is broken for drivers and riders. AYRO is fixing that with a modern mobility platform designed around flexibility, fairness, and opportunity. Our mission is to create reliable transportation options while giving drivers the freedom to earn on their own terms.\n\nWe believe great platforms are built by diverse people from different backgrounds, experiences, and industries. AYRO is committed to inclusion and equal opportunity, and we welcome drivers from all walks of life.\n\nOur driver partners are the backbone of our platform – connecting communities, helping people get where they need to go, and earning a livable wage with flexibility and independence.",
+    about: "Ridesharing is broken for drivers and riders. AYRO is fixing that with a modern mobility platform designed around flexibility, fairness, and opportunity. Our mission is to create reliable transportation options while giving drivers the freedom to earn on their own terms.\n\nWe believe great platforms are built by diverse people from different backgrounds, experiences, and industries. AYRO is committed to inclusion and equal opportunity, and we welcome drivers from all walks of life.\n\nOur driver partners are the backbone of our platform – connecting communities, helping people get where they need to go, and earning a livable wage with flexibility and independence.",
     dayToDay: [
         "Show up on time and drive safely using in-app navigation",
         "Keep your vehicle clean, comfortable, and road-ready",
@@ -141,7 +141,7 @@ export const jobs: JobPosting[] = [
         location: "Frisco, TX",
         experience: "2 Years",
         type: "Full time, part time, gig workers",
-        description: "Drive with AYRO in Frisco, TX. Earn $30+ per Active Hour, choose your schedule, and enjoy a driver-first ride-share platform.",
+        description: "Drive with AYRO in Frisco, TX. Earn $30+ per Active Hour, choose your schedule, and enjoy a driver-first rideshare platform.",
         salary: "$30+/ Active Hour (guaranteed)",
         slug: "drivers-in-frisco-tx",
         longDescription: "As an AYRO driver in **Frisco**, your job is simple: get people where they need to go safely, reliably, and with respect. You pick up riders through the AYRO app, drive them to their destination, and create a calm, professional experience along the way.",

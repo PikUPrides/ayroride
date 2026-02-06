@@ -62,7 +62,7 @@ export default function About() {
             </h2>
             <div className={styles.whoWeAreContent}>
               <p>
-                While driving for a well-known ride-share company (more than{" "}
+                While driving for a well-known rideshare company (more than{" "}
                 <strong>30,000 rides!</strong>), our founder saw:
               </p>
               <ul>
@@ -76,7 +76,7 @@ export default function About() {
                 </li>
               </ul>
               <p>
-                That's when he decided to create a different kind of ride-share
+                That's when he decided to create a different kind of rideshare
                 company. One that would…
               </p>
               <p className={styles.highlightText}>
@@ -96,7 +96,7 @@ export default function About() {
             <h2 className={styles.missionTitle}>
               AYRO Is What{" "}
               <span className={styles.missionTitleSpan}>
-                Ride-Sharing Ought to Be
+                Ridesharing Ought to Be
               </span>
             </h2>
             <p className={styles.missionIntro}>
@@ -141,7 +141,7 @@ export default function About() {
                 earn rewards in the process.
               </p>
               <p>
-                At <strong>AYRO</strong>, we believe <strong>ride-sharing</strong>{" "}
+                At <strong>AYRO</strong>, we believe <strong>ridesharing</strong>{" "}
                 should be safe and affordable, <strong>honest</strong> and human.
               </p>
               <p>
@@ -183,7 +183,7 @@ export default function About() {
               />
               <h4 className={styles.valueCardTitle}>Community</h4>
               <p className={styles.valueCardText}>
-                We're a growing movement of people who believe ride-sharing
+                We're a growing movement of people who believe ridesharing
                 should be safe, fair, and affordable.
               </p>
             </div>

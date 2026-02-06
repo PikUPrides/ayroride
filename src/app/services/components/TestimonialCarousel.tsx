@@ -12,7 +12,7 @@ const originalTestimonials = [
     },
     {
         rating: "/assets/Group-8-3.svg",
-        text: "“I’ve earned over $500 in just two weeks of sharing my link. Love being part of something that’s fixing the broken ride-share system!”",
+        text: "“I’ve earned over $500 in just two weeks of sharing my link. Love being part of something that’s fixing the broken rideshare system!”",
         author: "— Alex Thompson",
         quoteIcon: "/assets/Vector-50.svg"
     }

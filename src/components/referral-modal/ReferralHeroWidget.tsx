@@ -24,6 +24,13 @@ const ReferralHeroWidget: React.FC<ReferralHeroWidgetProps> = ({ widgetId }) => 
 
             const container = document.getElementById(containerId);
             if (container) container.innerHTML = '';
+
+            // Clean up global RH object to force re-initialization
+            // @ts-ignore
+            if (window.RH) {
+                // @ts-ignore
+                delete window.RH;
+            }
         };
 
         // Ensure clean slate
@@ -66,12 +73,12 @@ const ReferralHeroWidget: React.FC<ReferralHeroWidgetProps> = ({ widgetId }) => 
     }, [widgetId]);
 
     return (
-        <div className="relative w-full" style={{ minHeight: '380px' }}>
+        <div className="relative w-full" style={{ minHeight: '50px' }}>
             {/* The Container for the Widget */}
             <div
                 id={`referralhero-dashboard-${widgetId}`}
                 ref={containerRef}
-                style={{ minHeight: '380px', width: '100%' }}
+                style={{ minHeight: '50px', width: '100%' }}
                 className="transition-opacity duration-500 opacity-100"
             />
 

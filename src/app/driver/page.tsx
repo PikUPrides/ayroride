@@ -6,10 +6,10 @@ import FAQAccordion from "@/components/FAQAccordion";
 
 export const metadata = {
     title: "Driver - AYRO",
-    description: "Ride-sharing without surge pricing or security worries. Pay fairly, every ride.",
+    description: "Ridesharing without surge pricing or security worries. Pay fairly, every ride.",
     openGraph: {
         title: "Driver - AYRO",
-        description: "Ride-sharing without surge pricing or security worries. Pay fairly, every ride.",
+        description: "Ridesharing without surge pricing or security worries. Pay fairly, every ride.",
         url: "https://ayrorides.com/driver/",
         images: [
             {
@@ -77,7 +77,7 @@ export default function Rider() {
                             Choosing AYRO?
                         </h2>
                         <p className={styles.whySubtitle}>
-                            Ride-sharing is broken for drivers. <br /><br />
+                            Ridesharing is broken for drivers. <br /><br />
                             <b>AYRO is fixing it.</b>
                         </p>
 
@@ -326,7 +326,7 @@ export default function Rider() {
                         Driver <span>Safety and Trust</span>
                     </h2>
                     <p className={styles.safetySubtitle} style={{ textAlign: 'center', maxWidth: '700px', margin: '1rem auto', color: '#fff', opacity: 0.9 }}>
-                        Join our movement to disrupt the ride-share industry and create fair, <br />
+                        Join our movement to disrupt the rideshare industry and create fair, <br />
                         wallet-friendly transportation for all.
                     </p>
 

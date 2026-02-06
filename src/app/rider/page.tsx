@@ -6,10 +6,10 @@ import FAQAccordion from "@/components/FAQAccordion";
 
 export const metadata = {
     title: "Rider - AYRO",
-    description: "Ride-sharing without surge pricing or security worries. Pay fairly, every ride.",
+    description: "Ridesharing without surge pricing or security worries. Pay fairly, every ride.",
     openGraph: {
         title: "Rider - AYRO",
-        description: "Ride-sharing without surge pricing or security worries. Pay fairly, every ride.",
+        description: "Ridesharing without surge pricing or security worries. Pay fairly, every ride.",
         url: "https://ayrorides.com/rider/",
         images: [
             {
@@ -36,7 +36,7 @@ export default function Rider() {
                     <div className={styles.heroContent}>
                         <span className={styles.topTag}>RIDE WITH AYRO</span>
                         <h1 className={styles.heroTitle}>
-                            <span className={styles.highlightText}>Ride-share</span> without surge <br />
+                            <span className={styles.highlightText}>Rideshare</span> without surge <br />
                             pricing or security worries.
                         </h1>
                         <p className={styles.heroSubtitle}>
@@ -70,7 +70,7 @@ export default function Rider() {
                             Choosing AYRO
                         </h2>
                         <p className={styles.whySubtitle}>
-                            Ride-sharing shouldn't feel stressful.<br /><br />
+                            Ridesharing shouldn't feel stressful.<br /><br />
                             <b>AYRO keeps it simple, safe, and affordable.</b>
                         </p>
 
@@ -163,7 +163,7 @@ export default function Rider() {
                         <span className={styles.mobileStepNumber}>STEP 04</span>
                         <h3 className={styles.mobileStepTitle}>Tell Your Friends</h3>
                         <p className={styles.mobileStepDesc}>
-                            Invite them to experience safer, more affordable ride-sharing with AYRO.
+                            Invite them to experience safer, more affordable ridesharing with AYRO.
                         </p>
                     </div>
                 </div>
@@ -222,7 +222,7 @@ export default function Rider() {
                         </div>
                         <h3 className={styles.featureCardTitle}>Lower Prices</h3>
                         <p className={styles.featureCardDesc}>
-                            AYRO's rates are up to 50% lower <br /> than other big ride-sharing services.
+                            AYRO's rates are up to 50% lower <br /> than other big ridesharing services.
                         </p>
                         <div className={styles.featureCardLine}></div>
                     </div>

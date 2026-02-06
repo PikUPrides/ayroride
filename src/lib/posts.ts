@@ -75,6 +75,16 @@ export async function getApiPostBySlug(slug: string): Promise<Post> {
           post._embedded?.["wp:term"]?.[0]?.map((term: any) => term.name) || [],
         readTime: calculateReadTime(post.content.rendered),
         content: post.content.rendered,
+        rank_math_title: post.rank_math_title,
+        rank_math_description: post.rank_math_description,
+        rank_math_facebook_title: post.rank_math_facebook_title,
+        rank_math_facebook_description: post.rank_math_facebook_description,
+        rank_math_facebook_image: post.rank_math_facebook_image,
+        rank_math_twitter_title: post.rank_math_twitter_title,
+        rank_math_twitter_description: post.rank_math_twitter_description,
+        rank_math_twitter_image: post.rank_math_twitter_image,
+        rank_math_canonical: post.rank_math_canonical,
+        rank_math_robots: post.rank_math_robots,
       };
     }
   } catch (error) {
@@ -135,6 +145,16 @@ export async function getPostBySlug(slug: string): Promise<Post> {
           post._embedded?.["wp:term"]?.[0]?.map((term: any) => term.name) || [],
         readTime: calculateReadTime(post.content.rendered),
         content: post.content.rendered,
+        rank_math_title: post.rank_math_title,
+        rank_math_description: post.rank_math_description,
+        rank_math_facebook_title: post.rank_math_facebook_title,
+        rank_math_facebook_description: post.rank_math_facebook_description,
+        rank_math_facebook_image: post.rank_math_facebook_image,
+        rank_math_twitter_title: post.rank_math_twitter_title,
+        rank_math_twitter_description: post.rank_math_twitter_description,
+        rank_math_twitter_image: post.rank_math_twitter_image,
+        rank_math_canonical: post.rank_math_canonical,
+        rank_math_robots: post.rank_math_robots,
       };
     }
   } catch (error) {

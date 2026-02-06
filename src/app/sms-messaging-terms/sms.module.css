@@ -1,0 +1,135 @@
+.headerSection {
+    background: linear-gradient(180deg, #1D0652 0%, #0a0320 100%);
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 120px 20px 80px;
+    width: 100%;
+}
+
+.headerTitle {
+    font-family: "Open Sans", Sans-serif;
+    font-size: 72px;
+    font-weight: 700;
+    font-style: normal;
+    line-height: 82px;
+    color: #FFFFFF;
+    margin: 0 0 16px 0;
+}
+
+.blueText {
+    color: #3F3FFF;
+}
+
+.sectionDivider {
+    height: 8px;
+    width: 100%;
+    display: flex;
+    background-color: #3F3FFF;
+    position: relative;
+}
+
+.sectionDivider::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: calc(50% - 558px);
+    background-color: #00D1C1;
+    z-index: 1;
+}
+
+.dividerContainer {
+    max-width: 1240px;
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    height: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+.dividerTeal {
+    flex: 5;
+    background-color: #00D1C1;
+}
+
+.dividerBlue {
+    flex: 95;
+    background-color: #3F3FFF;
+}
+
+.contentSection {
+    background-color: #FFFFFF;
+    padding: 80px 20px 120px;
+}
+
+.contentContainer {
+    max-width: 1240px;
+    width: 90%;
+    margin: 0 auto;
+    color: #333333;
+    font-family: "Open Sans", Sans-serif;
+    line-height: 1.8;
+}
+
+.contentContainer h3 {
+    font-size: 28px;
+    color: #1D0652;
+    margin: 35px 0 15px;
+    font-weight: 700;
+    line-height: 35px;
+}
+
+.contentContainer p {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: #111111;
+    line-height: 28px;
+}
+
+@media (max-width: 768px) {
+    .headerTitle {
+        font-size: 42px;
+        line-height: 52px;
+    }
+
+    .contentContainer h3 {
+        font-size: 20px;
+        line-height: 25px;
+        margin: 25px 0 10px;
+    }
+
+    .sectionDivider {
+        height: 4px;
+    }
+
+    .sectionDivider::before {
+        display: none;
+    }
+
+    .dividerContainer {
+        width: 90%;
+        max-width: 390px;
+        margin: 0 auto;
+    }
+
+    .contentContainer {
+        width: 90%;
+        max-width: 390px;
+        margin: 0 auto;
+    }
+
+    .contentSection {
+        padding: 60px 0;
+    }
+
+    .headerSection {
+        min-height: 300px;
+        padding: 80px 20px 60px;
+    }
+}

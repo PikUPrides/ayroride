@@ -15,10 +15,10 @@ export default function DisruptCTA({ title, subtitle, buttonText, buttonLink }: 
     return (
         <section className={styles.disruptSection}>
             <h2 className={styles.disruptTitle}>
-                {title || "Ready To Disrupt Ride-Sharing Status Quo?"}
+                {title || "Ready To Disrupt Ridesharing Status Quo?"}
             </h2>
             <p className={styles.disruptSubtitle}>
-                {subtitle || "Be an early adopter and earn rewards while helping to make ride-sharing more fairer for everyone."}
+                {subtitle || "Be an early adopter and earn rewards while helping to make ridesharing more fairer for everyone."}
             </p>
             <Link href={buttonLink || "/join-our-waitlist"} className={styles.disruptBtn}>
                 {buttonText || "Join Our Waitlist"}

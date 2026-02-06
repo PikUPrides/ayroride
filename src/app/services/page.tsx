@@ -29,7 +29,7 @@ const features = [
         iconDefault: "/assets/Group-1-16.svg",
         iconHover: "/assets/Group-7-4.svg",
         title: "Cash Rewards",
-        text: "Earn up to $1,000 in cash prizes by simply referring friends to join our movement against exploitative ride-sharing."
+        text: "Earn up to $1,000 in cash prizes by simply referring friends to join our movement against exploitative ridesharing."
     },
     {
         iconDefault: "/assets/Group-2-9.svg",
@@ -47,7 +47,7 @@ const features = [
         iconDefault: "/assets/Group-4-5.svg",
         iconHover: "/assets/Group-10-3.svg",
         title: "Early Adopter Status",
-        text: "Gain recognition as a founding member of the movement that's reshaping the future of ethical ride-sharing."
+        text: "Gain recognition as a founding member of the movement that's reshaping the future of ethical ridesharing."
     },
     {
         iconDefault: "/assets/Group-5-3.svg",
@@ -92,7 +92,7 @@ export default function Services() {
                 <div className={styles.revolutionContainer}>
                     <span className={styles.revolutionBadge}>ALL IN SOLUTION</span>
                     <h2 className={styles.revolutionTitle}>
-                        The Ride-Share Revolution <span>Begins Here</span>
+                        The Rideshare Revolution <span>Begins Here</span>
                     </h2>
                     <p className={styles.revolutionIntro}>
                         Join the revolt against surge pricing and unfair practices - and earn valuable rewards.
@@ -143,7 +143,7 @@ export default function Services() {
                             <h3 className={styles.chooseUsTitle}>Become an early adopter</h3>
                             <p className={styles.chooseUsText}>
                                 Become an early adopter and help shape<br />
-                                the future of ride-sharing.
+                                the future of ridesharing.
                             </p>
                         </div>
 
