@@ -35,7 +35,7 @@ export default function PromoPopup() {
             onClick={closePopup}
         >
             <div
-                className="relative w-full max-w-lg aspect-[4/5] md:aspect-square bg-transparent rounded-2xl overflow-hidden shadow-2xl animate-in fade-in zoom-in slide-in-from-top-10 duration-500"
+                className="relative w-[85vw] max-w-[340px] md:max-w-lg aspect-[4/5] md:aspect-square bg-transparent rounded-2xl overflow-hidden shadow-2xl animate-in fade-in zoom-in slide-in-from-top-10 duration-500"
                 onClick={(e) => e.stopPropagation()}
             >
                 {/* Background Image */}

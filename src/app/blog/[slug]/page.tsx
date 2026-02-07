@@ -1,7 +1,8 @@
-import { getApiPostBySlug, getRelatedPosts } from "@/lib/posts";
+import { getApiPostBySlug, getRelatedPosts, getRankMathHead } from "@/lib/posts";
 import RelatedPosts from "@/app/blog/components/RelatedPosts";
 import Image from "next/image";
 import styles from "../page.module.css";
+import { Metadata } from "next";
 
 type Params = {
   params: Promise<{
@@ -9,15 +10,52 @@ type Params = {
   }>;
 };
 
-import { generatePostMetadata } from "@/lib/metadata";
-
 // ... previous imports
 
-export async function generateMetadata({ params }: Params) {
+export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { slug } = await params;
-  const post = await getApiPostBySlug(slug);
+  const postUrl = `https://blog.ayrorides.com/${slug}/`;
 
-  return generatePostMetadata(post);
+  try {
+    const seo = await getRankMathHead(postUrl);
+
+    return {
+      title: seo.title,
+      description: seo.description,
+      alternates: {
+        canonical: seo.canonical,
+      },
+      robots: {
+        index: !seo.robots?.includes("noindex"),
+        follow: !seo.robots?.includes("nofollow"),
+      },
+      openGraph: {
+        title: seo.openGraph?.title,
+        description: seo.openGraph?.description,
+        url: seo.canonical,
+        images: seo.openGraph?.images?.map((img: any) => ({
+          url: img.url,
+          width: img.width,
+          height: img.height,
+          alt: img.alt,
+        })),
+        siteName: "AYRO",
+        type: "article",
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: seo.twitter?.title,
+        description: seo.twitter?.description,
+        images: seo.twitter?.images,
+      },
+    };
+  } catch (error) {
+    console.error("Error fetching SEO data:", error);
+    // Fallback to basic metadata or return empty if fetching fails
+    return {
+      title: "Ayro Blog",
+    };
+  }
 }
 
 export default async function BlogPost({

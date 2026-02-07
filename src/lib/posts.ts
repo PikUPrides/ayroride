@@ -4,6 +4,19 @@ import matter from "gray-matter";
 import { marked } from "marked";
 import { Post, PostMeta } from "./types";
 
+// ------------------------------------------
+// Helper: Get Rank Math Head
+// ------------------------------------------
+export async function getRankMathHead(postUrl: string) {
+  const res = await fetch(
+    `https://blog.ayrorides.com/wp-json/rankmath/v1/getHead?url=${encodeURIComponent(postUrl)}`,
+    { next: { revalidate: 3600 } }
+  );
+
+  if (!res.ok) throw new Error("Failed to fetch Rank Math head");
+  return res.json();
+}
+
 const postsDir = path.join(process.cwd(), "src/app/blog/content/posts");
 
 // ------------------------------------------
@@ -75,21 +88,6 @@ export async function getApiPostBySlug(slug: string): Promise<Post> {
           post._embedded?.["wp:term"]?.[0]?.map((term: any) => term.name) || [],
         readTime: calculateReadTime(post.content.rendered),
         content: post.content.rendered,
-        rank_math_title: post.rank_math_title,
-        rank_math_description: post.rank_math_description,
-        rank_math_facebook_title: post.rank_math_facebook_title,
-        rank_math_facebook_description: post.rank_math_facebook_description,
-        rank_math_facebook_image: post.rank_math_facebook_image,
-        rank_math_twitter_title: post.rank_math_twitter_title,
-        rank_math_twitter_description: post.rank_math_twitter_description,
-        rank_math_twitter_image: post.rank_math_twitter_image,
-        rank_math_canonical: post.rank_math_canonical,
-        rank_math_robots: (() => {
-          const raw = post._rank_math_robots || post.rank_math_robots;
-          if (Array.isArray(raw)) return raw;
-          if (typeof raw === "string") return raw.split(",").map((r: string) => r.trim());
-          return [];
-        })(),
       };
     }
   } catch (error) {
@@ -150,16 +148,6 @@ export async function getPostBySlug(slug: string): Promise<Post> {
           post._embedded?.["wp:term"]?.[0]?.map((term: any) => term.name) || [],
         readTime: calculateReadTime(post.content.rendered),
         content: post.content.rendered,
-        rank_math_title: post.rank_math_title,
-        rank_math_description: post.rank_math_description,
-        rank_math_facebook_title: post.rank_math_facebook_title,
-        rank_math_facebook_description: post.rank_math_facebook_description,
-        rank_math_facebook_image: post.rank_math_facebook_image,
-        rank_math_twitter_title: post.rank_math_twitter_title,
-        rank_math_twitter_description: post.rank_math_twitter_description,
-        rank_math_twitter_image: post.rank_math_twitter_image,
-        rank_math_canonical: post.rank_math_canonical,
-        rank_math_robots: post.rank_math_robots,
       };
     }
   } catch (error) {

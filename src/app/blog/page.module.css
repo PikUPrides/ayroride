@@ -1,6 +1,6 @@
 /* Blog Hero Section */
 .blogHero {
-    background: linear-gradient(180deg, #1D0652 0%, #0a0320 100%);
+    background-color: #1D0652;
     min-height: 400px;
     display: flex;
     align-items: center;

@@ -24,7 +24,7 @@ export default function ReferralModal() {
             />
 
             {/* Modal Container */}
-            <div className={`relative bg-white rounded-[2.5rem] shadow-[0_45px_100px_-20px_rgba(0,0,0,0.4)] w-[80vw] md:w-auto md:max-w-5xl overflow-hidden flex flex-col md:flex-row h-auto max-h-[70vh] md:!max-h-[85vh] min-[1401px]:max-h-[70vh] transition-all duration-500 ease-out ${isModalOpen ? "scale-100 opacity-100 translate-y-0" : "scale-95 opacity-0 translate-y-4"
+            <div className={`relative bg-white rounded-[2.5rem] shadow-[0_45px_100px_-20px_rgba(0,0,0,0.4)] w-[90vw] md:w-auto md:max-w-5xl overflow-hidden flex flex-col md:flex-row h-auto max-h-[70vh] md:!max-h-[85vh] min-[1401px]:max-h-[70vh] transition-all duration-500 ease-out ${isModalOpen ? "scale-100 opacity-100 translate-y-0" : "scale-95 opacity-0 translate-y-4"
                 } ${styles.modalContainer}`}>
 
                 {/* Close Button */}

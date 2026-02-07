@@ -328,9 +328,17 @@
     justify-content: center;
 }
 
-.socialIcon svg {
-    width: 34px;
-    height: 34px;
+.socialIcon img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+}
+
+.youtubeIcon img {
+    width: auto !important;
+    height: 32px !important;
+    object-fit: contain !important;
+    aspect-ratio: auto !important;
 }
 
 .mapWrapper {

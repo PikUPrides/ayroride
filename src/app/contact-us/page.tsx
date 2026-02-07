@@ -1,7 +1,6 @@
 import ContactForm from "./ContactFormClient";
 import Image from "next/image";
 import styles from "./contact-us.module.css";
-import { IoLogoFacebook, IoLogoInstagram, IoLogoTwitter, IoLogoYoutube } from "react-icons/io5";
 
 export const metadata = {
   title: "Contact Us - AYRO",
@@ -100,15 +99,15 @@ export default function Contact() {
                 </a>
 
                 <a href="https://x.com/ayro_inc" target="_blank" className={styles.socialIcon}>
-                  <Image src="/images/x.png" alt="X" width={38} height={38} />
+                  <Image src="/images/x-icon.jpg" alt="X" width={32} height={32} />
                 </a>
 
                 <a href="https://www.instagram.com/ayro.rideshare/" target="_blank" className={styles.socialIcon}>
                   <Image src="/assets/instagram-icon.png" alt="Instagram" width={32} height={32} />
                 </a>
 
-                <a href="https://www.youtube.com/@AYRO_Inc" target="_blank" className={styles.socialIcon}>
-                  <Image src="/assets/youtube-icon.png" alt="YouTube" width={32} height={32} />
+                <a href="https://www.youtube.com/@AYRO_Inc" target="_blank" className={`${styles.socialIcon} ${styles.youtubeIcon}`}>
+                  <Image src="/images/youtube-logo.png" alt="YouTube" width={32} height={32} />
                 </a>
               </div>
             </div>
