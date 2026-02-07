@@ -16,8 +16,8 @@ export function ModalProvider({ children }: { children: ReactNode }) {
     const pathname = usePathname();
 
     useEffect(() => {
-        // Prevent auto-popup on the dedicated waitlist page
-        if (pathname === '/join-our-waitlist') return;
+        // Prevent auto-popup on the dedicated waitlist page and sms terms
+        if (pathname === '/join-our-waitlist' || pathname === '/sms-terms') return;
 
         const timer = setTimeout(() => {
             // Disable auto-popup for now as per request

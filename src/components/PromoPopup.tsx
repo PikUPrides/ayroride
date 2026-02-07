@@ -12,6 +12,9 @@ export default function PromoPopup() {
     useEffect(() => {
         setIsOpen(false); // Enable strict reset on navigation
 
+        // Prevent popup on specific pages
+        if (pathname === '/sms-terms' || pathname === '/join-our-waitlist') return;
+
         // Show popup 5 seconds after page load/navigation
         const timer = setTimeout(() => {
             setIsOpen(true);
@@ -28,7 +31,7 @@ export default function PromoPopup() {
 
     return (
         <div
-            className="fixed inset-0 z-[100] flex items-start justify-center pt-20 px-4 bg-black/60 backdrop-blur-sm"
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
             onClick={closePopup}
         >
             <div

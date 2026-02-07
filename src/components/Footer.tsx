@@ -20,7 +20,8 @@ export default function Footer() {
     pathname !== "/advocate" &&
     pathname !== "/referral" &&
     !pathname.startsWith("/careers") && // Exclude on careers pages (User request: just the second section there)
-    !pathname.startsWith("/blog");
+    !pathname.startsWith("/blog") &&
+    pathname !== "/sms-terms"; // Exclude on SMS terms page
 
   // Logic for showing Disrupt CTA (Show on ALMOST ALL pages)
   const showDisruptCTA = pathname !== "/join-our-waitlist"; // Exclude on waitlist page itself
