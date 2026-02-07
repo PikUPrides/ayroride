@@ -84,7 +84,12 @@ export async function getApiPostBySlug(slug: string): Promise<Post> {
         rank_math_twitter_description: post.rank_math_twitter_description,
         rank_math_twitter_image: post.rank_math_twitter_image,
         rank_math_canonical: post.rank_math_canonical,
-        rank_math_robots: post.rank_math_robots,
+        rank_math_robots: (() => {
+          const raw = post._rank_math_robots || post.rank_math_robots;
+          if (Array.isArray(raw)) return raw;
+          if (typeof raw === "string") return raw.split(",").map((r: string) => r.trim());
+          return [];
+        })(),
       };
     }
   } catch (error) {
