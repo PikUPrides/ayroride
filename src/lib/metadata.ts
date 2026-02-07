@@ -38,36 +38,29 @@ export function generatePostMetadata(post: Post): Metadata {
         "https://ayrorides.com/assets/OG.png";
 
     // 6. Robots
-    // Parse RankMath robots string/array (e.g., ["index", "follow", "max-snippet:-1"])
-    const robotsDefaults = {
-        index: true,
-        follow: true,
+    const rawRobots =
+        post._rank_math_robots ||
+        post.rank_math_robots ||
+        "";
+
+    const rmRobots = typeof rawRobots === "string"
+        ? rawRobots.split(",").map((r: string) => r.trim())
+        : [];
+
+    const isNoIndex = rmRobots.includes("noindex");
+    const isNoFollow = rmRobots.includes("nofollow");
+
+    const robots = {
+        index: !isNoIndex,
+        follow: !isNoFollow,
         googleBot: {
-            index: true,
-            follow: true,
+            index: !isNoIndex,
+            follow: !isNoFollow,
             "max-video-preview": -1,
             "max-image-preview": "large" as const,
             "max-snippet": -1,
         },
     };
-
-    let robots = robotsDefaults;
-
-    if (post.rank_math_robots && Array.isArray(post.rank_math_robots)) {
-        const rmRobots = post.rank_math_robots;
-        const isNoIndex = rmRobots.includes("noindex");
-        const isNoFollow = rmRobots.includes("nofollow");
-
-        robots = {
-            index: !isNoIndex,
-            follow: !isNoFollow,
-            googleBot: {
-                ...robotsDefaults.googleBot,
-                index: !isNoIndex,
-                follow: !isNoFollow,
-            },
-        };
-    }
 
     return {
         title: title,
