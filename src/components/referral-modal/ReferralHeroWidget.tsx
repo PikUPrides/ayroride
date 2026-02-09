@@ -24,13 +24,6 @@ const ReferralHeroWidget: React.FC<ReferralHeroWidgetProps> = ({ widgetId }) => 
 
             const container = document.getElementById(containerId);
             if (container) container.innerHTML = '';
-
-            // Clean up global RH object to force re-initialization
-            // @ts-ignore
-            if (window.RH) {
-                // @ts-ignore
-                delete window.RH;
-            }
         };
 
         // Ensure clean slate

@@ -365,3 +365,20 @@
   padding: 12px 0;
   font-size: 15px;
 }
+
+/* Header Actions (Language + Waitlist Button) */
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Mobile Actions */
+.mobileActions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-top: 20px;
+  width: 100%;
+}

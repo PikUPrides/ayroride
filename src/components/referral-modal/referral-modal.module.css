@@ -52,11 +52,14 @@
 
 /* Mobile: Remove widget card styling (border/padding) to prevent 'sticking' and double-card effect */
 @media (max-width: 768px) {
-    :global(#mtr-form) {
-        border: none !important;
+
+    :global(#mtr-form),
+    :global(form#mtr-form),
+    :global(form#mtr-form.mtr-new-ui-v2),
+    :global(form#mtr-form.mtr-new-ui-v2.mtr-light-theme),
+    :global(#mtr-form-fields),
+    :global(.mtr-form-fields) {
         padding: 0 !important;
-        background-color: transparent !important;
-        box-shadow: none !important;
     }
 }
 

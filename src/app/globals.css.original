@@ -12,25 +12,6 @@ body {
   font-family: var(--font-open-sans), "Open Sans", sans-serif;
   color: black;
   background: white;
-  top: 0 !important;
-}
-
-/* Hide Google Translate Branding */
-.goog-logo-link,
-.goog-te-gadget,
-.goog-te-banner-frame,
-#goog-gt-tt,
-.goog-te-balloon-frame {
-  display: none !important;
-}
-
-.goog-text-highlight {
-  background: none !important;
-  box-shadow: none !important;
-}
-
-.skiptranslate {
-  display: none !important;
 }
 
 /* Blog Content Styles */

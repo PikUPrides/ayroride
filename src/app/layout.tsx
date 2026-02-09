@@ -7,6 +7,7 @@ import ReferralModal from "@/components/referral-modal/ReferralModal";
 import { ModalProvider } from "@/context/ModalContext";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import PromoPopup from "@/components/PromoPopup";
+import LanguageDropdown from "@/components/LanguageDropdown";
 
 const openSans = Open_Sans({
   subsets: ["latin"],
@@ -69,6 +70,31 @@ export default function RootLayout({
       <body className={`${openSans.variable} ${openSans.className}`} suppressHydrationWarning>
         <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5FKKXTJ8"
           height="0" width="0" style={{ display: 'none', visibility: 'hidden' }}></iframe></noscript>
+
+        {/* Google Translate Setup */}
+        <Script
+          id="google-translate-init"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              function googleTranslateElementInit() {
+                new google.translate.TranslateElement(
+                  {
+                    pageLanguage: 'en',
+                    autoDisplay: false
+                  },
+                  'google_translate_element'
+                );
+              }
+            `
+          }}
+        />
+        <Script
+          src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+          strategy="afterInteractive"
+        />
+        <div id="google_translate_element" style={{ display: 'none' }} />
+
         <Script id="google-tag-manager" strategy="afterInteractive" dangerouslySetInnerHTML={{
           __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
           new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -81,6 +107,7 @@ export default function RootLayout({
           {children}
           <Footer />
           <ReferralModal />
+          <LanguageDropdown />
         </ModalProvider>
         <Script id="referralhero-global" strategy="afterInteractive" dangerouslySetInnerHTML={{
           __html: `!function(m,a,i,t,r,e){if(m.RH)return;r=m.RH={},r.uuid=t,r.loaded=0,r.base_url=i,r.queue=[],m.rht=function(){r.queue.push(arguments)};e=a.getElementsByTagName('script')[0],c=a.createElement('script');c.async=!0,c.src='https://d7zve4d3u0dfm.cloudfront.net/'+'production'+'/'+t+'.js',e.parentNode.insertBefore(c,e)}(window,document,'https://app.referralhero.com','RH0d3a5b93dd');`

@@ -14,7 +14,60 @@ export async function getRankMathHead(postUrl: string) {
   );
 
   if (!res.ok) throw new Error("Failed to fetch Rank Math head");
-  return res.json();
+  const data = await res.json();
+
+  // Parse the HTML string to extract meta values
+  const html = data.head || "";
+
+  // Extract title
+  const titleMatch = html.match(/<title>([^<]*)<\/title>/);
+  const title = titleMatch ? titleMatch[1] : "";
+
+  // Extract description
+  const descMatch = html.match(/<meta name="description" content="([^"]*)"/);
+  const description = descMatch ? descMatch[1] : "";
+
+  // Extract robots
+  const robotsMatch = html.match(/<meta name="robots" content="([^"]*)"/);
+  const robots = robotsMatch ? robotsMatch[1] : "";
+
+  // Extract canonical
+  const canonicalMatch = html.match(/<link rel="canonical" href="([^"]*)"/);
+  const canonical = canonicalMatch ? canonicalMatch[1] : postUrl;
+
+  // Extract OpenGraph
+  const ogTitleMatch = html.match(/<meta property="og:title" content="([^"]*)"/);
+  const ogDescMatch = html.match(/<meta property="og:description" content="([^"]*)"/);
+  const ogImageMatch = html.match(/<meta property="og:image" content="([^"]*)"/);
+  const ogImageWidthMatch = html.match(/<meta property="og:image:width" content="([^"]*)"/);
+  const ogImageHeightMatch = html.match(/<meta property="og:image:height" content="([^"]*)"/);
+
+  // Extract Twitter
+  const twTitleMatch = html.match(/<meta name="twitter:title" content="([^"]*)"/);
+  const twDescMatch = html.match(/<meta name="twitter:description" content="([^"]*)"/);
+  const twImageMatch = html.match(/<meta name="twitter:image" content="([^"]*)"/);
+
+  return {
+    title,
+    description,
+    robots,
+    canonical,
+    openGraph: {
+      title: ogTitleMatch ? ogTitleMatch[1] : title,
+      description: ogDescMatch ? ogDescMatch[1] : description,
+      images: ogImageMatch ? [{
+        url: ogImageMatch[1],
+        width: ogImageWidthMatch ? parseInt(ogImageWidthMatch[1]) : undefined,
+        height: ogImageHeightMatch ? parseInt(ogImageHeightMatch[1]) : undefined,
+        alt: title,
+      }] : [],
+    },
+    twitter: {
+      title: twTitleMatch ? twTitleMatch[1] : title,
+      description: twDescMatch ? twDescMatch[1] : description,
+      images: twImageMatch ? [twImageMatch[1]] : [],
+    },
+  };
 }
 
 const postsDir = path.join(process.cwd(), "src/app/blog/content/posts");
@@ -88,6 +141,9 @@ export async function getApiPostBySlug(slug: string): Promise<Post> {
           post._embedded?.["wp:term"]?.[0]?.map((term: any) => term.name) || [],
         readTime: calculateReadTime(post.content.rendered),
         content: post.content.rendered,
+        meta: {
+          frontend_indexing: post.meta?.frontend_indexing || "index",
+        },
       };
     }
   } catch (error) {

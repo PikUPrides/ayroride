@@ -17,22 +17,27 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const postUrl = `https://blog.ayrorides.com/${slug}/`;
 
   try {
+    // Fetch post data including meta.frontend_indexing
+    const post = await getApiPostBySlug(slug);
     const seo = await getRankMathHead(postUrl);
+
+    // Use frontend_indexing from post meta to control indexing
+    const shouldIndex = post.meta?.frontend_indexing !== "noindex";
 
     return {
       title: seo.title,
       description: seo.description,
       alternates: {
-        canonical: seo.canonical,
+        canonical: `https://ayrorides.com/blog/${slug}/`,
       },
       robots: {
-        index: !seo.robots?.includes("noindex"),
-        follow: !seo.robots?.includes("nofollow"),
+        index: shouldIndex,
+        follow: shouldIndex,
       },
       openGraph: {
         title: seo.openGraph?.title,
         description: seo.openGraph?.description,
-        url: seo.canonical,
+        url: `https://ayrorides.com/blog/${slug}/`,
         images: seo.openGraph?.images?.map((img: any) => ({
           url: img.url,
           width: img.width,
