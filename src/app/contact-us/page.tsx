@@ -23,6 +23,9 @@ export const metadata = {
     title: "Contact Us - Ayro",
     description: "Questions? Need assistance? Our team is here to help.",
   },
+  alternates: {
+    canonical: 'https://ayrorides.com/contact-us/',
+  },
 };
 
 export default function Contact() {

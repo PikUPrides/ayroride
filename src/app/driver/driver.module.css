@@ -261,7 +261,7 @@
 
 .worksHeader {
   text-align: center;
-  margin-bottom: 5rem;
+  margin-bottom: 2rem;
   max-width: 800px;
 }
 
@@ -289,19 +289,24 @@
   display: flex;
   flex-direction: column;
   gap: 0;
-  /* Remove gap, handle spacing with min-height */
-  margin-top: 2rem;
+  margin-top: 0;
+  margin-bottom: 4rem;
+}
+
+.timelineLineWrapper {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  height: 750px;
+  z-index: 0;
+  pointer-events: none;
 }
 
 .timelineLineImage {
-  position: absolute;
-  left: 50%;
-  top: 0;
-  bottom: 0;
-  transform: translateX(-50%);
+  display: block;
   height: 100%;
   width: auto;
-  z-index: 0;
 }
 
 .timelineStep {
@@ -310,111 +315,101 @@
   align-items: center;
   position: relative;
   z-index: 1;
-  min-height: 266px;
-  /* 800px / 3 steps = ~266px per step to match icons */
+  min-height: 250px;
+  /* Adjust spacing to match image points */
+  padding: 2rem 0;
+}
+
+/* Individual Step Adjustments - Tweak these to align with background image */
+.timelineStep:nth-child(2) {
+  /* Step 1 (Index 2 because LineWrapper is 1st child) */
+  margin-top: 0;
+  padding-right: 40px;
+  transform: translateY(20px)
+    /* Add margin-top/bottom or transform: translateY() to adjust alignment */
+}
+
+.timelineStep:nth-child(3) {
+  /* Step 2 */
+  margin-top: 0;
+  padding-left: 40px;
+  transform: translateY(-20px);
+}
+
+.timelineStep:nth-child(4) {
+  /* Step 3 */
+  margin-top: 0;
+  padding-right: 40px;
+  transform: translateY(-100px);
 }
 
 /* Left Side Step */
 .stepLeft {
   width: 50%;
-  padding-right: 60px;
-  /* Space for the center line */
+  padding-right: 40px;
+  /* Reduced padding from 60px */
   display: flex;
   justify-content: flex-end;
 }
 
 .stepRight {
   width: 50%;
-  padding-left: 60px;
+  padding-left: 40px;
+  /* Reduced padding from 60px */
   display: flex;
   justify-content: flex-start;
-}
-
-/* Spacer for opposite side */
-.stepSpacer {
-  width: 50%;
 }
 
 .stepCard {
   background: white;
   border: 1px solid #EBEAED;
   border-radius: 12px;
-  padding: 2rem;
+  padding: 2.5rem;
   max-width: 380px;
   width: 100%;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  /* Enhanced shadow */
   text-align: left;
-  margin-top: -95px;
-  /* Adjust alignment with icons */
 }
 
 .stepNumber {
   color: #423DF9;
   font-family: var(--font-open-sans), sans-serif;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 700;
   line-height: 120%;
   text-transform: uppercase;
-  letter-spacing: 0;
+  letter-spacing: 0.1em;
   margin-bottom: 0.75rem;
   display: block;
 }
 
 .stepTitle {
   font-family: var(--font-open-sans), sans-serif;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   font-weight: 700;
-  margin-bottom: 0.75rem;
+  margin-bottom: 1rem;
   color: #1a1a1a;
-  /* Dark text */
 }
 
 .stepDesc {
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: #555;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 @media (max-width: 768px) {
-  .timelineLineImage {
-    display: none;
-  }
-
   .timelineContainer {
-    gap: 2rem;
+    display: none;
+    /* Hide desktop timeline on mobile */
   }
 
-  .timelineStep {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .stepLeft,
-  .stepRight {
-    width: 100%;
-    padding: 0;
-    justify-content: center;
-  }
-
-  .stepSpacer {
+  .worksImageContainer {
     display: none;
   }
 }
 
-.worksImageContainer {
-  width: 100%;
-  max-width: 1000px;
-  display: flex;
-  justify-content: center;
-  margin-top: 2rem;
-}
-
-.worksImage {
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-}
-
+/* Mobile View Styles */
 .mobileWorksContainer {
   display: none;
   flex-direction: column;
@@ -433,6 +428,13 @@
   text-align: left;
 }
 
+.mobileStepHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+}
+
 .mobileStepNumber {
   color: #423DF9;
   font-size: 0.875rem;
@@ -440,6 +442,8 @@
   text-transform: uppercase;
   margin-bottom: 0.5rem;
   display: block;
+  margin-top: 0.5rem;
+  /* Align with icon */
 }
 
 .mobileStepTitle {
@@ -457,12 +461,21 @@
 }
 
 @media (max-width: 768px) {
-  .worksImageContainer {
-    display: none;
-  }
-
   .mobileWorksContainer {
     display: flex;
+  }
+}
+
+
+
+@media (max-width: 1024px) {
+  .howItWorksSection {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  .worksHeader {
+    margin-bottom: 4rem;
   }
 }
 

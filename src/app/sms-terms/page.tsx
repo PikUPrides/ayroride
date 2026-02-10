@@ -4,6 +4,9 @@ import styles from "./sms.module.css";
 export const metadata = {
     title: "SMS Messaging Terms - AYRO",
     description: "Terms and conditions regarding SMS messaging from AYRO Inc.",
+    alternates: {
+        canonical: 'https://ayrorides.com/sms-terms/',
+    },
 };
 
 export default function SmsMessagingTerms() {

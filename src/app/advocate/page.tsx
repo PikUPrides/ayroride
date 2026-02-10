@@ -3,6 +3,9 @@ import WaitlistForm from '@/components/WaitlistForm';
 export const metadata = {
     title: "Advocate Dashboard - AYRO",
     description: "Track your referrals and rewards.",
+    alternates: {
+        canonical: 'https://ayrorides.com/advocate/',
+    },
 };
 
 export default function AdvocateDashboardPage() {

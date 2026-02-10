@@ -2,6 +2,14 @@
 
 import styles from "./privacy.module.css";
 
+export const metadata = {
+    title: "Privacy Policy - AYRO",
+    description: "AYRO Privacy Policy.",
+    alternates: {
+        canonical: 'https://ayrorides.com/privacy-policy/',
+    },
+};
+
 export default function PrivacyPolicy() {
     return (
         <main>

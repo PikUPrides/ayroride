@@ -25,6 +25,9 @@ export const metadata = {
         title: "Rider - AYRO",
         description: "Pay fairly, every ride. No surge pricing surprises.",
     },
+    alternates: {
+        canonical: 'https://ayrorides.com/rider/',
+    },
 };
 
 export default function Rider() {
@@ -127,14 +130,70 @@ export default function Rider() {
                     </p>
                 </div>
 
-                <div className={styles.worksImageContainer}>
-                    <Image
-                        src="/images/rider/rider-timeline-new.png"
-                        alt="How riding with AYRO works diagram"
-                        width={1000}
-                        height={800}
-                        className={styles.worksImage}
-                    />
+                <div className={styles.timelineContainer}>
+                    <div className={styles.timelineLineWrapper}>
+                        <img
+                            src="/images/rider/rider-center-line.png"
+                            alt="Timeline Line"
+                            className={styles.timelineLineImage}
+                        />
+                    </div>
+
+                    {/* Step 1 - Left */}
+                    <div className={styles.timelineStep}>
+                        <div className={styles.stepLeft}>
+                            <div className={styles.stepCard}>
+                                <span className={styles.stepNumber}>STEP 01</span>
+                                <h3 className={styles.stepTitle}>Join the Waitlist</h3>
+                                <p className={styles.stepDesc}>
+                                    Sign up to get early access to AYRO and be among the first riders on the platform.
+                                </p>
+                            </div>
+                        </div>
+                        <div className={styles.stepRight}></div>
+                    </div>
+
+                    {/* Step 2 - Right */}
+                    <div className={styles.timelineStep}>
+                        <div className={styles.stepLeft}></div>
+                        <div className={styles.stepRight}>
+                            <div className={styles.stepCard}>
+                                <span className={styles.stepNumber}>STEP 02</span>
+                                <h3 className={styles.stepTitle}>Know What You'll Pay</h3>
+                                <p className={styles.stepDesc}>
+                                    View your total fare before you book. No surge pricing. No hidden fees.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Step 3 - Left */}
+                    <div className={styles.timelineStep}>
+                        <div className={styles.stepLeft}>
+                            <div className={styles.stepCard}>
+                                <span className={styles.stepNumber}>STEP 03</span>
+                                <h3 className={styles.stepTitle}>Book and Ride</h3>
+                                <p className={styles.stepDesc}>
+                                    Confirm your ride and get picked up by a verified driver.
+                                </p>
+                            </div>
+                        </div>
+                        <div className={styles.stepRight}></div>
+                    </div>
+
+                    {/* Step 4 - Right */}
+                    <div className={styles.timelineStep}>
+                        <div className={styles.stepLeft}></div>
+                        <div className={styles.stepRight}>
+                            <div className={styles.stepCard}>
+                                <span className={styles.stepNumber}>STEP 04</span>
+                                <h3 className={styles.stepTitle}>Tell Your Friends</h3>
+                                <p className={styles.stepDesc}>
+                                    Invite them to experience safer, more affordable ride-sharing with AYRO.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div className={styles.mobileWorksContainer}>

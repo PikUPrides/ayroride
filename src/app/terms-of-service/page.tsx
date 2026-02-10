@@ -2,6 +2,14 @@
 
 import styles from "./terms.module.css";
 
+export const metadata = {
+    title: "Terms of Service - AYRO",
+    description: "AYRO Terms of Service Agreement.",
+    alternates: {
+        canonical: 'https://ayrorides.com/terms-of-service/',
+    },
+};
+
 export default function TermsOfService() {
     return (
         <main>

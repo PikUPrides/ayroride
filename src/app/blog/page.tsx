@@ -26,13 +26,8 @@ export const metadata = {
     title: "Insights and Updates from AYRO",
     description: "Latest news, trends, and expert advice from our team.",
   },
-  robots: {
-    index: false,
-    follow: false,
-    googleBot: {
-      index: false,
-      follow: false,
-    },
+  alternates: {
+    canonical: 'https://ayrorides.com/blog/',
   },
 };
 

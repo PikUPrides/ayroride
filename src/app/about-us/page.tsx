@@ -25,6 +25,9 @@ export const metadata = {
     description:
       "Safe, quick, and affordable rides. Discover our mission to simplify transportation.",
   },
+  alternates: {
+    canonical: 'https://ayrorides.com/about-us/',
+  },
 };
 
 export default function About() {

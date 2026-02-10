@@ -22,6 +22,9 @@ export const metadata = {
         title: "Services – AYRO – Referral Program",
         description: "Join the rebellion against surge pricing. Earn rewards through our gamified referral system.",
     },
+    alternates: {
+        canonical: 'https://ayrorides.com/services/',
+    },
 };
 
 const features = [

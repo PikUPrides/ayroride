@@ -25,6 +25,9 @@ export const metadata = {
         title: "Driver - AYRO",
         description: "Pay fairly, every ride. No surge pricing surprises.",
     },
+    alternates: {
+        canonical: 'https://ayrorides.com/driver/',
+    },
 };
 
 export default function Rider() {
@@ -132,33 +135,82 @@ export default function Rider() {
                     </p>
                 </div>
 
-                <div className={styles.worksImageContainer}>
-                    <Image
-                        src="/images/driver/driver-timeline-new.png"
-                        alt="How driving with AYRO works"
-                        width={1000}
-                        height={800}
-                        className={styles.worksImage}
-                    />
+                <div className={styles.timelineContainer}>
+                    <div className={styles.timelineLineWrapper}>
+                        <img
+                            src="/images/driver/timeline-center-line.png"
+                            alt="Timeline Line"
+                            className={styles.timelineLineImage}
+                        />
+                    </div>
+
+                    {/* Step 1 */}
+                    <div className={styles.timelineStep}>
+                        <div className={styles.stepLeft}>
+                            <div className={styles.stepCard}>
+                                <span className={styles.stepNumber}>STEP 01</span>
+                                <h3 className={styles.stepTitle}>Apply and get verified</h3>
+                                <p className={styles.stepDesc}>
+                                    Sign up as a driver to get early access.
+                                </p>
+                            </div>
+                        </div>
+                        <div className={styles.stepRight}></div>
+                    </div>
+
+                    {/* Step 2 */}
+                    <div className={styles.timelineStep}>
+                        <div className={styles.stepLeft}></div>
+                        <div className={styles.stepRight}>
+                            <div className={styles.stepCard}>
+                                <span className={styles.stepNumber}>STEP 02</span>
+                                <h3 className={styles.stepTitle}>Activate your account</h3>
+                                <p className={styles.stepDesc}>
+                                    Unlock early access rewards and priority onboarding.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Step 3 */}
+                    <div className={styles.timelineStep}>
+                        <div className={styles.stepLeft}>
+                            <div className={styles.stepCard}>
+                                <span className={styles.stepNumber}>STEP 03</span>
+                                <h3 className={styles.stepTitle}>Drive and earn fairly</h3>
+                                <p className={styles.stepDesc}>
+                                    Earn consistent income without surge manipulation.
+                                </p>
+                            </div>
+                        </div>
+                        <div className={styles.stepRight}></div>
+                    </div>
                 </div>
 
+                {/* Mobile View */}
                 <div className={styles.mobileWorksContainer}>
                     <div className={styles.mobileStepCard}>
-                        <span className={styles.mobileStepNumber}>STEP 01</span>
+                        <div className={styles.mobileStepHeader}>
+                            <span className={styles.mobileStepNumber}>STEP 01</span>
+                        </div>
                         <h3 className={styles.mobileStepTitle}>Apply and get verified</h3>
                         <p className={styles.mobileStepDesc}>
                             Sign up as a driver to get early access.
                         </p>
                     </div>
                     <div className={styles.mobileStepCard}>
-                        <span className={styles.mobileStepNumber}>STEP 02</span>
+                        <div className={styles.mobileStepHeader}>
+                            <span className={styles.mobileStepNumber}>STEP 02</span>
+                        </div>
                         <h3 className={styles.mobileStepTitle}>Activate your account</h3>
                         <p className={styles.mobileStepDesc}>
                             Unlock early access rewards and priority onboarding.
                         </p>
                     </div>
                     <div className={styles.mobileStepCard}>
-                        <span className={styles.mobileStepNumber}>STEP 03</span>
+                        <div className={styles.mobileStepHeader}>
+                            <span className={styles.mobileStepNumber}>STEP 03</span>
+                        </div>
                         <h3 className={styles.mobileStepTitle}>Drive and earn fairly</h3>
                         <p className={styles.mobileStepDesc}>
                             Earn consistent income without surge manipulation.

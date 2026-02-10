@@ -5,6 +5,9 @@ import Footer from '@/components/Footer';
 export const metadata = {
     title: "Refer & Earn - AYRO",
     description: "Join the movement. Refer drivers and riders to earn rewards.",
+    alternates: {
+        canonical: 'https://ayrorides.com/referral/',
+    },
 };
 
 export default function ReferralPage() {

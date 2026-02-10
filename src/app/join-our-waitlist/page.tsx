@@ -4,6 +4,9 @@ import styles from "./waitlist.module.css";
 export const metadata = {
     title: "Join Our Waitlist - AYRO",
     description: "Join the AYRO waitlist and be the first to experience the future of ridesharing.",
+    alternates: {
+        canonical: 'https://ayrorides.com/join-our-waitlist/',
+    },
 };
 
 export default function JoinOurWaitlist() {
