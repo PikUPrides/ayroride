@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
+import { usePathname } from 'next/navigation';
 
 interface ReferralHeroWidgetProps {
     widgetId: string;
@@ -9,31 +10,22 @@ interface ReferralHeroWidgetProps {
 const ReferralHeroWidget: React.FC<ReferralHeroWidgetProps> = ({ widgetId }) => {
     const [status, setStatus] = useState<'loading' | 'loaded' | 'error'>('loading');
     const containerRef = useRef<HTMLDivElement>(null);
+    const pathname = usePathname();
 
     useEffect(() => {
         if (!widgetId) return;
-
         setStatus('loading');
-        const scriptId = `referralhero-widget-script-${widgetId}`;
+
         const containerId = `referralhero-dashboard-${widgetId}`;
 
-        // Cleanup function to remove script and clear container
-        const cleanup = () => {
-            const existingScript = document.getElementById(scriptId);
-            if (existingScript) existingScript.remove();
+        // Clear the container for a fresh render
+        if (containerRef.current) {
+            containerRef.current.innerHTML = '';
+        }
 
-            const container = document.getElementById(containerId);
-            if (container) container.innerHTML = '';
-        };
-
-        // Ensure clean slate
-        cleanup();
-
-        // Observer to detect when the widget actually renders content into our container
-        const observer = new MutationObserver((mutations) => {
-            const container = containerRef.current;
-            if (container && container.children.length > 0) {
-                // Widget has injected content
+        // Observer to detect when the widget renders content
+        const observer = new MutationObserver(() => {
+            if (containerRef.current && containerRef.current.children.length > 0) {
                 setStatus('loaded');
                 observer.disconnect();
             }
@@ -43,39 +35,61 @@ const ReferralHeroWidget: React.FC<ReferralHeroWidgetProps> = ({ widgetId }) => 
             observer.observe(containerRef.current, { childList: true, subtree: true });
         }
 
-        // Small timeout to allow DOM paint before script runs (just to be safe)
+        // The global RH script is already loaded in layout.tsx.
+        // We just need to re-trigger the widget initialization.
+        // The RH global object should detect our div and render into it.
         const timer = setTimeout(() => {
-            const script = document.createElement('script');
-            // Use the base URL without query params
-            script.src = `https://d7zve4d3u0dfm.cloudfront.net/production/${widgetId}.js`;
-            script.async = true;
-            script.id = scriptId;
+            // Try to use the RH API to regenerate the widget
+            try {
+                const rhGlobal = (window as any).RH;
+                if (rhGlobal && typeof rhGlobal.generate === 'function') {
+                    rhGlobal.generate();
+                } else if (rhGlobal && rhGlobal.queue) {
+                    // Push a re-render command to the RH queue
+                    (window as any).rht?.('widget:render', containerId);
+                }
+            } catch (e) {
+                console.warn('RH API not available, loading widget script directly');
+            }
 
-            script.onerror = () => {
-                setStatus('loaded'); // Just hide the spinner
-            };
+            // Also load the widget-specific script as a fallback
+            // (but don't remove existing scripts — the global one must stay)
+            const existingWidgetScript = document.querySelector(
+                `script[src*="${widgetId}.js"]`
+            );
 
-            document.body.appendChild(script);
-        }, 50);
+            if (!existingWidgetScript) {
+                const script = document.createElement('script');
+                script.src = `https://d7zve4d3u0dfm.cloudfront.net/production/${widgetId}.js`;
+                script.async = true;
+                document.body.appendChild(script);
+            } else {
+                // Script already exists — re-load it with cache bust to force re-execution
+                const script = document.createElement('script');
+                script.src = `https://d7zve4d3u0dfm.cloudfront.net/production/${widgetId}.js?t=${Date.now()}`;
+                script.async = true;
+                document.body.appendChild(script);
+            }
+        }, 500);
+
+        // Fallback: hide spinner after 8s
+        const fallback = setTimeout(() => setStatus('loaded'), 8000);
 
         return () => {
             clearTimeout(timer);
+            clearTimeout(fallback);
             observer.disconnect();
-            cleanup();
         };
-    }, [widgetId]);
+    }, [widgetId, pathname]);
 
     return (
         <div className="relative w-full" style={{ minHeight: '50px' }}>
-            {/* The Container for the Widget */}
             <div
                 id={`referralhero-dashboard-${widgetId}`}
                 ref={containerRef}
                 style={{ minHeight: '50px', width: '100%' }}
                 className="transition-opacity duration-500 opacity-100"
             />
-
-            {/* Loading Spinner - Only show when explicitly loading, but don't block view */}
             {status === 'loading' && (
                 <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
                     <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-[#423DF9]"></div>

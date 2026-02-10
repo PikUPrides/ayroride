@@ -21,7 +21,7 @@ export async function POST(request: Request) {
         }
 
         const API_KEY = process.env.REFERRALHERO_API_KEY;
-        const UUID = process.env.REFERRALHERO_UUID; // "MF2f0c6063df" as per user, presumably in env
+        const UUID = process.env.REFERRALHERO_UUID;
 
         if (!API_KEY || !UUID) {
             console.error('ReferralHero credentials missing in environment variables.');
@@ -31,9 +31,7 @@ export async function POST(request: Request) {
             );
         }
 
-        // Send data to ReferralHero API
-        // Endpoint: https://app.referralhero.com/api/v2/lists/{list_id}/subscribers
-        // API Key must be sent in the Authorization header (Bearer token) or X-API-Key header
+
         const rhResponse = await fetch(`https://app.referralhero.com/api/v2/lists/${UUID}/subscribers`, {
             method: 'POST',
             headers: {

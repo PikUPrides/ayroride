@@ -25,20 +25,13 @@ export default function Footer() {
   // Logic for showing Disrupt CTA (Show on ALMOST ALL pages)
   const showDisruptCTA = pathname !== "/join-our-waitlist"; // Exclude on waitlist page itself
 
-  // Check if it's an inner career page (e.g. /careers/driver-in-dallas) but not the main /careers page
   const isInnerCareerPage = pathname.startsWith("/careers/") && pathname !== "/careers";
 
   const disruptProps = isInnerCareerPage ? {
     title: "Ready to Get Started?",
     subtitle: "Apply today and start earning with AYRO on your schedule.",
     buttonText: "Apply Now",
-    buttonLink: pathname // Should ideally link to the apply section or staying on the page implies functionality, but user requested 'Apply Now' which often links to an anchor or a form. For now, linking to waitlist or keeping default if not specified. Actually, based on previous context, this usually links to the app or waitlist. I will use the waitlist for now as a safe default unless user specified a link. Image shows 'Apply Now'.
-    // Re-reading user request: "change the text but only for this page the inner ones".
-    // I will use "/join-our-waitlist" for consistency unless I can get the specific Apply Link. 
-    // Since Footer is global, I can't easily access the specific job's apply link here without more context. 
-    // However, the previous 'Ready to Get Started' section often linked to `job.applyLink`.
-    // Since I can't dynamically get the job prop here, I'll stick to a generic "Apply Now" that goes to the waitlist or maybe just a hash link if that was the intent. 
-    // Let's use "/join-our-waitlist" to be safe, as that's what the other buttons do.
+    buttonLink: pathname
   } : {};
 
   return (
@@ -88,16 +81,21 @@ export default function Footer() {
                 </li>
               </ul>
               <div className={styles.socialIcons}>
-                <a href="https://www.facebook.com/profile.php?id=61583870717780" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.facebook.com/AYRORides" target="_blank" rel="noopener noreferrer">
                   <Image src="/assets/facebook-icon.png" alt="Facebook" width={32} height={32} />
                 </a>
-                <a href="https://x.com/ayro_inc" target="_blank" rel="noopener noreferrer">
+                <a href="https://x.com/ayrorides" target="_blank" rel="noopener noreferrer">
                   <Image src="/images/x-icon.jpg" alt="X" width={32} height={32} />
                 </a>
-                <a href="https://www.instagram.com/ayro.rideshare/" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.instagram.com/ayrorides" target="_blank" rel="noopener noreferrer">
                   <Image src="/assets/instagram-icon.png" alt="Instagram" width={32} height={32} />
                 </a>
-                <a href="https://www.youtube.com/@AYRO_Inc" target="_blank" rel="noopener noreferrer" className={styles.youtubeIcon}>
+                <a href="https://www.linkedin.com/company/ayrorides" target="_blank" rel="noopener noreferrer">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                  </svg>
+                </a>
+                <a href="https://www.youtube.com/@AYROrides" target="_blank" rel="noopener noreferrer" className={styles.youtubeIcon}>
                   <Image src="/images/youtube-logo.png" alt="YouTube" width={32} height={32} />
                 </a>
               </div>

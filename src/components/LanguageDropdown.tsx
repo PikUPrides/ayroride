@@ -5,7 +5,7 @@ import { useState, useRef, useEffect } from "react";
 const languages = [
     { code: "en", label: "English", countryCode: "us" },
     { code: "zh-CN", label: "Chinese (Simplified)", countryCode: "cn" },
-    { code: "fil", label: "Filipino", countryCode: "ph" },
+    { code: "tl", label: "Filipino", countryCode: "ph" },
     { code: "es", label: "Spanish", countryCode: "es" },
     { code: "vi", label: "Vietnamese", countryCode: "vn" },
 ];
@@ -16,14 +16,19 @@ export default function LanguageDropdown() {
     const dropdownRef = useRef<HTMLDivElement>(null);
 
     const changeLanguage = (lang: typeof languages[0]) => {
-        const select = document.querySelector(
-            ".goog-te-combo"
-        ) as HTMLSelectElement;
+        const setLanguage = () => {
+            const select = document.querySelector(".goog-te-combo") as HTMLSelectElement;
+            if (select) {
+                select.value = lang.code;
+                select.dispatchEvent(new Event("change"));
+            }
+        };
 
-        if (select) {
-            select.value = lang.code;
-            select.dispatchEvent(new Event("change"));
-        }
+        setLanguage();
+        // Retry a few times in case the element isn't ready
+        setTimeout(setLanguage, 100);
+        setTimeout(setLanguage, 500);
+
         setCurrentLang(lang);
         setIsOpen(false);
     };
@@ -41,44 +46,52 @@ export default function LanguageDropdown() {
 
     return (
         <div
-            className="fixed bottom-6 left-6 z-[9999] font-sans"
+            className="fixed bottom-6 left-6 z-[9999] font-sans notranslate"
             ref={dropdownRef}
         >
             {/* Dropdown Menu - Opens Upward */}
             <div className={`
-                absolute bottom-full left-0 mb-4 w-72 
-                bg-white/95 backdrop-blur-xl 
-                rounded-lg shadow-2xl overflow-hidden origin-bottom-left
-                ${isOpen ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"}
+                absolute bottom-full left-0 mb-4 w-80 
+                bg-white border border-gray-200 
+                shadow-xl overflow-hidden origin-bottom-left
+                transition-all duration-200 ease-out
+                ${isOpen
+                    ? "opacity-100 translate-y-0 scale-100"
+                    : "opacity-0 translate-y-2 scale-95 pointer-events-none"}
             `}>
-                <div className="max-h-[60vh] overflow-y-auto py-4 px-5 space-y-2">
-                    <div className="px-3 py-2 text-[11px] font-bold text-gray-500 uppercase tracking-widest mb-2 ml-1">
-                        Select Language
+                <div className="py-2 space-y-1">
+                    <div className="px-14 py-2 text-[11px] font-semibold text-gray-400 uppercase tracking-wider select-none">
+                        Language
                     </div>
-                    {languages.map((lang) => (
-                        <button
-                            key={lang.code}
-                            onClick={() => changeLanguage(lang)}
-                            className={`flex items-center gap-6 w-full px-5 py-2.5 h-12 text-left text-sm rounded-md
-                                ${currentLang.code === lang.code
-                                    ? "bg-blue-50 text-blue-700 font-semibold"
-                                    : "text-gray-700 hover:bg-gray-50 hover:text-gray-900"
-                                }
-                            `}
-                        >
-                            <img
-                                src={`https://flagcdn.com/w40/${lang.countryCode}.png`}
-                                alt={lang.label}
-                                className="w-8 h-5 object-cover rounded shadow-sm ring-1 ring-gray-900/5"
-                            />
-                            <span className="flex-1 text-base">{lang.label}</span>
-                            {currentLang.code === lang.code && (
-                                <svg className="w-5 h-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                                </svg>
-                            )}
-                        </button>
-                    ))}
+                    {languages.map((lang) => {
+                        const isActive = currentLang.code === lang.code;
+                        return (
+                            <button
+                                key={lang.code}
+                                onClick={() => changeLanguage(lang)}
+                                className={`flex items-center gap-6 w-full px-14 py-5 text-left text-lg transition-colors
+                                    ${isActive
+                                        ? "bg-blue-50 text-blue-700"
+                                        : "text-gray-700 hover:bg-gray-50 hover:text-gray-900"
+                                    }
+                                `}
+                            >
+                                <img
+                                    src={`https://flagcdn.com/w40/${lang.countryCode}.png`}
+                                    alt={lang.label}
+                                    className="w-8 h-6 object-cover shadow-sm opacity-90"
+                                />
+                                <span className={`flex-1 ${isActive ? "font-semibold" : "font-medium"}`}>
+                                    {lang.label}
+                                </span>
+                                {isActive && (
+                                    <svg className="w-6 h-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                                    </svg>
+                                )}
+                            </button>
+                        );
+                    })}
                 </div>
             </div>
 
@@ -86,34 +99,32 @@ export default function LanguageDropdown() {
             <button
                 onClick={() => setIsOpen(!isOpen)}
                 className={`
-                    flex items-center gap-3 px-1.5 py-1.5 pr-4
-                    bg-white/90 backdrop-blur-sm border border-gray-200/60 
-                    rounded-full shadow-lg shadow-gray-200/40 
+                    flex items-center gap-6 px-6 py-4
+                    bg-white border border-gray-200 
+                    shadow-sm hover:shadow-md hover:border-gray-300
+                    transition-all duration-200
                     ${isOpen ? "ring-2 ring-blue-500/10 border-blue-500/50" : ""}
                 `}
                 aria-label="Select language"
             >
-                <div className="w-9 h-9 rounded-full bg-gray-50 flex items-center justify-center overflow-hidden border border-gray-200">
-                    <img
-                        src={`https://flagcdn.com/w40/${currentLang.countryCode}.png`}
-                        alt={currentLang.label}
-                        className="w-full h-full object-cover scale-150"
-                    />
-                </div>
+                <img
+                    src={`https://flagcdn.com/w40/${currentLang.countryCode}.png`}
+                    alt={currentLang.label}
+                    className="w-8 h-6 object-cover shadow-sm opacity-90"
+                />
 
-                <span className="text-sm font-semibold text-gray-700">
+                <span className="text-lg font-semibold text-gray-700">
                     {currentLang.label}
                 </span>
 
-                <div className={`
-                    w-5 h-5 rounded-full bg-gray-100 flex items-center justify-center 
-                    text-gray-400 ml-1
-                    ${isOpen ? "rotate-180 bg-blue-50 text-blue-500" : ""}
-                `}>
-                    <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
-                    </svg>
-                </div>
+                <svg
+                    className={`w-6 h-6 text-gray-400 transition-transform duration-200 ${isOpen ? "rotate-180 text-blue-500" : ""}`}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
             </button>
         </div>
     );
