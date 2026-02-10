@@ -1,4 +1,4 @@
-"use client";
+
 
 import styles from "./terms.module.css";
 
