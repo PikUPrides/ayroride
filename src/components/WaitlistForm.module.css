@@ -1,113 +1,113 @@
-.form {
+/* Custom Form Styles for Ayro Waitlist */
+.customForm {
+    width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    width: 100%;
+    gap: 16px;
     max-width: 600px;
-    background: white;
-    padding: 2.5rem;
-    border-radius: 20px;
-    box-shadow: none;
-    border: 1.5px solid #423DF9;
     margin: 0 auto;
-    box-sizing: border-box;
-}
-
-.inputGroup {
-    width: 100%;
 }
 
 .inputField {
     width: 100%;
-    height: 48px;
-    padding: 0 16px;
+    height: 48px !important;
+    min-height: 48px;
+    max-height: 48px;
+    padding: 7px 12px;
     background-color: #F4F4F9;
     border: none;
     border-radius: 12px;
     font-family: inherit;
     font-size: 14px;
+    line-height: 21px;
     color: #5C5C5C;
-    outline: none;
     box-sizing: border-box;
+    margin-bottom: 0;
 }
 
 .inputField::placeholder {
-    color: #9E9E9E;
+    color: #5C5C5C;
 }
 
-.rowContainer {
+.inputField:focus,
+.phoneInput:focus,
+.countrySelect:focus {
+    outline: 2px solid #423DF9;
+}
+
+.phoneRow {
     display: flex;
-    gap: 16px;
-    width: 100%;
+    gap: 10px;
 }
 
-.phoneWrapper {
-    flex: 2;
-    min-width: 0;
+.countrySelect {
+    width: 30%;
     height: 48px;
+    padding: 0 12px;
     background-color: #F4F4F9;
-    border-radius: 12px;
-    padding: 0 16px;
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
-}
-
-.zipWrapper {
-    flex: 1;
-    min-width: 100px;
-}
-
-.phoneInput {
-    width: 100%;
-    height: 100%;
     border: none;
-    outline: none;
-    background-color: transparent;
+    border-radius: 12px;
     font-family: inherit;
     font-size: 14px;
     color: #5C5C5C;
-    padding: 0;
+    cursor: pointer;
+}
+
+.phoneInput {
+    width: 70%;
+    height: 48px;
+    padding: 0 16px;
+    background-color: #F4F4F9;
+    border: none;
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 14px;
+    color: #5C5C5C;
+    box-sizing: border-box;
 }
 
 .phoneInput::placeholder {
-    color: #9E9E9E;
+    color: #5C5C5C;
 }
 
-.userTypeSection {
+.phoneWrapper {
     width: 100%;
-    text-align: left;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    background-color: #F4F4F9;
+    border-radius: 12px;
+    padding: 0 12px;
+    box-sizing: border-box;
 }
 
-.userTypeLabel {
-    font-size: 16px;
+.phonePrefix {
+    font-size: 14px;
+    color: #5C5C5C;
     font-weight: 400;
-    color: #111111;
-    margin-bottom: 12px;
-    display: block;
+    margin-right: 6px;
+    white-space: nowrap;
+    line-height: 21px;
 }
 
-.radioGroup {
-    display: flex;
-    gap: 24px;
-    align-items: center;
-    flex-wrap: wrap;
+.phoneInputWithPrefix {
+    flex: 1;
+    height: 100%;
+    border: none;
+    background: transparent;
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 21px;
+    color: #5C5C5C;
+    outline: none;
 }
 
-.radioLabel {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    cursor: pointer;
-    font-size: 16px;
-    color: #111111;
+.phoneInputWithPrefix::placeholder {
+    color: #5C5C5C;
 }
 
-.radioInput {
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-    accent-color: #423DF9;
+.phoneWrapper:focus-within {
+    outline: 2px solid #423DF9;
 }
 
 .submitBtn {
@@ -122,7 +122,6 @@
     font-family: inherit;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    margin-top: 10px;
 }
 
 .submitBtn:hover {
@@ -141,87 +140,109 @@
     color: #1111117f;
     text-align: center;
     margin: 0;
-    margin-top: 10px;
 }
 
-.errorMessage {
-    color: red;
-    text-align: center;
-    margin-top: 10px;
+/* User Type Radio Buttons */
+.userTypeSection {
+    width: 100%;
+    margin-bottom: 16px;
+    text-align: left;
+}
+
+.userTypeLabel {
+    display: block;
+    font-size: 16px;
+    font-weight: 400;
+    color: #111111;
+    margin-bottom: 12px;
+}
+
+.radioGroup {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+}
+
+.radioLabel {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #111111;
+}
+
+.radioInput {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: #423DF9;
+    -webkit-appearance: radio;
+    appearance: radio;
+    margin: 0;
+}
+
+.radioInput:checked {
+    accent-color: #423DF9;
+}
+
+.radioLabel span {
+    user-select: none;
 }
 
 .successMessage {
-    color: #00C853;
+    padding: 12px;
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    border-radius: 8px;
     text-align: center;
-    margin-top: 10px;
-    font-weight: bold;
+    font-size: 14px;
 }
 
-/* Responsive styles for tablets and smaller */
-@media (max-width: 768px) {
-    .form {
-        padding: 2rem;
-        gap: 16px;
-    }
+.errorMessage {
+    padding: 12px;
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 14px;
+}
 
-    .rowContainer {
+/* Desktop: Horizontal layout for name/email fields */
+.nameEmailRow {
+    display: flex;
+    gap: 16px;
+    width: 100%;
+}
+
+.nameEmailRow .inputField {
+    flex: 1;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+
+    /* Mobile: Stack all fields vertically */
+    .nameEmailRow {
         flex-direction: column;
         gap: 16px;
     }
 
-    .phoneWrapper {
-        flex: none;
-        width: 100%;
-    }
-
-    .zipWrapper {
-        flex: none;
-        width: 100%;
-        min-width: unset;
+    .phoneRow {
+        flex-direction: column;
+        gap: 16px;
     }
 
     .radioGroup {
-        gap: 16px;
-    }
-}
-
-/* Responsive styles for mobile */
-@media (max-width: 480px) {
-    .form {
-        padding: 1.5rem;
-        gap: 14px;
-        border-radius: 16px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
     }
 
-    .inputField {
-        height: 44px;
-        font-size: 16px;
-        /* Prevents zoom on iOS */
-    }
-
-    .phoneWrapper {
-        height: 44px;
-    }
-
+    .countrySelect,
     .phoneInput {
-        font-size: 16px;
-        /* Prevents zoom on iOS */
-    }
-
-    .userTypeLabel {
-        font-size: 15px;
-    }
-
-    .radioLabel {
-        font-size: 15px;
-    }
-
-    .submitBtn {
-        height: 48px;
-        font-size: 15px;
-    }
-
-    .disclaimer {
-        font-size: 12px;
+        width: 100%;
     }
 }

@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import React, { useState, useEffect } from 'react';
+import { useState, FormEvent } from 'react';
 import styles from './WaitlistForm.module.css';
 
 export default function WaitlistForm() {
@@ -9,123 +9,120 @@ export default function WaitlistForm() {
         email: '',
         phone: '',
         zipCode: '',
-        userType: 'Driver'
+        userType: 'Rider' as 'Driver' | 'Rider' | 'Both'
     });
-    const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-    const [errorMessage, setErrorMessage] = useState('');
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [message, setMessage] = useState<{ type: 'success' | 'error', text: string } | null>(null);
 
-    // Auto-hide success or error message after 5 seconds
-    useEffect(() => {
-        if (status === 'success' || status === 'error') {
-            const timer = setTimeout(() => {
-                setStatus('idle');
-                setErrorMessage('');
-            }, 5000);
-            return () => clearTimeout(timer);
-        }
-    }, [status]);
-
-    const handleSubmit = async (e: React.FormEvent) => {
+    const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
-        setStatus('loading');
-        setErrorMessage('');
+        setIsSubmitting(true);
+        setMessage(null);
+
+        // Format phone number to ensure it has US country code for consistency
+        let formattedPhone = formData.phone.replace(/\D/g, '');
+        if (formattedPhone && !formattedPhone.startsWith('1')) {
+            formattedPhone = '1' + formattedPhone;
+        }
+        if (formattedPhone) {
+            formattedPhone = '+' + formattedPhone;
+        }
 
         try {
-            const res = await fetch('/api/waitlist', {
+            const response = await fetch('/api/waitlist', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(formData)
+                body: JSON.stringify({
+                    ...formData,
+                    phone: formattedPhone
+                }),
             });
 
-            const data = await res.json();
+            const data = await response.json();
 
-            if (!res.ok) {
-                throw new Error(data.error || 'Something went wrong. Please try again.');
+            if (response.ok) {
+                setMessage({ type: 'success', text: 'Successfully joined the waitlist!' });
+                setFormData({
+                    name: '',
+                    email: '',
+                    phone: '',
+                    zipCode: '',
+                    userType: 'Rider'
+                });
+            } else {
+                setMessage({ type: 'error', text: data.error || 'Failed to join waitlist.' });
             }
-
-            setStatus('success');
-            setFormData({ name: '', email: '', phone: '', zipCode: '', userType: 'Driver' });
-        } catch (error: any) {
-            console.error('Submission error:', error);
-            setStatus('error');
-            setErrorMessage(error.message || 'Failed to join waitlist.');
+        } catch (error) {
+            setMessage({ type: 'error', text: 'An error occurred. Please try again.' });
+        } finally {
+            setIsSubmitting(false);
         }
     };
 
-    const formatPhoneNumber = (value: string) => {
-        const numbers = value.replace(/\D/g, '');
-        if (numbers.length === 0) return '';
-        if (numbers.length <= 3) return numbers;
-        if (numbers.length <= 6) return `(${numbers.slice(0, 3)}) ${numbers.slice(3)}`;
-        return `(${numbers.slice(0, 3)}) ${numbers.slice(3, 6)}-${numbers.slice(6, 10)}`;
-    };
-
-    const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const formatted = formatPhoneNumber(e.target.value);
-        if (formatted.length <= 14) {
-            setFormData({ ...formData, phone: formatted });
-        }
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({
+            ...prev,
+            [name]: value
+        }));
     };
 
     return (
-        <form className={styles.form} onSubmit={handleSubmit}>
-            <div className={styles.inputGroup}>
+        <form onSubmit={handleSubmit} className={styles.customForm}>
+            <input
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                placeholder="Full name*"
+                className={styles.inputField}
+                required
+            />
+
+            <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="Email address*"
+                className={styles.inputField}
+                required
+            />
+
+            <div className={styles.phoneRow}>
+                <input
+                    type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    placeholder="Number*"
+                    className={styles.inputField}
+                    style={{ flex: 1 }}
+                    required
+                />
                 <input
                     type="text"
-                    placeholder="Full Name"
+                    name="zipCode"
+                    value={formData.zipCode}
+                    onChange={handleChange}
+                    placeholder="Zip code*"
                     className={styles.inputField}
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    style={{ flex: 1 }}
                     required
                 />
-            </div>
-
-            <div className={styles.inputGroup}>
-                <input
-                    type="email"
-                    placeholder="Email Address"
-                    className={styles.inputField}
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    required
-                />
-            </div>
-
-            <div className={styles.rowContainer}>
-                <div className={styles.phoneWrapper}>
-                    <input
-                        type="tel"
-                        placeholder="Phone Number"
-                        className={styles.phoneInput}
-                        value={formData.phone}
-                        onChange={handlePhoneChange}
-                        required
-                    />
-                </div>
-                <div className={styles.zipWrapper}>
-                    <input
-                        type="text"
-                        placeholder="Zip Code"
-                        className={styles.inputField}
-                        value={formData.zipCode}
-                        onChange={(e) => setFormData({ ...formData, zipCode: e.target.value })}
-                        required
-                    />
-                </div>
             </div>
 
             <div className={styles.userTypeSection}>
-                <label className={styles.userTypeLabel}>Are you interested in signing up as?</label>
                 <div className={styles.radioGroup}>
                     <label className={styles.radioLabel}>
                         <input
                             type="radio"
                             name="userType"
                             value="Driver"
-                            checked={formData.userType === "Driver"}
-                            onChange={(e) => setFormData({ ...formData, userType: e.target.value })}
+                            checked={formData.userType === 'Driver'}
+                            onChange={handleChange}
                             className={styles.radioInput}
                         />
                         <span>Driver</span>
@@ -135,8 +132,8 @@ export default function WaitlistForm() {
                             type="radio"
                             name="userType"
                             value="Rider"
-                            checked={formData.userType === "Rider"}
-                            onChange={(e) => setFormData({ ...formData, userType: e.target.value })}
+                            checked={formData.userType === 'Rider'}
+                            onChange={handleChange}
                             className={styles.radioInput}
                         />
                         <span>Rider</span>
@@ -146,8 +143,8 @@ export default function WaitlistForm() {
                             type="radio"
                             name="userType"
                             value="Both"
-                            checked={formData.userType === "Both"}
-                            onChange={(e) => setFormData({ ...formData, userType: e.target.value })}
+                            checked={formData.userType === 'Both'}
+                            onChange={handleChange}
                             className={styles.radioInput}
                         />
                         <span>Both</span>
@@ -155,21 +152,19 @@ export default function WaitlistForm() {
                 </div>
             </div>
 
-            {status === 'error' && <p className={styles.errorMessage}>{errorMessage}</p>}
-
-            {status === 'success' && (
-                <p className={styles.successMessage}>
-                    You're on the list! Thank you for joining.
-                </p>
-            )}
-
-            <button type="submit" className={styles.submitBtn} disabled={status === 'loading'}>
-                {status === 'loading' ? 'Submitting...' : 'Submit'}
+            <button
+                type="submit"
+                className={styles.submitBtn}
+                disabled={isSubmitting}
+            >
+                {isSubmitting ? 'Joining...' : 'Join the AYRO waitlist now...'}
             </button>
 
-            <p className={styles.disclaimer}>
-                By joining, you agree to receive updates about the referral program
-            </p>
+            {message && (
+                <div className={message.type === 'success' ? styles.successMessage : styles.errorMessage}>
+                    {message.text}
+                </div>
+            )}
         </form>
     );
 }

@@ -21,7 +21,7 @@ export async function POST(request: Request) {
         }
 
         const API_KEY = process.env.REFERRALHERO_API_KEY;
-        const UUID = process.env.REFERRALHERO_UUID; // "MF2f0c6063df" as per user, presumably in env
+        const UUID = process.env.REFERRALHERO_UUID;
 
         if (!API_KEY || !UUID) {
             console.error('ReferralHero credentials missing in environment variables.');
@@ -31,11 +31,6 @@ export async function POST(request: Request) {
             );
         }
 
-        // Send data to ReferralHero API
-        // Endpoint: https://app.referralhero.com/api/v2/lists/{list_id}/subscribers
-        // API Key must be sent in the Authorization header (Bearer token) or X-API-Key header
-
-        // Build payload - only include phone if it's provided and valid
         const payload: any = {
             email: email,
             name: name,
@@ -43,12 +38,13 @@ export async function POST(request: Request) {
             extra_field_2: userType
         };
 
-        // TODO: Add phone number validation
-        // ReferralHero validates US phone numbers strictly
-        // For now, skipping phone to test the rest of the integration
-        // if (phone && phone.replace(/\D/g, '').length >= 10) {
-        //     payload.phone_number = phone;
-        // }
+        // Note: Phone number is collected but not sent to ReferralHero due to strict formatting requirements.
+        // Uncomment below to enable if implementing compatible validation.
+        /*
+        if (phone && phone.replace(/\D/g, '').length >= 10) {
+            payload.phone_number = phone;
+        }
+        */
 
         console.log('Sending to ReferralHero:', payload);
 
@@ -56,7 +52,7 @@ export async function POST(request: Request) {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${API_KEY}` // Send API Key in Header
+                'Authorization': `Bearer ${API_KEY}`
             },
             body: JSON.stringify(payload),
         });

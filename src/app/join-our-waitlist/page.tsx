@@ -1,4 +1,4 @@
-import WaitlistForm from "./WaitlistForm";
+import WaitlistForm from "@/components/WaitlistForm";
 import styles from "./waitlist.module.css";
 
 export const metadata = {

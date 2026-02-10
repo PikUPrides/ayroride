@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import ReferralHeroWidget from "./ReferralHeroWidget";
+import WaitlistForm from "@/components/WaitlistForm";
 import ReferralGraphic from "./ReferralGraphic";
 import { useModal } from "@/context/ModalContext";
 import styles from "./referral-modal.module.css";
@@ -10,7 +10,7 @@ import styles from "./referral-modal.module.css";
 export default function ReferralModal() {
     const { isModalOpen, closeModal } = useModal();
 
-    // if (!isModalOpen) return null; // Removed to allow preloading
+
 
     return (
         <div
@@ -110,9 +110,8 @@ export default function ReferralModal() {
 
                             {/* Form Container */}
                             <div className="relative w-full max-w-[440px]">
-                                {isModalOpen && <ReferralHeroWidget widgetId="MF2f0c6063df" />}
+                                {isModalOpen && <WaitlistForm />}
                             </div>
-
 
                         </div>
                     </div>

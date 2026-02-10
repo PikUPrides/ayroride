@@ -2,7 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import styles from "../../app/page.module.css";
-import ReferralHeroWidget from "./ReferralHeroWidget";
+import WaitlistForm from "@/components/WaitlistForm";
 
 export default function ReferAndEarn() {
   const pathname = usePathname();
@@ -17,7 +17,7 @@ export default function ReferAndEarn() {
           <p>Join the waitlist now and get your unique referral link</p>
         </div>
         <div className={styles.referFormWrapper}>
-          <ReferralHeroWidget key={pathname} widgetId="MF2f0c6063df" />
+          <WaitlistForm />
         </div>
       </div>
     </section>

@@ -1,4 +1,4 @@
-import ReferralHeroWidget from '@/components/referral-modal/ReferralHeroWidget';
+import WaitlistForm from '@/components/WaitlistForm';
 
 export const metadata = {
     title: "Advocate Dashboard - AYRO",
@@ -12,7 +12,7 @@ export default function AdvocateDashboardPage() {
 
 
                 <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-6 md:p-10">
-                    <ReferralHeroWidget widgetId="MF2f0c6063df" />
+                    <WaitlistForm />
                 </div>
             </div>
         </main>

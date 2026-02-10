@@ -1,4 +1,4 @@
-import ReferralHeroWidget from '@/components/referral-modal/ReferralHeroWidget';
+import WaitlistForm from '@/components/WaitlistForm';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
@@ -14,7 +14,7 @@ export default function ReferralPage() {
 
 
                 <div className="bg-white rounded-2xl p-6 md:p-10">
-                    <ReferralHeroWidget widgetId="MF2f0c6063df" />
+                    <WaitlistForm />
                 </div>
             </div>
         </main>
