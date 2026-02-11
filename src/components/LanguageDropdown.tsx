@@ -59,8 +59,8 @@ export default function LanguageDropdown() {
                     ? "opacity-100 translate-y-0 scale-100 pointer-events-auto"
                     : "opacity-0 translate-y-4 scale-95 pointer-events-none"}
             `}>
-                <div className="py-3">
-                    <div className="px-6 pt-1 pb-2 text-[11px] font-semibold text-gray-400 uppercase tracking-wider select-none">
+                <div className="py-3 px-5">
+                    <div className="px-4 pt-1 pb-2 text-[11px] font-semibold text-gray-400 uppercase tracking-wider select-none">
                         Select Language
                     </div>
 
@@ -71,8 +71,8 @@ export default function LanguageDropdown() {
                                 key={lang.code}
                                 onClick={() => changeLanguage(lang)}
                                 className={`
-                                    flex items-center w-full px-6 min-h-[52px] text-base
-                                    transition-colors duration-150
+                                    flex items-center w-full px-4 mx-1 min-h-[52px] text-base
+                                    transition-colors duration-150 rounded-lg
                                     ${isActive
                                         ? "bg-gray-100/80 text-gray-900 font-medium"
                                         : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
@@ -81,11 +81,11 @@ export default function LanguageDropdown() {
                                 role="option"
                                 aria-selected={isActive}
                             >
-                                <div className="flex items-center gap-3 w-full">
+                                <div className="flex items-center w-full">
                                     <img
                                         src={`https://flagcdn.com/w40/${lang.countryCode}.png`}
                                         alt=""
-                                        className="w-6 h-4 object-cover rounded-sm shadow-sm"
+                                        className="w-6 h-4 object-cover rounded-sm shadow-sm mr-4"
                                     />
 
                                     <span className="flex-1 text-left">
@@ -94,7 +94,7 @@ export default function LanguageDropdown() {
 
                                     {isActive && (
                                         <svg
-                                            className="w-4 h-4 text-gray-700 opacity-70"
+                                            className="w-4 h-4 text-gray-700 opacity-70 ml-4"
                                             fill="none"
                                             viewBox="0 0 24 24"
                                             stroke="currentColor"
