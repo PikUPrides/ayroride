@@ -2,13 +2,13 @@ import styles from "./page.module.css";
 import RiderVoicesSlider from "@/components/RiderVoicesSlider";
 
 export const metadata = {
-  title: "About AYRO – Our Mission & Vision",
+  title: "Fair Pricing & Fair Pay Movement - AYRO Story",
   description:
-    "AYRO offers safe, quick, and affordable rides. Discover who we are, how we started, and our mission to simplify transportation for customers.",
+    "Discover AYRO’s story and mission to end surge pricing, offer predictable fares & support fair driver earnings in ridesharing.",
   openGraph: {
-    title: "About AYRO – Our Mission & Vision",
+    title: "Fair Pricing & Fair Pay Movement - AYRO Story",
     description:
-      "AYRO offers safe, quick, and affordable rides. Discover who we are, how we started, and our mission to simplify transportation for customers.",
+      "Discover AYRO’s story and mission to end surge pricing, offer predictable fares & support fair driver earnings in ridesharing.",
     url: "https://ayrorides.com/about-us/",
     images: [
       {
@@ -21,9 +21,9 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "About AYRO – Our Mission & Vision",
+    title: "Fair Pricing & Fair Pay Movement - AYRO Story",
     description:
-      "Safe, quick, and affordable rides. Discover our mission to simplify transportation.",
+      "Discover AYRO’s story and mission to end surge pricing, offer predictable fares & support fair driver earnings in ridesharing.",
   },
   alternates: {
     canonical: 'https://ayrorides.com/about-us/',

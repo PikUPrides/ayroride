@@ -1,5 +1,3 @@
-
-
 import styles from "./terms.module.css";
 
 export const metadata = {

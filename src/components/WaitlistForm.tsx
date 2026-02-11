@@ -19,6 +19,21 @@ export default function WaitlistForm() {
         setIsSubmitting(true);
         setMessage(null);
 
+        // Validation Logic
+        const phoneDigits = formData.phone.replace(/\D/g, '');
+        if (phoneDigits.length !== 10) {
+            setMessage({ type: 'error', text: "Phone number must be exactly 10 digits." });
+            setIsSubmitting(false);
+            return;
+        }
+
+        const zipRegex = /^7[5-9]\d{3}$/;
+        if (!zipRegex.test(formData.zipCode)) {
+            setMessage({ type: 'error', text: "Must be a valid Texas Zip Code (75000-79999)." });
+            setIsSubmitting(false);
+            return;
+        }
+
         // Format phone number to ensure it has US country code for consistency
         let formattedPhone = formData.phone.replace(/\D/g, '');
         if (formattedPhone && !formattedPhone.startsWith('1')) {
@@ -61,12 +76,28 @@ export default function WaitlistForm() {
         }
     };
 
+    const formatPhoneNumber = (value: string) => {
+        const numbers = value.replace(/\D/g, '');
+        if (numbers.length === 0) return '';
+        if (numbers.length <= 3) return numbers;
+        if (numbers.length <= 6) return `(${numbers.slice(0, 3)}) ${numbers.slice(3)}`;
+        return `(${numbers.slice(0, 3)}) ${numbers.slice(3, 6)}-${numbers.slice(6, 10)}`;
+    };
+
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
-        setFormData(prev => ({
-            ...prev,
-            [name]: value
-        }));
+
+        if (name === 'phone') {
+            const formatted = formatPhoneNumber(value);
+            if (formatted.length <= 14) {
+                setFormData(prev => ({ ...prev, [name]: formatted }));
+            }
+        } else {
+            setFormData(prev => ({
+                ...prev,
+                [name]: value
+            }));
+        }
     };
 
     return (

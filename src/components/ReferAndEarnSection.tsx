@@ -31,6 +31,13 @@ export default function ReferAndEarnSection() {
         setStatus('loading');
         setErrorMessage('');
 
+        const validationError = validateForm();
+        if (validationError) {
+            setStatus('error');
+            setErrorMessage(validationError);
+            return;
+        }
+
         try {
             // "Save it same as it" - Keeping the API call structure
             const res = await fetch('/api/waitlist', {
@@ -54,6 +61,22 @@ export default function ReferAndEarnSection() {
             setStatus('error');
             setErrorMessage(error.message || 'Failed to join waitlist.');
         }
+    };
+
+    const validateForm = () => {
+        // Phone validation (10 digits)
+        const phoneDigits = formData.phone.replace(/\D/g, '');
+        if (phoneDigits.length !== 10) {
+            return "Phone number must be exactly 10 digits.";
+        }
+
+        // Zip Code validation (Texas: 75xxx - 79xxx)
+        const zipRegex = /^7[5-9]\d{3}$/;
+        if (!zipRegex.test(formData.zipCode)) {
+            return "Must be a valid Texas Zip Code (75000-79999).";
+        }
+
+        return null;
     };
 
     const formatPhoneNumber = (value: string) => {

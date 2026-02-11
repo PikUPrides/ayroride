@@ -2,11 +2,11 @@ import styles from "./page.module.css";
 import TestimonialCarousel from "./components/TestimonialCarousel";
 
 export const metadata = {
-    title: "Services – AYRO – Referral Program",
-    description: "Join the rebellion against surge pricing and unfair practices while earning significant rewards through our gamified referral system.",
+    title: "Referral Rewards & Benefits - AYRO Rides",
+    description: "Earn up to $1,000 in cash, ride credits & exclusive rewards by referring friends to AYRO’s movement against surge pricing.",
     openGraph: {
-        title: "Services – AYRO – Referral Program",
-        description: "Join the rebellion against surge pricing and unfair practices while earning significant rewards through our gamified referral system.",
+        title: "Referral Rewards & Benefits - AYRO Rides",
+        description: "Earn up to $1,000 in cash, ride credits & exclusive rewards by referring friends to AYRO’s movement against surge pricing.",
         url: "https://ayrorides.com/services",
         images: [
             {
@@ -19,8 +19,8 @@ export const metadata = {
     },
     twitter: {
         card: "summary_large_image",
-        title: "Services – AYRO – Referral Program",
-        description: "Join the rebellion against surge pricing. Earn rewards through our gamified referral system.",
+        title: "Referral Rewards & Benefits - AYRO Rides",
+        description: "Earn up to $1,000 in cash, ride credits & exclusive rewards by referring friends to AYRO’s movement against surge pricing.",
     },
     alternates: {
         canonical: 'https://ayrorides.com/services/',

@@ -16,14 +16,12 @@ export default function Footer() {
     pathname !== "/privacy-policy" &&
     pathname !== "/terms-of-service" &&
     pathname !== "/contact-us" &&
-    pathname !== "/advocate" &&
     pathname !== "/referral" &&
-    !pathname.startsWith("/careers") && // Exclude on careers pages (User request: just the second section there)
+    !pathname.startsWith("/careers") &&
     !pathname.startsWith("/blog") &&
-    pathname !== "/sms-terms"; // Exclude on SMS terms page
+    pathname !== "/sms-terms";
 
-  // Logic for showing Disrupt CTA (Show on ALMOST ALL pages)
-  const showDisruptCTA = pathname !== "/join-our-waitlist"; // Exclude on waitlist page itself
+  const showDisruptCTA = pathname !== "/join-our-waitlist";
 
   const isInnerCareerPage = pathname.startsWith("/careers/") && pathname !== "/careers";
 
@@ -112,6 +110,8 @@ export default function Footer() {
               <Link href="/terms-of-service">Terms of Service</Link>
               <span className={styles.legalDivider}>|</span>
               <Link href="/privacy-policy">Privacy Policy</Link>
+              <span className={styles.legalDivider}>|</span>
+              <Link href="/sms-terms">SMS Terms</Link>
             </div>
           </div>
         </div>

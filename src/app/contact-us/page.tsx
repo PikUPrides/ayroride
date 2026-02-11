@@ -3,11 +3,11 @@ import Image from "next/image";
 import styles from "./contact-us.module.css";
 
 export const metadata = {
-  title: "Contact Us - AYRO",
-  description: "We would love to hear from you. Whether you have questions, need assistance, or want to discuss your business needs, our team is here to help.",
+  title: "Rider & Driver Support - AYRO Rides",
+  description: "Have questions or need help with AYRO rideshare program & referral rewards? Contact us for support or business inquiries today.",
   openGraph: {
-    title: "Contact Us - AYRO",
-    description: "We would love to hear from you. Whether you have questions, need assistance, or want to discuss your business needs, our team is here to help.",
+    title: "Rider & Driver Support - AYRO Rides",
+    description: "Have questions or need help with AYRO rideshare program & referral rewards? Contact us for support or business inquiries today.",
     url: "https://ayrorides.com/contact-us/",
     images: [
       {
@@ -20,8 +20,8 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Contact Us - Ayro",
-    description: "Questions? Need assistance? Our team is here to help.",
+    title: "Rider & Driver Support - AYRO Rides",
+    description: "Have questions or need help with AYRO rideshare program & referral rewards? Contact us for support or business inquiries today.",
   },
   alternates: {
     canonical: 'https://ayrorides.com/contact-us/',

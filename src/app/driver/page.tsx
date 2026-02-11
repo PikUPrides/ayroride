@@ -5,11 +5,11 @@ import TestimonialsSlider from "@/components/TestimonialsSlider";
 import FAQAccordion from "@/components/FAQAccordion";
 
 export const metadata = {
-    title: "Driver - AYRO",
-    description: "Ridesharing without surge pricing or security worries. Pay fairly, every ride.",
+    title: "Driver Signup | Earn $30+ Per Hour - AYRO Rides",
+    description: "Become AYRO rides driver & enjoy guaranteed hourly earnings, transparent pay & real support. Apply now for waitlist & earn rewards for referrals.",
     openGraph: {
-        title: "Driver - AYRO",
-        description: "Ridesharing without surge pricing or security worries. Pay fairly, every ride.",
+        title: "Driver Signup | Earn $30+ Per Hour - AYRO Rides",
+        description: "Become AYRO rides driver & enjoy guaranteed hourly earnings, transparent pay & real support. Apply now for waitlist & earn rewards for referrals.",
         url: "https://ayrorides.com/driver/",
         images: [
             {
@@ -22,8 +22,8 @@ export const metadata = {
     },
     twitter: {
         card: "summary_large_image",
-        title: "Driver - AYRO",
-        description: "Pay fairly, every ride. No surge pricing surprises.",
+        title: "Driver Signup | Earn $30+ Per Hour - AYRO Rides",
+        description: "Become AYRO rides driver & enjoy guaranteed hourly earnings, transparent pay & real support. Apply now for waitlist & earn rewards for referrals.",
     },
     alternates: {
         canonical: 'https://ayrorides.com/driver/',

@@ -5,11 +5,11 @@ import TestimonialsSlider from "@/components/TestimonialsSlider";
 import FAQAccordion from "@/components/FAQAccordion";
 
 export const metadata = {
-    title: "Rider - AYRO",
-    description: "Ridesharing without surge pricing or security worries. Pay fairly, every ride.",
+    title: "Safe, Lower Cost, Transparent Fares - AYRO Rides",
+    description: "Join AYRO Rides for consistent, lower-cost trips with upfront pricing & enhanced safety. Sign up, get early access & earn referral rewards.",
     openGraph: {
-        title: "Rider - AYRO",
-        description: "Ridesharing without surge pricing or security worries. Pay fairly, every ride.",
+        title: "Safe, Lower Cost, Transparent Fares - AYRO Rides",
+        description: "Join AYRO Rides for consistent, lower-cost trips with upfront pricing & enhanced safety. Sign up, get early access & earn referral rewards.",
         url: "https://ayrorides.com/rider/",
         images: [
             {
@@ -22,8 +22,8 @@ export const metadata = {
     },
     twitter: {
         card: "summary_large_image",
-        title: "Rider - AYRO",
-        description: "Pay fairly, every ride. No surge pricing surprises.",
+        title: "Safe, Lower Cost, Transparent Fares - AYRO Rides",
+        description: "Join AYRO Rides for consistent, lower-cost trips with upfront pricing & enhanced safety. Sign up, get early access & earn referral rewards.",
     },
     alternates: {
         canonical: 'https://ayrorides.com/rider/',

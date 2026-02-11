@@ -10,13 +10,39 @@ const ContactForm = () => {
         phone: "",
         email: "",
         subject: "",
-        message: ""
+        message: "",
+        zip: ""
     });
     const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
     const [errorMessage, setErrorMessage] = useState("");
 
+    const validateForm = () => {
+        // US Phone Validation: (XXX) XXX-XXXX
+        const phoneRegex = /^\(\d{3}\) \d{3}-\d{4}$/;
+        if (formData.phone && !phoneRegex.test(formData.phone)) {
+            return "Please enter a valid US phone number: (XXX) XXX-XXXX";
+        }
+
+        // Texas Zip Code Validation: Starts with 75-79 and is 5 digits
+        // encompass the range 75000 to 79999
+        const zipRegex = /^7[5-9]\d{3}$/;
+        if (formData.zip && !zipRegex.test(formData.zip)) {
+            return "Please enter a valid Texas Zip Code (starts with 75-79).";
+        }
+
+        return null;
+    };
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+
+        const validationError = validateForm();
+        if (validationError) {
+            setStatus('error');
+            setErrorMessage(validationError);
+            return;
+        }
+
         setStatus('loading');
         setErrorMessage("");
 
@@ -47,7 +73,8 @@ const ContactForm = () => {
                 phone: "",
                 email: "",
                 subject: "",
-                message: ""
+                message: "",
+                zip: ""
             });
         } catch (error: any) {
             setStatus('error');
@@ -102,6 +129,22 @@ const ContactForm = () => {
                             setFormData({ ...formData, phone: formatted });
                         }}
                         maxLength={14}
+                    />
+                </div>
+                <div className={styles.formGroup}>
+                    <label>Zip Code</label>
+                    <input
+                        type="text"
+                        placeholder="Zip Code (TX)"
+                        className={styles.inputField}
+                        value={formData.zip}
+                        onChange={(e) => {
+                            // Only allow numbers and max 5 chars
+                            const val = e.target.value.replace(/\D/g, '').slice(0, 5);
+                            setFormData({ ...formData, zip: val });
+                        }}
+                        maxLength={5}
+                        required
                     />
                 </div>
                 <div className={styles.formGroup}>
