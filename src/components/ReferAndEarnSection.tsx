@@ -81,7 +81,7 @@ export default function ReferAndEarnSection() {
 
                 if (!res.ok) {
                     if (res.status === 409 && data.error === 'already_exists') {
-                        // User already exists - switch to edit mode
+                        // User already exists - allow editing
                         setStatus('info');
                         setErrorMessage('You\'re already on the waitlist! You can update your information below.');
                         setEditMode({ active: true, subscriberId: data.subscriber.id });
@@ -89,7 +89,7 @@ export default function ReferAndEarnSection() {
                         setFormData({
                             name: data.subscriber.name || '',
                             email: data.subscriber.email || '',
-                            phone: '',
+                            phone: data.subscriber.phone || '',
                             zipCode: data.subscriber.zipCode || '',
                             userType: data.subscriber.userType || 'Driver'
                         });
@@ -204,7 +204,6 @@ export default function ReferAndEarnSection() {
                                 value={formData.email}
                                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                                 onBlur={() => handleBlur('email')}
-                                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                                 title="Please enter a valid email address"
                                 required
                             />

@@ -89,14 +89,14 @@ export default function WaitlistForm() {
                         userType: 'Rider'
                     });
                 } else if (response.status === 409 && data.error === 'already_exists') {
-                    // User already exists - switch to edit mode
+                    // User already exists - allow editing
                     setMessage({ type: 'info', text: 'You\'re already on the waitlist! You can update your information below.' });
                     setEditMode({ active: true, subscriberId: data.subscriber.id });
                     // Pre-fill form with existing data
                     setFormData({
                         name: data.subscriber.name || '',
                         email: data.subscriber.email || '',
-                        phone: '',
+                        phone: data.subscriber.phone || '',
                         zipCode: data.subscriber.zipCode || '',
                         userType: data.subscriber.userType || 'Rider'
                     });
@@ -188,7 +188,6 @@ export default function WaitlistForm() {
                 onBlur={() => handleBlur('email')}
                 placeholder="Email address*"
                 className={`${styles.inputField} ${errors.email ? styles.error : ''}`}
-                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                 title="Please enter a valid email address"
                 required
             />

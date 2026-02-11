@@ -11,7 +11,7 @@ try {
 export async function PUT(request: Request) {
     try {
         const body = await request.json();
-        const { subscriberId, name, email, zipCode, userType } = body;
+        const { subscriberId, name, email, phone, zipCode, userType } = body;
 
         if (!subscriberId || !name || !email) {
             return NextResponse.json(
@@ -31,12 +31,25 @@ export async function PUT(request: Request) {
             );
         }
 
+        // Format phone number to E.164 format for ReferralHero
+        let formattedPhone = '';
+        if (phone) {
+            const digits = phone.replace(/\D/g, '');
+            if (digits.length === 10) {
+                formattedPhone = '+1' + digits; // US format
+            }
+        }
+
         const payload: any = {
             email: email,
             name: name,
             extra_field: zipCode,
             extra_field_2: userType
         };
+
+        if (formattedPhone) {
+            payload.phone_number = formattedPhone;
+        }
 
         console.log('Updating ReferralHero subscriber:', subscriberId, payload);
 
@@ -96,6 +109,15 @@ export async function POST(request: Request) {
             );
         }
 
+        // Format phone number to E.164 format for ReferralHero
+        let formattedPhone = '';
+        if (phone) {
+            const digits = phone.replace(/\D/g, '');
+            if (digits.length === 10) {
+                formattedPhone = '+1' + digits; // US format
+            }
+        }
+
         const payload: any = {
             email: email,
             name: name,
@@ -103,15 +125,62 @@ export async function POST(request: Request) {
             extra_field_2: userType
         };
 
-        // Note: Phone number is collected but not sent to ReferralHero due to strict formatting requirements.
-        // Uncomment below to enable if implementing compatible validation.
-        /*
-        if (phone && phone.replace(/\D/g, '').length >= 10) {
-            payload.phone_number = phone;
+        if (formattedPhone) {
+            payload.phone_number = formattedPhone;
         }
-        */
 
-        console.log('Sending to ReferralHero:', payload);
+        // Check if subscriber already exists BEFORE creating
+        console.log('Checking for existing subscriber:', email);
+        try {
+            // Fetch all subscribers (not filtered by email) to ensure we get accurate results
+            const checkResponse = await fetch(`https://app.referralhero.com/api/v2/lists/${UUID}/subscribers`, {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${API_KEY}`
+                }
+            });
+
+            const checkData = await checkResponse.json();
+            console.log('Check response - Found subscribers:', checkData.data?.subscribers?.length || 0);
+
+            if (checkResponse.ok && checkData.data && checkData.data.subscribers && checkData.data.subscribers.length > 0) {
+                // Log all emails to debug
+                console.log('Subscriber emails:', checkData.data.subscribers.map((s: any) => s.email));
+                console.log('Looking for:', email);
+
+                // Find the subscriber with matching email
+                const subscriber = checkData.data.subscribers.find((sub: any) =>
+                    sub.email?.toLowerCase() === email.toLowerCase()
+                );
+
+                if (!subscriber) {
+                    console.log('No exact email match found in', checkData.data.subscribers.length, 'subscribers');
+                } else {
+                    console.log('Subscriber already exists:', subscriber.id);
+                    console.log('Subscriber verified status:', subscriber.verified);
+                    return NextResponse.json(
+                        {
+                            error: 'already_exists',
+                            message: 'You are already on the waitlist!',
+                            subscriber: {
+                                id: subscriber.id,
+                                email: subscriber.email,
+                                name: subscriber.name,
+                                zipCode: subscriber.extra_field,
+                                userType: subscriber.extra_field_2,
+                                confirmed: subscriber.verified
+                            }
+                        },
+                        { status: 409 }
+                    );
+                }
+            }
+        } catch (checkError) {
+            console.error('Error checking for existing subscriber:', checkError);
+            // Continue with creation if check fails
+        }
+
+        console.log('Creating new subscriber:', payload);
 
         const rhResponse = await fetch(`https://app.referralhero.com/api/v2/lists/${UUID}/subscribers`, {
             method: 'POST',
@@ -123,50 +192,54 @@ export async function POST(request: Request) {
         });
 
         const rhData = await rhResponse.json();
+        console.log('ReferralHero CREATE response:', JSON.stringify(rhData, null, 2));
 
         if (!rhResponse.ok || rhData.status === 'error') {
             console.error('ReferralHero API Error:', rhData);
-
-            // Check if it's a duplicate email error
-            if (rhData.message && rhData.message.toLowerCase().includes('already') ||
-                rhData.message && rhData.message.toLowerCase().includes('exists') ||
-                rhData.message && rhData.message.toLowerCase().includes('duplicate')) {
-
-                // Try to fetch the existing subscriber
-                try {
-                    const fetchResponse = await fetch(`https://app.referralhero.com/api/v2/lists/${UUID}/subscribers?email=${encodeURIComponent(email)}`, {
-                        method: 'GET',
-                        headers: {
-                            'Authorization': `Bearer ${API_KEY}`
-                        }
-                    });
-
-                    const fetchData = await fetchResponse.json();
-
-                    if (fetchResponse.ok && fetchData.data && fetchData.data.length > 0) {
-                        const subscriber = fetchData.data[0];
-                        return NextResponse.json(
-                            {
-                                error: 'already_exists',
-                                message: 'You are already on the waitlist!',
-                                subscriber: {
-                                    id: subscriber.id,
-                                    email: subscriber.email,
-                                    name: subscriber.name,
-                                    zipCode: subscriber.extra_field,
-                                    userType: subscriber.extra_field_2,
-                                    confirmed: subscriber.confirmed
-                                }
-                            },
-                            { status: 409 }
-                        );
-                    }
-                } catch (fetchError) {
-                    console.error('Failed to fetch existing subscriber:', fetchError);
-                }
-            }
-
             throw new Error(rhData.message || 'Failed to register with ReferralHero.');
+        }
+
+        // Check if subscriber already existed (ReferralHero returns existing subscriber for duplicates)
+        // If created_at is more than 5 seconds old, it's an existing subscriber
+        if (rhData.data && rhData.data.created_at) {
+            const createdAt = rhData.data.created_at;
+            const now = Math.floor(Date.now() / 1000); // Current timestamp in seconds
+            const ageInSeconds = now - createdAt;
+
+            console.log('Subscriber age:', ageInSeconds, 'seconds');
+
+            if (ageInSeconds > 5) {
+                // This is an existing subscriber (created more than 5 seconds ago)
+                console.log('Existing subscriber detected:', rhData.data.id);
+                console.log('Subscriber verified status:', rhData.data.verified);
+
+                // Format phone for display (remove +1 and format as (XXX) XXX-XXXX)
+                let displayPhone = '';
+                if (rhData.data.phone_number) {
+                    const phoneDigits = rhData.data.phone_number.replace(/\D/g, '');
+                    if (phoneDigits.length === 11 && phoneDigits.startsWith('1')) {
+                        const usDigits = phoneDigits.substring(1);
+                        displayPhone = `(${usDigits.slice(0, 3)}) ${usDigits.slice(3, 6)}-${usDigits.slice(6)}`;
+                    }
+                }
+
+                return NextResponse.json(
+                    {
+                        error: 'already_exists',
+                        message: 'You are already on the waitlist!',
+                        subscriber: {
+                            id: rhData.data.id,
+                            email: rhData.data.email,
+                            name: rhData.data.name,
+                            phone: displayPhone,
+                            zipCode: rhData.data.extra_field,
+                            userType: rhData.data.extra_field_2,
+                            confirmed: rhData.data.verified
+                        }
+                    },
+                    { status: 409 }
+                );
+            }
         }
 
         return NextResponse.json(
