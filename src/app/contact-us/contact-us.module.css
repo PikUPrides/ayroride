@@ -161,11 +161,22 @@
 .textareaField {
     padding: 15px 20px;
     background: #FFFFFF;
-    border: 1px solid #E5E7EB;
+    border: 2px solid #E5E7EB;
     border-radius: 8px;
     font-size: 16px;
     color: #111;
     transition: border-color 0.3s ease;
+}
+
+.inputField.error,
+.textareaField.error {
+    border-color: #dc3545 !important;
+}
+
+.inputField::placeholder,
+.textareaField::placeholder {
+    color: #999999;
+    opacity: 0.7;
 }
 
 .inputField:focus,

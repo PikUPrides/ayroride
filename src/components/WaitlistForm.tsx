@@ -13,6 +13,11 @@ export default function WaitlistForm() {
     });
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [message, setMessage] = useState<{ type: 'success' | 'error', text: string } | null>(null);
+    const [errors, setErrors] = useState({
+        email: false,
+        phone: false,
+        zipCode: false
+    });
 
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
@@ -61,8 +66,57 @@ export default function WaitlistForm() {
         }
     };
 
+    const formatPhoneNumber = (value: string) => {
+        const numbers = value.replace(/\D/g, '');
+        if (numbers.length === 0) return '';
+        if (numbers.length <= 3) return `(${numbers}`;
+        if (numbers.length <= 6) return `(${numbers.slice(0, 3)}) ${numbers.slice(3)}`;
+        return `(${numbers.slice(0, 3)}) ${numbers.slice(3, 6)}-${numbers.slice(6, 10)}`;
+    };
+
+    const validateEmail = (email: string) => {
+        const emailRegex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/i;
+        return emailRegex.test(email);
+    };
+
+    const validatePhone = (phone: string) => {
+        const numbers = phone.replace(/\D/g, '');
+        return numbers.length === 10;
+    };
+
+    const validateZipCode = (zipCode: string) => {
+        return /^\d{5}$/.test(zipCode);
+    };
+
+    const handleBlur = (field: 'email' | 'phone' | 'zipCode') => {
+        if (field === 'email' && formData.email) {
+            setErrors(prev => ({ ...prev, email: !validateEmail(formData.email) }));
+        } else if (field === 'phone' && formData.phone) {
+            setErrors(prev => ({ ...prev, phone: !validatePhone(formData.phone) }));
+        } else if (field === 'zipCode' && formData.zipCode) {
+            setErrors(prev => ({ ...prev, zipCode: !validateZipCode(formData.zipCode) }));
+        }
+    };
+
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
+
+        if (name === 'phone') {
+            const formatted = formatPhoneNumber(value);
+            if (formatted.replace(/\D/g, '').length <= 10) {
+                setFormData(prev => ({ ...prev, phone: formatted }));
+            }
+            return;
+        }
+
+        if (name === 'zipCode') {
+            const numbers = value.replace(/\D/g, '');
+            if (numbers.length <= 5) {
+                setFormData(prev => ({ ...prev, zipCode: numbers }));
+            }
+            return;
+        }
+
         setFormData(prev => ({
             ...prev,
             [name]: value
@@ -86,8 +140,11 @@ export default function WaitlistForm() {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
+                onBlur={() => handleBlur('email')}
                 placeholder="Email address*"
-                className={styles.inputField}
+                className={`${styles.inputField} ${errors.email ? styles.error : ''}`}
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                title="Please enter a valid email address"
                 required
             />
 
@@ -97,9 +154,13 @@ export default function WaitlistForm() {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    placeholder="Number*"
-                    className={styles.inputField}
+                    onBlur={() => handleBlur('phone')}
+                    placeholder="Mobile*"
+                    className={`${styles.inputField} ${errors.phone ? styles.error : ''}`}
                     style={{ flex: 1 }}
+                    maxLength={14}
+                    pattern="\(\d{3}\) \d{3}-\d{4}"
+                    title="Please enter a valid 10-digit US phone number"
                     required
                 />
                 <input
@@ -107,9 +168,13 @@ export default function WaitlistForm() {
                     name="zipCode"
                     value={formData.zipCode}
                     onChange={handleChange}
+                    onBlur={() => handleBlur('zipCode')}
                     placeholder="Zip code*"
-                    className={styles.inputField}
+                    className={`${styles.inputField} ${errors.zipCode ? styles.error : ''}`}
                     style={{ flex: 1 }}
+                    maxLength={5}
+                    pattern="\d{5}"
+                    title="Please enter a valid 5-digit US zip code"
                     required
                 />
             </div>

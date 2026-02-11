@@ -14,6 +14,28 @@ const ContactForm = () => {
     });
     const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
     const [errorMessage, setErrorMessage] = useState("");
+    const [errors, setErrors] = useState({
+        email: false,
+        phone: false
+    });
+
+    const validateEmail = (email: string) => {
+        const emailRegex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/i;
+        return emailRegex.test(email);
+    };
+
+    const validatePhone = (phone: string) => {
+        const numbers = phone.replace(/\D/g, '');
+        return numbers.length === 10;
+    };
+
+    const handleBlur = (field: 'email' | 'phone') => {
+        if (field === 'email' && formData.email) {
+            setErrors(prev => ({ ...prev, email: !validateEmail(formData.email) }));
+        } else if (field === 'phone' && formData.phone) {
+            setErrors(prev => ({ ...prev, phone: !validatePhone(formData.phone) }));
+        }
+    };
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -80,11 +102,11 @@ const ContactForm = () => {
                     />
                 </div>
                 <div className={styles.formGroup}>
-                    <label>Phone Number</label>
+                    <label>Mobile</label>
                     <input
                         type="tel"
-                        placeholder="Phone Number"
-                        className={styles.inputField}
+                        placeholder="Mobile"
+                        className={`${styles.inputField} ${errors.phone ? styles.error : ''}`}
                         value={formData.phone}
                         onChange={(e) => {
                             const input = e.target.value;
@@ -92,16 +114,21 @@ const ContactForm = () => {
                             let formatted = numbers;
                             if (numbers.length > 0) {
                                 if (numbers.length <= 3) {
-                                    formatted = numbers;
+                                    formatted = `(${numbers}`;
                                 } else if (numbers.length <= 6) {
                                     formatted = `(${numbers.slice(0, 3)}) ${numbers.slice(3)}`;
                                 } else {
                                     formatted = `(${numbers.slice(0, 3)}) ${numbers.slice(3, 6)}-${numbers.slice(6, 10)}`;
                                 }
                             }
-                            setFormData({ ...formData, phone: formatted });
+                            if (numbers.length <= 10) {
+                                setFormData({ ...formData, phone: formatted });
+                            }
                         }}
+                        onBlur={() => handleBlur('phone')}
                         maxLength={14}
+                        pattern="\(\d{3}\) \d{3}-\d{4}"
+                        title="Please enter a valid 10-digit US phone number"
                     />
                 </div>
                 <div className={styles.formGroup}>
@@ -109,9 +136,12 @@ const ContactForm = () => {
                     <input
                         type="email"
                         placeholder="Email Address"
-                        className={styles.inputField}
+                        className={`${styles.inputField} ${errors.email ? styles.error : ''}`}
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        onBlur={() => handleBlur('email')}
+                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                        title="Please enter a valid email address"
                         required
                     />
                 </div>

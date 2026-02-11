@@ -15,6 +15,11 @@ export default function ReferAndEarnSection() {
     });
     const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
     const [errorMessage, setErrorMessage] = useState('');
+    const [errors, setErrors] = useState({
+        email: false,
+        phone: false,
+        zipCode: false
+    });
 
     useEffect(() => {
         if (status === 'success' || status === 'error') {
@@ -66,8 +71,39 @@ export default function ReferAndEarnSection() {
 
     const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const formatted = formatPhoneNumber(e.target.value);
-        if (formatted.length <= 14) {
+        if (formatted.replace(/\D/g, '').length <= 10) {
             setFormData({ ...formData, phone: formatted });
+        }
+    };
+
+    const handleZipChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const numbers = e.target.value.replace(/\D/g, '');
+        if (numbers.length <= 5) {
+            setFormData({ ...formData, zipCode: numbers });
+        }
+    };
+
+    const validateEmail = (email: string) => {
+        const emailRegex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/i;
+        return emailRegex.test(email);
+    };
+
+    const validatePhone = (phone: string) => {
+        const numbers = phone.replace(/\D/g, '');
+        return numbers.length === 10;
+    };
+
+    const validateZipCode = (zipCode: string) => {
+        return /^\d{5}$/.test(zipCode);
+    };
+
+    const handleBlur = (field: 'email' | 'phone' | 'zipCode') => {
+        if (field === 'email' && formData.email) {
+            setErrors(prev => ({ ...prev, email: !validateEmail(formData.email) }));
+        } else if (field === 'phone' && formData.phone) {
+            setErrors(prev => ({ ...prev, phone: !validatePhone(formData.phone) }));
+        } else if (field === 'zipCode' && formData.zipCode) {
+            setErrors(prev => ({ ...prev, zipCode: !validateZipCode(formData.zipCode) }));
         }
     };
 
@@ -101,9 +137,12 @@ export default function ReferAndEarnSection() {
                             <input
                                 type="email"
                                 placeholder="Email Address"
-                                className={formStyles.inputField}
+                                className={`${formStyles.inputField} ${errors.email ? formStyles.error : ''}`}
                                 value={formData.email}
                                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                                onBlur={() => handleBlur('email')}
+                                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                                title="Please enter a valid email address"
                                 required
                             />
                         </div>
@@ -112,10 +151,14 @@ export default function ReferAndEarnSection() {
                             <div className={formStyles.phoneWrapper}>
                                 <input
                                     type="tel"
-                                    placeholder="Phone Number"
-                                    className={formStyles.phoneInput}
+                                    placeholder="Mobile"
+                                    className={`${formStyles.phoneInput} ${errors.phone ? formStyles.error : ''}`}
                                     value={formData.phone}
                                     onChange={handlePhoneChange}
+                                    onBlur={() => handleBlur('phone')}
+                                    maxLength={14}
+                                    pattern="\(\d{3}\) \d{3}-\d{4}"
+                                    title="Please enter a valid 10-digit US phone number"
                                     required
                                 />
                             </div>
@@ -123,9 +166,13 @@ export default function ReferAndEarnSection() {
                                 <input
                                     type="text"
                                     placeholder="Zip Code"
-                                    className={formStyles.inputField}
+                                    className={`${formStyles.inputField} ${errors.zipCode ? formStyles.error : ''}`}
                                     value={formData.zipCode}
-                                    onChange={(e) => setFormData({ ...formData, zipCode: e.target.value })}
+                                    onChange={handleZipChange}
+                                    onBlur={() => handleBlur('zipCode')}
+                                    maxLength={5}
+                                    pattern="\d{5}"
+                                    title="Please enter a valid 5-digit US zip code"
                                     required
                                 />
                             </div>
