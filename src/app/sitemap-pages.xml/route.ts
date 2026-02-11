@@ -30,16 +30,16 @@ const DYNAMIC_ROUTE_DIRS = ["blog", "careers"];
 // Priority configuration for different page types
 const PRIORITY_CONFIG = {
     home: 1.0,
-    mainPages: ["/services", "/about-us"],
-    mainPriority: 0.9,
+    mainPages: ["/services", "/about-us", "/rider", "/driver", "/contact-us", "/careers"],
+    mainPriority: 1.0,
     blogPage: "/blog",
-    blogPriority: 0.8,
+    blogPriority: 0.9,
     careersPage: "/careers",
-    careersPriority: 0.75,
-    jobDetailPriority: 0.7,
-    lowPriorityPages: ["/contact-us", "/privacy-policy", "/terms-of-service"],
-    lowPriority: 0.4,
-    defaultPriority: 0.5,
+    careersPriority: 1.0,
+    jobDetailPriority: 0.8,
+    lowPriorityPages: ["/privacy-policy", "/terms-of-service"],
+    lowPriority: 0.5,
+    defaultPriority: 0.8,
 };
 
 /**
