@@ -13,13 +13,14 @@ export default function ReferAndEarnSection() {
         zipCode: '',
         userType: 'Driver'
     });
-    const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+    const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error' | 'info'>('idle');
     const [errorMessage, setErrorMessage] = useState('');
     const [errors, setErrors] = useState({
         email: false,
         phone: false,
         zipCode: false
     });
+    const [editMode, setEditMode] = useState<{ active: boolean; subscriberId?: string }>({ active: false });
 
     useEffect(() => {
         if (status === 'success' || status === 'error') {
@@ -44,23 +45,62 @@ export default function ReferAndEarnSection() {
         }
 
         try {
-            // "Save it same as it" - Keeping the API call structure
-            const res = await fetch('/api/waitlist', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData)
-            });
+            // If in edit mode, use PUT to update
+            if (editMode.active && editMode.subscriberId) {
+                const res = await fetch('/api/waitlist', {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        subscriberId: editMode.subscriberId,
+                        ...formData
+                    })
+                });
 
-            const data = await res.json();
+                const data = await res.json();
 
-            if (!res.ok) {
-                throw new Error(data.error || 'Something went wrong. Please try again.');
+                if (!res.ok) {
+                    throw new Error(data.error || 'Failed to update information.');
+                }
+
+                setStatus('success');
+                setEditMode({ active: false });
+                setFormData({ name: '', email: '', phone: '', zipCode: '', userType: 'Driver' });
+            } else {
+                // Normal POST for new submissions
+                const res = await fetch('/api/waitlist', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                const data = await res.json();
+
+                if (!res.ok) {
+                    if (res.status === 409 && data.error === 'already_exists') {
+                        // User already exists - switch to edit mode
+                        setStatus('info');
+                        setErrorMessage('You\'re already on the waitlist! You can update your information below.');
+                        setEditMode({ active: true, subscriberId: data.subscriber.id });
+                        // Pre-fill form with existing data
+                        setFormData({
+                            name: data.subscriber.name || '',
+                            email: data.subscriber.email || '',
+                            phone: '',
+                            zipCode: data.subscriber.zipCode || '',
+                            userType: data.subscriber.userType || 'Driver'
+                        });
+                        return;
+                    }
+                    throw new Error(data.error || 'Something went wrong. Please try again.');
+                }
+
+                setStatus('success');
+                setFormData({ name: '', email: '', phone: '', zipCode: '', userType: 'Driver' });
             }
-
-            setStatus('success');
-            setFormData({ name: '', email: '', phone: '', zipCode: '', userType: 'Driver' });
         } catch (error: any) {
             console.error('Submission error:', error);
             setStatus('error');
@@ -242,14 +282,18 @@ export default function ReferAndEarnSection() {
 
                         {status === 'error' && <p className={formStyles.errorMessage}>{errorMessage}</p>}
 
+                        {status === 'info' && <p className={formStyles.infoMessage}>{errorMessage}</p>}
+
                         {status === 'success' && (
                             <p className={formStyles.successMessage}>
-                                You&apos;re on the list! Thank you for joining.
+                                {editMode.active ? 'Successfully updated your information!' : 'You\'re on the list! Thank you for joining.'}
                             </p>
                         )}
 
                         <button type="submit" className={formStyles.submitBtn} disabled={status === 'loading'}>
-                            {status === 'loading' ? 'Submitting...' : 'Submit'}
+                            {status === 'loading'
+                                ? (editMode.active ? 'Updating...' : 'Submitting...')
+                                : (editMode.active ? 'Update Information' : 'Submit')}
                         </button>
 
                         <p className={formStyles.disclaimer}>

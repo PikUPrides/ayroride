@@ -12,12 +12,13 @@ export default function WaitlistForm() {
         userType: 'Rider' as 'Driver' | 'Rider' | 'Both'
     });
     const [isSubmitting, setIsSubmitting] = useState(false);
-    const [message, setMessage] = useState<{ type: 'success' | 'error', text: string } | null>(null);
+    const [message, setMessage] = useState<{ type: 'success' | 'error' | 'info', text: string } | null>(null);
     const [errors, setErrors] = useState({
         email: false,
         phone: false,
         zipCode: false
     });
+    const [editMode, setEditMode] = useState<{ active: boolean; subscriberId?: string }>({ active: false });
 
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
@@ -34,30 +35,74 @@ export default function WaitlistForm() {
         }
 
         try {
-            const response = await fetch('/api/waitlist', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    ...formData,
-                    phone: formattedPhone
-                }),
-            });
-
-            const data = await response.json();
-
-            if (response.ok) {
-                setMessage({ type: 'success', text: 'Successfully joined the waitlist!' });
-                setFormData({
-                    name: '',
-                    email: '',
-                    phone: '',
-                    zipCode: '',
-                    userType: 'Rider'
+            // If in edit mode, use PUT to update
+            if (editMode.active && editMode.subscriberId) {
+                const response = await fetch('/api/waitlist', {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        subscriberId: editMode.subscriberId,
+                        ...formData,
+                        phone: formattedPhone
+                    }),
                 });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    setMessage({ type: 'success', text: 'Successfully updated your information!' });
+                    setEditMode({ active: false });
+                    setFormData({
+                        name: '',
+                        email: '',
+                        phone: '',
+                        zipCode: '',
+                        userType: 'Rider'
+                    });
+                } else {
+                    setMessage({ type: 'error', text: data.error || 'Failed to update information.' });
+                }
             } else {
-                setMessage({ type: 'error', text: data.error || 'Failed to join waitlist.' });
+                // Normal POST for new submissions
+                const response = await fetch('/api/waitlist', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        ...formData,
+                        phone: formattedPhone
+                    }),
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    setMessage({ type: 'success', text: 'Successfully joined the waitlist!' });
+                    setFormData({
+                        name: '',
+                        email: '',
+                        phone: '',
+                        zipCode: '',
+                        userType: 'Rider'
+                    });
+                } else if (response.status === 409 && data.error === 'already_exists') {
+                    // User already exists - switch to edit mode
+                    setMessage({ type: 'info', text: 'You\'re already on the waitlist! You can update your information below.' });
+                    setEditMode({ active: true, subscriberId: data.subscriber.id });
+                    // Pre-fill form with existing data
+                    setFormData({
+                        name: data.subscriber.name || '',
+                        email: data.subscriber.email || '',
+                        phone: '',
+                        zipCode: data.subscriber.zipCode || '',
+                        userType: data.subscriber.userType || 'Rider'
+                    });
+                } else {
+                    setMessage({ type: 'error', text: data.error || 'Failed to join waitlist.' });
+                }
             }
         } catch (error) {
             setMessage({ type: 'error', text: 'An error occurred. Please try again.' });
@@ -222,11 +267,17 @@ export default function WaitlistForm() {
                 className={styles.submitBtn}
                 disabled={isSubmitting}
             >
-                {isSubmitting ? 'Joining...' : 'Join the AYRO waitlist now...'}
+                {isSubmitting
+                    ? (editMode.active ? 'Updating...' : 'Joining...')
+                    : (editMode.active ? 'Update Information' : 'Join the AYRO waitlist now...')}
             </button>
 
             {message && (
-                <div className={message.type === 'success' ? styles.successMessage : styles.errorMessage}>
+                <div className={
+                    message.type === 'success' ? styles.successMessage :
+                    message.type === 'info' ? styles.infoMessage :
+                    styles.errorMessage
+                }>
                     {message.text}
                 </div>
             )}
