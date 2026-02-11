@@ -192,6 +192,7 @@ export default function ReferAndEarnSection() {
                                 className={formStyles.inputField}
                                 value={formData.name}
                                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                                maxLength={100}
                                 required
                             />
                         </div>
@@ -214,7 +215,7 @@ export default function ReferAndEarnSection() {
                                 <input
                                     type="tel"
                                     placeholder="Mobile"
-                                    className={`${formStyles.phoneInput} ${errors.phone ? formStyles.error : ''}`}
+                                    className={`${formStyles.phoneInput} ${errors.phone ? formStyles.error : ''} ${editMode.active && formData.phone ? formStyles.prefilled : ''}`}
                                     value={formData.phone}
                                     onChange={handlePhoneChange}
                                     onBlur={() => handleBlur('phone')}
@@ -228,7 +229,7 @@ export default function ReferAndEarnSection() {
                                 <input
                                     type="text"
                                     placeholder="Zip Code"
-                                    className={`${formStyles.inputField} ${errors.zipCode ? formStyles.error : ''}`}
+                                    className={`${formStyles.inputField} ${errors.zipCode ? formStyles.error : ''} ${editMode.active && formData.zipCode ? formStyles.prefilled : ''}`}
                                     value={formData.zipCode}
                                     onChange={handleZipChange}
                                     onBlur={() => handleBlur('zipCode')}

@@ -177,6 +177,7 @@ export default function WaitlistForm() {
                 onChange={handleChange}
                 placeholder="Full name*"
                 className={styles.inputField}
+                maxLength={100}
                 required
             />
 
@@ -200,7 +201,7 @@ export default function WaitlistForm() {
                     onChange={handleChange}
                     onBlur={() => handleBlur('phone')}
                     placeholder="Mobile*"
-                    className={`${styles.inputField} ${errors.phone ? styles.error : ''}`}
+                    className={`${styles.inputField} ${errors.phone ? styles.error : ''} ${editMode.active && formData.phone ? styles.prefilled : ''}`}
                     style={{ flex: 1 }}
                     maxLength={14}
                     pattern="\(\d{3}\) \d{3}-\d{4}"
@@ -214,7 +215,7 @@ export default function WaitlistForm() {
                     onChange={handleChange}
                     onBlur={() => handleBlur('zipCode')}
                     placeholder="Zip code*"
-                    className={`${styles.inputField} ${errors.zipCode ? styles.error : ''}`}
+                    className={`${styles.inputField} ${errors.zipCode ? styles.error : ''} ${editMode.active && formData.zipCode ? styles.prefilled : ''}`}
                     style={{ flex: 1 }}
                     maxLength={5}
                     pattern="\d{5}"
