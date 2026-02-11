@@ -13,26 +13,16 @@ export default function WaitlistForm() {
     });
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [message, setMessage] = useState<{ type: 'success' | 'error', text: string } | null>(null);
+    const [errors, setErrors] = useState({
+        email: false,
+        phone: false,
+        zipCode: false
+    });
 
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
         setIsSubmitting(true);
         setMessage(null);
-
-        // Validation Logic
-        const phoneDigits = formData.phone.replace(/\D/g, '');
-        if (phoneDigits.length !== 10) {
-            setMessage({ type: 'error', text: "Phone number must be exactly 10 digits." });
-            setIsSubmitting(false);
-            return;
-        }
-
-        const zipRegex = /^7[5-9]\d{3}$/;
-        if (!zipRegex.test(formData.zipCode)) {
-            setMessage({ type: 'error', text: "Must be a valid Texas Zip Code (75000-79999)." });
-            setIsSubmitting(false);
-            return;
-        }
 
         // Format phone number to ensure it has US country code for consistency
         let formattedPhone = formData.phone.replace(/\D/g, '');
@@ -79,9 +69,33 @@ export default function WaitlistForm() {
     const formatPhoneNumber = (value: string) => {
         const numbers = value.replace(/\D/g, '');
         if (numbers.length === 0) return '';
-        if (numbers.length <= 3) return numbers;
+        if (numbers.length <= 3) return `(${numbers}`;
         if (numbers.length <= 6) return `(${numbers.slice(0, 3)}) ${numbers.slice(3)}`;
         return `(${numbers.slice(0, 3)}) ${numbers.slice(3, 6)}-${numbers.slice(6, 10)}`;
+    };
+
+    const validateEmail = (email: string) => {
+        const emailRegex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/i;
+        return emailRegex.test(email);
+    };
+
+    const validatePhone = (phone: string) => {
+        const numbers = phone.replace(/\D/g, '');
+        return numbers.length === 10;
+    };
+
+    const validateZipCode = (zipCode: string) => {
+        return /^\d{5}$/.test(zipCode);
+    };
+
+    const handleBlur = (field: 'email' | 'phone' | 'zipCode') => {
+        if (field === 'email' && formData.email) {
+            setErrors(prev => ({ ...prev, email: !validateEmail(formData.email) }));
+        } else if (field === 'phone' && formData.phone) {
+            setErrors(prev => ({ ...prev, phone: !validatePhone(formData.phone) }));
+        } else if (field === 'zipCode' && formData.zipCode) {
+            setErrors(prev => ({ ...prev, zipCode: !validateZipCode(formData.zipCode) }));
+        }
     };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -89,15 +103,24 @@ export default function WaitlistForm() {
 
         if (name === 'phone') {
             const formatted = formatPhoneNumber(value);
-            if (formatted.length <= 14) {
-                setFormData(prev => ({ ...prev, [name]: formatted }));
+            if (formatted.replace(/\D/g, '').length <= 10) {
+                setFormData(prev => ({ ...prev, phone: formatted }));
             }
-        } else {
-            setFormData(prev => ({
-                ...prev,
-                [name]: value
-            }));
+            return;
         }
+
+        if (name === 'zipCode') {
+            const numbers = value.replace(/\D/g, '');
+            if (numbers.length <= 5) {
+                setFormData(prev => ({ ...prev, zipCode: numbers }));
+            }
+            return;
+        }
+
+        setFormData(prev => ({
+            ...prev,
+            [name]: value
+        }));
     };
 
     return (
@@ -117,8 +140,11 @@ export default function WaitlistForm() {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
+                onBlur={() => handleBlur('email')}
                 placeholder="Email address*"
-                className={styles.inputField}
+                className={`${styles.inputField} ${errors.email ? styles.error : ''}`}
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                title="Please enter a valid email address"
                 required
             />
 
@@ -128,9 +154,13 @@ export default function WaitlistForm() {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    placeholder="Number*"
-                    className={styles.inputField}
+                    onBlur={() => handleBlur('phone')}
+                    placeholder="Mobile*"
+                    className={`${styles.inputField} ${errors.phone ? styles.error : ''}`}
                     style={{ flex: 1 }}
+                    maxLength={14}
+                    pattern="\(\d{3}\) \d{3}-\d{4}"
+                    title="Please enter a valid 10-digit US phone number"
                     required
                 />
                 <input
@@ -138,9 +168,13 @@ export default function WaitlistForm() {
                     name="zipCode"
                     value={formData.zipCode}
                     onChange={handleChange}
+                    onBlur={() => handleBlur('zipCode')}
                     placeholder="Zip code*"
-                    className={styles.inputField}
+                    className={`${styles.inputField} ${errors.zipCode ? styles.error : ''}`}
                     style={{ flex: 1 }}
+                    maxLength={5}
+                    pattern="\d{5}"
+                    title="Please enter a valid 5-digit US zip code"
                     required
                 />
             </div>
