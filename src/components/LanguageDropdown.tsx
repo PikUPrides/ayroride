@@ -17,16 +17,24 @@ export default function LanguageDropdown() {
     const dropdownRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        const addScript = document.createElement("script");
-        addScript.src = "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
-        addScript.async = true;
-        document.body.appendChild(addScript);
+        // Build the script only if it doesn't already exist
+        let addScript = document.querySelector("script[src*='translate.google.com']");
 
+        if (!addScript) {
+            addScript = document.createElement("script");
+            (addScript as HTMLScriptElement).src = "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+            (addScript as HTMLScriptElement).async = true;
+            document.body.appendChild(addScript);
+        }
+
+        // Ensure global callback is defined
         (window as any).googleTranslateElementInit = () => {
-            new (window as any).google.translate.TranslateElement(
-                { pageLanguage: "en", autoDisplay: false },
-                "google_translate_element"
-            );
+            if ((window as any).google && (window as any).google.translate) {
+                new (window as any).google.translate.TranslateElement(
+                    { pageLanguage: "en", autoDisplay: false },
+                    "google_translate_element"
+                );
+            }
         };
     }, []);
 
@@ -36,12 +44,16 @@ export default function LanguageDropdown() {
             if (combo) {
                 combo.value = lang.code;
                 combo.dispatchEvent(new Event("change"));
+                combo.dispatchEvent(new Event("input")); // Dispatch input for safer measure
+                combo.click(); // Sometimes click is needed to wake it up
             }
         };
 
         setLanguage();
+        // Retry logic to handle race conditions
         setTimeout(setLanguage, 100);
         setTimeout(setLanguage, 500);
+        setTimeout(setLanguage, 1000); // One more safety retry
 
         setCurrentLang(lang);
         setIsOpen(false);
