@@ -1,0 +1,249 @@
+/* LanguageDropdown.css */
+
+.language-dropdown-container {
+    position: fixed;
+    bottom: 24px;
+    /* bottom-6 */
+    left: 24px;
+    /* left-6 */
+    z-index: 9999;
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    /* font-sans */
+}
+
+/* Dropdown Menu Wrapper */
+.language-menu {
+    position: absolute;
+    bottom: 100%;
+    /* bottom-full */
+    left: 0;
+    margin-bottom: 12px;
+    /* mb-3 */
+    width: 320px;
+    /* w-80 */
+    max-height: 320px;
+    /* max-h-80 */
+    overflow-y: auto;
+
+    background-color: rgba(255, 255, 255, 0.95);
+    /* bg-white/95 */
+    backdrop-filter: blur(24px);
+    /* backdrop-blur-xl */
+    -webkit-backdrop-filter: blur(24px);
+
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    /* border-white/20 */
+    border-radius: 16px;
+    /* rounded-2xl */
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    /* shadow-2xl */
+
+    transform-origin: bottom left;
+    transition: all 300ms cubic-bezier(0.23, 1, 0.32, 1);
+
+    /* ring-1 ring-black/5 substitute */
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.language-menu.closed {
+    opacity: 0;
+    transform: translateY(16px) scale(0.95);
+    pointer-events: none;
+}
+
+.language-menu.open {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+}
+
+/* Inner Content Padding */
+.language-menu-inner {
+    padding: 8px 20px;
+    /* py-2 px-5 */
+}
+
+/* Header */
+.language-header {
+    padding: 4px 16px 4px 16px;
+    /* px-4 pt-1 pb-1 */
+    font-size: 11px;
+    font-weight: 600;
+    color: #9ca3af;
+    /* text-gray-400 */
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    /* tracking-wider */
+    user-select: none;
+}
+
+/* Option Button */
+.language-option {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-height: 44px;
+    /* Reduced from 52px */
+    padding: 0 12px;
+    /* Reduced padding if needed, keeping px-3? was px-4 (16px) */
+    margin: 0 4px 2px 4px;
+    /* mx-1, mb-0.5 */
+    font-size: 15px;
+    /* slightly smaller text? keeping 16px/text-base is fine, maybe 15px tightens it visually */
+    border-radius: 8px;
+    /* rounded-lg */
+    transition: background-color 150ms, color 150ms;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #4b5563;
+    /* text-gray-600 */
+}
+
+.language-option:hover {
+    background-color: #f9fafb;
+    /* hover:bg-gray-50 */
+    color: #111827;
+    /* hover:text-gray-900 */
+}
+
+.language-option.active {
+    background-color: rgba(243, 244, 246, 0.8);
+    /* bg-gray-100/80 */
+    color: #111827;
+    /* text-gray-900 */
+    font-weight: 500;
+}
+
+/* Option Content Layout */
+.language-option-content {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.language-flag {
+    width: 24px;
+    height: 16px;
+    object-fit: cover;
+    border-radius: 2px;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    margin-right: 16px;
+    /* mr-4 */
+}
+
+.language-label {
+    flex: 1;
+    text-align: left;
+}
+
+.language-check {
+    width: 16px;
+    height: 16px;
+    color: #374151;
+    /* text-gray-700 */
+    opacity: 0.7;
+    margin-left: 16px;
+    /* ml-4 */
+}
+
+/* Trigger Button */
+.language-trigger {
+    display: flex;
+    align-items: center;
+    padding: 14px 20px 14px 16px;
+    /* pl-4 pr-5 py-3.5 */
+    gap: 12px;
+    /* gap-3 */
+
+    background-color: rgba(255, 255, 255, 0.9);
+    /* bg-white/90 */
+    backdrop-filter: blur(12px);
+    /* backdrop-blur-md */
+    -webkit-backdrop-filter: blur(12px);
+
+    border: 1px solid rgba(229, 231, 235, 0.6);
+    /* border-gray-200/60 */
+    border-radius: 9999px;
+    /* rounded-full */
+
+    box-shadow: 0 20px 25px -5px rgba(229, 231, 235, 0.4), 0 8px 10px -6px rgba(229, 231, 235, 0.4);
+    /* shadow-xl shadow-gray-200/40 */
+
+    transition: all 300ms;
+    cursor: pointer;
+}
+
+.language-trigger:hover {
+    box-shadow: 0 25px 50px -12px rgba(229, 231, 235, 0.5);
+    /* hover:shadow-2xl */
+    border-color: rgba(209, 213, 219, 0.8);
+    /* hover:border-gray-300/80 */
+}
+
+.language-trigger:active {
+    transform: scale(0.95);
+}
+
+.language-trigger.open {
+    background-color: white;
+    box-shadow: 0 0 0 4px rgba(107, 114, 128, 0.1);
+    /* ring-4 ring-gray-500/10 */
+    border-color: #d1d5db;
+    /* border-gray-300 */
+}
+
+.trigger-flag-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f9fafb;
+    /* bg-gray-50 */
+    border-radius: 9999px;
+    padding: 4px;
+    border: 1px solid #f3f4f6;
+    /* border-gray-100 */
+}
+
+.trigger-flag {
+    width: 20px;
+    height: 14px;
+    object-fit: cover;
+    border-radius: 2px;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.trigger-label {
+    font-size: 16px;
+    font-weight: 600;
+    color: #374151;
+    /* text-gray-700 */
+    letter-spacing: -0.025em;
+    /* tracking-tight */
+    transition: color 150ms;
+}
+
+.language-trigger:hover .trigger-label {
+    color: #111827;
+    /* group-hover:text-gray-900 */
+}
+
+.trigger-icon {
+    width: 16px;
+    height: 16px;
+    color: #9ca3af;
+    /* text-gray-400 */
+    transition: transform 300ms ease-out, color 150ms;
+}
+
+.language-trigger:hover .trigger-icon {
+    color: #4b5563;
+    /* group-hover:text-gray-600 */
+}
+
+.trigger-icon.open {
+    transform: rotate(180deg);
+    color: #4b5563;
+    /* text-gray-600 */
+}
