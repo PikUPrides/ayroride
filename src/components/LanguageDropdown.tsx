@@ -31,14 +31,20 @@ export default function LanguageDropdown() {
     }, []);
 
     const changeLanguage = (lang: typeof languages[0]) => {
+        const setLanguage = () => {
+            const combo = document.querySelector(".goog-te-combo") as HTMLSelectElement;
+            if (combo) {
+                combo.value = lang.code;
+                combo.dispatchEvent(new Event("change"));
+            }
+        };
+
+        setLanguage();
+        setTimeout(setLanguage, 100);
+        setTimeout(setLanguage, 500);
+
         setCurrentLang(lang);
         setIsOpen(false);
-
-        const combo = document.querySelector(".goog-te-combo") as HTMLSelectElement;
-        if (combo) {
-            combo.value = lang.code;
-            combo.dispatchEvent(new Event("change"));
-        }
     };
 
     useEffect(() => {
