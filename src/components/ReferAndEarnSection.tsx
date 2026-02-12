@@ -1,17 +1,20 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import styles from '../app/page.module.css';
 import formStyles from './WaitlistForm.module.css'; // Using existing styles
 
 export default function ReferAndEarnSection() {
+    const router = useRouter();
+
     // Form state from WaitlistForm.tsx
     const [formData, setFormData] = useState({
         name: '',
         email: '',
         phone: '',
         zipCode: '',
-        userType: 'Driver'
+        userType: 'Both'
     });
     const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error' | 'info'>('idle');
     const [errorMessage, setErrorMessage] = useState('');
@@ -67,6 +70,11 @@ export default function ReferAndEarnSection() {
                 setStatus('success');
                 setEditMode({ active: false });
                 setFormData({ name: '', email: '', phone: '', zipCode: '', userType: 'Driver' });
+
+                // Redirect to referral page with email parameter
+                setTimeout(() => {
+                    router.push(`/referral?email=${encodeURIComponent(formData.email)}`);
+                }, 1500);
             } else {
                 // Normal POST for new submissions
                 const res = await fetch('/api/waitlist', {
@@ -100,6 +108,11 @@ export default function ReferAndEarnSection() {
 
                 setStatus('success');
                 setFormData({ name: '', email: '', phone: '', zipCode: '', userType: 'Driver' });
+
+                // Redirect to referral page with email parameter
+                setTimeout(() => {
+                    router.push(`/referral?email=${encodeURIComponent(formData.email)}`);
+                }, 1500);
             }
         } catch (error: any) {
             console.error('Submission error:', error);

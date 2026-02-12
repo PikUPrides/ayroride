@@ -5,9 +5,10 @@ import { usePathname } from 'next/navigation';
 
 interface ReferralHeroWidgetProps {
     widgetId: string;
+    userEmail?: string | null;
 }
 
-const ReferralHeroWidget: React.FC<ReferralHeroWidgetProps> = ({ widgetId }) => {
+const ReferralHeroWidget: React.FC<ReferralHeroWidgetProps> = ({ widgetId, userEmail }) => {
     const [status, setStatus] = useState<'loading' | 'loaded' | 'error'>('loading');
     const containerRef = useRef<HTMLDivElement>(null);
     const pathname = usePathname();
@@ -15,6 +16,16 @@ const ReferralHeroWidget: React.FC<ReferralHeroWidgetProps> = ({ widgetId }) => 
     useEffect(() => {
         if (!widgetId) return;
         setStatus('loading');
+
+        // If userEmail is provided, store it so ReferralHero can identify the user
+        if (userEmail) {
+            // Set the email in localStorage for ReferralHero to detect
+            try {
+                localStorage.setItem('rh_email', userEmail);
+            } catch (e) {
+                console.warn('Could not store email in localStorage:', e);
+            }
+        }
 
         const containerId = `referralhero-dashboard-${widgetId}`;
 
@@ -41,15 +52,17 @@ const ReferralHeroWidget: React.FC<ReferralHeroWidgetProps> = ({ widgetId }) => 
         const timer = setTimeout(() => {
             // Try to use the RH API to regenerate the widget
             try {
-                const rhGlobal = (window as any).RH;
-                if (rhGlobal && typeof rhGlobal.generate === 'function') {
+                const rhGlobal = (window as any)[`RH_${widgetId}`];
+
+                // If email is provided, try to authenticate the user
+                if (userEmail && rhGlobal && typeof rhGlobal.authenticate === 'function') {
+                    console.log('Authenticating user with email:', userEmail);
+                    rhGlobal.authenticate(userEmail);
+                } else if (rhGlobal && typeof rhGlobal.generate === 'function') {
                     rhGlobal.generate();
-                } else if (rhGlobal && rhGlobal.queue) {
-                    // Push a re-render command to the RH queue
-                    (window as any).rht?.('widget:render', containerId);
                 }
             } catch (e) {
-                console.warn('RH API not available, loading widget script directly');
+                console.warn('RH API not available:', e);
             }
 
             // Also load the widget-specific script as a fallback

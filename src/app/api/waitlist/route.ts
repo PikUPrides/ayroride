@@ -31,12 +31,14 @@ export async function PUT(request: Request) {
             );
         }
 
-        // Format phone number to E.164 format for ReferralHero
+        // Format phone to international format: +1XXXXXXXXXX
         let formattedPhone = '';
         if (phone) {
             const digits = phone.replace(/\D/g, '');
             if (digits.length === 10) {
-                formattedPhone = '+1' + digits; // US format
+                formattedPhone = '+1' + digits;
+            } else if (digits.length === 11 && digits.startsWith('1')) {
+                formattedPhone = '+' + digits;
             }
         }
 
@@ -44,7 +46,8 @@ export async function PUT(request: Request) {
             email: email,
             name: name,
             extra_field: zipCode,
-            extra_field_2: userType
+            extra_field_2: userType,
+            double_optin: true  // Enable email/SMS verification
         };
 
         if (formattedPhone) {
@@ -109,12 +112,14 @@ export async function POST(request: Request) {
             );
         }
 
-        // Format phone number to E.164 format for ReferralHero
+        // Format phone to international format: +1XXXXXXXXXX
         let formattedPhone = '';
         if (phone) {
             const digits = phone.replace(/\D/g, '');
             if (digits.length === 10) {
-                formattedPhone = '+1' + digits; // US format
+                formattedPhone = '+1' + digits;
+            } else if (digits.length === 11 && digits.startsWith('1')) {
+                formattedPhone = '+' + digits;
             }
         }
 
@@ -122,9 +127,11 @@ export async function POST(request: Request) {
             email: email,
             name: name,
             extra_field: zipCode,
-            extra_field_2: userType
+            extra_field_2: userType,
+            double_optin: true  // Enable email/SMS verification
         };
 
+        // Enable phone for creation with international format
         if (formattedPhone) {
             payload.phone_number = formattedPhone;
         }
@@ -158,6 +165,19 @@ export async function POST(request: Request) {
                 } else {
                     console.log('Subscriber already exists:', subscriber.id);
                     console.log('Subscriber verified status:', subscriber.verified);
+
+                    // Format phone for display
+                    let displayPhone = '';
+                    if (subscriber.phone_number) {
+                        const phoneDigits = subscriber.phone_number.replace(/\D/g, '');
+                        if (phoneDigits.length === 11 && phoneDigits.startsWith('1')) {
+                            const usDigits = phoneDigits.substring(1);
+                            displayPhone = `(${usDigits.slice(0, 3)}) ${usDigits.slice(3, 6)}-${usDigits.slice(6)}`;
+                        } else if (phoneDigits.length === 10) {
+                            displayPhone = `(${phoneDigits.slice(0, 3)}) ${phoneDigits.slice(3, 6)}-${phoneDigits.slice(6)}`;
+                        }
+                    }
+
                     return NextResponse.json(
                         {
                             error: 'already_exists',
@@ -166,6 +186,7 @@ export async function POST(request: Request) {
                                 id: subscriber.id,
                                 email: subscriber.email,
                                 name: subscriber.name,
+                                phone: displayPhone,
                                 zipCode: subscriber.extra_field,
                                 userType: subscriber.extra_field_2,
                                 confirmed: subscriber.verified
@@ -192,7 +213,13 @@ export async function POST(request: Request) {
         });
 
         const rhData = await rhResponse.json();
-        console.log('ReferralHero CREATE response:', JSON.stringify(rhData, null, 2));
+
+        console.log('=== REFERRALHERO CREATE DEBUG ===');
+        console.log('HTTP Status:', rhResponse.status);
+        console.log('Response Headers:', Object.fromEntries(rhResponse.headers.entries()));
+        console.log('Full Response:', JSON.stringify(rhData, null, 2));
+        console.log('Payload Sent:', JSON.stringify(payload, null, 2));
+        console.log('=================================');
 
         if (!rhResponse.ok || rhData.status === 'error') {
             console.error('ReferralHero API Error:', rhData);
@@ -220,6 +247,8 @@ export async function POST(request: Request) {
                     if (phoneDigits.length === 11 && phoneDigits.startsWith('1')) {
                         const usDigits = phoneDigits.substring(1);
                         displayPhone = `(${usDigits.slice(0, 3)}) ${usDigits.slice(3, 6)}-${usDigits.slice(6)}`;
+                    } else if (phoneDigits.length === 10) {
+                        displayPhone = `(${phoneDigits.slice(0, 3)}) ${phoneDigits.slice(3, 6)}-${phoneDigits.slice(6)}`;
                     }
                 }
 

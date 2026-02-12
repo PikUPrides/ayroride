@@ -1,15 +1,18 @@
 'use client';
 
 import { useState, FormEvent } from 'react';
+import { useRouter } from 'next/navigation';
 import styles from './WaitlistForm.module.css';
 
 export default function WaitlistForm() {
+    const router = useRouter();
+
     const [formData, setFormData] = useState({
         name: '',
         email: '',
         phone: '',
         zipCode: '',
-        userType: 'Rider' as 'Driver' | 'Rider' | 'Both'
+        userType: 'Both' as 'Driver' | 'Rider' | 'Both'
     });
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [message, setMessage] = useState<{ type: 'success' | 'error' | 'info', text: string } | null>(null);
@@ -61,6 +64,11 @@ export default function WaitlistForm() {
                         zipCode: '',
                         userType: 'Rider'
                     });
+
+                    // Redirect to referral page with email parameter
+                    setTimeout(() => {
+                        router.push(`/referral?email=${encodeURIComponent(formData.email)}`);
+                    }, 1500);
                 } else {
                     setMessage({ type: 'error', text: data.error || 'Failed to update information.' });
                 }
@@ -88,6 +96,11 @@ export default function WaitlistForm() {
                         zipCode: '',
                         userType: 'Rider'
                     });
+
+                    // Redirect to referral page with email parameter
+                    setTimeout(() => {
+                        router.push(`/referral?email=${encodeURIComponent(formData.email)}`);
+                    }, 1500);
                 } else if (response.status === 409 && data.error === 'already_exists') {
                     // User already exists - allow editing
                     setMessage({ type: 'info', text: 'You\'re already on the waitlist! You can update your information below.' });

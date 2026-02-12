@@ -115,6 +115,7 @@ const ContactForm = () => {
                         className={styles.inputField}
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                        maxLength={100}
                         required
                     />
                 </div>
