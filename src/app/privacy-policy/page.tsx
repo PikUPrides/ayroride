@@ -1,5 +1,3 @@
-
-
 import styles from "./privacy.module.css";
 
 export const metadata = {

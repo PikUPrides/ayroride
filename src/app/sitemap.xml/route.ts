@@ -13,19 +13,18 @@ export async function GET(request: Request) {
     ];
 
     const sitemapIndex = `<?xml version="1.0" encoding="UTF-8"?>
-    <?xml-stylesheet type="text/xsl" href="/sitemap-style.xsl"?>
-    <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-      ${sitemaps
+<?xml-stylesheet type="text/xsl" href="/sitemap-style.xsl"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${sitemaps
             .map(
                 (url) => `
-        <sitemap>
-          <loc>${url}</loc>
-          <lastmod>${new Date().toISOString()}</lastmod>
-        </sitemap>
-      `
+  <sitemap>
+    <loc>${url}</loc>
+    <lastmod>${new Date().toISOString()}</lastmod>
+  </sitemap>`
             )
             .join("")}
-    </sitemapindex>`;
+</sitemapindex>`.trim();
 
     return new NextResponse(sitemapIndex, {
         headers: {

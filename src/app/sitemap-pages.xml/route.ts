@@ -144,21 +144,20 @@ export async function GET() {
     const sortedRoutes = routes.sort((a, b) => b.priority - a.priority);
 
     const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
-    <?xml-stylesheet type="text/xsl" href="/sitemap-style.xsl"?>
-    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-      ${sortedRoutes
+<?xml-stylesheet type="text/xsl" href="/sitemap-style.xsl"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${sortedRoutes
             .map(
                 (route) => `
-        <url>
-          <loc>${route.url}</loc>
-          <lastmod>${route.lastModified}</lastmod>
-          <changefreq>${route.changeFrequency}</changefreq>
-          <priority>${route.priority}</priority>
-        </url>
-      `
+  <url>
+    <loc>${route.url}</loc>
+    <lastmod>${route.lastModified}</lastmod>
+    <changefreq>${route.changeFrequency}</changefreq>
+    <priority>${route.priority}</priority>
+  </url>`
             )
             .join("")}
-    </urlset>`;
+</urlset>`.trim();
 
     return new NextResponse(sitemapXml, {
         headers: {

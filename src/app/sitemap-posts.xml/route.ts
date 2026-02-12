@@ -25,22 +25,20 @@ export async function GET(request: Request) {
     }
 
     const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
-    <?xml-stylesheet type="text/xsl" href="/sitemap-style.xsl"?>
-        <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" >
-            ${allPosts
+<?xml-stylesheet type="text/xsl" href="/sitemap-style.xsl"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${allPosts
             .map(
                 (post) => `
-        <url>
-          <loc>${siteUrl}/blog/${post.slug}</loc>
-          <lastmod>${new Date(post.date).toISOString()}</lastmod>
-          <changefreq>weekly</changefreq>
-          <priority>0.7</priority>
-        </url>
-      `
+  <url>
+    <loc>${siteUrl}/blog/${post.slug}</loc>
+    <lastmod>${new Date(post.date).toISOString()}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>`
             )
-            .join("")
-        }
-</urlset>`;
+            .join("")}
+</urlset>`.trim();
 
     return new NextResponse(sitemapXml, {
         headers: {
