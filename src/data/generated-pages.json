@@ -1,0 +1,54 @@
+[
+  {
+    "route": "/",
+    "priority": 1
+  },
+  {
+    "route": "/about-us",
+    "priority": 1
+  },
+  {
+    "route": "/blog",
+    "priority": 0.9
+  },
+  {
+    "route": "/careers",
+    "priority": 1
+  },
+  {
+    "route": "/contact-us",
+    "priority": 1
+  },
+  {
+    "route": "/driver",
+    "priority": 1
+  },
+  {
+    "route": "/join-our-waitlist",
+    "priority": 0.8
+  },
+  {
+    "route": "/privacy-policy",
+    "priority": 0.5
+  },
+  {
+    "route": "/referral",
+    "priority": 0.8
+  },
+  {
+    "route": "/rider",
+    "priority": 1
+  },
+  {
+    "route": "/services",
+    "priority": 1
+  },
+  {
+    "route": "/sms-terms",
+    "priority": 0.8
+  },
+  {
+    "route": "/terms-of-service",
+    "priority": 0.5
+  }
+]
