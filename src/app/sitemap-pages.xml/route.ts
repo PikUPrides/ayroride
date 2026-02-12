@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { jobs } from "@/data/jobs";
 import generatedPages from "@/data/generated-pages.json";
 
-export const revalidate = 0;
+export const revalidate = 3600; // Revalidate every hour
 
 export async function GET(request: Request) {
     const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://ayrorides.com";
@@ -45,8 +45,11 @@ ${sortedRoutes
 
     return new NextResponse(sitemapXml, {
         headers: {
-            "Content-Type": "application/xml",
-            "Cache-Control": "public, max-age=3600, s-maxage=3600",
+            "Content-Type": "application/xml; charset=utf-8",
+            "Cache-Control": "public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400",
+            "CDN-Cache-Control": "public, max-age=3600",
+            "X-Robots-Tag": "noindex",
+            "Vary": "Accept-Encoding",
         },
     });
 }

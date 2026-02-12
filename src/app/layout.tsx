@@ -126,8 +126,10 @@ export default function RootLayout({
             t=d.getElementsByTagName("script")[0];
             t.parentNode.insertBefore(s,t);
             window.ZohoDeskAsapReady=function(s){
-                var e=window.ZohoDeskAsap__asyncalls=window.ZohoDeskAsap__asyncalls||[];
-                window.ZohoDeskAsapReadyStatus?(s&&e.push(s),e.forEach(s=>s&&s()),window.ZohoDeskAsap__asyncalls=null):s&&e.push(s)
+              var e=window.ZohoDeskAsap__asyncalls=window.ZohoDeskAsap__asyncalls||[];
+              window.ZohoDeskAsapReadyStatus?
+                (s&&e.push(s),e.forEach(s=>s&&s()),window.ZohoDeskAsap__asyncalls=null)
+                : s&&e.push(s)
             };
           `
         }} />

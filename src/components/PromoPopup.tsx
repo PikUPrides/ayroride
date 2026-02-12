@@ -11,16 +11,34 @@ export default function PromoPopup() {
 
     useEffect(() => {
         setIsOpen(false); // Enable strict reset on navigation
+        // Only show trigger on home page
+        if (pathname !== '/') return;
 
-        // Prevent popup on specific pages
-        if (pathname === '/sms-terms' || pathname === '/join-our-waitlist') return;
+        const handleScroll = () => {
+            // Check if user has already seen the popup
+            const hasSeenPopup = localStorage.getItem('hasSeenPromoPopup');
+            if (hasSeenPopup) return;
 
-        // Show popup 5 seconds after page load/navigation
-        const timer = setTimeout(() => {
-            setIsOpen(true);
-        }, 5000);
+            // Calculate scroll percentage
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
 
-        return () => clearTimeout(timer);
+            if (scrollPercent >= 50) {
+                setIsOpen(true);
+                // Set flag immediately to prevent showing again
+                localStorage.setItem('hasSeenPromoPopup', 'true');
+                // Remove listener once triggered
+                window.removeEventListener('scroll', handleScroll);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        // Initial check in case user loads page already scrolled
+        handleScroll();
+
+        return () => window.removeEventListener('scroll', handleScroll);
     }, [pathname]);
 
     const closePopup = () => {

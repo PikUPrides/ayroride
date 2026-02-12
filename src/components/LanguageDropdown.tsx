@@ -4,11 +4,11 @@ import { useState, useEffect, useRef } from "react";
 import "./LanguageDropdown.css";
 
 const languages = [
-    { code: "en", label: "English", countryCode: "us" },
-    { code: "zh-CN", label: "Chinese (Simplified)", countryCode: "cn" },
-    { code: "tl", label: "Filipino", countryCode: "ph" },
-    { code: "es", label: "Spanish", countryCode: "es" },
-    { code: "vi", label: "Vietnamese", countryCode: "vn" },
+    { code: "en", label: "English", countryCode: "us", shortLabel: "EN" },
+    { code: "zh-CN", label: "Chinese (Simplified)", countryCode: "cn", shortLabel: "ZH" },
+    { code: "tl", label: "Filipino", countryCode: "ph", shortLabel: "TL" },
+    { code: "es", label: "Spanish", countryCode: "es", shortLabel: "ES" },
+    { code: "vi", label: "Vietnamese", countryCode: "vn", shortLabel: "VI" },
 ];
 
 export default function LanguageDropdown() {
@@ -132,7 +132,7 @@ export default function LanguageDropdown() {
                 </div>
 
                 <span className="trigger-label">
-                    {currentLang.label}
+                    {currentLang.shortLabel}
                 </span>
 
                 <svg

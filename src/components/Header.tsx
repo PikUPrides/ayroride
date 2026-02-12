@@ -92,20 +92,24 @@ export default function Header() {
               )}
             </li>
           </ul>
-          <Link href="/join-our-waitlist" className={styles.waitlistBtn}>Join Our Waitlist</Link>
         </nav>
 
-        {/* Mobile Toggle */}
-        <button
-          className={`${styles.mobileToggle} ${isMobileOpen ? styles.open : ""
-            }`}
-          onClick={toggleMenu}
-          aria-label="Toggle menu"
-        >
-          <span className={styles.bar}></span>
-          <span className={styles.bar}></span>
-          <span className={styles.bar}></span>
-        </button>
+        {/* Header Actions (Desktop + Mobile) */}
+        <div className={styles.headerActions}>
+          <Link href="/join-our-waitlist" className={styles.waitlistBtn}>Join Our Waitlist</Link>
+
+          {/* Mobile Toggle */}
+          <button
+            className={`${styles.mobileToggle} ${isMobileOpen ? styles.open : ""
+              }`}
+            onClick={toggleMenu}
+            aria-label="Toggle menu"
+          >
+            <span className={styles.bar}></span>
+            <span className={styles.bar}></span>
+            <span className={styles.bar}></span>
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu Overlay */}
@@ -203,7 +207,6 @@ export default function Header() {
             )}
           </li>
         </ul>
-        <Link href="/join-our-waitlist" className={styles.waitlistBtn} onClick={toggleMenu}>Join Our Waitlist</Link>
       </div>
     </header>
   );

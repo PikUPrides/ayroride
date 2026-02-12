@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-export const revalidate = 0; // Disable cache for now
+export const revalidate = 3600; // Revalidate every hour
 
 export async function GET(request: Request) {
     const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ayrorides.com';
@@ -28,7 +28,11 @@ ${sitemaps
 
     return new NextResponse(sitemapIndex, {
         headers: {
-            "Content-Type": "application/xml",
+            "Content-Type": "application/xml; charset=utf-8",
+            "Cache-Control": "public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400",
+            "CDN-Cache-Control": "public, max-age=3600",
+            "X-Robots-Tag": "noindex",
+            "Vary": "Accept-Encoding",
         },
     });
 }
