@@ -9,22 +9,18 @@ function ReferralContent() {
     const email = searchParams.get('email');
 
     return (
-        <main className="min-h-screen bg-white">
-            <div className="max-w-6xl mx-auto px-4 py-20">
-                <div className="text-center mb-16">
-                    <span className="text-[#423DF9] font-bold tracking-wider text-sm uppercase mb-4 block">
-                        Grow the Movement
-                    </span>
-                    <h1 className="text-4xl md:text-5xl font-extrabold text-[#1a1a1a] mb-6">
+        <main className="min-h-screen bg-white" style={{ paddingTop: '95px' }}>
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+                <div className="text-center mb-8">
+                    <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-3">
                         Refer & Earn Rewards
                     </h1>
-                    <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                        Verify your account and start sharing your referral link.
-                        You'll earn rewards when your friends complete their first trips.
+                    <p className="text-gray-600 text-lg">
+                        Share your referral link and earn rewards when your friends join AYRO.
                     </p>
                 </div>
 
-                <div className="bg-white rounded-2xl border border-gray-200 p-6 md:p-10">
+                <div className="w-full">
                     <ReferralHeroWidget widgetId="MF2f0c6063df" userEmail={email} />
                 </div>
             </div>
@@ -34,7 +30,11 @@ function ReferralContent() {
 
 export default function ReferralPage() {
     return (
-        <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
+        <Suspense fallback={
+            <div className="min-h-screen flex items-center justify-center">
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#423DF9]"></div>
+            </div>
+        }>
             <ReferralContent />
         </Suspense>
     );
