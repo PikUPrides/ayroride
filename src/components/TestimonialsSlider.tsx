@@ -27,14 +27,21 @@ export default function TestimonialsSlider() {
     const [isMobile, setIsMobile] = useState(false);
     const [slideWidth, setSlideWidth] = useState(505 + 36); // Default desktop width
 
+    const [isTablet, setIsTablet] = useState(false);
+
     useEffect(() => {
         const checkMobile = () => {
-            const mobile = window.innerWidth <= 768;
+            const width = window.innerWidth;
+            const mobile = width <= 768;
+            const tablet = width > 768 && width <= 1024;
             setIsMobile(mobile);
-            // Calculate slide width based on screen size
-            // Wrapper width = 100vw - 40px, Gap = 20px
+            setIsTablet(tablet);
             if (mobile) {
-                setSlideWidth(window.innerWidth - 40 + 20); // wrapper width + gap 
+                setSlideWidth(width - 40 + 20); // wrapper width + gap 
+            } else if (tablet) {
+                // On tablet: card width = 45vw - 10px, gap = 20px
+                const cardWidth = width * 0.45 - 10;
+                setSlideWidth(cardWidth + 20); // card width + gap
             } else {
                 setSlideWidth(505 + 36); // desktop card width + gap
             }

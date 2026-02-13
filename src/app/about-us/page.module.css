@@ -924,6 +924,31 @@
     }
 }
 
+/* Tablet Responsive for Rider Voices Section */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .riderVoicesContainer {
+        width: 95%;
+    }
+
+    .voicesSliderWrapper {
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+    }
+
+    .voicesSliderTrack {
+        gap: 20px;
+    }
+
+    .voiceCard {
+        width: calc(45vw - 10px);
+        min-width: calc(45vw - 10px);
+        max-width: calc(45vw - 10px);
+        box-sizing: border-box;
+        padding: 28px;
+    }
+}
+
 /* Utility */
 .mobileBreak {
     display: none;

@@ -134,11 +134,24 @@
     margin: 0 auto;
 }
 
+/* Tablet Responsive */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .blogHero {
+        min-height: 200px;
+        padding: 60px 20px;
+    }
+
+    .heroTitle {
+        font-size: 48px;
+        line-height: 58px;
+    }
+}
+
 /* Responsive Styles */
 @media (max-width: 768px) {
     .blogHero {
-        min-height: 300px;
-        padding: 80px 20px 60px;
+        min-height: 200px;
+        padding: 80px 20px 40px;
     }
 
     .heroTitle {

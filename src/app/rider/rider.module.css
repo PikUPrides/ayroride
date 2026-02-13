@@ -1,27 +1,35 @@
 /* Hero Section */
 .heroSection {
-  background-color: #ffffff;
-  padding: 5rem 2rem 3rem 2rem;
+  background-color: #F8F9FF;
+  /* Subtle background tint */
+  padding: 5rem 0rem 5rem 0rem;
   display: flex;
   justify-content: center;
-  text-align: center;
+  align-items: center;
+  text-align: left;
   overflow: hidden;
+  min-height: 85vh;
+  /* Ensure it takes up good screen real estate */
 }
 
 .heroContainer {
-  max-width: 1200px;
+  max-width: 1240px;
   width: 100%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
+  padding: 0 2rem;
+  gap: 4rem;
 }
 
 .heroContent {
-  margin-bottom: 2rem;
+  margin-bottom: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  width: 100%;
+  align-items: flex-start;
+  width: 50%;
+  padding-right: 2rem;
 }
 
 .topTag {
@@ -30,9 +38,9 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   display: inline-block;
-  background-color: #ffffff;
+  background-color: rgba(66, 61, 249, 0.1);
   padding: 0.5rem 1.75rem;
   border: 1px solid #423DF9;
   border-radius: 100px;
@@ -40,13 +48,12 @@
 
 .heroTitle {
   font-family: var(--font-open-sans), sans-serif;
-  font-size: 3.5rem;
-  /* Slightly smaller to ensure 2 lines */
+  font-size: 3.75rem;
+  /* Larger font size */
   font-weight: 800;
-  line-height: 1.2;
+  line-height: 1.1;
   margin-bottom: 1.5rem;
   color: #1a1a1a;
-  max-width: 822px;
   width: 100%;
 }
 
@@ -86,9 +93,11 @@
 
 /* Image styling */
 .heroImageContainer {
-  width: 100%;
-  margin-top: 2rem;
+  width: 50%;
+  margin-top: 0;
   position: relative;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .bannerImage {
@@ -98,13 +107,37 @@
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
-  .heroSection {
-    padding: 3rem 1.5rem;
+@media (max-width: 1024px) {
+  .heroContainer {
+    flex-direction: column;
+    text-align: center;
+    gap: 3rem;
+  }
+
+  .heroContent {
+    width: 100%;
+    align-items: center;
+    padding-right: 0;
+  }
+
+  .heroImageContainer {
+    width: 100%;
+    justify-content: center;
   }
 
   .heroTitle {
-    font-size: 2.5rem;
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .heroSection {
+    padding: 3rem 1.5rem;
+    min-height: auto;
+  }
+
+  .heroTitle {
+    font-size: 2.25rem;
   }
 }
 

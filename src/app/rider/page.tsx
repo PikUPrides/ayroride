@@ -39,8 +39,7 @@ export default function Rider() {
                     <div className={styles.heroContent}>
                         <span className={styles.topTag}>RIDE WITH AYRO</span>
                         <h1 className={styles.heroTitle}>
-                            <span className={styles.highlightText}>Rideshare</span> without surge <br />
-                            pricing or security worries.
+                            <span className={styles.highlightText}>Rideshare</span> without surge pricing or security worries.
                         </h1>
                         <p className={styles.heroSubtitle}>
                             Ready for lower fares and safer rides?

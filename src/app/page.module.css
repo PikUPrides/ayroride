@@ -803,6 +803,7 @@
   position: relative;
 }
 
+
 .sliderTrack {
   display: flex;
   gap: 36px;
@@ -1599,4 +1600,228 @@
   }
 
 
+}
+
+/* Tablet Responsiveness */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .promoSection {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .promoContainer,
+  .fixingContainer,
+  .featuresContainer,
+  .differentContainer,
+  .rewardContainer,
+  .futureContainer,
+  .testimonialsContainer,
+  .dividerContainer {
+    width: 95%;
+  }
+
+  /* Features Section - Allow wrapping */
+  .featuresContainer {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .featureCard {
+    width: 48%;
+    min-width: 300px;
+    flex-grow: 1;
+    height: auto;
+    min-height: 265px;
+  }
+
+  /* Fixing Section - Allow wrapping and scale image */
+  .fixingContainer {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+  }
+
+  .fixingImageSide,
+  .fixingTextSide {
+    flex: 1 1 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .fixingImage {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+  }
+
+  .fixingTextSide h2 span {
+    display: inline-block;
+  }
+
+  /* Reward Section */
+  .rewardContainer {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+  }
+
+  .rewardTextSide,
+  .rewardImageSide {
+    flex: 1 1 100%;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .rewardImage {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+  }
+
+  /* Different & Future Sections */
+  .differentGrid,
+  .futureGrid {
+    gap: 20px;
+  }
+
+  .differentItem,
+  .futureItem {
+    min-width: 200px;
+  }
+
+  /* Prevent text overflow */
+  .fixingTextSide h2,
+  .promoText h1,
+  .promoText h2,
+  .futureTitle {
+    white-space: normal;
+  }
+
+  /* Fix layout shift & adjust hero typography */
+  .mainHead {
+    font-size: 50px;
+  }
+
+  .sharingText {
+    font-size: 32px;
+  }
+
+  .blueText {
+    font-size: 32px;
+    min-height: 2.5em;
+    /* approximate height for 2 lines */
+    margin-bottom: 2rem;
+  }
+
+  /* Hero Section Refinement */
+  .promoSection {
+    height: auto;
+    padding-bottom: 50px;
+    padding-top: 100px;
+  }
+
+  .promoContainer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-top: 50px;
+    gap: 40px;
+  }
+
+  .promoImageContainer {
+    order: -1;
+    width: 100%;
+    justify-content: center;
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+
+  .promoText {
+    width: 100%;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-top: 0;
+  }
+
+  .promoText h1,
+  .promoText h2,
+  .promoText p,
+  .blueText {
+    text-align: center;
+  }
+
+  .promoImage {
+    width: 80%;
+    max-width: 450px;
+    height: auto;
+  }
+
+  /* Testimonials Section - Two cards, no bleeding */
+  .sliderWrapper {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .sliderTrack {
+    gap: 20px;
+  }
+
+  .testimonialCard {
+    width: calc(45vw - 10px);
+    min-width: calc(45vw - 10px);
+    max-width: calc(45vw - 10px);
+    box-sizing: border-box;
+    padding: 28px;
+  }
+
+  /* FAQ Section - Full tablet override */
+  .faqSection {
+    height: auto;
+    min-height: auto;
+    padding: 60px 0;
+  }
+
+  .faqContainer {
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 60px 20px;
+  }
+
+  .faqLeft {
+    flex: none;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 0;
+    height: auto;
+    min-height: auto;
+    padding: 0;
+  }
+
+  .faqLeft::before {
+    display: none;
+  }
+
+  .faqSubtitle {
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .faqRight {
+    flex: none;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    min-height: auto;
+  }
 }

@@ -11,7 +11,6 @@ export default function PromoPopup() {
 
     useEffect(() => {
         setIsOpen(false); // Enable strict reset on navigation
-        // Only show trigger on home page
         if (pathname !== '/') return;
 
         const handleScroll = () => {

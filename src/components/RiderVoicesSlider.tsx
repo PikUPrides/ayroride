@@ -11,6 +11,14 @@ const testimonials = [
     {
         quote: "AYRO's referral program isn't just about rewards – it's about being part of something bigger. I've already earned ride credits and helped friends save money while supporting drivers. It's a win-win revolution!",
         author: "Sarah Mendez"
+    },
+    {
+        quote: "After years of watching drivers struggle with unfair pay, it's refreshing to see a company that actually cares. AYRO proves you can build a successful business without exploiting anyone.",
+        author: "James Carter"
+    },
+    {
+        quote: "What sold me on AYRO was the transparency. No hidden fees, no surprise multipliers. Just honest fares every single time. I recommend it to everyone I know.",
+        author: "Priya Sharma"
     }
 ];
 
@@ -18,13 +26,20 @@ export default function RiderVoicesSlider() {
     const [currentSlide, setCurrentSlide] = useState(0);
     const [isMobile, setIsMobile] = useState(false);
     const [slideWidth, setSlideWidth] = useState(505 + 36);
+    const [isTablet, setIsTablet] = useState(false);
 
     useEffect(() => {
         const checkMobile = () => {
-            const mobile = window.innerWidth <= 768;
+            const width = window.innerWidth;
+            const mobile = width <= 768;
+            const tablet = width > 768 && width <= 1024;
             setIsMobile(mobile);
+            setIsTablet(tablet);
             if (mobile) {
-                setSlideWidth(window.innerWidth - 40 + 20);
+                setSlideWidth(width - 40 + 20);
+            } else if (tablet) {
+                const cardWidth = width * 0.45 - 10;
+                setSlideWidth(cardWidth + 20);
             } else {
                 setSlideWidth(505 + 36);
             }

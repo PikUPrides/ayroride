@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import styles from "../page.module.css";
 
-const originalTestimonials = [
+const testimonials = [
     {
         rating: "/assets/Group-8-3.svg",
         text: "“AYRO’s referral program made me feel like I’m actually making a difference while earning great rewards. The dashboard makes tracking so easy!”",
@@ -15,11 +15,20 @@ const originalTestimonials = [
         text: "“I’ve earned over $500 in just two weeks of sharing my link. Love being part of something that’s fixing the broken rideshare system!”",
         author: "— Alex Thompson",
         quoteIcon: "/assets/Vector-50.svg"
+    },
+    {
+        rating: "/assets/Group-8-3.svg",
+        text: "“The cash rewards are real and the payments are prompt. It’s refreshing to see a company that values its community this much.”",
+        author: "— Morgan Lee",
+        quoteIcon: "/assets/Vector-50.svg"
+    },
+    {
+        rating: "/assets/Group-8-3.svg",
+        text: "“Finally, a rideshare platform that treats everyone fairly. The referral bonuses are just the cherry on top of an already great service.”",
+        author: "— Casey Jordan",
+        quoteIcon: "/assets/Vector-50.svg"
     }
 ];
-
-// Double the testimonials to allow sliding even when 2 are shown
-const testimonials = [...originalTestimonials, ...originalTestimonials, ...originalTestimonials];
 
 export default function TestimonialCarousel() {
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -32,11 +41,11 @@ export default function TestimonialCarousel() {
             if (width <= 768) {
                 setView("mobile");
                 setSlideWidth(width - 40 + 20);
-            } else if (width <= 1100) { // Tablet range
+            } else if (width <= 1024) { // Tablet range match
                 setView("tablet");
-                // For tablet, we can show 2 slides but they need to be slightly narrower than 505px
-                // Total wrapper width is usually around 90-95%
-                setSlideWidth((width * 0.9) / 2 + 10);
+                // Tablet: card width = 45vw - 10px, gap = 20px
+                const cardWidth = width * 0.45 - 10;
+                setSlideWidth(cardWidth + 20);
             } else {
                 setView("desktop");
                 setSlideWidth(505 + 36);
