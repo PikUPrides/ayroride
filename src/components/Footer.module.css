@@ -172,17 +172,20 @@
   justify-content: center;
 }
 
-.socialIcons img {
+.socialIcons img,
+.socialIcons svg {
   width: 32px;
   height: 32px;
   object-fit: contain;
 }
 
-.socialIcons .youtubeIcon img {
-  width: auto !important;
-  height: 32px !important;
-  object-fit: contain !important;
-  aspect-ratio: auto !important;
+@media (min-width: 1025px) {
+  .socialIcons .youtubeIcon img {
+    width: auto !important;
+    height: 32px !important;
+    object-fit: contain !important;
+    aspect-ratio: auto !important;
+  }
 }
 
 
@@ -330,9 +333,18 @@
     font-size: 12px;
   }
 
-  .socialIcons img {
-    width: 20px;
-    height: 20px;
+  .socialIcons img,
+  .socialIcons svg {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+  }
+
+  .socialIcons .youtubeIcon img {
+    width: auto !important;
+    height: 24px !important;
+    aspect-ratio: auto !important;
+    object-fit: contain !important;
   }
 
   .footerDividerTop {
