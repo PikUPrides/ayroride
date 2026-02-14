@@ -44,10 +44,24 @@ function ReferralContent() {
     const [isCheckingSession, setIsCheckingSession] = useState(true);
 
     useEffect(() => {
-        // Always redirect to login page
-        // Users should access referral dashboard through /referral-login
-        console.log('Redirecting to login page...');
-        router.push('/referral-login');
+        // Check if session cookie exists
+        const widgetId = 'MF2f0c6063df';
+        const cookieName = `__maitre-session-${widgetId}`;
+
+        const cookies = document.cookie.split(';');
+        const sessionCookie = cookies.find(cookie =>
+            cookie.trim().startsWith(`${cookieName}=`)
+        );
+
+        if (!sessionCookie) {
+            // No session cookie at all, redirect to login
+            console.log('❌ No session cookie, redirecting to login');
+            router.push('/referral-login');
+        } else {
+            // Cookie exists, let ReferralHero widget handle it
+            console.log('✅ Session cookie found, showing widget');
+            setIsCheckingSession(false);
+        }
     }, [router]);
 
     // Show loading while checking session
