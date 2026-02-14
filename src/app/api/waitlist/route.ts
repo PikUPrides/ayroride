@@ -73,7 +73,11 @@ export async function PUT(request: Request) {
         }
 
         return NextResponse.json(
-            { message: 'Successfully updated your information!', data: rhData },
+            {
+                message: 'Successfully updated your information!',
+                data: rhData,
+                subscriberId: subscriberId // Return subscriber ID for verification flow
+            },
             { status: 200 }
         );
 
@@ -272,7 +276,11 @@ export async function POST(request: Request) {
         }
 
         return NextResponse.json(
-            { message: 'Successfully joined waitlist!', data: rhData },
+            {
+                message: 'Successfully joined waitlist!',
+                data: rhData,
+                subscriberId: rhData.data?.id // Return subscriber ID for verification flow
+            },
             { status: 201 }
         );
 

@@ -1,13 +1,7 @@
-'use client';
-
-import { useSearchParams } from 'next/navigation';
 import { Suspense } from 'react';
 import ReferralHeroWidget from '@/components/referral-modal/ReferralHeroWidget';
 
 function ReferralContent() {
-    const searchParams = useSearchParams();
-    const email = searchParams.get('email');
-
     return (
         <main className="min-h-screen bg-white" style={{ paddingTop: '95px' }}>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
@@ -21,7 +15,11 @@ function ReferralContent() {
                 </div>
 
                 <div className="w-full">
-                    <ReferralHeroWidget widgetId="MF2f0c6063df" userEmail={email} />
+                    <ReferralHeroWidget
+                        widgetId="MF2f0c6063df"
+                        userEmail={null}
+                        subscriberId={null}
+                    />
                 </div>
             </div>
         </main>

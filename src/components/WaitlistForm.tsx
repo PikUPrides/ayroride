@@ -62,12 +62,12 @@ export default function WaitlistForm() {
                         email: '',
                         phone: '',
                         zipCode: '',
-                        userType: 'Rider'
+                        userType: 'Both'
                     });
 
-                    // Redirect to referral page with email parameter
+                    // Redirect to referral page
                     setTimeout(() => {
-                        router.push(`/referral?email=${encodeURIComponent(formData.email)}`);
+                        router.push('/referral');
                     }, 1500);
                 } else {
                     setMessage({ type: 'error', text: data.error || 'Failed to update information.' });
@@ -94,12 +94,12 @@ export default function WaitlistForm() {
                         email: '',
                         phone: '',
                         zipCode: '',
-                        userType: 'Rider'
+                        userType: 'Both'
                     });
 
-                    // Redirect to referral page with email parameter
+                    // Redirect to referral page
                     setTimeout(() => {
-                        router.push(`/referral?email=${encodeURIComponent(formData.email)}`);
+                        router.push('/referral');
                     }, 1500);
                 } else if (response.status === 409 && data.error === 'already_exists') {
                     // User already exists - allow editing
