@@ -11,17 +11,13 @@ export default function Footer() {
   const pathname = usePathname();
 
   // Logic for showing the Refer/Earn Form (Original logic)
-  const showReferralForm =
-    pathname !== "/join-our-waitlist" &&
-    pathname !== "/privacy-policy" &&
-    pathname !== "/terms-of-service" &&
-    pathname !== "/contact-us" &&
-    pathname !== "/referral" &&
-    !pathname.startsWith("/careers") &&
-    !pathname.startsWith("/blog") &&
-    pathname !== "/sms-terms";
+  // Disabled: Form should only show on /join-our-waitlist page
+  const showReferralForm = false;
 
-  const showDisruptCTA = pathname !== "/join-our-waitlist";
+  const showDisruptCTA =
+    pathname !== "/join-our-waitlist" &&
+    pathname !== "/referral" &&
+    pathname !== "/referral-login";
 
   const isInnerCareerPage = pathname.startsWith("/careers/") && pathname !== "/careers";
 
