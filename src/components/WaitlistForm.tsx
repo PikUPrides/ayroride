@@ -294,6 +294,21 @@ export default function WaitlistForm() {
                     {message.text}
                 </div>
             )}
+
+            <div style={{ textAlign: 'center', marginTop: '16px' }}>
+                <a
+                    href="/referral-login"
+                    style={{
+                        color: '#423DF9',
+                        fontSize: '14px',
+                        textDecoration: 'none'
+                    }}
+                    onMouseEnter={(e) => e.currentTarget.style.textDecoration = 'underline'}
+                    onMouseLeave={(e) => e.currentTarget.style.textDecoration = 'none'}
+                >
+                    Already joined waitlist? Go to referral dashboard
+                </a>
+            </div>
         </form>
     );
 }

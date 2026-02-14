@@ -128,6 +128,13 @@
     text-decoration: underline !important;
 }
 
+/* Add spacing after the widget for the logout link */
+#referralhero-dashboard-MF2f0c6063df::after {
+    content: '' !important;
+    display: block !important;
+    height: 16px !important;
+}
+
 /* Disabled button state */
 #referralhero-dashboard-MF2f0c6063df button:disabled,
 #referralhero-dashboard-MF2f0c6063df input[type="submit"]:disabled,
@@ -237,7 +244,7 @@
 /* Container width and centering */
 #referralhero-dashboard-MF2f0c6063df > div,
 #referralhero-dashboard-MF2f0c6063df .rh-container {
-    max-width: 600px !important;
+    max-width: 100% !important;
     margin: 0 auto !important;
 }
 
