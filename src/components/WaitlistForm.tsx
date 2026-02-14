@@ -152,7 +152,9 @@ export default function WaitlistForm() {
                         userType: data.subscriber.userType || 'Rider'
                     });
                 } else {
-                    setMessage({ type: 'error', text: data.error || 'Failed to join waitlist.' });
+                    // Show specific error details if available, otherwise fallback to generic error
+                    const errorMessage = data.details || data.error || 'Failed to join waitlist.';
+                    setMessage({ type: 'error', text: errorMessage });
                 }
             }
         } catch (error) {
