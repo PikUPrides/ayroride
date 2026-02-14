@@ -69,20 +69,19 @@ export default function ReferralLoginPage() {
                 document.cookie = `${cookieName}=${data.subscriberId};${expires};path=/;SameSite=Lax`;
                 console.log('✅ Session cookie set for:', data.subscriberId);
 
-                // Check if user is verified
-                if (data.verified) {
-                    // Verified - redirect and reload to ensure ReferralHero loads properly
+                // Redirect to referral page (widget will show dashboard if verified, verification screen if not)
+                setMessage({
+                    type: 'success',
+                    text: data.verified
+                        ? 'Success! Redirecting to your dashboard...'
+                        : 'Found your account! Redirecting to verification page...'
+                });
+
+                setTimeout(() => {
+                    // Use full page reload for both verified and unverified users
+                    // This ensures ReferralHero widget initializes properly
                     window.location.href = '/referral';
-                } else {
-                    // Not verified - show message and redirect to verification page
-                    setMessage({
-                        type: 'info',
-                        text: 'Your email/phone is not verified yet. Redirecting to verification page...'
-                    });
-                    setTimeout(() => {
-                        router.push('/referral');
-                    }, 2000);
-                }
+                }, 1500);
             } else {
                 setError(data.error || 'Email not found. Please join the waitlist first.');
             }

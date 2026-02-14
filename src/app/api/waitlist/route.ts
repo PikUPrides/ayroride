@@ -49,6 +49,7 @@ export async function PUT(request: Request) {
             name: name,
             extra_field: zipCode,
             extra_field_2: userType,
+            extra_field_3: 'AYRO_WAITLIST_MEMBER', // Preserve hidden marker when updating
             double_optin: true
         };
 
@@ -136,6 +137,7 @@ export async function POST(request: Request) {
             name: name,
             extra_field: zipCode,
             extra_field_2: userType,
+            extra_field_3: 'AYRO_WAITLIST_MEMBER', // Hidden marker to identify real subscribers
             double_optin: true
         };
 
