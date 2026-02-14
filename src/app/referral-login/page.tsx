@@ -9,27 +9,7 @@ export default function ReferralLoginPage() {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [error, setError] = useState('');
     const [message, setMessage] = useState<{ type: 'success' | 'error' | 'info', text: string } | null>(null);
-    const [isCheckingCookie, setIsCheckingCookie] = useState(true);
-
-    // Check if session cookie exists and redirect to dashboard
-    useEffect(() => {
-        const widgetId = 'MF2f0c6063df';
-        const cookieName = `__maitre-session-${widgetId}`;
-
-        const cookies = document.cookie.split(';');
-        const sessionCookie = cookies.find(cookie =>
-            cookie.trim().startsWith(`${cookieName}=`)
-        );
-
-        if (sessionCookie) {
-            // Cookie exists, redirect to referral page
-            console.log('✅ Session cookie found, redirecting to dashboard');
-            router.push('/referral');
-        } else {
-            // No cookie, show the login form
-            setIsCheckingCookie(false);
-        }
-    }, [router]);
+    const [isCheckingCookie, setIsCheckingCookie] = useState(false);
 
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
