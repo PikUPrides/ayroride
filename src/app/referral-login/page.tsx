@@ -46,8 +46,11 @@ export default function ReferralLoginPage() {
                 date.setTime(date.getTime() + (expirationDays * 24 * 60 * 60 * 1000));
                 const expires = `expires=${date.toUTCString()}`;
 
-                document.cookie = `${cookieName}=${data.subscriberId};${expires};path=/;SameSite=Lax`;
-                console.log('✅ Session cookie set for:', data.subscriberId);
+                // Add Secure flag for HTTPS (production)
+                const isHttps = window.location.protocol === 'https:';
+                const secureFlag = isHttps ? ';Secure' : '';
+                document.cookie = `${cookieName}=${data.subscriberId};${expires};path=/;SameSite=Lax${secureFlag}`;
+                console.log('✅ Session cookie set for:', data.subscriberId, '| HTTPS:', isHttps);
 
                 // Redirect to referral page (widget will show dashboard if verified, verification screen if not)
                 setMessage({
