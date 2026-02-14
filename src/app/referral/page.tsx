@@ -1,6 +1,7 @@
 'use client';
 
-import { Suspense } from 'react';
+import { Suspense, useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import ReferralHeroWidget from '@/components/referral-modal/ReferralHeroWidget';
 import './referral-hero-custom.css';
 
@@ -39,6 +40,25 @@ function LogoutLink() {
 }
 
 function ReferralContent() {
+    const router = useRouter();
+    const [isCheckingSession, setIsCheckingSession] = useState(true);
+
+    useEffect(() => {
+        // Always redirect to login page
+        // Users should access referral dashboard through /referral-login
+        console.log('Redirecting to login page...');
+        router.push('/referral-login');
+    }, [router]);
+
+    // Show loading while checking session
+    if (isCheckingSession) {
+        return (
+            <main className="min-h-screen bg-white flex items-center justify-center" style={{ paddingTop: '95px' }}>
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#423DF9]"></div>
+            </main>
+        );
+    }
+
     return (
         <main className="min-h-screen bg-white" style={{ paddingTop: '110px' }}>
             <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '0 24px 48px 24px' }}>
