@@ -1,0 +1,268 @@
+/* Custom styling for ReferralHero widget to match Ayro brand */
+
+/* Target the ReferralHero widget container */
+#referralhero-dashboard-MF2f0c6063df {
+    font-family: inherit;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+/* Reduce spacing on the widget's top-level wrapper */
+#referralhero-dashboard-MF2f0c6063df > div:first-child {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+/* Remove all top spacing from nested divs */
+#referralhero-dashboard-MF2f0c6063df > div,
+#referralhero-dashboard-MF2f0c6063df > div > div,
+#referralhero-dashboard-MF2f0c6063df > div > div > div {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+/* Target forms inside widget */
+#referralhero-dashboard-MF2f0c6063df form {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+/* Style all input fields in ReferralHero widget */
+#referralhero-dashboard-MF2f0c6063df input[type="text"],
+#referralhero-dashboard-MF2f0c6063df input[type="email"],
+#referralhero-dashboard-MF2f0c6063df input[type="tel"],
+#referralhero-dashboard-MF2f0c6063df input[type="number"] {
+    height: 48px !important;
+    min-height: 48px !important;
+    padding: 7px 12px !important;
+    background-color: #F4F4F9 !important;
+    border: 2px solid transparent !important;
+    border-radius: 12px !important;
+    font-family: inherit !important;
+    font-size: 14px !important;
+    line-height: 21px !important;
+    color: #5C5C5C !important;
+    box-sizing: border-box !important;
+    margin-bottom: 16px !important;
+}
+
+/* Placeholder styling */
+#referralhero-dashboard-MF2f0c6063df input::placeholder {
+    color: #999999 !important;
+    opacity: 0.7 !important;
+}
+
+/* Focus state for inputs */
+#referralhero-dashboard-MF2f0c6063df input:focus {
+    outline: 2px solid #423DF9 !important;
+    border-color: transparent !important;
+}
+
+/* Error state for inputs */
+#referralhero-dashboard-MF2f0c6063df input.error,
+#referralhero-dashboard-MF2f0c6063df input[aria-invalid="true"] {
+    border-color: #dc3545 !important;
+}
+
+/* Style primary buttons (Verify email, Submit, etc.) */
+#referralhero-dashboard-MF2f0c6063df button[type="submit"],
+#referralhero-dashboard-MF2f0c6063df input[type="submit"],
+#referralhero-dashboard-MF2f0c6063df button:not([class*="resend"]):not([class*="secondary"]),
+#referralhero-dashboard-MF2f0c6063df .rh-button:not([class*="resend"]):not([class*="secondary"]),
+#referralhero-dashboard-MF2f0c6063df .maitre-submit-button {
+    width: 100% !important;
+    height: 45px !important;
+    background-color: #423DF9 !important;
+    color: #FFFFFF !important;
+    border: none !important;
+    border-radius: 5px !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    font-family: inherit !important;
+    cursor: pointer !important;
+    transition: background-color 0.3s ease !important;
+    padding: 0 24px !important;
+    display: block !important;
+    margin: 8px auto 16px auto !important;
+}
+
+/* Primary button hover state */
+#referralhero-dashboard-MF2f0c6063df button[type="submit"]:hover,
+#referralhero-dashboard-MF2f0c6063df input[type="submit"]:hover,
+#referralhero-dashboard-MF2f0c6063df button:not([class*="resend"]):not([class*="secondary"]):hover,
+#referralhero-dashboard-MF2f0c6063df .rh-button:not([class*="resend"]):not([class*="secondary"]):hover,
+#referralhero-dashboard-MF2f0c6063df .maitre-submit-button:hover {
+    background-color: #3530d4 !important;
+}
+
+/* Style secondary buttons as text links (Resend Code, etc.) */
+#referralhero-dashboard-MF2f0c6063df button[class*="resend"],
+#referralhero-dashboard-MF2f0c6063df button[class*="secondary"],
+#referralhero-dashboard-MF2f0c6063df .rh-button[class*="resend"],
+#referralhero-dashboard-MF2f0c6063df .rh-button[class*="secondary"],
+#referralhero-dashboard-MF2f0c6063df button:not([type="submit"]):last-of-type {
+    width: auto !important;
+    height: auto !important;
+    background: none !important;
+    background-color: transparent !important;
+    color: #423DF9 !important;
+    border: none !important;
+    border-radius: 0 !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    padding: 8px 0 !important;
+    text-decoration: none !important;
+    display: inline-block !important;
+    margin: 8px auto !important;
+}
+
+/* Secondary button hover (text link style) */
+#referralhero-dashboard-MF2f0c6063df button[class*="resend"]:hover,
+#referralhero-dashboard-MF2f0c6063df button[class*="secondary"]:hover,
+#referralhero-dashboard-MF2f0c6063df .rh-button[class*="resend"]:hover,
+#referralhero-dashboard-MF2f0c6063df .rh-button[class*="secondary"]:hover,
+#referralhero-dashboard-MF2f0c6063df button:not([type="submit"]):last-of-type:hover {
+    background: none !important;
+    background-color: transparent !important;
+    color: #3530d4 !important;
+    text-decoration: underline !important;
+}
+
+/* Disabled button state */
+#referralhero-dashboard-MF2f0c6063df button:disabled,
+#referralhero-dashboard-MF2f0c6063df input[type="submit"]:disabled,
+#referralhero-dashboard-MF2f0c6063df input[type="button"]:disabled {
+    opacity: 0.7 !important;
+    cursor: not-allowed !important;
+}
+
+/* Style select dropdowns */
+#referralhero-dashboard-MF2f0c6063df select {
+    height: 48px !important;
+    padding: 0 12px !important;
+    background-color: #F4F4F9 !important;
+    border: 2px solid transparent !important;
+    border-radius: 12px !important;
+    font-family: inherit !important;
+    font-size: 14px !important;
+    color: #5C5C5C !important;
+    cursor: pointer !important;
+}
+
+#referralhero-dashboard-MF2f0c6063df select:focus {
+    outline: 2px solid #423DF9 !important;
+}
+
+/* Style checkboxes and radio buttons */
+#referralhero-dashboard-MF2f0c6063df input[type="checkbox"],
+#referralhero-dashboard-MF2f0c6063df input[type="radio"] {
+    width: 20px !important;
+    height: 20px !important;
+    cursor: pointer !important;
+    accent-color: #423DF9 !important;
+}
+
+/* Style labels */
+#referralhero-dashboard-MF2f0c6063df label {
+    font-family: inherit !important;
+    font-size: 14px !important;
+    color: #111111 !important;
+}
+
+/* Form spacing */
+#referralhero-dashboard-MF2f0c6063df form {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+    max-width: 600px !important;
+    margin: 0 auto !important;
+    padding-top: 0 !important;
+}
+
+/* Remove ReferralHero's spacer divs at the top */
+#referralhero-dashboard-MF2f0c6063df .mtr-spacer-field {
+    display: none !important;
+}
+
+/* Hide the "Enter Verification Code" heading */
+#referralhero-dashboard-MF2f0c6063df .mtr-text-field.heading-h3,
+#referralhero-dashboard-MF2f0c6063df .mtr-heading {
+    display: none !important;
+}
+
+/* Success/Error messages */
+#referralhero-dashboard-MF2f0c6063df .success-message,
+#referralhero-dashboard-MF2f0c6063df .rh-success {
+    padding: 12px !important;
+    background-color: #d4edda !important;
+    color: #155724 !important;
+    border: 1px solid #c3e6cb !important;
+    border-radius: 8px !important;
+    text-align: center !important;
+    font-size: 14px !important;
+}
+
+#referralhero-dashboard-MF2f0c6063df .error-message,
+#referralhero-dashboard-MF2f0c6063df .rh-error {
+    padding: 12px !important;
+    background-color: #f8d7da !important;
+    color: #721c24 !important;
+    border: 1px solid #f5c6cb !important;
+    border-radius: 8px !important;
+    text-align: center !important;
+    font-size: 14px !important;
+}
+
+/* Verification code input styling */
+#referralhero-dashboard-MF2f0c6063df .verification-input,
+#referralhero-dashboard-MF2f0c6063df input[name*="code"],
+#referralhero-dashboard-MF2f0c6063df input[name*="verification"] {
+    text-align: center !important;
+    letter-spacing: 0.5em !important;
+    font-size: 18px !important;
+    font-weight: 600 !important;
+}
+
+/* Link styling to match brand color */
+#referralhero-dashboard-MF2f0c6063df a {
+    color: #423DF9 !important;
+    text-decoration: none !important;
+}
+
+#referralhero-dashboard-MF2f0c6063df a:hover {
+    color: #3530d4 !important;
+    text-decoration: underline !important;
+}
+
+/* Container width and centering */
+#referralhero-dashboard-MF2f0c6063df > div,
+#referralhero-dashboard-MF2f0c6063df .rh-container {
+    max-width: 600px !important;
+    margin: 0 auto !important;
+}
+
+/* Phone number input with country code dropdown */
+#referralhero-dashboard-MF2f0c6063df .phone-input-wrapper {
+    display: flex !important;
+    gap: 10px !important;
+}
+
+#referralhero-dashboard-MF2f0c6063df .phone-input-wrapper select {
+    width: 30% !important;
+}
+
+#referralhero-dashboard-MF2f0c6063df .phone-input-wrapper input {
+    width: 70% !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #referralhero-dashboard-MF2f0c6063df .phone-input-wrapper {
+        flex-direction: column !important;
+    }
+
+    #referralhero-dashboard-MF2f0c6063df .phone-input-wrapper select,
+    #referralhero-dashboard-MF2f0c6063df .phone-input-wrapper input {
+        width: 100% !important;
+    }
+}
