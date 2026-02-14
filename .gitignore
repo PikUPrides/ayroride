@@ -44,4 +44,4 @@ next-env.d.ts
 
 
 # documentation
-docs/
+# docs/ - Removed to allow tracking of documentation files

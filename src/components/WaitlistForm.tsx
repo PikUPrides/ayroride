@@ -55,6 +55,9 @@ export default function WaitlistForm() {
                 const data = await response.json();
 
                 if (response.ok) {
+                    console.log('🔍 Waitlist PUT response data:', data);
+                    console.log('🔍 Subscriber ID from response:', data.subscriberId);
+
                     setMessage({ type: 'success', text: 'Successfully updated your information!' });
                     setEditMode({ active: false });
                     setFormData({
@@ -65,9 +68,25 @@ export default function WaitlistForm() {
                         userType: 'Both'
                     });
 
-                    // Redirect to referral page
+                    // Set session cookie for ReferralHero widget
+                    if (data.subscriberId) {
+                        const widgetId = 'MF2f0c6063df';
+                        const cookieName = `__maitre-session-${widgetId}`;
+                        const expirationDays = 30;
+                        const date = new Date();
+                        date.setTime(date.getTime() + (expirationDays * 24 * 60 * 60 * 1000));
+                        const expires = `expires=${date.toUTCString()}`;
+                        document.cookie = `${cookieName}=${data.subscriberId};${expires};path=/;SameSite=Lax`;
+                        console.log('✅ Session cookie set for:', data.subscriberId);
+                        console.log('✅ Cookie string:', document.cookie);
+                    } else {
+                        console.error('❌ No subscriberId in response! Cannot set session cookie.');
+                    }
+
+                    // Redirect to referral page with full reload to ensure widget initializes properly
                     setTimeout(() => {
-                        router.push('/referral');
+                        console.log('🔄 Redirecting to /referral in 1.5s...');
+                        window.location.href = '/referral';
                     }, 1500);
                 } else {
                     setMessage({ type: 'error', text: data.error || 'Failed to update information.' });
@@ -88,6 +107,9 @@ export default function WaitlistForm() {
                 const data = await response.json();
 
                 if (response.ok) {
+                    console.log('🔍 Waitlist POST response data:', data);
+                    console.log('🔍 Subscriber ID from response:', data.subscriberId);
+
                     setMessage({ type: 'success', text: 'Successfully joined the waitlist!' });
                     setFormData({
                         name: '',
@@ -97,9 +119,25 @@ export default function WaitlistForm() {
                         userType: 'Both'
                     });
 
-                    // Redirect to referral page
+                    // Set session cookie for ReferralHero widget
+                    if (data.subscriberId) {
+                        const widgetId = 'MF2f0c6063df';
+                        const cookieName = `__maitre-session-${widgetId}`;
+                        const expirationDays = 30;
+                        const date = new Date();
+                        date.setTime(date.getTime() + (expirationDays * 24 * 60 * 60 * 1000));
+                        const expires = `expires=${date.toUTCString()}`;
+                        document.cookie = `${cookieName}=${data.subscriberId};${expires};path=/;SameSite=Lax`;
+                        console.log('✅ Session cookie set for:', data.subscriberId);
+                        console.log('✅ Cookie string:', document.cookie);
+                    } else {
+                        console.error('❌ No subscriberId in response! Cannot set session cookie.');
+                    }
+
+                    // Redirect to referral page with full reload to ensure widget initializes properly
                     setTimeout(() => {
-                        router.push('/referral');
+                        console.log('🔄 Redirecting to /referral in 1.5s...');
+                        window.location.href = '/referral';
                     }, 1500);
                 } else if (response.status === 409 && data.error === 'already_exists') {
                     // User already exists - allow editing
