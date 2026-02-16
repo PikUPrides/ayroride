@@ -71,6 +71,8 @@ export default function HomeClient() {
                             src="/images/promo-bg.webp"
                             alt="AYRO Rideshare"
                             className={styles.promoImage}
+                            width="1200"
+                            height="800"
                         />
                     </div>
                 </div>
@@ -90,6 +92,8 @@ export default function HomeClient() {
                             src="/images/fixing-ridesharing.png"
                             alt="People in a car"
                             className={styles.fixingImage}
+                            width="800"
+                            height="600"
                         />
                     </div>
                     <div className={styles.fixingTextSide}>
@@ -126,6 +130,8 @@ export default function HomeClient() {
                             src="/images/passengers-icon.svg"
                             alt="Passengers"
                             className={styles.featureIcon}
+                            width="100"
+                            height="100"
                         />
                         <h4>For Passengers</h4>
                         <ul className={styles.featureList}>
@@ -150,6 +156,8 @@ export default function HomeClient() {
                             src="/images/drivers-icon.svg"
                             alt="Drivers"
                             className={styles.featureIcon}
+                            width="100"
+                            height="100"
                         />
                         <h4>For Drivers</h4>
                         <ul className={styles.featureList}>
@@ -174,6 +182,8 @@ export default function HomeClient() {
                             src="/images/both-icon.svg"
                             alt="Both"
                             className={styles.featureIcon}
+                            width="100"
+                            height="100"
                         />
                         <h4>For Both</h4>
                         <ul className={styles.featureList}>
@@ -206,6 +216,8 @@ export default function HomeClient() {
                                 src="/images/no-surge-icon.svg"
                                 alt="No Surge"
                                 className={styles.differentIcon}
+                                width="100"
+                                height="100"
                             />
                             <h4>We don't do surge pricing</h4>
                             <p>
@@ -219,6 +231,8 @@ export default function HomeClient() {
                                 src="/images/safety-icon.svg"
                                 alt="Safety"
                                 className={styles.differentIcon}
+                                width="100"
+                                height="100"
                             />
                             <h4>We're serious about safety</h4>
                             <p>Feel more secure with our rigorous safety protocols.</p>
@@ -229,6 +243,8 @@ export default function HomeClient() {
                                 src="/images/fair-drivers-icon.svg"
                                 alt="Fair Drivers"
                                 className={styles.differentIcon}
+                                width="100"
+                                height="100"
                             />
                             <h4>We treat our drivers fairly</h4>
                             <p>
@@ -276,6 +292,8 @@ export default function HomeClient() {
                             src="/images/reward-bg.png"
                             alt="Rewards"
                             className={styles.rewardImage}
+                            width="800"
+                            height="600"
                         />
                     </div>
                 </div>
@@ -298,6 +316,8 @@ export default function HomeClient() {
                                 src="/images/adopter-icon.svg"
                                 alt="Adopter"
                                 className={styles.futureIcon}
+                                width="100"
+                                height="100"
                             />
                             <h4>Become an early adopter</h4>
                             <p>
@@ -311,6 +331,8 @@ export default function HomeClient() {
                                 src="/images/rewards-icon.svg"
                                 alt="Rewards"
                                 className={styles.futureIcon}
+                                width="100"
+                                height="100"
                             />
                             <h4>earn Rewards</h4>
                             <p>
@@ -324,6 +346,8 @@ export default function HomeClient() {
                                 src="/images/impact-icon.svg"
                                 alt="Impact"
                                 className={styles.futureIcon}
+                                width="100"
+                                height="100"
                             />
                             <h4>make an impact</h4>
                             <p>

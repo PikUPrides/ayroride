@@ -2,6 +2,9 @@
 const nextConfig = {
   /* config options here */
   output: "standalone",
+  swcMinify: true, // Force minification
+  compress: true, // Enable gzip/brotli
+  // reactCompiler: true, // Disabled for stability (503 error investigation)
   images: {
     unoptimized: true, // Disable image optimization to bypass proxy issues
   },
