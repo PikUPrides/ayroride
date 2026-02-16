@@ -53,6 +53,8 @@ export default function Footer() {
                 src="/Ayro_Secondary_1.webp"
                 alt="AYRO"
                 className={styles.footerLogo}
+                width="160"
+                height="160"
               />
             </Link>
 

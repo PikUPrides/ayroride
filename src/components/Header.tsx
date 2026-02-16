@@ -24,6 +24,8 @@ export default function Header() {
             src="/Ayro_Secondary_1.webp"
             className={styles.logo}
             alt="AYRO"
+            width="180"
+            height="180"
           />
         </Link>
 
