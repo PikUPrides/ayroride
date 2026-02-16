@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import Script from "next/script";
 import ReferralModal from "@/components/referral-modal/ReferralModal";
 import { ModalProvider } from "@/context/ModalContext";
-import GoogleAnalytics from "@/components/GoogleAnalytics";
+
 import PromoPopup from "@/components/PromoPopup";
 import LanguageDropdown from "@/components/LanguageDropdown";
 
@@ -69,11 +69,11 @@ export default function RootLayout({
     <html lang="en">
       <head>
         {/* LCP preload — hero image */}
-        <link rel="preload" as="image" href="/images/promo-bg.png" fetchPriority="high" />
+        <link rel="preload" as="image" href="/images/promo-bg.webp" fetchPriority="high" />
 
         {/* Preconnect — critical analytics origins */}
         <link rel="preconnect" href="https://www.googletagmanager.com" />
-        <link rel="preconnect" href="https://www.google-analytics.com" />
+
 
         {/* DNS prefetch — non-critical third-party origins */}
         <link rel="dns-prefetch" href="https://translate.google.com" />
@@ -160,8 +160,7 @@ export default function RootLayout({
           `
         }} />
 
-        {/* Google Analytics (GA4) */}
-        <GoogleAnalytics />
+
         <PromoPopup />
       </body>
     </html>

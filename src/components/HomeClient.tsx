@@ -68,7 +68,7 @@ export default function HomeClient() {
                     </div>
                     <div className={styles.promoImageContainer}>
                         <img
-                            src="/images/promo-bg.png"
+                            src="/images/promo-bg.webp"
                             alt="AYRO Rideshare"
                             className={styles.promoImage}
                         />

@@ -47,7 +47,7 @@ export default function ReferralModal() {
                     {/* Logo */}
                     <div className="absolute top-12 left-12 z-20">
                         <Image
-                            src="/Ayro_Secondary_1.png"
+                            src="/Ayro_Secondary_1.webp"
                             alt="AYRO"
                             width={110}
                             height={40}
@@ -77,7 +77,7 @@ export default function ReferralModal() {
                     {/* Mobile Header */}
                     <div className="md:hidden bg-[#423DF9] pt-10 pb-10 px-8 text-center relative overflow-hidden flex flex-col items-center shrink-0">
                         <Image
-                            src="/Ayro_Secondary_1.png"
+                            src="/Ayro_Secondary_1.webp"
                             alt="AYRO"
                             width={90}
                             height={30}

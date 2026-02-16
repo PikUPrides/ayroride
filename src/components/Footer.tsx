@@ -50,7 +50,7 @@ export default function Footer() {
           <div className={styles.footerTop}>
             <Link href="/" className={styles.footerBrand}>
               <img
-                src="/Ayro_Secondary_1.png"
+                src="/Ayro_Secondary_1.webp"
                 alt="AYRO"
                 className={styles.footerLogo}
               />

@@ -21,7 +21,7 @@ export default function Header() {
         {/* Brand */}
         <Link href="/" className={styles.brand}>
           <img
-            src="/Ayro_Secondary_1.png"
+            src="/Ayro_Secondary_1.webp"
             className={styles.logo}
             alt="AYRO"
           />
