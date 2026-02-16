@@ -55,3 +55,4 @@ const nextConfig = {
 
 export default nextConfig;
 
+// Trigger rebuild for 503 error
