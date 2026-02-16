@@ -2,7 +2,6 @@
 const nextConfig = {
   /* config options here */
   output: "standalone",
-  // reactCompiler: true, // Disabled for stability (503 error investigation)
   images: {
     unoptimized: true, // Disable image optimization to bypass proxy issues
   },
