@@ -60,7 +60,7 @@ export default function Rider() {
                     </div>
                     <div className={styles.heroImageContainer}>
                         <Image
-                            src="/images/driver/driver-hero-new.png"
+                            src="/images/driver/driver-hero-new.webp"
                             alt="Ride with AYRO"
                             width={1000}
                             height={500}
@@ -116,7 +116,7 @@ export default function Rider() {
                 </div>
                 <div className={styles.whyImageSide}>
                     <Image
-                        src="/images/driver/why-drivers-new.png"
+                        src="/images/driver/why-drivers-new.webp"
                         alt="Driver in car"
                         fill
                         className={styles.whyImage}
@@ -244,7 +244,7 @@ export default function Rider() {
                     </div>
                     <div className={styles.rewardsImageSide}>
                         <Image
-                            src="/images/driver/driver-rewards-new.png"
+                            src="/images/driver/driver-rewards-new.webp"
                             alt="Rider working in car"
                             fill
                             className={styles.rewardsImage}

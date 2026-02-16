@@ -86,7 +86,7 @@ export default function Footer() {
                   <Image src="/images/x-icon.jpg" alt="X" width={32} height={32} />
                 </a>
                 <a href="https://www.instagram.com/ayrorides" target="_blank" rel="noopener noreferrer">
-                  <Image src="/assets/instagram-icon.png" alt="Instagram" width={32} height={32} />
+                  <Image src="/assets/instagram-icon.webp" alt="Instagram" width={32} height={32} />
                 </a>
                 <a href="https://www.linkedin.com/company/ayrorides" target="_blank" rel="noopener noreferrer">
                   <svg width="32" height="32" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">

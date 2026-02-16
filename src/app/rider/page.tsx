@@ -110,7 +110,7 @@ export default function Rider() {
                 </div>
                 <div className={styles.whyImageSide}>
                     <Image
-                        src="/images/why-riders.png"
+                        src="/images/why-riders.webp"
                         alt="Rider enjoying a ride"
                         fill
                         className={styles.whyImage}
@@ -249,7 +249,7 @@ export default function Rider() {
                     </div>
                     <div className={styles.rewardsImageSide}>
                         <Image
-                            src="/images/referral-rewards.png"
+                            src="/images/referral-rewards.webp"
                             alt="Rider working in car"
                             fill
                             className={styles.rewardsImage}

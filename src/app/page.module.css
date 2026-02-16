@@ -1286,7 +1286,7 @@
 /* FAQ Section Styles */
 .faqSection {
   background: linear-gradient(135deg, #423df9 0%, #1d0652 100%);
-  background-image: url("/assets/faq-bg.png");
+  background-image: url("/assets/faq-bg.webp");
   background-size: cover;
   background-position: 50% 50%;
   background-repeat: no-repeat;

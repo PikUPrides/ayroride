@@ -67,6 +67,21 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        {/* LCP preload — hero image */}
+        <link rel="preload" as="image" href="/images/promo-bg.png" fetchPriority="high" />
+
+        {/* Preconnect — critical analytics origins */}
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://www.google-analytics.com" />
+
+        {/* DNS prefetch — non-critical third-party origins */}
+        <link rel="dns-prefetch" href="https://translate.google.com" />
+        <link rel="dns-prefetch" href="https://d7zve4d3u0dfm.cloudfront.net" />
+        <link rel="dns-prefetch" href="https://cdn.pagesense.io" />
+        <link rel="dns-prefetch" href="https://desk.zoho.com" />
+        <link rel="dns-prefetch" href="https://www.clarity.ms" />
+      </head>
       <body className={`${openSans.variable} ${openSans.className}`} suppressHydrationWarning>
         <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5FKKXTJ8"
           height="0" width="0" style={{ display: 'none', visibility: 'hidden' }}></iframe></noscript>
@@ -109,13 +124,13 @@ export default function RootLayout({
           <ReferralModal />
           <LanguageDropdown />
         </ModalProvider>
-        <Script id="referralhero-global" strategy="afterInteractive" dangerouslySetInnerHTML={{
+        <Script id="referralhero-global" strategy="lazyOnload" dangerouslySetInnerHTML={{
           __html: `!function(m,a,i,t,r,e){if(m.RH)return;r=m.RH={},r.uuid=t,r.loaded=0,r.base_url=i,r.queue=[],m.rht=function(){r.queue.push(arguments)};e=a.getElementsByTagName('script')[0],c=a.createElement('script');c.async=!0,c.src='https://d7zve4d3u0dfm.cloudfront.net/'+'production'+'/'+t+'.js',e.parentNode.insertBefore(c,e)}(window,document,'https://app.referralhero.com','RH0d3a5b93dd');`
         }} />
-        <Script id="zoho-pagesense" strategy="afterInteractive" dangerouslySetInnerHTML={{
+        <Script id="zoho-pagesense" strategy="lazyOnload" dangerouslySetInnerHTML={{
           __html: `(function(w,s){var e=document.createElement("script");e.type="text/javascript";e.async=true;e.src="https://cdn.pagesense.io/js/pikupinc/8d7816e424414c6aa3dc73e841dac36b.js";var x=document.getElementsByTagName("script")[0];x.parentNode.insertBefore(e,x);})(window,"script");`
         }} />
-        <Script id="zohodeskasap" strategy="afterInteractive" dangerouslySetInnerHTML={{
+        <Script id="zohodeskasap" strategy="lazyOnload" dangerouslySetInnerHTML={{
           __html: `
             var d=document;
             s=d.createElement("script");
@@ -135,7 +150,7 @@ export default function RootLayout({
         }} />
 
         {/* Microsoft Clarity */}
-        <Script id="microsoft-clarity" strategy="afterInteractive" dangerouslySetInnerHTML={{
+        <Script id="microsoft-clarity" strategy="lazyOnload" dangerouslySetInnerHTML={{
           __html: `
             (function(c,l,a,r,i,t,y){
               c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};

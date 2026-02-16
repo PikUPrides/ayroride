@@ -435,7 +435,7 @@
 
 /* CTA Section (Ready to Get Started) */
 .ctaSection {
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/images/driver/driver-hero-new.png');
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/images/driver/driver-hero-new.webp');
     background-size: cover;
     background-position: center;
     padding: 100px 20px;

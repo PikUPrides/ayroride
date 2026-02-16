@@ -106,7 +106,7 @@ export default function Contact() {
                 </a>
 
                 <a href="https://www.instagram.com/ayrorides" target="_blank" className={styles.socialIcon}>
-                  <Image src="/assets/instagram-icon.png" alt="Instagram" width={32} height={32} />
+                  <Image src="/assets/instagram-icon.webp" alt="Instagram" width={32} height={32} />
                 </a>
 
                 <a href="https://www.linkedin.com/company/ayrorides" target="_blank" className={styles.socialIcon}>
