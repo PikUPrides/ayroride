@@ -1,27 +1,97 @@
 'use client';
 
-import { useSearchParams } from 'next/navigation';
-import { Suspense } from 'react';
+import { Suspense, useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import ReferralHeroWidget from '@/components/referral-modal/ReferralHeroWidget';
+import './referral-hero-custom.css';
 
-function ReferralContent() {
-    const searchParams = useSearchParams();
-    const email = searchParams.get('email');
+function LogoutLink() {
+    const handleLogout = () => {
+        const widgetId = 'MF2f0c6063df';
+        const cookieName = `__maitre-session-${widgetId}`;
+
+        // Clear the cookie
+        document.cookie = `${cookieName}=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;`;
+
+        // Redirect to login page
+        window.location.href = '/referral-login';
+    };
 
     return (
-        <main className="min-h-screen bg-white" style={{ paddingTop: '95px' }}>
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
-                <div className="text-center mb-8">
+        <div style={{ textAlign: 'center', marginTop: '16px' }}>
+            <button
+                onClick={handleLogout}
+                style={{
+                    background: 'none',
+                    border: 'none',
+                    color: '#423DF9',
+                    fontSize: '14px',
+                    textDecoration: 'none',
+                    cursor: 'pointer',
+                    padding: 0
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.textDecoration = 'underline'}
+                onMouseLeave={(e) => e.currentTarget.style.textDecoration = 'none'}
+            >
+                Switch Account
+            </button>
+        </div>
+    );
+}
+
+function ReferralContent() {
+    const router = useRouter();
+    const [isCheckingSession, setIsCheckingSession] = useState(true);
+
+    useEffect(() => {
+        // Check if session cookie exists
+        const widgetId = 'MF2f0c6063df';
+        const cookieName = `__maitre-session-${widgetId}`;
+
+        const cookies = document.cookie.split(';');
+        const sessionCookie = cookies.find(cookie =>
+            cookie.trim().startsWith(`${cookieName}=`)
+        );
+
+        if (!sessionCookie) {
+            // No session cookie at all, redirect to login
+            console.log('❌ No session cookie, redirecting to login');
+            router.push('/referral-login');
+        } else {
+            // Cookie exists, let ReferralHero widget handle it
+            console.log('✅ Session cookie found, showing widget');
+            setIsCheckingSession(false);
+        }
+    }, [router]);
+
+    // Show loading while checking session
+    if (isCheckingSession) {
+        return (
+            <main className="min-h-screen bg-white flex items-center justify-center" style={{ paddingTop: '95px' }}>
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#423DF9]"></div>
+            </main>
+        );
+    }
+
+    return (
+        <main className="min-h-screen bg-white" style={{ paddingTop: '110px' }}>
+            <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '0 24px 48px 24px' }}>
+                <div className="text-center" style={{ marginBottom: '24px' }}>
                     <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-3">
                         Refer & Earn Rewards
                     </h1>
-                    <p className="text-gray-600 text-lg">
+                    <p className="text-gray-600 text-lg" style={{ marginBottom: '0' }}>
                         Share your referral link and earn rewards when your friends join AYRO.
                     </p>
                 </div>
 
                 <div className="w-full">
-                    <ReferralHeroWidget widgetId="MF2f0c6063df" userEmail={email} />
+                    <ReferralHeroWidget
+                        widgetId="MF2f0c6063df"
+                        userEmail={null}
+                        subscriberId={null}
+                    />
+                    <LogoutLink />
                 </div>
             </div>
         </main>

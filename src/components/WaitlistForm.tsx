@@ -55,6 +55,9 @@ export default function WaitlistForm() {
                 const data = await response.json();
 
                 if (response.ok) {
+                    console.log('🔍 Waitlist PUT response data:', data);
+                    console.log('🔍 Subscriber ID from response:', data.subscriberId);
+
                     setMessage({ type: 'success', text: 'Successfully updated your information!' });
                     setEditMode({ active: false });
                     setFormData({
@@ -62,12 +65,32 @@ export default function WaitlistForm() {
                         email: '',
                         phone: '',
                         zipCode: '',
-                        userType: 'Rider'
+                        userType: 'Both'
                     });
 
-                    // Redirect to referral page with email parameter
+                    // Set session cookie for ReferralHero widget
+                    if (data.subscriberId) {
+                        const widgetId = 'MF2f0c6063df';
+                        const cookieName = `__maitre-session-${widgetId}`;
+                        const expirationDays = 30;
+                        const date = new Date();
+                        date.setTime(date.getTime() + (expirationDays * 24 * 60 * 60 * 1000));
+                        const expires = `expires=${date.toUTCString()}`;
+                        // Add Secure flag for HTTPS (production) and explicit domain
+                        const isHttps = window.location.protocol === 'https:';
+                        const secureFlag = isHttps ? ';Secure' : '';
+                        const domain = window.location.hostname.includes('localhost') ? '' : `;domain=.${window.location.hostname}`;
+                        document.cookie = `${cookieName}=${data.subscriberId};${expires};path=/;SameSite=Lax${secureFlag}${domain}`;
+                        console.log('✅ Session cookie set for:', data.subscriberId, '| HTTPS:', isHttps, '| Domain:', domain);
+                        console.log('✅ Cookie string:', document.cookie);
+                    } else {
+                        console.error('❌ No subscriberId in response! Cannot set session cookie.');
+                    }
+
+                    // Redirect to referral page with full reload to ensure widget initializes properly
                     setTimeout(() => {
-                        router.push(`/referral?email=${encodeURIComponent(formData.email)}`);
+                        console.log('🔄 Redirecting to /referral in 1.5s...');
+                        window.location.href = '/referral';
                     }, 1500);
                 } else {
                     setMessage({ type: 'error', text: data.error || 'Failed to update information.' });
@@ -88,18 +111,41 @@ export default function WaitlistForm() {
                 const data = await response.json();
 
                 if (response.ok) {
+                    console.log('🔍 Waitlist POST response data:', data);
+                    console.log('🔍 Subscriber ID from response:', data.subscriberId);
+
                     setMessage({ type: 'success', text: 'Successfully joined the waitlist!' });
                     setFormData({
                         name: '',
                         email: '',
                         phone: '',
                         zipCode: '',
-                        userType: 'Rider'
+                        userType: 'Both'
                     });
 
-                    // Redirect to referral page with email parameter
+                    // Set session cookie for ReferralHero widget
+                    if (data.subscriberId) {
+                        const widgetId = 'MF2f0c6063df';
+                        const cookieName = `__maitre-session-${widgetId}`;
+                        const expirationDays = 30;
+                        const date = new Date();
+                        date.setTime(date.getTime() + (expirationDays * 24 * 60 * 60 * 1000));
+                        const expires = `expires=${date.toUTCString()}`;
+                        // Add Secure flag for HTTPS (production) and explicit domain
+                        const isHttps = window.location.protocol === 'https:';
+                        const secureFlag = isHttps ? ';Secure' : '';
+                        const domain = window.location.hostname.includes('localhost') ? '' : `;domain=.${window.location.hostname}`;
+                        document.cookie = `${cookieName}=${data.subscriberId};${expires};path=/;SameSite=Lax${secureFlag}${domain}`;
+                        console.log('✅ Session cookie set for:', data.subscriberId, '| HTTPS:', isHttps, '| Domain:', domain);
+                        console.log('✅ Cookie string:', document.cookie);
+                    } else {
+                        console.error('❌ No subscriberId in response! Cannot set session cookie.');
+                    }
+
+                    // Redirect to referral page with full reload to ensure widget initializes properly
                     setTimeout(() => {
-                        router.push(`/referral?email=${encodeURIComponent(formData.email)}`);
+                        console.log('🔄 Redirecting to /referral in 1.5s...');
+                        window.location.href = '/referral';
                     }, 1500);
                 } else if (response.status === 409 && data.error === 'already_exists') {
                     // User already exists - allow editing
@@ -114,7 +160,9 @@ export default function WaitlistForm() {
                         userType: data.subscriber.userType || 'Rider'
                     });
                 } else {
-                    setMessage({ type: 'error', text: data.error || 'Failed to join waitlist.' });
+                    // Show specific error details if available, otherwise fallback to generic error
+                    const errorMessage = data.details || data.error || 'Failed to join waitlist.';
+                    setMessage({ type: 'error', text: errorMessage });
                 }
             }
         } catch (error) {
@@ -294,6 +342,21 @@ export default function WaitlistForm() {
                     {message.text}
                 </div>
             )}
+
+            <div style={{ textAlign: 'center', marginTop: '16px' }}>
+                <a
+                    href="/referral-login"
+                    style={{
+                        color: '#423DF9',
+                        fontSize: '14px',
+                        textDecoration: 'none'
+                    }}
+                    onMouseEnter={(e) => e.currentTarget.style.textDecoration = 'underline'}
+                    onMouseLeave={(e) => e.currentTarget.style.textDecoration = 'none'}
+                >
+                    Already joined waitlist? Go to referral dashboard
+                </a>
+            </div>
         </form>
     );
 }

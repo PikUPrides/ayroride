@@ -31,14 +31,16 @@ export async function PUT(request: Request) {
             );
         }
 
-        // Format phone to international format: +1XXXXXXXXXX
+        // Format phone to international format with spaces: +1 XXX XXX XXXX
         let formattedPhone = '';
         if (phone) {
             const digits = phone.replace(/\D/g, '');
             if (digits.length === 10) {
-                formattedPhone = '+1' + digits;
+                // Format as +1 XXX XXX XXXX
+                formattedPhone = `+1 ${digits.slice(0, 3)} ${digits.slice(3, 6)} ${digits.slice(6)}`;
             } else if (digits.length === 11 && digits.startsWith('1')) {
-                formattedPhone = '+' + digits;
+                const usDigits = digits.substring(1);
+                formattedPhone = `+1 ${usDigits.slice(0, 3)} ${usDigits.slice(3, 6)} ${usDigits.slice(6)}`;
             }
         }
 
@@ -47,7 +49,8 @@ export async function PUT(request: Request) {
             name: name,
             extra_field: zipCode,
             extra_field_2: userType,
-            double_optin: true  // Enable email/SMS verification
+            extra_field_3: 'AYRO_WAITLIST_MEMBER', // Preserve hidden marker when updating
+            double_optin: true
         };
 
         if (formattedPhone) {
@@ -73,7 +76,11 @@ export async function PUT(request: Request) {
         }
 
         return NextResponse.json(
-            { message: 'Successfully updated your information!', data: rhData },
+            {
+                message: 'Successfully updated your information!',
+                data: rhData,
+                subscriberId: subscriberId // Return subscriber ID for verification flow
+            },
             { status: 200 }
         );
 
@@ -112,14 +119,16 @@ export async function POST(request: Request) {
             );
         }
 
-        // Format phone to international format: +1XXXXXXXXXX
+        // Format phone to international format with spaces: +1 XXX XXX XXXX
         let formattedPhone = '';
         if (phone) {
             const digits = phone.replace(/\D/g, '');
             if (digits.length === 10) {
-                formattedPhone = '+1' + digits;
+                // Format as +1 XXX XXX XXXX
+                formattedPhone = `+1 ${digits.slice(0, 3)} ${digits.slice(3, 6)} ${digits.slice(6)}`;
             } else if (digits.length === 11 && digits.startsWith('1')) {
-                formattedPhone = '+' + digits;
+                const usDigits = digits.substring(1);
+                formattedPhone = `+1 ${usDigits.slice(0, 3)} ${usDigits.slice(3, 6)} ${usDigits.slice(6)}`;
             }
         }
 
@@ -128,12 +137,16 @@ export async function POST(request: Request) {
             name: name,
             extra_field: zipCode,
             extra_field_2: userType,
-            double_optin: true  // Enable email/SMS verification
+            extra_field_3: 'AYRO_WAITLIST_MEMBER', // Hidden marker to identify real subscribers
+            double_optin: true
         };
 
         // Enable phone for creation with international format
-        if (formattedPhone) {
+        // Only add phone if it's valid and formatted
+        if (formattedPhone && formattedPhone.length >= 12) {
             payload.phone_number = formattedPhone;
+        } else if (phone) {
+            console.warn('Phone number not formatted correctly, skipping:', phone);
         }
 
         // Check if subscriber already exists BEFORE creating
@@ -272,7 +285,11 @@ export async function POST(request: Request) {
         }
 
         return NextResponse.json(
-            { message: 'Successfully joined waitlist!', data: rhData },
+            {
+                message: 'Successfully joined waitlist!',
+                data: rhData,
+                subscriberId: rhData.data?.id // Return subscriber ID for verification flow
+            },
             { status: 201 }
         );
 
