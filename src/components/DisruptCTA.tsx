@@ -6,7 +6,7 @@ import styles from './DisruptCTA.module.css';
 
 interface DisruptCTAProps {
     title?: string;
-    subtitle?: string;
+    subtitle?: React.ReactNode;
     buttonText?: string;
     buttonLink?: string;
 }
