@@ -134,7 +134,7 @@ export default function HomeClient() {
                             width="100"
                             height="100"
                         />
-                        <h4>For Passengers</h4>
+                        <h3>For Passengers</h3>
                         <ul className={styles.featureList}>
                             <li className={styles.featureListItem}>
                                 <span className={styles.featureCircle}></span>
@@ -160,7 +160,7 @@ export default function HomeClient() {
                             width="100"
                             height="100"
                         />
-                        <h4>For Drivers</h4>
+                        <h3>For Drivers</h3>
                         <ul className={styles.featureList}>
                             <li className={styles.featureListItem}>
                                 <span className={styles.featureCircle}></span>
@@ -186,7 +186,7 @@ export default function HomeClient() {
                             width="100"
                             height="100"
                         />
-                        <h4>For Both</h4>
+                        <h3>For Both</h3>
                         <ul className={styles.featureList}>
                             <li className={styles.featureListItem}>
                                 <span className={styles.featureCircle}></span>
@@ -207,9 +207,9 @@ export default function HomeClient() {
 
             <section className={styles.differentSection}>
                 <div className={styles.differentContainer}>
-                    <h3 className={styles.differentTitle}>
+                    <h2 className={styles.differentTitle}>
                         How is <span><span className="notranslate" translate="no">AYRO</span> different?</span>
-                    </h3>
+                    </h2>
 
                     <div className={styles.differentGrid}>
                         <div className={styles.differentItem}>
@@ -220,7 +220,7 @@ export default function HomeClient() {
                                 width="100"
                                 height="100"
                             />
-                            <h4>We don't do surge pricing</h4>
+                            <h3>We don't do surge pricing</h3>
                             <p>
                                 Save with predictable fares that are up to 50% lower than any
                                 national provider.
@@ -235,7 +235,7 @@ export default function HomeClient() {
                                 width="100"
                                 height="100"
                             />
-                            <h4>We're serious about safety</h4>
+                            <h3>We're serious about safety</h3>
                             <p>Feel more secure with our rigorous safety protocols.</p>
                         </div>
 
@@ -247,7 +247,7 @@ export default function HomeClient() {
                                 width="100"
                                 height="100"
                             />
-                            <h4>We treat our drivers fairly</h4>
+                            <h3>We treat our drivers fairly</h3>
                             <p>
                                 Get better service from happier drivers who earn twice the pay.
                             </p>
@@ -301,9 +301,9 @@ export default function HomeClient() {
 
             <section className={styles.futureSection}>
                 <div className={styles.futureContainer}>
-                    <h3 className={styles.futureTitle}>
+                    <h2 className={styles.futureTitle}>
                         Be Part of <span>Transportation's Future</span>
-                    </h3>
+                    </h2>
                     <p className={styles.futureSubTitle}>
                         Join our movement to disrupt the rideshare industry.
                         <br />
@@ -319,7 +319,7 @@ export default function HomeClient() {
                                 width="100"
                                 height="100"
                             />
-                            <h4>Become an early adopter</h4>
+                            <h3>Become an early adopter</h3>
                             <p>
                                 Become an early adopter and help shape <br /> the future of
                                 ridesharing.
@@ -334,7 +334,7 @@ export default function HomeClient() {
                                 width="100"
                                 height="100"
                             />
-                            <h4>earn Rewards</h4>
+                            <h3>earn Rewards</h3>
                             <p>
                                 Earn up to $1,000 in cash and ride credits <br /> while helping
                                 eliminate surge pricing.
@@ -349,7 +349,7 @@ export default function HomeClient() {
                                 width="100"
                                 height="100"
                             />
-                            <h4>make an impact</h4>
+                            <h3>make an impact</h3>
                             <p>
                                 Support a system where riders pay less <br /> and drivers earn
                                 fair, consistent wages.

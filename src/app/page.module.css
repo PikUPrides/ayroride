@@ -84,12 +84,15 @@
 }
 
 .waitlistBtn {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   background-color: #423df9;
   color: #ffffff;
   border: 1px solid #423df9;
   padding: 12px 36px 13px 36px;
   height: 48px;
+  min-height: 48px;
   font-size: 16px;
   font-weight: 700;
   line-height: 20px;
@@ -782,7 +785,7 @@
 }
 
 .testimonialsTitle span {
-  color: #08d9c4;
+  color: #048a7e;
 }
 
 .testimonialsSubtitle {
@@ -851,7 +854,7 @@
   font-size: 18px;
   font-weight: 700;
   line-height: 28px;
-  color: #068c80;
+  color: #047064;
 }
 
 .quoteIcon {
