@@ -65,7 +65,7 @@
   background-color: #423DF9;
   color: white;
   width: 206px;
-  height: 47px;
+  height: 48px;
   padding: 0;
   display: flex;
   justify-content: center;
@@ -97,6 +97,10 @@
 }
 
 /* Responsive Design */
+.mobileBreak {
+  display: none;
+}
+
 @media (max-width: 768px) {
   .heroSection {
     padding: 3rem 1.5rem;
@@ -116,6 +120,16 @@
   .heroSubtitle {
     font-size: 1rem;
     padding: 0 10px;
+  }
+
+  .heroContent {
+    margin-bottom: 1rem;
+    /* Reduced from 2rem */
+  }
+
+  .heroImageContainer {
+    margin-top: 1rem;
+    /* Reduced from 2rem */
   }
 }
 
@@ -570,7 +584,7 @@
   background-color: transparent;
   color: #423DF9;
   width: 206px;
-  height: 47px;
+  height: 48px;
   padding: 0;
   display: flex;
   justify-content: center;
@@ -601,6 +615,10 @@
 
   .lifeBetterTitle {
     font-size: 32px;
+  }
+
+  .lifeBetterTitle .lifeBetterHighlight {
+    display: block;
   }
 
   .featuresGrid {

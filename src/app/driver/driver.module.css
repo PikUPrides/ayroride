@@ -66,7 +66,7 @@
   background-color: #423DF9;
   color: white;
   width: 206px;
-  height: 47px;
+  height: 48px;
   padding: 0;
   display: flex;
   justify-content: center;
@@ -98,28 +98,46 @@
 }
 
 /* Responsive Design */
+.mobileBreak {
+  display: none;
+}
+
+.blockOnMobile {
+  display: inline;
+}
+
 @media (max-width: 768px) {
   .heroSection {
-    padding: 3rem 1.5rem;
+    padding: 3rem 1.5rem 1.5rem;
   }
 
   .heroTitle {
-    font-size: 2.25rem;
-    /* Reduced from 2.5rem to fit better */
+    font-size: 1.75rem;
+    /* Reduced to fit "AYRO Treats Its Drivers" on one line */
     line-height: 1.2;
     margin-bottom: 1rem;
     white-space: normal;
-    /* Allow wrapping */
   }
 
-  .heroTitle br {
+  .mobileBreak {
     display: block;
-    /* Ensure breaks work if needed, or hide if auto-wrapping is better */
+  }
+
+  .blockOnMobile {
+    display: block;
   }
 
   .heroSubtitle {
+    margin-bottom: 1.5rem;
     font-size: 1rem;
-    padding: 0 10px;
+  }
+
+  .heroContent {
+    margin-bottom: 1rem;
+  }
+
+  .heroImageContainer {
+    margin-top: 0.5rem;
   }
 }
 
@@ -237,14 +255,30 @@
 @media (max-width: 960px) {
   .whySection {
     flex-direction: column;
+    min-height: auto;
   }
 
   .whyContent {
-    padding: 4rem 2rem;
+    padding: 2.5rem 1.5rem;
+  }
+
+  .whyTitle {
+    font-size: 28px;
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+
+  .whySubtitle {
+    font-size: 16px;
+    margin-bottom: 1.5rem;
+  }
+
+  .featureList {
+    gap: 1.25rem;
   }
 
   .whyImageSide {
-    height: 400px;
+    height: 300px;
     flex: none;
   }
 }
@@ -470,12 +504,17 @@
 
 @media (max-width: 1024px) {
   .howItWorksSection {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
   }
 
   .worksHeader {
-    margin-bottom: 4rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .worksTitle {
+    font-size: 28px;
+    line-height: 1.2;
   }
 }
 
@@ -588,7 +627,7 @@
   background-color: transparent;
   color: #423DF9;
   width: 206px;
-  height: 47px;
+  height: 48px;
   padding: 0;
   display: flex;
   justify-content: center;
@@ -614,19 +653,20 @@
 
 @media (max-width: 600px) {
   .lifeBetterSection {
-    padding: 4rem 1.5rem;
+    padding: 2.5rem 1.5rem;
+  }
+
+  .lifeBetterHeader {
+    margin-bottom: 2rem;
   }
 
   .lifeBetterTitle {
-    font-size: 32px;
+    font-size: 28px;
   }
 
   .featuresGrid {
     grid-template-columns: 1fr;
-  }
-
-  .featuresGrid {
-    grid-template-columns: 1fr;
+    margin-bottom: 2.5rem;
   }
 }
 
@@ -639,6 +679,12 @@
   padding: 8rem 2rem;
   color: white;
   text-align: center;
+}
+
+@media (max-width: 768px) {
+  .safetySection {
+    padding: 3rem 1.5rem;
+  }
 }
 
 .safetyContainer {
@@ -850,7 +896,8 @@
 
 @media (max-width: 600px) {
   .rewardsSection {
-    padding: 4rem 1.5rem;
+    padding: 2.5rem 1.5rem;
+    min-height: auto;
   }
 
   .rewardsTitle {

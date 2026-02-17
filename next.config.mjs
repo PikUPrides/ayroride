@@ -1,8 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  /* config options here */
   output: "standalone",
-  compress: true, // Enable gzip/brotli
+  compress: false, // Disable gzip/brotli to prevent proxy conflicts
   images: {
     unoptimized: true, // Disable image optimization to bypass proxy issues
   },
@@ -13,7 +12,42 @@ const nextConfig = {
       { key: "X-Robots-Tag", value: "noindex" },
       { key: "Vary", value: "Accept-Encoding" },
     ];
+    const securityHeaders = [
+      {
+        key: "Content-Security-Policy",
+        value: [
+          "default-src 'self'",
+          "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://translate.google.com https://translate.googleapis.com https://d7zve4d3u0dfm.cloudfront.net https://cdn.pagesense.io https://desk.zoho.com https://www.clarity.ms",
+          "style-src 'self' 'unsafe-inline' https://translate.googleapis.com",
+          "img-src 'self' data: https: blob:",
+          "font-src 'self' https://fonts.gstatic.com https://translate.googleapis.com",
+          "connect-src 'self' https: wss:",
+          "frame-src 'self' https://desk.zoho.com https://translate.google.com",
+          "object-src 'none'",
+        ].join("; "),
+      },
+      {
+        key: "Strict-Transport-Security",
+        value: "max-age=63072000; includeSubDomains; preload",
+      },
+      {
+        key: "Cross-Origin-Opener-Policy",
+        value: "same-origin-allow-popups",
+      },
+      {
+        key: "X-Frame-Options",
+        value: "SAMEORIGIN",
+      },
+      {
+        key: "X-Content-Type-Options",
+        value: "nosniff",
+      },
+    ];
     return [
+      {
+        source: "/(.*)",
+        headers: securityHeaders,
+      },
       { source: "/sitemap.xml", headers: sitemapHeaders },
       { source: "/sitemap-pages.xml", headers: sitemapHeaders },
       { source: "/sitemap-posts.xml", headers: sitemapHeaders },

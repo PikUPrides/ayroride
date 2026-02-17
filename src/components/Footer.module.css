@@ -97,6 +97,13 @@
   padding: 40px 20px 40px;
 }
 
+@media (max-width: 768px) {
+  .mainFooter {
+    padding: 20px 20px 40px;
+    /* Reduced top padding on mobile */
+  }
+}
+
 .footerContent {
   max-width: 1240px;
   margin: 0 auto;
@@ -202,16 +209,26 @@
   align-items: center;
   font-size: 14px;
   color: rgba(255, 255, 255, 0.6);
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.bottomRight {
+  display: flex;
+  align-items: center;
+  gap: 30px;
 }
 
 .legalLinks {
   display: flex;
   gap: 20px;
+  align-items: center;
 }
 
 .legalLinks a {
   color: rgba(255, 255, 255, 0.6);
   text-decoration: none;
+  white-space: nowrap;
 }
 
 /* Top Divider Styles */
@@ -290,11 +307,12 @@
   .footerTop {
     flex-direction: column;
     align-items: center;
-    /* Center everything on mobile */
-    gap: 40px;
+    gap: 20px;
     text-align: center;
     margin-bottom: 20px;
-    /* Override desktop margin */
+    padding-top: 0;
+    margin-top: -30px;
+    /* Pull logo up closer to divider */
   }
 
   .footerBrand {
@@ -323,10 +341,24 @@
 
   .footerBottom {
     flex-direction: column;
-    gap: 15px;
+    gap: 30px;
     text-align: center;
     font-size: 15px;
-    line-height: 25px;
+    line-height: normal;
+    padding-bottom: 120px;
+    /* Add space for floating widgets */
+  }
+
+  .bottomRight {
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+  }
+
+  .legalLinks {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
   }
 
   .brandSlogan {

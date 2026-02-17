@@ -89,7 +89,7 @@
   color: #ffffff;
   border: 1px solid #423df9;
   padding: 12px 36px 13px 36px;
-  height: 47px;
+  height: 48px;
   font-size: 16px;
   font-weight: 700;
   line-height: 20px;
@@ -204,7 +204,7 @@
   white-space: nowrap;
 }
 
-.fixingTextSide h2 span {
+.fixingTextSide h2 span:not(:global(.notranslate)) {
   color: #3f3fff;
   display: block;
   font-size: 38px;
@@ -235,13 +235,13 @@
 .boldDescription {
   font-size: 16px;
   font-weight: 800;
-  color: #111111bf;
+  color: #111111;
   margin-bottom: 1.5rem;
 }
 
 @media (max-width: 768px) {
   .fixingSection {
-    padding: 60px 0;
+    padding: 40px 0;
   }
 
   .fixingContainer {
@@ -282,16 +282,13 @@
     line-height: 1.3;
   }
 
-  .fixingTextSide h2 span {
-    font-size: 26px;
+  .fixingTextSide h2 span:not(:global(.notranslate)) {
+    font-size: 28px;
+    display: inline;
   }
 
   .highlightText {
     font-size: 1.1rem;
-  }
-
-  .fixingTextSide h2 span {
-    display: inline;
   }
 }
 
@@ -560,7 +557,7 @@
 .rewardDescription {
   font-size: 16px;
   line-height: 1.5;
-  color: #777;
+  color: #595959;
   margin-bottom: 0.6rem;
   max-width: 540px;
 }
@@ -639,7 +636,7 @@
     font-family: "Open Sans", sans-serif;
     font-size: 16px;
     font-weight: 400;
-    color: rgba(17, 17, 17, 0.75);
+    color: rgba(17, 17, 17, 0.80);
     line-height: 1.6;
     padding: 0 10px;
     margin-bottom: 20px;
@@ -790,7 +787,7 @@
 
 .testimonialsSubtitle {
   font-size: 16px;
-  color: #777;
+  color: #595959;
   margin-bottom: 50px;
 }
 
@@ -854,7 +851,7 @@
   font-size: 18px;
   font-weight: 700;
   line-height: 28px;
-  color: #08d9c4;
+  color: #068c80;
 }
 
 .quoteIcon {
@@ -922,7 +919,7 @@
     font-size: 16px;
     font-weight: 400;
     line-height: 22px;
-    color: rgba(17, 17, 17, 0.75);
+    color: rgba(17, 17, 17, 0.80);
     text-align: center;
     font-family: "Open Sans", sans-serif;
     margin-bottom: 30px;
@@ -1658,7 +1655,7 @@
     height: auto;
   }
 
-  .fixingTextSide h2 span {
+  .fixingTextSide h2 span:not(:global(.notranslate)) {
     display: inline-block;
   }
 
@@ -1697,7 +1694,11 @@
   }
 
   /* Prevent text overflow */
-  .fixingTextSide h2,
+  .fixingTextSide h2 {
+    font-size: 32px;
+    white-space: nowrap;
+  }
+
   .promoText h1,
   .promoText h2,
   .futureTitle {

@@ -380,7 +380,7 @@ export default function Rider() {
             <section className={styles.safetySection}>
                 <div className={styles.safetyContainer}>
                     <h2 className={styles.safetyTitle}>
-                        Rider <span>Safety and Trust</span>
+                        Rider <span>Safety <br className={styles.mobileBreak} /> and Trust</span>
                     </h2>
 
                     <div className={styles.safetyGrid}>

@@ -39,12 +39,12 @@ export default function Rider() {
                     <div className={styles.heroContent}>
                         <span className={styles.topTag}>DRIVE WITH AYRO</span>
                         <h1 className={styles.heroTitle}>
-                            <span className={styles.highlightText}>AYRO</span> Treats Its Drivers <br />
+                            <span className={styles.highlightText}>AYRO</span> Treats Its Drivers <br className={styles.mobileBreak} />
                             Like Partners
                         </h1>
                         <p className={styles.heroSubtitle}>
-                            Guaranteed $30+ per Active Hour. Tips are extra. <br />
-                            <span style={{ fontSize: '0.9em', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: '10px', marginTop: '10px', color: 'black' }}>
+                            Guaranteed $30+ per Active Hour. <span className={styles.blockOnMobile}>Tips are extra.</span> <br />
+                            <span style={{ fontSize: '0.9em', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: '8px', marginTop: '4px', color: 'black' }}>
                                 <span>Apply easily</span>
                                 <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#08D9C4', display: 'inline-block' }}></span>
                                 <span>Get treated fairly</span>
@@ -257,9 +257,9 @@ export default function Rider() {
             <section className={styles.lifeBetterSection}>
                 <div className={styles.lifeBetterHeader}>
                     <h2 className={styles.lifeBetterTitle}>
-                        Built for <span className={styles.lifeBetterHighlight}>Drivers,</span> Not Corporate Shareholders
+                        Built for <span className={styles.lifeBetterHighlight}>Drivers,</span> <br className={styles.mobileBreak} />Not Corporate Shareholders
                     </h2>
-                    <p className={styles.lifeBetterSubtitle}>At AYRO, you're not a gig worker. You're a partner.</p>
+                    <p className={styles.lifeBetterSubtitle}>At AYRO, you're not a gig worker. <br className={styles.mobileBreak} />You're a partner.</p>
                 </div>
 
                 <div className={styles.featuresGrid}>

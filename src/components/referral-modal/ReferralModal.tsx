@@ -52,6 +52,8 @@ export default function ReferralModal() {
                             width={110}
                             height={40}
                             className="brightness-0 invert object-contain"
+                            data-notranslate="true"
+                            translate="no"
                             priority
                         />
                     </div>
@@ -82,9 +84,11 @@ export default function ReferralModal() {
                             width={90}
                             height={30}
                             className="brightness-0 invert object-contain mb-6 opacity-90"
+                            data-notranslate="true"
+                            translate="no"
                         />
                         <h2 className="text-xl sm:text-2xl font-black text-white leading-tight tracking-tight">Get your Referral Link</h2>
-                        <p className="text-white/60 text-sm sm:text-base mt-2 !mb-8">Join the AYRO waitlist</p>
+                        <p className="text-white/60 text-sm sm:text-base mt-2 !mb-8">Join the <span className="notranslate" translate="no">AYRO</span> waitlist</p>
                     </div>
 
                     {/* Mobile spacer */}

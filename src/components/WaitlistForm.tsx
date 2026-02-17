@@ -330,14 +330,14 @@ export default function WaitlistForm() {
             >
                 {isSubmitting
                     ? (editMode.active ? 'Updating...' : 'Joining...')
-                    : (editMode.active ? 'Update Information' : 'Join the AYRO waitlist now...')}
+                    : (editMode.active ? 'Update Information' : <span>Join the <span className="notranslate" translate="no">AYRO</span> waitlist now...</span>)}
             </button>
 
             {message && (
                 <div className={
                     message.type === 'success' ? styles.successMessage :
-                    message.type === 'info' ? styles.infoMessage :
-                    styles.errorMessage
+                        message.type === 'info' ? styles.infoMessage :
+                            styles.errorMessage
                 }>
                     {message.text}
                 </div>

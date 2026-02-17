@@ -11,49 +11,47 @@ const languages = [
     { code: "vi", label: "Vietnamese", countryCode: "vn", shortLabel: "VI" },
 ];
 
-export default function LanguageDropdown() {
+export default function LanguageDropdown({ isFooter = false }: { isFooter?: boolean }) {
     const [isOpen, setIsOpen] = useState(false);
     const [currentLang, setCurrentLang] = useState(languages[0]);
     const dropdownRef = useRef<HTMLDivElement>(null);
 
+    // Initialize ID for Google Translate
     useEffect(() => {
-        // Build the script only if it doesn't already exist
-        let addScript = document.querySelector("script[src*='translate.google.com']");
-
-        if (!addScript) {
-            addScript = document.createElement("script");
-            (addScript as HTMLScriptElement).src = "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
-            (addScript as HTMLScriptElement).async = true;
-            document.body.appendChild(addScript);
-        }
-
-        // Ensure global callback is defined
-        (window as any).googleTranslateElementInit = () => {
-            if ((window as any).google && (window as any).google.translate) {
-                new (window as any).google.translate.TranslateElement(
-                    { pageLanguage: "en", autoDisplay: false },
-                    "google_translate_element"
-                );
+        // Check cookie to set initial language state
+        const match = document.cookie.match(/googtrans=\/en\/([a-zA-Z-]+)/);
+        if (match && match[1]) {
+            const savedLangCode = match[1];
+            const foundLang = languages.find(l => l.code === savedLangCode);
+            if (foundLang) {
+                setCurrentLang(foundLang);
             }
-        };
+        }
     }, []);
 
     const changeLanguage = (lang: typeof languages[0]) => {
+        // If switching to English, clear cookie and reload to reset completely
+        if (lang.code === "en") {
+            document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; domain=." + document.domain + "; path=/;";
+            window.location.reload();
+            return;
+        }
+
+        // Otherwise set cookie and trigger translation
+        document.cookie = `googtrans=/en/${lang.code}; path=/`;
+
         const setLanguage = () => {
             const combo = document.querySelector(".goog-te-combo") as HTMLSelectElement;
             if (combo) {
                 combo.value = lang.code;
                 combo.dispatchEvent(new Event("change"));
-                combo.dispatchEvent(new Event("input")); // Dispatch input for safer measure
-                combo.click(); // Sometimes click is needed to wake it up
             }
         };
 
         setLanguage();
-        // Retry logic to handle race conditions
+        // Retry logic for safety
         setTimeout(setLanguage, 100);
-        setTimeout(setLanguage, 500);
-        setTimeout(setLanguage, 1000); // One more safety retry
 
         setCurrentLang(lang);
         setIsOpen(false);
@@ -70,9 +68,9 @@ export default function LanguageDropdown() {
     }, []);
 
     return (
-        <div className="language-dropdown-container notranslate" ref={dropdownRef}>
-            <div className={`language-menu ${isOpen ? "open" : "closed"}`}>
-                <div className="language-menu-inner">
+        <div className={`language-dropdown-container notranslate ${isFooter ? "footer-mode" : ""}`} ref={dropdownRef}>
+            <div className={`language-menu ${isOpen ? "open" : "closed"} ${isFooter ? "footer-menu" : ""}`}>
+                <div className="language-menu-inner" role="listbox" aria-label="Select language">
                     <div className="language-header">
                         Select Language
                     </div>
@@ -118,7 +116,7 @@ export default function LanguageDropdown() {
 
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className={`language-trigger ${isOpen ? "open" : ""}`}
+                className={`language-trigger ${isOpen ? "open" : ""} ${isFooter ? "footer-trigger" : ""}`}
                 aria-label="Select language"
                 aria-haspopup="listbox"
                 aria-expanded={isOpen}

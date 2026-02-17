@@ -9,7 +9,7 @@ const testimonials = [
         author: "Sarah L."
     },
     {
-        quote: "I've been frustrated with surge pricing for years. AYRO's referral program not only rewards me financially but lets me be part of the solution. It feels great knowing I'm helping create fairer ridesharing.",
+        quote: <span>I've been frustrated with surge pricing for years. <span className="notranslate" translate="no">AYRO</span>'s referral program not only rewards me financially but lets me be part of the solution. It feels great knowing I'm helping create fairer ridesharing.</span>,
         author: "Michael J."
     },
     {
@@ -17,7 +17,7 @@ const testimonials = [
         author: "David K."
     },
     {
-        quote: "As a driver-turned-rider, I appreciate that AYRO treats both sides fairly. It's a win-win that actually feels genuine.",
+        quote: <span>As a driver-turned-rider, I appreciate that <span className="notranslate" translate="no">AYRO</span> treats both sides fairly. It's a win-win that actually feels genuine.</span>,
         author: "Amanda R."
     }
 ];

@@ -26,6 +26,8 @@ export default function Header() {
             alt="AYRO"
             width="180"
             height="180"
+            data-notranslate="true"
+            translate="no"
           />
         </Link>
 

@@ -23,7 +23,7 @@ export default function Footer() {
 
   const disruptProps = isInnerCareerPage ? {
     title: "Ready to Get Started?",
-    subtitle: "Apply today and start earning with AYRO on your schedule.",
+    subtitle: <span>Apply today and start earning with <span className="notranslate" translate="no">AYRO</span> on your schedule.</span>,
     buttonText: "Apply Now",
     buttonLink: pathname
   } : {};
@@ -55,6 +55,8 @@ export default function Footer() {
                 className={styles.footerLogo}
                 width="160"
                 height="160"
+                data-notranslate="true"
+                translate="no"
               />
             </Link>
 
@@ -102,14 +104,17 @@ export default function Footer() {
 
           <div className={styles.footerBottom}>
             <p className={styles.copyrightText}>
-              Copyright AYRO 2026. All Rights Reserved.
+              Copyright <span className="notranslate" translate="no">AYRO</span> 2026. All Rights Reserved.
             </p>
-            <div className={styles.legalLinks}>
-              <Link href="/terms-of-service">Terms of Service</Link>
-              <span className={styles.legalDivider}>|</span>
-              <Link href="/privacy-policy">Privacy Policy</Link>
-              <span className={styles.legalDivider}>|</span>
-              <Link href="/sms-terms">SMS Terms</Link>
+
+            <div className={styles.bottomRight}>
+              <div className={styles.legalLinks}>
+                <Link href="/terms-of-service">Terms of Service</Link>
+                <span className={styles.legalDivider}>|</span>
+                <Link href="/privacy-policy">Privacy Policy</Link>
+                <span className={styles.legalDivider}>|</span>
+                <Link href="/sms-terms">SMS Terms</Link>
+              </div>
             </div>
           </div>
         </div>

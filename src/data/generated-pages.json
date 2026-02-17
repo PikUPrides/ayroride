@@ -36,6 +36,10 @@
     "priority": 0.8
   },
   {
+    "route": "/referral-login",
+    "priority": 0.8
+  },
+  {
     "route": "/rider",
     "priority": 1
   },

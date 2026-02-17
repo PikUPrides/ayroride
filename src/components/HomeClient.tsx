@@ -57,7 +57,7 @@ export default function HomeClient() {
                 <div className={styles.promoContainer}>
                     <div className={styles.promoText}>
                         <h1>
-                            <span className={styles.mainHead}>AYRO </span>
+                            <span className={styles.mainHead}><span className="notranslate" translate="no">AYRO</span> </span>
                             <span className={styles.sharingText}>Rideshare MEANS</span>
                             <span className={styles.blueText}>{displayText}</span>
                         </h1>
@@ -71,6 +71,7 @@ export default function HomeClient() {
                             src="/images/promo-bg.webp"
                             alt="AYRO Rideshare"
                             className={styles.promoImage}
+                            data-notranslate="true"
                             width="1200"
                             height="800"
                         />
@@ -98,7 +99,7 @@ export default function HomeClient() {
                     </div>
                     <div className={styles.fixingTextSide}>
                         <h2>
-                            AYRO IS FIXING <br className={styles.mobileBreak} />
+                            <span className="notranslate" translate="no">AYRO</span> IS FIXING <br className={styles.mobileBreak} />
                             EVERYTHING{" "}
                             <span>
                                 you hate <br className={styles.mobileBreak} /> about
@@ -207,7 +208,7 @@ export default function HomeClient() {
             <section className={styles.differentSection}>
                 <div className={styles.differentContainer}>
                     <h3 className={styles.differentTitle}>
-                        How is <span>AYRO different?</span>
+                        How is <span><span className="notranslate" translate="no">AYRO</span> different?</span>
                     </h3>
 
                     <div className={styles.differentGrid}>
@@ -267,12 +268,11 @@ export default function HomeClient() {
                         <h2>
                             <span className={styles.topLine}>Get rewarded for joining</span>
                             <span className={styles.blueSpan}>
-                                <span style={{ color: "#1D0652" }}>the</span> Rideshare{" "}
-                                <br className={styles.mobileBreak} /> Revolution
+                                <span style={{ color: "#1D0652" }}>the</span> Rideshare Revolution
                             </span>
                         </h2>
                         <p className={styles.rewardDescription}>
-                            Join the AYRO waitlist now, and you'll unlock a unique referral
+                            Join the <span className="notranslate" translate="no">AYRO</span> waitlist now, and you'll unlock a unique referral
                             link and receive updates about our launch in early 2026.
                         </p>
                         <p
