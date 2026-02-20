@@ -30,31 +30,55 @@ export default function LanguageDropdown({ isFooter = false }: { isFooter?: bool
     }, []);
 
     const changeLanguage = (lang: typeof languages[0]) => {
-        // If switching to English, clear cookie and reload to reset completely
+        // Update UI immediately (gives feedback before reload)
+        setCurrentLang(lang);
+        setIsOpen(false);
+
+        const host = window.location.hostname;
+        const hostParts = host.split('.');
+
         if (lang.code === "en") {
+            // Clear cookies on all possible domain variations to ensure Google Translate resets
             document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-            document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; domain=." + document.domain + "; path=/;";
-            window.location.reload();
+            document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; domain=${host}; path=/;`;
+            document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; domain=.${host}; path=/;`;
+
+            if (hostParts.length > 1) {
+                const rootDomain = hostParts.slice(-2).join('.');
+                document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; domain=${rootDomain}; path=/;`;
+                document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; domain=.${rootDomain}; path=/;`;
+            }
+
+            // We reload because Google Translate doesn't easily let us switch back to the original language programmatically
+            setTimeout(() => {
+                window.location.reload();
+            }, 50);
             return;
         }
 
-        // Otherwise set cookie and trigger translation
+        // Set cookie for the selected language
         document.cookie = `googtrans=/en/${lang.code}; path=/`;
+        document.cookie = `googtrans=/en/${lang.code}; domain=${host}; path=/`;
+        document.cookie = `googtrans=/en/${lang.code}; domain=.${host}; path=/`;
 
-        const setLanguage = () => {
+        // Trigger Google Translate manually using its hidden combo box
+        // Poll until the combo box is ready (may take time on first load)
+        let attempts = 0;
+        const maxAttempts = 30; // 30 * 100ms = 3 seconds max wait
+        const trySetLanguage = () => {
             const combo = document.querySelector(".goog-te-combo") as HTMLSelectElement;
-            if (combo) {
+            if (combo && combo.options.length > 1) {
                 combo.value = lang.code;
                 combo.dispatchEvent(new Event("change"));
+            } else if (attempts < maxAttempts) {
+                attempts++;
+                setTimeout(trySetLanguage, 100);
+            } else {
+                // Fallback: reload the page with the cookie set
+                window.location.reload();
             }
         };
-
-        setLanguage();
-        // Retry logic for safety
-        setTimeout(setLanguage, 100);
-
-        setCurrentLang(lang);
-        setIsOpen(false);
+        trySetLanguage();
     };
 
     useEffect(() => {

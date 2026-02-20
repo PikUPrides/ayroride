@@ -86,13 +86,14 @@ export default function RootLayout({
         <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5FKKXTJ8"
           height="0" width="0" style={{ display: 'none', visibility: 'hidden' }}></iframe></noscript>
 
-        {/* Google Translate Setup */}
+        {/* Google Translate Setup — single script to guarantee load order */}
+        <div id="google_translate_element" style={{ position: 'absolute', top: '-9999px', left: '-9999px' }} />
         <Script
           id="google-translate-init"
-          strategy="lazyOnload"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
-              function googleTranslateElementInit() {
+              window.googleTranslateElementInit = function() {
                 new google.translate.TranslateElement(
                   {
                     pageLanguage: 'en',
@@ -100,15 +101,16 @@ export default function RootLayout({
                   },
                   'google_translate_element'
                 );
-              }
+              };
+              (function loadGT() {
+                var s = document.createElement('script');
+                s.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+                s.async = true;
+                document.body.appendChild(s);
+              })();
             `
           }}
         />
-        <Script
-          src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
-          strategy="lazyOnload"
-        />
-        <div id="google_translate_element" style={{ display: 'none' }} />
 
         <Script id="google-tag-manager" strategy="lazyOnload" dangerouslySetInnerHTML={{
           __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
