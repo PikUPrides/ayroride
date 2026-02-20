@@ -9,9 +9,23 @@ function LogoutLink() {
     const handleLogout = () => {
         const widgetId = 'MF2f0c6063df';
         const cookieName = `__maitre-session-${widgetId}`;
+        const expiry = 'expires=Thu, 01 Jan 1970 00:00:00 UTC';
 
-        // Clear the cookie
-        document.cookie = `${cookieName}=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;`;
+        // Clear session cookie on all possible domain/path combinations
+        document.cookie = `${cookieName}=;${expiry};path=/;`;
+        document.cookie = `${cookieName}=;${expiry};path=/;domain=${window.location.hostname}`;
+        document.cookie = `${cookieName}=;${expiry};path=/;domain=.${window.location.hostname}`;
+
+        // Also clear any ReferralHero subscriber cookies
+        const allCookies = document.cookie.split(';');
+        for (const cookie of allCookies) {
+            const name = cookie.split('=')[0].trim();
+            if (name.includes('maitre') || name.includes('referralhero') || name.includes('mtr')) {
+                document.cookie = `${name}=;${expiry};path=/;`;
+                document.cookie = `${name}=;${expiry};path=/;domain=${window.location.hostname}`;
+                document.cookie = `${name}=;${expiry};path=/;domain=.${window.location.hostname}`;
+            }
+        }
 
         // Redirect to login page
         window.location.href = '/referral-login';
