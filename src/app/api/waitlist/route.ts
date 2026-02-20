@@ -8,10 +8,41 @@ try {
     console.warn('Could not set DNS result order:', e);
 }
 
+async function verifyRecaptcha(token: string): Promise<boolean> {
+    const secretKey = process.env.RECAPTCHA_SECRET_KEY;
+    if (!secretKey) {
+        console.error('RECAPTCHA_SECRET_KEY is not set');
+        return false;
+    }
+
+    try {
+        const response = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: `secret=${secretKey}&response=${token}`,
+        });
+        const data = await response.json();
+        console.log('reCAPTCHA verification result:', { success: data.success, score: data.score, action: data.action });
+        // v3 returns a score: 1.0 = very likely human, 0.0 = very likely bot
+        return data.success === true && (data.score === undefined || data.score >= 0.5);
+    } catch (error) {
+        console.error('reCAPTCHA verification error:', error);
+        return false;
+    }
+}
+
 export async function PUT(request: Request) {
     try {
         const body = await request.json();
-        const { subscriberId, name, email, phone, zipCode, userType } = body;
+        const { subscriberId, name, email, phone, zipCode, userType, recaptchaToken } = body;
+
+        // Verify reCAPTCHA
+        if (!recaptchaToken || !(await verifyRecaptcha(recaptchaToken))) {
+            return NextResponse.json(
+                { error: 'reCAPTCHA verification failed. Please try again.' },
+                { status: 400 }
+            );
+        }
 
         if (!subscriberId || !name || !email) {
             return NextResponse.json(
@@ -99,7 +130,15 @@ export async function PUT(request: Request) {
 export async function POST(request: Request) {
     try {
         const body = await request.json();
-        const { name, email, phone, zipCode, userType } = body;
+        const { name, email, phone, zipCode, userType, recaptchaToken } = body;
+
+        // Verify reCAPTCHA
+        if (!recaptchaToken || !(await verifyRecaptcha(recaptchaToken))) {
+            return NextResponse.json(
+                { error: 'reCAPTCHA verification failed. Please try again.' },
+                { status: 400 }
+            );
+        }
 
         if (!name || !email) {
             return NextResponse.json(

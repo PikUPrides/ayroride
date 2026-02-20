@@ -1,8 +1,16 @@
 'use client';
 
-import { useState, FormEvent } from 'react';
+import { useState, useEffect, useRef, FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
 import styles from './WaitlistForm.module.css';
+
+const RECAPTCHA_SITE_KEY = '6LcDJWgsAAAAANv5QO-1hOm-oop5kOOyQ3Y6qcXz';
+
+declare global {
+    interface Window {
+        grecaptcha: any;
+    }
+}
 
 export default function WaitlistForm() {
     const router = useRouter();
@@ -22,11 +30,33 @@ export default function WaitlistForm() {
         zipCode: false
     });
     const [editMode, setEditMode] = useState<{ active: boolean; subscriberId?: string }>({ active: false });
+    const recaptchaLoaded = useRef(false);
+
+    useEffect(() => {
+        if (recaptchaLoaded.current) return;
+        if (!document.querySelector('script[src*="recaptcha"]')) {
+            const script = document.createElement('script');
+            script.src = `https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_SITE_KEY}`;
+            script.async = true;
+            document.head.appendChild(script);
+        }
+        recaptchaLoaded.current = true;
+    }, []);
 
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
         setIsSubmitting(true);
         setMessage(null);
+
+        // Get reCAPTCHA v3 token
+        let recaptchaToken = '';
+        try {
+            recaptchaToken = await window.grecaptcha.execute(RECAPTCHA_SITE_KEY, { action: 'waitlist_submit' });
+        } catch {
+            setMessage({ type: 'error', text: 'reCAPTCHA verification failed. Please refresh and try again.' });
+            setIsSubmitting(false);
+            return;
+        }
 
         // Format phone number to ensure it has US country code for consistency
         let formattedPhone = formData.phone.replace(/\D/g, '');
@@ -48,7 +78,8 @@ export default function WaitlistForm() {
                     body: JSON.stringify({
                         subscriberId: editMode.subscriberId,
                         ...formData,
-                        phone: formattedPhone
+                        phone: formattedPhone,
+                        recaptchaToken
                     }),
                 });
 
@@ -104,7 +135,8 @@ export default function WaitlistForm() {
                     },
                     body: JSON.stringify({
                         ...formData,
-                        phone: formattedPhone
+                        phone: formattedPhone,
+                        recaptchaToken
                     }),
                 });
 
