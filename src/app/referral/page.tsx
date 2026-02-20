@@ -10,20 +10,38 @@ function LogoutLink() {
         const widgetId = 'MF2f0c6063df';
         const cookieName = `__maitre-session-${widgetId}`;
         const expiry = 'expires=Thu, 01 Jan 1970 00:00:00 UTC';
+        const isHttps = window.location.protocol === 'https:';
+        const secureFlag = isHttps ? ';Secure' : '';
+        const hostname = window.location.hostname;
+        // Get base domain (e.g. ayrorides.com from www.ayrorides.com)
+        const baseDomain = hostname.replace(/^www\./, '');
 
-        // Clear session cookie on all possible domain/path combinations
-        document.cookie = `${cookieName}=;${expiry};path=/;`;
-        document.cookie = `${cookieName}=;${expiry};path=/;domain=${window.location.hostname}`;
-        document.cookie = `${cookieName}=;${expiry};path=/;domain=.${window.location.hostname}`;
+        // Build all domain variants to clear cookies from
+        const domains = [
+            '',                     // no domain (current origin)
+            `;domain=${hostname}`,  // exact hostname
+            `;domain=.${hostname}`, // .hostname
+            `;domain=${baseDomain}`,       // base domain
+            `;domain=.${baseDomain}`,      // .base domain
+        ];
+
+        // Clear a cookie across all domain/flag variants
+        const clearCookie = (name: string) => {
+            for (const domain of domains) {
+                document.cookie = `${name}=;${expiry};path=/${domain}`;
+                document.cookie = `${name}=;${expiry};path=/${domain};SameSite=Lax${secureFlag}`;
+            }
+        };
+
+        // Clear session cookie
+        clearCookie(cookieName);
 
         // Also clear any ReferralHero subscriber cookies
         const allCookies = document.cookie.split(';');
         for (const cookie of allCookies) {
             const name = cookie.split('=')[0].trim();
             if (name.includes('maitre') || name.includes('referralhero') || name.includes('mtr')) {
-                document.cookie = `${name}=;${expiry};path=/;`;
-                document.cookie = `${name}=;${expiry};path=/;domain=${window.location.hostname}`;
-                document.cookie = `${name}=;${expiry};path=/;domain=.${window.location.hostname}`;
+                clearCookie(name);
             }
         }
 
