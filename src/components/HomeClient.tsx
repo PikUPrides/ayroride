@@ -62,8 +62,8 @@ export default function HomeClient() {
                             <span className={styles.blueText}>{displayText}</span>
                         </h1>
                         <p>Join our waitlist. Refer your friends. Win valuable prizes.</p>
-                        <Link href="/join-our-waitlist">
-                            <button className={styles.waitlistBtn}>Join Our Waitlist</button>
+                        <Link href="/join-our-waitlist" className={styles.waitlistBtn}>
+                            Join Our Waitlist
                         </Link>
                     </div>
                     <div className={styles.promoImageContainer}>
@@ -116,8 +116,8 @@ export default function HomeClient() {
                         <p className={styles.boldDescription}>
                             It’s ridesharing reinvented.
                         </p>
-                        <Link href="/join-our-waitlist">
-                            <button className={styles.waitlistBtn}>Join Our Waitlist</button>
+                        <Link href="/join-our-waitlist" className={styles.waitlistBtn}>
+                            Join Our Waitlist
                         </Link>
                     </div>
                 </div>
@@ -254,10 +254,8 @@ export default function HomeClient() {
                         </div>
                     </div>
 
-                    <Link href="/join-our-waitlist">
-                        <button className={`${styles.waitlistBtn} ${styles.differentBtn}`}>
-                            Join Our Waitlist
-                        </button>
+                    <Link href="/join-our-waitlist" className={`${styles.waitlistBtn} ${styles.differentBtn}`}>
+                        Join Our Waitlist
                     </Link>
                 </div>
             </section>
@@ -283,8 +281,8 @@ export default function HomeClient() {
                         <span className={styles.rewardHighlight}>
                             Ride Credits, $1,000 Cash, or the MacBook Pro.
                         </span>
-                        <Link href="/join-our-waitlist">
-                            <button className={styles.waitlistBtn}>Join Our Waitlist</button>
+                        <Link href="/join-our-waitlist" className={styles.waitlistBtn}>
+                            Join Our Waitlist
                         </Link>
                     </div>
                     <div className={styles.rewardImageSide}>
@@ -358,12 +356,8 @@ export default function HomeClient() {
                     </div>
 
                     <div className={styles.futureBtnContainer}>
-                        <Link href="/join-our-waitlist">
-                            <button
-                                className={`${styles.waitlistBtn} ${styles.differentBtn}`}
-                            >
-                                Join Our Waitlist
-                            </button>
+                        <Link href="/join-our-waitlist" className={`${styles.waitlistBtn} ${styles.differentBtn}`}>
+                            Join Our Waitlist
                         </Link>
                     </div>
                 </div>

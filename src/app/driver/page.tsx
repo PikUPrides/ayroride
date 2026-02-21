@@ -52,10 +52,8 @@ export default function Rider() {
                                 <span>Earn, what you deserve</span>
                             </span>
                         </p>
-                        <Link href="/join-our-waitlist">
-                            <button className={styles.ctaButton}>
-                                Apply to Drive
-                            </button>
+                        <Link href="/join-our-waitlist" className={styles.ctaButton}>
+                            Apply to Drive
                         </Link>
                     </div>
                     <div className={styles.heroImageContainer}>
@@ -235,10 +233,8 @@ export default function Rider() {
                                 <li className={styles.rewardsItem}>Early adopter status</li>
                                 <li className={styles.rewardsItem}>Referral dashboard to track earnings</li>
                             </ul>
-                            <Link href="/join-our-waitlist">
-                                <button className={styles.rewardsButton}>
-                                    Join Our Waitlist
-                                </button>
+                            <Link href="/join-our-waitlist" className={styles.rewardsButton}>
+                                Join Our Waitlist
                             </Link>
                         </div>
                     </div>
@@ -366,8 +362,8 @@ export default function Rider() {
                     </div>
                 </div>
 
-                <Link href="/join-our-waitlist">
-                    <button className={styles.lifeBetterCta}>Apply to Drive</button>
+                <Link href="/join-our-waitlist" className={styles.lifeBetterCta}>
+                    Apply to Drive
                 </Link>
             </section>
 
