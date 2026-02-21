@@ -239,9 +239,10 @@ export default function Rider() {
                                 <li className={styles.rewardsItem}>Cash rewards</li>
                                 <li className={styles.rewardsItem}>Early adopter status</li>
                                 <li className={styles.rewardsItem}>Referral dashboard to track earnings</li>
-                                <Link href="/join-our-waitlist" className={styles.rewardsButton}>
-                                    Join the waitlist
-                                </Link>
+                            </ul>
+                            <Link href="/join-our-waitlist" className={styles.rewardsButton}>
+                                Join the waitlist
+                            </Link>
                         </div>
                     </div>
                     <div className={styles.rewardsImageSide}>
