@@ -1,9 +1,10 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, ReactNode } from 'react';
+import Link from 'next/link';
 import styles from '@/app/join-our-waitlist/waitlist.module.css';
 
-const faqData = [
+const faqData: { question: string; answer: ReactNode }[] = [
     {
         question: "How do I get my referral link?",
         answer: "Sign up for the waitlist above. After verifying your email and phone number, you'll be taken to your referral dashboard where you can copy and share your unique referral link."
@@ -22,7 +23,7 @@ const faqData = [
     },
     {
         question: "Can I track my referrals?",
-        answer: "Yes! After signing up, visit your referral dashboard to see your total referrals, your rank on the leaderboard, and the rewards you're eligible for. You can access it anytime from the \"Already joined waitlist?\" link."
+        answer: <>Yes! After signing up, visit your <Link href="/referral-login" style={{ color: '#423DF9', textDecoration: 'underline' }}>referral dashboard</Link> to see your total referrals, your rank on the leaderboard, and the rewards you&apos;re eligible for.</>
     },
     {
         question: "Is there a limit to how many people I can refer?",
@@ -57,7 +58,7 @@ export default function WaitlistFaq() {
 }
 
 function FaqItem({ item, isOpen, onToggle }: {
-    item: { question: string; answer: string };
+    item: { question: string; answer: ReactNode };
     isOpen: boolean;
     onToggle: () => void;
 }) {

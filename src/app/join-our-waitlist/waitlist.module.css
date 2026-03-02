@@ -208,6 +208,18 @@
     white-space: nowrap;
 }
 
+.tierMacbook {
+    background: linear-gradient(90deg, rgba(66, 61, 249, 0.06) 0%, rgba(66, 61, 249, 0.02) 100%);
+}
+
+.macbookRow {
+    text-align: center !important;
+    padding: 16px 20px;
+    color: #423DF9;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
 .formHeading {
     font-size: 20px;
     font-weight: 700;
