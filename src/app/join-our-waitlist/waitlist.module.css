@@ -1,20 +1,20 @@
 .headerSection {
     background: linear-gradient(180deg, #1D0652 0%, #0a0320 100%);
-    min-height: 400px;
+    min-height: auto;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 120px 20px 80px;
+    padding: 80px 20px 36px;
     width: 100%;
 }
 
 .headerTitle {
     font-family: "Open Sans", Sans-serif;
-    font-size: 72px;
+    font-size: 52px;
     font-weight: 700;
     font-style: normal;
-    line-height: 82px;
+    line-height: 62px;
     color: #FFFFFF;
     margin: 0;
     white-space: nowrap;
@@ -67,7 +67,7 @@
 
 .formSection {
     background-color: #FFFFFF;
-    padding: 100px 0 140px;
+    padding: 60px 0 100px;
 }
 
 .formContainer {
@@ -81,11 +81,12 @@
 }
 
 .formTitle {
-    font-size: 40px;
+    font-size: 28px;
     font-weight: 800;
     color: #1D0652;
     margin-bottom: 15px;
     text-align: center;
+    max-width: 700px;
 }
 
 .formTitle span {
@@ -102,17 +103,220 @@
     max-width: 700px;
 }
 
+/* Referral Rewards Section */
+.rewardsSection {
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 24px;
+}
+
+.rewardsTitle {
+    font-size: 28px;
+    font-weight: 800;
+    color: #1D0652;
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.rewardsSubtitle {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+    line-height: 24px;
+    color: rgba(17, 17, 17, 0.65);
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.rewardsTableWrapper {
+    width: 100%;
+    overflow-x: auto;
+    border-radius: 16px;
+    border: 1px solid #e8e8f0;
+}
+
+.rewardsTable {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+}
+
+.rewardsTable thead tr {
+    background: linear-gradient(135deg, #1D0652 0%, #2a1070 100%);
+}
+
+.rewardsTable th {
+    padding: 14px 20px;
+    text-align: left;
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #FFFFFF;
+}
+
+.rewardsTable th:last-child {
+    text-align: center;
+}
+
+.rewardsTable td {
+    padding: 16px 20px;
+    border-bottom: 1px solid rgba(66, 61, 249, 0.08);
+    color: #333;
+    line-height: 1.5;
+}
+
+.rewardsTable td:last-child {
+    text-align: center;
+}
+
+.rewardsTable tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.rewardsTable tbody tr:hover {
+    background-color: rgba(66, 61, 249, 0.03);
+}
+
+.tierGold {
+    background: linear-gradient(90deg, rgba(255, 215, 0, 0.08) 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+.tierSilver {
+    background: linear-gradient(90deg, rgba(192, 192, 192, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+.tierBronze {
+    background: linear-gradient(90deg, rgba(205, 127, 50, 0.06) 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+.rankBadge {
+    display: inline-block;
+    font-weight: 700;
+    font-size: 14px;
+    color: #1D0652;
+    white-space: nowrap;
+}
+
+.referralCount {
+    display: inline-block;
+    background-color: rgba(66, 61, 249, 0.1);
+    color: #423DF9;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 4px 14px;
+    border-radius: 20px;
+    white-space: nowrap;
+}
+
+.formHeading {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1D0652;
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 16px;
+}
+
 .formWrapper {
     width: 100%;
     max-width: 600px;
-    border: none;
-    border-radius: 20px;
-    padding: 2.5rem 0;
+    border: 1px solid #e8e8f0;
+    border-radius: 16px;
+    padding: 2rem 2rem;
     box-shadow: none;
-    background-color: #FFFFFF;
+    background-color: transparent;
     display: flex;
     flex-direction: column;
     gap: 16px;
+}
+
+/* FAQ Section */
+.faqSection {
+    background-color: #f8f8fc;
+    padding: 80px 0;
+}
+
+.faqContainer {
+    max-width: 700px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.faqTitle {
+    font-size: 28px;
+    font-weight: 800;
+    color: #1D0652;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.faqList {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.faqItem {
+    background-color: #FFFFFF;
+    border: 1px solid #e8e8f0;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: border-color 0.3s ease;
+}
+
+.faqItemOpen {
+    border-color: rgba(66, 61, 249, 0.2);
+}
+
+.faqQuestion {
+    width: 100%;
+    padding: 18px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1D0652;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: none;
+    border: none;
+    text-align: left;
+    font-family: inherit;
+    transition: color 0.2s ease;
+}
+
+.faqQuestion:hover {
+    color: #423DF9;
+}
+
+.faqIcon {
+    font-size: 20px;
+    font-weight: 400;
+    color: #423DF9;
+    flex-shrink: 0;
+    margin-left: 16px;
+    transition: transform 0.3s ease;
+    display: inline-block;
+}
+
+.faqIconOpen {
+    transform: rotate(45deg);
+}
+
+.faqAnswerWrapper {
+    height: 0;
+    overflow: hidden;
+    transition: height 0.3s ease;
+}
+
+.faqAnswer {
+    padding: 0 24px 18px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+    line-height: 24px;
+    color: rgba(17, 17, 17, 0.7);
+    margin: 0;
 }
 
 /* Responsive Styles */
@@ -145,8 +349,8 @@
     }
 
     .headerSection {
-        min-height: 300px;
-        padding: 80px 20px 60px;
+        min-height: 200px;
+        padding: 80px 20px 40px;
     }
 
     .formWrapper {
@@ -161,5 +365,63 @@
     .formSubtitle {
         font-size: 16px;
         margin-bottom: 30px;
+    }
+
+    .rewardsSection {
+        margin-bottom: 30px;
+    }
+
+    .rewardsTitle {
+        font-size: 22px;
+    }
+
+    .rewardsSubtitle {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+
+    .rewardsTable {
+        font-size: 13px;
+    }
+
+    .rewardsTable th {
+        padding: 10px 12px;
+        font-size: 11px;
+    }
+
+    .rewardsTable td {
+        padding: 12px;
+    }
+
+    .rankBadge {
+        font-size: 12px;
+    }
+
+    .referralCount {
+        font-size: 12px;
+        padding: 3px 10px;
+    }
+
+    .faqSection {
+        padding: 50px 0;
+    }
+
+    .faqTitle {
+        font-size: 22px;
+        margin-bottom: 24px;
+    }
+
+    .faqQuestion {
+        padding: 16px 18px;
+        font-size: 15px;
+    }
+
+    .faqAnswer {
+        padding: 0 18px 16px;
+        font-size: 14px;
+    }
+
+    .faqIcon {
+        font-size: 18px;
     }
 }
