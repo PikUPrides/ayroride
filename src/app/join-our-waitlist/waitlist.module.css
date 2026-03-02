@@ -371,47 +371,54 @@
     }
 
     .formTitle {
-        font-size: 28px;
+        font-size: 22px;
+        max-width: 100%;
     }
 
     .formSubtitle {
-        font-size: 16px;
-        margin-bottom: 30px;
+        font-size: 15px;
+        margin-bottom: 24px;
     }
 
     .rewardsSection {
-        margin-bottom: 30px;
-    }
-
-    .rewardsTitle {
-        font-size: 22px;
-    }
-
-    .rewardsSubtitle {
-        font-size: 14px;
         margin-bottom: 20px;
+        max-width: 100%;
+    }
+
+    .rewardsTableWrapper {
+        border-radius: 12px;
     }
 
     .rewardsTable {
-        font-size: 13px;
+        font-size: 12px;
     }
 
     .rewardsTable th {
-        padding: 10px 12px;
-        font-size: 11px;
+        padding: 10px 8px;
+        font-size: 10px;
+        letter-spacing: 0.3px;
     }
 
     .rewardsTable td {
-        padding: 12px;
+        padding: 10px 8px;
     }
 
     .rankBadge {
-        font-size: 12px;
+        font-size: 11px;
     }
 
     .referralCount {
+        font-size: 11px;
+        padding: 3px 8px;
+    }
+
+    .macbookRow {
         font-size: 12px;
-        padding: 3px 10px;
+    }
+
+    .formHeading {
+        font-size: 18px;
+        margin-top: 28px;
     }
 
     .faqSection {
