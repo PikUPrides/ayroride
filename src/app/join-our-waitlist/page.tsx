@@ -38,7 +38,15 @@ export default function JoinOurWaitlist() {
                         Join the waitlist and share your referral link. The more friends you refer, the bigger your rewards — including cash, ride credits, and a chance to win a MacBook Pro!
                     </p>
 
-                    {/* Referral Rewards Section */}
+                    {/* Form */}
+                    <h3 className={styles.formHeading}>
+                        Join Now & Start Referring
+                    </h3>
+                    <div className={styles.formWrapper}>
+                        <WaitlistForm />
+                    </div>
+
+                    {/* Referral Rewards Table */}
                     <div className={styles.rewardsSection}>
                         <div className={styles.rewardsTableWrapper}>
                             <table className={styles.rewardsTable}>
@@ -90,14 +98,6 @@ export default function JoinOurWaitlist() {
                                 </tbody>
                             </table>
                         </div>
-                    </div>
-
-                    <h3 className={styles.formHeading}>
-                        Join Now & Start Referring
-                    </h3>
-
-                    <div className={styles.formWrapper}>
-                        <WaitlistForm />
                     </div>
                 </div>
             </section>
